@@ -1,0 +1,130 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>friend radio :)</title>
+
+    <meta name="viewport" content="user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1,width=device-width">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="js/jquery-3.1.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="/socket.io/socket.io.js"></script>
+    <script src="socket.io-file-client.js"></script> 
+	<script src="jscolor.js"></script>
+	<script src="js/customcss.js"></script>
+	<script src="js/roommenu.js"></script>
+
+</head>
+<body id="body">
+
+	
+
+	<div id="header">
+		<!-- <div id="title"> -->
+		<h1> F R I E N DR A D I O </h1> 
+		 <!-- </div> -->
+		
+		<div id="roomMenu" style="display:none;">
+			<div>
+				<input class="button" onclick="roomButtonPressed(1)" type="submit" value="ROOM 1" />
+				<input class="button" onclick="roomButtonPressed(2)" type="submit" value="ROOM 2" />
+				<input class="button" onclick="roomButtonPressed(3)" type="submit" value="ROOM 3" />
+				<input class="button" onclick="roomButtonPressed(4)" type="submit" value="ROOM 4" />
+			</div>
+		</div>
+
+		<!-- hidden css styling menu -->
+		<div id="styleMenu" style="display:none;">
+			<div class="styleMenuEntry"> background color: <input id="bgColorPicker" class="jscolor" value="ab2567"> 
+			<br></div>
+			<!-- <div class="styleMenuEntry"> background image: <input id="bgImage" type="file"  title=" "/> <br></div> -->
+			<div class="styleMenuEntry"> accent color: <input id="accentColorPicker" class="jscolor" value="fb2397"> 
+			<br></div>
+			<div class="styleMenuEntry"> font color: <input id="fontColorPicker" class="jscolor" value="1b2367"> 
+			<br></div>
+			<div class="styleMenuEntry"> font:  
+				<!-- font dropdown -->
+				<select id="fontDropDown" class="input">
+				      <option value="Times New Roman" selected="selected">times new roman</option>
+				      <option value="arial">				arial 				</option>
+				      <option value="arial  black">			arial black			</option>
+				      <option value="georgia">				georgia 			</option>
+				      <option value="palatino linotype">	palatino linotype 	</option>
+				      <option value="comic sans ms">		comic sans ms 		</option>
+				      <option value="lucida sans unicode">	lucida sans unicode </option>
+				      <option value="lucida console">		lucida console 		</option>
+				      <option value="courier new">			courier New 		</option>
+				      <option value="bitstream cyberbit">	bitstream cyberbit	</option>
+				      </select><br></div>
+
+			<div class="styleMenuEntry"> font size:  <input id="fontSize" type="number" min="6" max="30" step="1">
+			<br></div>
+			<div class="styleMenuEntry"> border size: <input id="borderSize" type="number" min="0" max="10" step="1">
+			<br></div>
+			<div class="styleMenuEntry"> border style: 
+				<!-- border style dropdown -->
+				<select id="borderStyle" class="input">
+				      <option value="0" selected="selected">dotted</option>
+				      <option value="1">	dashed	</option>
+				      <option value="2">	solid	</option>
+				      <option value="3">	double	</option>
+				      <option value="4">	groove	</option>
+				      <option value="5">	ridge	</option>
+				      <option value="6">	inset	</option>
+				      <option value="7">	outset	</option>
+				      <option value="8">		none	</option>
+				</select><br></div>
+		</div>
+	</div> <!-- end header -->
+
+
+
+ 	<div id="play_zone">
+ 		<div id="playing">
+ 			 		 		
+ 		</div> 
+		<div id="audioplayer">
+			<button id="pButton" class="play" onclick="playAudio()"></button>
+			<div id="currentlyPlaying"> </div>
+			<label id="volume_control"></label>
+    		<input type="range" oninput="setVolume(this.value)" id="rngVolume" min="0" max="1" step="0.01" value="1">
+
+		</div>
+ 	</div>
+
+
+	<div id="drop_zone">
+		<output id="tracklist"></output>
+	</div>
+
+	<form id="form2">
+		<input type="file" id="file" style="display: none;" multiple />
+		<input class="button" type="button" value="+ song" onclick="document.getElementById('file').click();"/>
+		<br>
+		<input class="button" id="uploadbutton" type="submit" value="> upload" />
+		<br>
+		<input class="button" id="roombutton" type="submit" value="+ room" />
+		<input class="button" id="stylebutton" type="submit" value="- look" />
+
+	</form>
+
+	<div id="chat">
+	    <ul id="messages"></ul>
+	</div>
+
+	<div id="message">
+		<!-- <span><input id="data" style="width:200px;" />	</span>
+		<input type="button" id="datasend" value="send" /> 
+ -->
+		<form onSubmit="return false;" id="post">
+			<label> </label><input id="data"/>
+			<input type="button" id="datasend" value="send" />
+			<!-- <input type="text" id="myInput" placeholder="Sample Input"/> -->
+		</form>
+	</div>
+
+
+
+	<script src="app.js"></script>
+</body>
+</html>
