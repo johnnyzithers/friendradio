@@ -18,6 +18,47 @@ input, textarea {
 	font: 13px Helvetica, Arial; 
 	background-color: white;
 }
+#content{
+	height: 100%;
+	width: 100%;
+}
+
+#left{
+	display: inline-block;
+	float: left;
+	width: 55px;
+	height: 100%;
+}
+
+#right{
+	display: inline-block;
+	/*float: right;*/
+	width: 450px;
+	/*height: 100%;*/
+}
+
+#animation_container{
+    position: relative;
+    background: yellow;
+	left: 100px;
+	top: 120px;
+}
+
+#animation {
+    width: 100px;
+    height: 18px;
+    position: absolute;
+    /*background: red;*/
+}
+
+#anim_label{
+	position: absolute;
+	left: 75px;
+	top: 1px;
+
+}
+
+
 
 /*this is for user css styling ---------------------------------------------*/
 #header{
@@ -58,10 +99,10 @@ input, textarea {
 
 #roomMenu{
 	border-style: dotted;
-	height: 3}0%;
-	width: 40%;
+	height: auto;
+	width: 20%;
 	z-index: 10;
-	left: 50%;
+	left: 70%;
 	position: absolute;
 	display: block;
 	background-color: white;
@@ -285,6 +326,8 @@ li {
 }
  
 #rngVolume{
+	/*border-style: dotted;*/
+	/*border-color: black;*/
 	width: 20%;
 	display: block;
 	float: right;

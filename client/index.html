@@ -5,7 +5,8 @@
 
     <meta name="viewport" content="user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1,width=device-width">
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+
 	<script src="js/jquery-3.1.1.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<script src="/socket.io/socket.io.js"></script>
@@ -14,11 +15,28 @@
 	<script src="js/customcss.js"></script>
 	<script src="js/roommenu.js"></script>
 
+
+	 <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Dialog - Default functionality</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+	$("#dialog").dialog( "option", "autoOpen", false );
+	
+
+  </script>
+
 </head>
 <body id="body">
 
-	
+<div id="alertHolder" style="display: none;">
+ <form id="dialog" title="please enter a user name">
+ 	<input type="text" style="z-index:10000" name="name">
+ </form>
 
+</div>
 	<div id="header">
 		<!-- <div id="title"> -->
 		<h1> F R I E N DR A D I O </h1> 
@@ -77,53 +95,64 @@
 		</div>
 	</div> <!-- end header -->
 
+	<div id="animation_container">
+	    <div id ="animation">
+	    	<<<<<<<<
+	    </div>
+	    <span id="anim_label"> choose a username
+	    </span>
+	</div>
 
 
- 	<div id="play_zone">
- 		<div id="playing">
- 			 		 		
- 		</div> 
-		<div id="audioplayer">
-			<button id="pButton" class="play" onclick="playAudio()"></button>
-			<div id="currentlyPlaying"> </div>
-			<label id="volume_control"></label>
-    		<input type="range" oninput="setVolume(this.value)" id="rngVolume" min="0" max="1" step="0.01" value="1">
+	<div id="content">
+		<div id="left">
+			<form id="form2">
+				<input class="button" id="userbutton" type="submit" onclick="newUser()" value="+ user" /><br>
+				<input class="button" id="room_button" type="submit" value="+ room" />
+				<input type="file" id="file" style="display: none;" multiple />
+				<input class="button" id = "filebutton" type="button" value="+ song" onclick="document.getElementById('file').click();"/><br>
+				<input class="button" id="uploadbutton" type="submit" value="> upload"/> <br>
+				<input class="button" id="stylebutton" type="submit" value="- look" />
+			</form>
+
 
 		</div>
- 	</div>
+		<div id="right">
+		 	<div id="play_zone">
+		 		<div id="playing">
+		 			 		 		
+		 		</div> 
+				<div id="audioplayer">
+					<button id="pButton" class="play" onclick="playAudio()"></button>
+					<div id="currentlyPlaying"> </div>
+					<label id="volume_control"></label>
+		    		<input type="range" oninput="setVolume(this.value)" id="rngVolume" min="0" max="1" step="0.01" value="1">
+
+				</div>
+		 	</div>
 
 
-	<div id="drop_zone">
-		<output id="tracklist"></output>
-	</div>
-
-	<form id="form2">
-		<input type="file" id="file" style="display: none;" multiple />
-		<input class="button" type="button" value="+ song" onclick="document.getElementById('file').click();"/>
-		<br>
-		<input class="button" id="uploadbutton" type="submit" value="> upload" />
-		<br>
-		<input class="button" id="roombutton" type="submit" value="+ room" />
-		<input class="button" id="stylebutton" type="submit" value="- look" />
-
-	</form>
-
-	<div id="chat">
-	    <ul id="messages"></ul>
-	</div>
-
-	<div id="message">
-		<!-- <span><input id="data" style="width:200px;" />	</span>
-		<input type="button" id="datasend" value="send" /> 
- -->
-		<form onSubmit="return false;" id="post">
-			<label> </label><input id="data"/>
-			<input type="button" id="datasend" value="send" />
-			<!-- <input type="text" id="myInput" placeholder="Sample Input"/> -->
-		</form>
-	</div>
+			<div id="drop_zone">
+				<output id="tracklist"></output>
+			</div>
 
 
+			<div id="chat">
+			    <ul id="messages"></ul>
+			</div>
+
+			<div id="message">
+				<!-- <span><input id="data" style="width:200px;" />	</span>
+				<input type="button" id="datasend" value="send" /> 
+		 -->
+				<form onSubmit="return false;" id="post">
+					<label> </label><input id="data"/>
+					<input type="button" id="datasend" value="send" />
+					<!-- <input type="text" id="myInput" placeholder="Sample Input"/> -->
+				</form>
+			</div>
+		</div>   <!-- end right-->
+	</div> <!-- end content -->
 
 	<script src="app.js"></script>
 </body>

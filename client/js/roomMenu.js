@@ -1,6 +1,6 @@
 
 
-
+var current_room;		
 var menuState = 0;
 
 // roomMenuTrig(event)
@@ -20,6 +20,18 @@ roomMenuTrig = function(ev){
 // triggered by "room1", "room2".. buttons
 //
 roomButtonPressed = function(room){
+	console.log("room button");
+	// first stop animation
+	$("#animation_container").hide();
+	clearInterval(anim_id);				// stopp animation
+
+	$("#drop_zone").show();
+	$("#chat").show();
+	$("#message").show();
+
+	$("#filebutton").show();
+	$("#uploadbutton").show();
+
 	// if we are in a room, leave it
 	if(current_room){
 		socket.emit('leave_room', current_room);
@@ -30,8 +42,27 @@ roomButtonPressed = function(room){
 	}
 	// join this room
 	current_room = room;	
-	socket.emit('room', room);
+	socket.emit('join_room', room);
 	roomMenuTrig({});
+
+	// remove audio player and song name when changing room
+	var li = document.getElementById('list_play');
+	if(li){
+		var pz = document.getElementById("playing");
+		var cp = document.getElementById("currentlyPlaying");
+		cp.innerHTML = '';
+		pz.removeChild(li);
+	}
+
+	// radio is now off, because new station
+	started = 0;
+	tracknukm = 0;
+
+	var player = document.getElementById("stream_player")
+	// // create a new audio player so port is updated
+	if(player != undefined){
+		createAudioPlayer();
+	}
 }
 
 
