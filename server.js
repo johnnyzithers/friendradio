@@ -84,7 +84,7 @@ io.sockets.on('connection', (socket) => {
 	  	socket.broadcast.emit('metadata', { data: fileInfo, status: 1 });
 	  	// add song to the playlist 
 	  	console.log("room number: ", socket.roomnum)
-		playlists[socket.roomnum].push(fileInfo.uploadDir);
+		playlists[socket.roomnum].push(fileInfo.uploadDir.substring());
 		socket.emit('send_playlist', playlists[socket.roomnum]);
 
 	  	console.log("this playlist: ", playlists[socket.roomnum], socket.roomnum);
@@ -273,6 +273,7 @@ function startRadio(index, port, playlistnum, startflag){
 		basslib.BASS_ChannelPlay(mixer[playlistnum], false);
 		basslib.BASS_SetDevice(0);
 		io.emit('stream', { status: 1 });
+		io.emit('update_current', { data: 1 });
 	}
 
 	// //lets make a callback when position reaches to 20. seconds. 

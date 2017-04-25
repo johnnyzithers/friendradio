@@ -21,9 +21,9 @@ roomMenuTrig = function(ev){
 //
 roomButtonPressed = function(room){
 	console.log("room button");
+
 	// first stop animation
-	$("#animation_container").hide();
-	clearInterval(anim_id);				// stopp animation
+	animation_room();				// stopp animation
 
 	$("#drop_zone").show();
 	$("#chat").show();
@@ -56,7 +56,7 @@ roomButtonPressed = function(room){
 
 	// radio is now off, because new station
 	started = 0;
-	tracknukm = 0;
+	// tracknukm = 0;
 
 	var player = document.getElementById("stream_player")
 	// // create a new audio player so port is updated

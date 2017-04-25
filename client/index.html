@@ -12,8 +12,7 @@
 	<script src="/socket.io/socket.io.js"></script>
     <script src="socket.io-file-client.js"></script> 
 	<script src="jscolor.js"></script>
-	<script src="js/customcss.js"></script>
-	<script src="js/roommenu.js"></script>
+
 
 
 	 <meta charset="utf-8">
@@ -110,7 +109,7 @@
 				<input class="button" id="userbutton" type="submit" onclick="newUser()" value="+ user" /><br>
 				<input class="button" id="room_button" type="submit" value="+ room" />
 				<input type="file" id="file" style="display: none;" multiple />
-				<input class="button" id = "filebutton" type="button" value="+ song" onclick="document.getElementById('file').click();"/><br>
+				<input class="button" id="filebutton" type="button" value="+ song" onclick="document.getElementById('file').click();"/><br>
 				<input class="button" id="uploadbutton" type="submit" value="> upload"/> <br>
 				<input class="button" id="stylebutton" type="submit" value="- look" />
 			</form>
@@ -142,18 +141,21 @@
 			</div>
 
 			<div id="message">
-				<!-- <span><input id="data" style="width:200px;" />	</span>
-				<input type="button" id="datasend" value="send" /> 
-		 -->
+			
 				<form onSubmit="return false;" id="post">
 					<label> </label><input id="data"/>
 					<input type="button" id="datasend" value="send" />
-					<!-- <input type="text" id="myInput" placeholder="Sample Input"/> -->
+
 				</form>
 			</div>
 		</div>   <!-- end right-->
 	</div> <!-- end content -->
 
+	<script src="js/helperAnimation.js"></script>
+	<script src="js/customcss.js"></script>
+	<script src="js/roommenu.js"></script>
+
 	<script src="app.js"></script>
+
 </body>
 </html>

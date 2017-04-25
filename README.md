@@ -4,6 +4,18 @@ Here are some installation instructions once you've cloned the repository.
 
 ### Steps
 
+First, obtain Icecast tarball.
+
+[Icecast download](https://icecast.org/download/)
+
+Follow Icecast installation instructions from Icecast README.md
+
+```
+$ ./configure
+$ make
+$ make install
+```
+
 Install the required node modules. 
 
 ```

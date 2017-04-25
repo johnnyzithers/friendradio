@@ -1,14 +1,18 @@
-var tracknum = 0;
-
+var animation_enabled = 1;
 
 var started = 0;
 var autoplay = 1;
 var currTrackName = "";
+var currentlyPlaying = 0;
 var client_port, client_playlist;
-
 var track_elems = [];
 var num_elems = 0;
+
 uploadToServer = function(){
+
+	// stop animation
+	animation_stop();
+	animation_enabled = 0;	
 	
 	// Send File Element to upload
 	var files_to_upload = document.getElementById('file');
@@ -17,6 +21,8 @@ uploadToServer = function(){
 
 	// displayUpload(0);
 }
+
+
 
 var form = document.getElementById('form2');
 
@@ -55,9 +61,6 @@ uploader.on('start', function(fileInfo) {
 uploader.on('stream', function(fileInfo) {
 	// console.log(tracknum+'   Streaming... sent ' + fileInfo.sent + ' bytes, ' + fileInfo.sent/fileInfo.size+' percent');
 	var pcnt = fileInfo.sent/fileInfo.size;
-
-	// var elem = client_playlist[client_playlist.length-1]
-	// var elem = document.getElementById("listi"+tracknum);
 	for(var j = 0; j < track_elems.length; j++){
 		var elem = track_elems[j];
 		var width = Math.round(pcnt*100);
@@ -67,8 +70,7 @@ uploader.on('stream', function(fileInfo) {
 });
 
 uploader.on('complete', function(fileInfo) {
-	console.log(tracknum, 'Upload Complete', fileInfo);
-	// removeSongFromList(0);
+	// removeSongFromList(0);’
 	currTrackName = fileInfo.name;
 });
 
@@ -89,10 +91,11 @@ uploader.on('abort', function(fileInfo) {
 socket.on('metadata', function(obj){
 	console.log("metadata: ", obj.data.name);
 	currTrackName = obj.data.name;
-	
+	addTrackFromServer(obj.data.name);
+});
 
-	// removeSongFromList(0);
-	addTrackFromServer(currTrackName);
+socket.on('update_current', function(data){
+	currentlyPlaying++;
 });
 
 
@@ -123,79 +126,28 @@ socket.on('send_playlist', function(data){
 
 
 newUser = function(ev){
- //  	$( "#dialog" ).dialog({
-
-	//   buttons: [
-	//     {
-	//       text: "OK",
-	//       icons: {
-	//         primary: "ui-icon-check"
-	//       },
-
-	//       click: function() {
-
-	//       	var name = $('input[name="name"]').val();
-	// 	    console.log("	@31231231",name, anim_type, anim_id);
-	//         $( this ).dialog( "close" );
-
-	        $("#animation_container").hide();
-			$("#animation_container").css("top","150px");
-			$("#animation_container").show();
-			document.getElementById("anim_label").innerHTML = "choose a room";
-			
-			anim_type = 0;     	
-	        clearInterval(anim_id);				// stopp animation
-			startAnimation();	   
-
-	//       }
-	//     }
-	//   ]
-	// });
-
-
-	 username = prompt("What's your name?")
+	if(animation_enabled){
+		animation_adduser();
+	}
+	username = prompt("What's your name?")
 };
 
 
-var anim_id;
-function startAnimation() {
-    var elem = document.getElementById("animation"); 
-    var pos = 0;
-    anim_id = setInterval(frame, 20);
-    var goingLeft;
-    function frame() {
-    	if(pos == -20){
-    		goingLeft = 1;
-    	}
-    	if(pos == 0){
-    		goingLeft = 0;
-    	}
-        if (goingLeft) {
-            pos++;
-            elem.style.left = pos + 'px'
-        } else {
-            pos--; 
-            // elem.style.top = pos + 'px'; 
-            elem.style.left = pos + 'px'; 
-        }
-    }
-}
 
 socket.on('connect', function(){
 
 	
 	// $("#audioplayer").hide();
-	$("#drop_zone").hide();
-	$("#chat").hide();
-	$("#message").hide();
+	// $("#drop_zone").hide();
+	// $("#chat").hide();
+	// $("#message").hide();
 	// $("#room_button").hide();
-	$("#rngVolume").hide();
-	$("#pButton").hide();
+	// $("#audioplay").hide();
+	// $("#pButton").hide();
 	// $("#filebutton").hide();
 	// $("#uploadbutton").hide();
 
-	anim_type = 1;
-	startAnimation();
+	animation_start();
 
 	// create a socket id and username
 	// var username = prompt("What's your name?")
@@ -265,6 +217,7 @@ displayTrack = function(trackname, uploading, fromserver, elem_ndx){
 
 	// console.log("displayTrack: ", uploading, trackname, "ELEM NDX: == ", elem_ndx);
 	// create the list item
+	// trackname = trackname.substring(5);
 	var msg = '<strong>'+escape(trackname.replace(/ /g,"_"))+'</strong>';
 
 	var li = track_elems[elem_ndx];
@@ -298,7 +251,9 @@ trackClicked = function (thetrack){
 
 form.onchange = function(ev) {
 	addTrackFromFile();				// when hit upload
+	animation_file();
 };
+
 form.onsubmit = function(ev) {
 	ev.preventDefault();
 }
@@ -319,7 +274,8 @@ createAudioPlayer = function (){
 	var msg = '<audio id="stream_player" src= "http://localhost:'+client_port+'/stream">';
 	
 	console.log("createing audio playering")
-
+	// $("#rngVolume").show();
+	// $("#pButton").show();
 
 	var li = document.createElement('li');
 	li.innerHTML = msg;
@@ -333,6 +289,7 @@ createAudioPlayer = function (){
 		player.play();	
 	}
 	// add song name to play bar
+	currTrackName = client_playlist[currentlyPlaying];
 	var songName = '<strong>'+escape(currTrackName.replace(/ /g,"_"))+'</strong>';
 	document.getElementById("currentlyPlaying").innerHTML = songName;
 }
