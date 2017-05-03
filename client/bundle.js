@@ -1283,425 +1283,6 @@ function localstorage(){
 /* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/**
- * Module dependencies.
- */
-
-var parser = __webpack_require__(1);
-var Emitter = __webpack_require__(8);
-
-/**
- * Module exports.
- */
-
-module.exports = Transport;
-
-/**
- * Transport abstract constructor.
- *
- * @param {Object} options.
- * @api private
- */
-
-function Transport (opts) {
-  this.path = opts.path;
-  this.hostname = opts.hostname;
-  this.port = opts.port;
-  this.secure = opts.secure;
-  this.query = opts.query;
-  this.timestampParam = opts.timestampParam;
-  this.timestampRequests = opts.timestampRequests;
-  this.readyState = '';
-  this.agent = opts.agent || false;
-  this.socket = opts.socket;
-  this.enablesXDR = opts.enablesXDR;
-
-  // SSL options for Node.js client
-  this.pfx = opts.pfx;
-  this.key = opts.key;
-  this.passphrase = opts.passphrase;
-  this.cert = opts.cert;
-  this.ca = opts.ca;
-  this.ciphers = opts.ciphers;
-  this.rejectUnauthorized = opts.rejectUnauthorized;
-  this.forceNode = opts.forceNode;
-
-  // other options for Node.js client
-  this.extraHeaders = opts.extraHeaders;
-  this.localAddress = opts.localAddress;
-}
-
-/**
- * Mix in `Emitter`.
- */
-
-Emitter(Transport.prototype);
-
-/**
- * Emits an error.
- *
- * @param {String} str
- * @return {Transport} for chaining
- * @api public
- */
-
-Transport.prototype.onError = function (msg, desc) {
-  var err = new Error(msg);
-  err.type = 'TransportError';
-  err.description = desc;
-  this.emit('error', err);
-  return this;
-};
-
-/**
- * Opens the transport.
- *
- * @api public
- */
-
-Transport.prototype.open = function () {
-  if ('closed' === this.readyState || '' === this.readyState) {
-    this.readyState = 'opening';
-    this.doOpen();
-  }
-
-  return this;
-};
-
-/**
- * Closes the transport.
- *
- * @api private
- */
-
-Transport.prototype.close = function () {
-  if ('opening' === this.readyState || 'open' === this.readyState) {
-    this.doClose();
-    this.onClose();
-  }
-
-  return this;
-};
-
-/**
- * Sends multiple packets.
- *
- * @param {Array} packets
- * @api private
- */
-
-Transport.prototype.send = function (packets) {
-  if ('open' === this.readyState) {
-    this.write(packets);
-  } else {
-    throw new Error('Transport not open');
-  }
-};
-
-/**
- * Called upon open
- *
- * @api private
- */
-
-Transport.prototype.onOpen = function () {
-  this.readyState = 'open';
-  this.writable = true;
-  this.emit('open');
-};
-
-/**
- * Called with data.
- *
- * @param {String} data
- * @api private
- */
-
-Transport.prototype.onData = function (data) {
-  var packet = parser.decodePacket(data, this.socket.binaryType);
-  this.onPacket(packet);
-};
-
-/**
- * Called with a decoded packet.
- */
-
-Transport.prototype.onPacket = function (packet) {
-  this.emit('packet', packet);
-};
-
-/**
- * Called upon close.
- *
- * @api private
- */
-
-Transport.prototype.onClose = function () {
-  this.readyState = 'closed';
-  this.emit('close');
-};
-
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(global) {// browser shim for xmlhttprequest module
-
-var hasCORS = __webpack_require__(53);
-
-module.exports = function (opts) {
-  var xdomain = opts.xdomain;
-
-  // scheme must be same when usign XDomainRequest
-  // http://blogs.msdn.com/b/ieinternals/archive/2010/05/13/xdomainrequest-restrictions-limitations-and-workarounds.aspx
-  var xscheme = opts.xscheme;
-
-  // XDomainRequest has a flow of not sending cookie, therefore it should be disabled as a default.
-  // https://github.com/Automattic/engine.io-client/pull/217
-  var enablesXDR = opts.enablesXDR;
-
-  // XMLHttpRequest can be disabled on IE
-  try {
-    if ('undefined' !== typeof XMLHttpRequest && (!xdomain || hasCORS)) {
-      return new XMLHttpRequest();
-    }
-  } catch (e) { }
-
-  // Use XDomainRequest for IE8 if enablesXDR is true
-  // because loading bar keeps flashing when using jsonp-polling
-  // https://github.com/yujiosaka/socke.io-ie8-loading-example
-  try {
-    if ('undefined' !== typeof XDomainRequest && !xscheme && enablesXDR) {
-      return new XDomainRequest();
-    }
-  } catch (e) { }
-
-  if (!xdomain) {
-    try {
-      return new global[['Active'].concat('Object').join('X')]('Microsoft.XMLHTTP');
-    } catch (e) { }
-  }
-};
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-/**
- * Expose `Emitter`.
- */
-
-if (true) {
-  module.exports = Emitter;
-}
-
-/**
- * Initialize a new `Emitter`.
- *
- * @api public
- */
-
-function Emitter(obj) {
-  if (obj) return mixin(obj);
-};
-
-/**
- * Mixin the emitter properties.
- *
- * @param {Object} obj
- * @return {Object}
- * @api private
- */
-
-function mixin(obj) {
-  for (var key in Emitter.prototype) {
-    obj[key] = Emitter.prototype[key];
-  }
-  return obj;
-}
-
-/**
- * Listen on the given `event` with `fn`.
- *
- * @param {String} event
- * @param {Function} fn
- * @return {Emitter}
- * @api public
- */
-
-Emitter.prototype.on =
-Emitter.prototype.addEventListener = function(event, fn){
-  this._callbacks = this._callbacks || {};
-  (this._callbacks['$' + event] = this._callbacks['$' + event] || [])
-    .push(fn);
-  return this;
-};
-
-/**
- * Adds an `event` listener that will be invoked a single
- * time then automatically removed.
- *
- * @param {String} event
- * @param {Function} fn
- * @return {Emitter}
- * @api public
- */
-
-Emitter.prototype.once = function(event, fn){
-  function on() {
-    this.off(event, on);
-    fn.apply(this, arguments);
-  }
-
-  on.fn = fn;
-  this.on(event, on);
-  return this;
-};
-
-/**
- * Remove the given callback for `event` or all
- * registered callbacks.
- *
- * @param {String} event
- * @param {Function} fn
- * @return {Emitter}
- * @api public
- */
-
-Emitter.prototype.off =
-Emitter.prototype.removeListener =
-Emitter.prototype.removeAllListeners =
-Emitter.prototype.removeEventListener = function(event, fn){
-  this._callbacks = this._callbacks || {};
-
-  // all
-  if (0 == arguments.length) {
-    this._callbacks = {};
-    return this;
-  }
-
-  // specific event
-  var callbacks = this._callbacks['$' + event];
-  if (!callbacks) return this;
-
-  // remove all handlers
-  if (1 == arguments.length) {
-    delete this._callbacks['$' + event];
-    return this;
-  }
-
-  // remove specific handler
-  var cb;
-  for (var i = 0; i < callbacks.length; i++) {
-    cb = callbacks[i];
-    if (cb === fn || cb.fn === fn) {
-      callbacks.splice(i, 1);
-      break;
-    }
-  }
-  return this;
-};
-
-/**
- * Emit `event` with the given args.
- *
- * @param {String} event
- * @param {Mixed} ...
- * @return {Emitter}
- */
-
-Emitter.prototype.emit = function(event){
-  this._callbacks = this._callbacks || {};
-  var args = [].slice.call(arguments, 1)
-    , callbacks = this._callbacks['$' + event];
-
-  if (callbacks) {
-    callbacks = callbacks.slice(0);
-    for (var i = 0, len = callbacks.length; i < len; ++i) {
-      callbacks[i].apply(this, args);
-    }
-  }
-
-  return this;
-};
-
-/**
- * Return array of callbacks for `event`.
- *
- * @param {String} event
- * @return {Array}
- * @api public
- */
-
-Emitter.prototype.listeners = function(event){
-  this._callbacks = this._callbacks || {};
-  return this._callbacks['$' + event] || [];
-};
-
-/**
- * Check if this emitter has `event` handlers.
- *
- * @param {String} event
- * @return {Boolean}
- * @api public
- */
-
-Emitter.prototype.hasListeners = function(event){
-  return !! this.listeners(event).length;
-};
-
-
-/***/ }),
-/* 9 */
-/***/ (function(module, exports) {
-
-/**
- * Compiles a querystring
- * Returns string representation of the object
- *
- * @param {Object}
- * @api private
- */
-
-exports.encode = function (obj) {
-  var str = '';
-
-  for (var i in obj) {
-    if (obj.hasOwnProperty(i)) {
-      if (str.length) str += '&';
-      str += encodeURIComponent(i) + '=' + encodeURIComponent(obj[i]);
-    }
-  }
-
-  return str;
-};
-
-/**
- * Parses a simple querystring into an object
- *
- * @param {String} qs
- * @api private
- */
-
-exports.decode = function(qs){
-  var qry = {};
-  var pairs = qs.split('&');
-  for (var i = 0, l = pairs.length; i < l; i++) {
-    var pair = pairs[i].split('=');
-    qry[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
-  }
-  return qry;
-};
-
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
 "use strict";
 
 const EventEmitter = __webpack_require__(70).EventEmitter;
@@ -1992,6 +1573,425 @@ function SocketIOFile(socket, options) {
 util.inherits(SocketIOFile, EventEmitter);
 
 module.exports = SocketIOFile;
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * Module dependencies.
+ */
+
+var parser = __webpack_require__(1);
+var Emitter = __webpack_require__(9);
+
+/**
+ * Module exports.
+ */
+
+module.exports = Transport;
+
+/**
+ * Transport abstract constructor.
+ *
+ * @param {Object} options.
+ * @api private
+ */
+
+function Transport (opts) {
+  this.path = opts.path;
+  this.hostname = opts.hostname;
+  this.port = opts.port;
+  this.secure = opts.secure;
+  this.query = opts.query;
+  this.timestampParam = opts.timestampParam;
+  this.timestampRequests = opts.timestampRequests;
+  this.readyState = '';
+  this.agent = opts.agent || false;
+  this.socket = opts.socket;
+  this.enablesXDR = opts.enablesXDR;
+
+  // SSL options for Node.js client
+  this.pfx = opts.pfx;
+  this.key = opts.key;
+  this.passphrase = opts.passphrase;
+  this.cert = opts.cert;
+  this.ca = opts.ca;
+  this.ciphers = opts.ciphers;
+  this.rejectUnauthorized = opts.rejectUnauthorized;
+  this.forceNode = opts.forceNode;
+
+  // other options for Node.js client
+  this.extraHeaders = opts.extraHeaders;
+  this.localAddress = opts.localAddress;
+}
+
+/**
+ * Mix in `Emitter`.
+ */
+
+Emitter(Transport.prototype);
+
+/**
+ * Emits an error.
+ *
+ * @param {String} str
+ * @return {Transport} for chaining
+ * @api public
+ */
+
+Transport.prototype.onError = function (msg, desc) {
+  var err = new Error(msg);
+  err.type = 'TransportError';
+  err.description = desc;
+  this.emit('error', err);
+  return this;
+};
+
+/**
+ * Opens the transport.
+ *
+ * @api public
+ */
+
+Transport.prototype.open = function () {
+  if ('closed' === this.readyState || '' === this.readyState) {
+    this.readyState = 'opening';
+    this.doOpen();
+  }
+
+  return this;
+};
+
+/**
+ * Closes the transport.
+ *
+ * @api private
+ */
+
+Transport.prototype.close = function () {
+  if ('opening' === this.readyState || 'open' === this.readyState) {
+    this.doClose();
+    this.onClose();
+  }
+
+  return this;
+};
+
+/**
+ * Sends multiple packets.
+ *
+ * @param {Array} packets
+ * @api private
+ */
+
+Transport.prototype.send = function (packets) {
+  if ('open' === this.readyState) {
+    this.write(packets);
+  } else {
+    throw new Error('Transport not open');
+  }
+};
+
+/**
+ * Called upon open
+ *
+ * @api private
+ */
+
+Transport.prototype.onOpen = function () {
+  this.readyState = 'open';
+  this.writable = true;
+  this.emit('open');
+};
+
+/**
+ * Called with data.
+ *
+ * @param {String} data
+ * @api private
+ */
+
+Transport.prototype.onData = function (data) {
+  var packet = parser.decodePacket(data, this.socket.binaryType);
+  this.onPacket(packet);
+};
+
+/**
+ * Called with a decoded packet.
+ */
+
+Transport.prototype.onPacket = function (packet) {
+  this.emit('packet', packet);
+};
+
+/**
+ * Called upon close.
+ *
+ * @api private
+ */
+
+Transport.prototype.onClose = function () {
+  this.readyState = 'closed';
+  this.emit('close');
+};
+
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(global) {// browser shim for xmlhttprequest module
+
+var hasCORS = __webpack_require__(53);
+
+module.exports = function (opts) {
+  var xdomain = opts.xdomain;
+
+  // scheme must be same when usign XDomainRequest
+  // http://blogs.msdn.com/b/ieinternals/archive/2010/05/13/xdomainrequest-restrictions-limitations-and-workarounds.aspx
+  var xscheme = opts.xscheme;
+
+  // XDomainRequest has a flow of not sending cookie, therefore it should be disabled as a default.
+  // https://github.com/Automattic/engine.io-client/pull/217
+  var enablesXDR = opts.enablesXDR;
+
+  // XMLHttpRequest can be disabled on IE
+  try {
+    if ('undefined' !== typeof XMLHttpRequest && (!xdomain || hasCORS)) {
+      return new XMLHttpRequest();
+    }
+  } catch (e) { }
+
+  // Use XDomainRequest for IE8 if enablesXDR is true
+  // because loading bar keeps flashing when using jsonp-polling
+  // https://github.com/yujiosaka/socke.io-ie8-loading-example
+  try {
+    if ('undefined' !== typeof XDomainRequest && !xscheme && enablesXDR) {
+      return new XDomainRequest();
+    }
+  } catch (e) { }
+
+  if (!xdomain) {
+    try {
+      return new global[['Active'].concat('Object').join('X')]('Microsoft.XMLHTTP');
+    } catch (e) { }
+  }
+};
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/**
+ * Expose `Emitter`.
+ */
+
+if (true) {
+  module.exports = Emitter;
+}
+
+/**
+ * Initialize a new `Emitter`.
+ *
+ * @api public
+ */
+
+function Emitter(obj) {
+  if (obj) return mixin(obj);
+};
+
+/**
+ * Mixin the emitter properties.
+ *
+ * @param {Object} obj
+ * @return {Object}
+ * @api private
+ */
+
+function mixin(obj) {
+  for (var key in Emitter.prototype) {
+    obj[key] = Emitter.prototype[key];
+  }
+  return obj;
+}
+
+/**
+ * Listen on the given `event` with `fn`.
+ *
+ * @param {String} event
+ * @param {Function} fn
+ * @return {Emitter}
+ * @api public
+ */
+
+Emitter.prototype.on =
+Emitter.prototype.addEventListener = function(event, fn){
+  this._callbacks = this._callbacks || {};
+  (this._callbacks['$' + event] = this._callbacks['$' + event] || [])
+    .push(fn);
+  return this;
+};
+
+/**
+ * Adds an `event` listener that will be invoked a single
+ * time then automatically removed.
+ *
+ * @param {String} event
+ * @param {Function} fn
+ * @return {Emitter}
+ * @api public
+ */
+
+Emitter.prototype.once = function(event, fn){
+  function on() {
+    this.off(event, on);
+    fn.apply(this, arguments);
+  }
+
+  on.fn = fn;
+  this.on(event, on);
+  return this;
+};
+
+/**
+ * Remove the given callback for `event` or all
+ * registered callbacks.
+ *
+ * @param {String} event
+ * @param {Function} fn
+ * @return {Emitter}
+ * @api public
+ */
+
+Emitter.prototype.off =
+Emitter.prototype.removeListener =
+Emitter.prototype.removeAllListeners =
+Emitter.prototype.removeEventListener = function(event, fn){
+  this._callbacks = this._callbacks || {};
+
+  // all
+  if (0 == arguments.length) {
+    this._callbacks = {};
+    return this;
+  }
+
+  // specific event
+  var callbacks = this._callbacks['$' + event];
+  if (!callbacks) return this;
+
+  // remove all handlers
+  if (1 == arguments.length) {
+    delete this._callbacks['$' + event];
+    return this;
+  }
+
+  // remove specific handler
+  var cb;
+  for (var i = 0; i < callbacks.length; i++) {
+    cb = callbacks[i];
+    if (cb === fn || cb.fn === fn) {
+      callbacks.splice(i, 1);
+      break;
+    }
+  }
+  return this;
+};
+
+/**
+ * Emit `event` with the given args.
+ *
+ * @param {String} event
+ * @param {Mixed} ...
+ * @return {Emitter}
+ */
+
+Emitter.prototype.emit = function(event){
+  this._callbacks = this._callbacks || {};
+  var args = [].slice.call(arguments, 1)
+    , callbacks = this._callbacks['$' + event];
+
+  if (callbacks) {
+    callbacks = callbacks.slice(0);
+    for (var i = 0, len = callbacks.length; i < len; ++i) {
+      callbacks[i].apply(this, args);
+    }
+  }
+
+  return this;
+};
+
+/**
+ * Return array of callbacks for `event`.
+ *
+ * @param {String} event
+ * @return {Array}
+ * @api public
+ */
+
+Emitter.prototype.listeners = function(event){
+  this._callbacks = this._callbacks || {};
+  return this._callbacks['$' + event] || [];
+};
+
+/**
+ * Check if this emitter has `event` handlers.
+ *
+ * @param {String} event
+ * @return {Boolean}
+ * @api public
+ */
+
+Emitter.prototype.hasListeners = function(event){
+  return !! this.listeners(event).length;
+};
+
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports) {
+
+/**
+ * Compiles a querystring
+ * Returns string representation of the object
+ *
+ * @param {Object}
+ * @api private
+ */
+
+exports.encode = function (obj) {
+  var str = '';
+
+  for (var i in obj) {
+    if (obj.hasOwnProperty(i)) {
+      if (str.length) str += '&';
+      str += encodeURIComponent(i) + '=' + encodeURIComponent(obj[i]);
+    }
+  }
+
+  return str;
+};
+
+/**
+ * Parses a simple querystring into an object
+ *
+ * @param {String} qs
+ * @api private
+ */
+
+exports.decode = function(qs){
+  var qry = {};
+  var pairs = qs.split('&');
+  for (var i = 0, l = pairs.length; i < l; i++) {
+    var pair = pairs[i].split('=');
+    qry[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
+  }
+  return qry;
+};
+
 
 /***/ }),
 /* 11 */
@@ -2451,7 +2451,7 @@ module.exports = function(obj, fn){
  * Module dependencies
  */
 
-var XMLHttpRequest = __webpack_require__(7);
+var XMLHttpRequest = __webpack_require__(8);
 var XHR = __webpack_require__(49);
 var JSONP = __webpack_require__(48);
 var websocket = __webpack_require__(50);
@@ -2511,8 +2511,8 @@ function polling (opts) {
  * Module dependencies.
  */
 
-var Transport = __webpack_require__(6);
-var parseqs = __webpack_require__(9);
+var Transport = __webpack_require__(7);
+var parseqs = __webpack_require__(10);
 var parser = __webpack_require__(1);
 var inherit = __webpack_require__(3);
 var yeast = __webpack_require__(26);
@@ -2529,7 +2529,7 @@ module.exports = Polling;
  */
 
 var hasXHR2 = (function () {
-  var XMLHttpRequest = __webpack_require__(7);
+  var XMLHttpRequest = __webpack_require__(8);
   var xhr = new XMLHttpRequest({ xdomain: false });
   return null != xhr.responseType;
 })();
@@ -4613,7 +4613,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_socket_io_client___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_socket_io_client__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_socket_io_file_client__ = __webpack_require__(61);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_socket_io_file_client___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_socket_io_file_client__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_socket_io_file__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_socket_io_file__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_socket_io_file___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_socket_io_file__);
 var animation_enabled = 0;
 var client_username = "";
@@ -4628,10 +4628,7 @@ var num_elems = 0;
 
 
 
-// import 'fs'
 
-
-// require('./js/customcss.js');
 
 
 window.$ = window.jquery = __webpack_require__(12);
@@ -4639,9 +4636,6 @@ window.$ = window.jquery = __webpack_require__(12);
 
 window.uploadToServer = function(){
 
-	// stop animation
-	// animation_stop();
-	// animation_enabled = 0;	
 	
 	// Send File Element to upload
 	var files_to_upload = document.getElementById('file');
@@ -4714,7 +4708,7 @@ uploader.on('stream', function(fileInfo) {
 });
 
 uploader.on('complete', function(fileInfo) {
-	// removeSongFromList(0);
+	removeSongFromList(0);
 });
 
 uploader.on('error', function(err) {
@@ -4756,7 +4750,8 @@ socket.on('update_playing', function(data){
 
 	currTrackName = data.track.substring(5);
 	console.log(currTrackName)
-	var songName = '<strong>'+escape(currTrackName.replace(/ /g,"_"))+'</strong>';
+	// var songName = '<strong>'+escape(currTrackName.replace(/ /g,"_"))+'</strong>';
+	var songName = '<strong>'+currTrackName+'</strong>';
 	updateTrackName(songName);
 });
 
@@ -4901,20 +4896,19 @@ var displayTrack = function(trackname, uploading, fromserver, elem_ndx){
 	li.className = "listitem";	
 	li.onclick = trackClicked;	
 	li.id = "listi"+elem_ndx;
+	
 	// width of loading bar
 	if(uploading){
 		li.style.width = "10%";
 		li.id = "listi"+elem_ndx;
-
-
 	}else{
-
 		trackname = trackname.substring(5);
 		li.style.width = "100%";
 	}
 
-	var msg = '<strong>'+escape(trackname.replace(/ /g,""))+'</strong>';
-
+	// var msg = '<strong>'+escape(trackname.replace(/ /g,""))+'</strong>';
+	// trackname = $.parseHTML(trackname);
+	var msg = '<strong>'+trackname+'</strong>';
 
 	// random color
 	var rndx = Math.floor(Math.random() * songBarColors.length);
@@ -4929,8 +4923,6 @@ var displayTrack = function(trackname, uploading, fromserver, elem_ndx){
 var trackClicked = function (thetrack){
 	console.log(thetrack.target);
 };
-
-
 
 
 
@@ -4951,24 +4943,22 @@ var createAudioPlayer = function (){
 	// var msg = '<audio id="stream_player" src= "http://192.168.1.142:9000/stream">';
 	var msg = '<audio id="stream_player" src= "http://localhost:'+client_port+'/stream">';
 	
-	console.log("createing audio playering")
-	// $("#rngVolume").show();
-	// $("#pButton").show();
-
-	var li = document.createElement('li');
-	li.innerHTML = msg;
-	li.id = "list_play";			// so we can remove it roomMenu.js
-	var pz = document.getElementById("playing");
-	pz.appendChild(li);
+	// var li = document.createElement('li');
+	// li.innerHTML = msg;
+	// li.id = "list_play";			// so we can remove it roomMenu.js
+	// var pz = document.getElementById("playing");
+	// pz.appendChild(li);
 	// // play the station, if we are autoplaying
 	
-	if(autoplay){
-		var player = document.getElementById("stream_player"); // get reference to player
-		player.play();	
-	}
+	// if(autoplay){
+	// 	var player = document.getElementById("stream_player"); // get reference to player
+	// 	player.play();	
+	// }
+	
 	// add song name to play bar
-	// currTrackName = client_playlist[currentlyPlaying];
-	var songName = '<strong>'+escape(currTrackName.replace(/ /g,"_"))+'</strong>';
+	// var tempname = $.parseHTML(currTrackName);
+	// var songName = '<strong>'+escape(currTrackName.replace(/ /g,"_"))+'</strong>';
+	var songName = '<strong>'+currTrackName+'</strong>';
 	updateTrackName(songName);
 }
 
@@ -4982,13 +4972,11 @@ var playAudio = function() {
 	var playpause;
 	if(player.paused == false){
 		playpause = document.getElementById("pButton"); // get reference to player
-		// playpause.src = "./client/css/pause.png";
 		playpause.className = "pause";
 		player.pause();
 		console.log("paused");
 	}else{
 		playpause = document.getElementById("pButton"); // get reference to player
-		// playpause.src = "./client/css/play.png";
 		playpause.className = "play";
 		player.play()
 		console.log("playing");
@@ -5015,7 +5003,7 @@ window.onbeforeunload = function (e) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_socket_io_file__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_socket_io_file__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_socket_io_file___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_socket_io_file__);
 
 // require("jquery");
@@ -5054,12 +5042,6 @@ var loadImageFile = function(testEl) {
 }
 
 
-// turn this into jquery function??
-var menuState = 0;
-
-
-$(document).ready(function () {
-
 
 window.styleMenuTrig = function(ev){
 	if(!menuState){
@@ -5069,6 +5051,14 @@ window.styleMenuTrig = function(ev){
 	}
 	menuState = !menuState;
 }
+
+
+
+// turn this into jquery function??
+var menuState = 0;
+
+
+$(document).ready(function () {
 
 
 	$( "#bgColorPicker" ).change(function () {
@@ -5150,7 +5140,7 @@ window.styleMenuTrig = function(ev){
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_socket_io_file__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_socket_io_file__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_socket_io_file___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_socket_io_file__);
 
 
@@ -5218,9 +5208,14 @@ var animation_start = function() {
 
 /***/ }),
 /* 34 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_socket_io_file__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_socket_io_file___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_socket_io_file__);
+
+
 /**
  * jscolor - JavaScript Color Picker
  *
@@ -5234,7 +5229,7 @@ var animation_start = function() {
  */
 
 
-
+"use strict";
 
 
 if (!window.jscolor) { window.jscolor = (function () {
@@ -7718,7 +7713,7 @@ exports = module.exports = __webpack_require__(44)(undefined);
 
 
 // module
-exports.push([module.i, "\n\nhtml, body{\n    height: 100%;\n    width: 100%;\n    overflow-y: hidden;\n    overflow-x: hidden;\n}\n/*---------------------------------------------*/\n\n/*stops border from being round*/\ninput, textarea {\n  -webkit-appearance: none;\n  -webkit-border-radius: 0;\n}\n\n* { \n\tlist-style: none;\n}\n\n#body{ \n\tfont: 13px Helvetica, Arial; \n\tbackground-color: white;\n\n}\n#content{\n\tdisplay: block;\n\t/*height: 100%;*/\n\twidth: 100%;\n}\n\n#left{\n\tdisplay: block;\n\tfloat: left;\n\theight: 100%;\n}\n\n#right{\n\tdisplay: inline-block;\n\tfloat: right;\n\twidth: 100%;\n}\n\n#animation_container{\n    position: relative;\n    background: yellow;\n\tleft: 80px;\n\ttop: 95px;\n}\n\n#animation {\n    width: 100px;\n    height: 18px;\n    position: absolute;\n    /*background: red;*/\n}\n\n#anim_label{\n\tposition: absolute;\n\tleft: 75px;\n\ttop: 1px;\n\n}\n\n\n.listitem{\n\tcolor: white;\n}\n\n/*this is for user css styling ---------------------------------------------*/\n#header{\n\tmargin-right: 6%;\n}\n\n#title{\n\tposition: relative;\n\tfloat: left;\n}\n\n.button {\n    background-color: black; /* Green */\n    border: none;\n    color: white;\n    text-align: center;\n    text-decoration: none;\n    display: inline;\n    font-size: 16px;\n    width: 22px;\n}\n.button:hover{\n\twidth: 80px;\n}\n\n.button:focus {\n \toutline: 0;\n \t/*width: 80px;*/\n}\n\n.rbutton {\n    background-color: black; /* Green */\n    border: none;\n    color: white;\n    text-align: center;\n    margin-top: 0.1em;\n    width: 100%;\n    text-decoration: none;\n    display: inline;\n    font-size: 16px;\n}\n\n.rbutton:focus {\n \toutline: 0;\n}\n\n#styleMenu{\n\tborder-style: dotted;\n\theight: 60%;\n\twidth: 40%;\n\tz-index: 10;\n\tleft: 50%;\n\tposition: absolute;\n\tdisplay: block;\n\tbackground-color: white;\n\tpadding: 1em;\n\tmargin-right: 3em;\n}\n\n#roomMenu{\n\tborder-style: dotted;\n\theight: auto;\n\twidth: 20%;\n\tz-index: 10;\n\tleft: 70%;\n\tposition: absolute;\n\tdisplay: block;\n\tbackground-color: white;\n\tpadding: 1em;\n\tmargin-right: 3em;\n}\n\n.styleMenuEntry{\n\tpadding-top: 0.5em;\n}\n#fontSize{\n\tfloat: right;\n}\n#borderSize{\n\tfloat: right;\n}\n#fontDropDown{\n\tfloat: right;\n}\n#borderStyle{\n\tfloat: right;\n}\n.jscolor{\n\tfloat: right;\n}\n\n/*this is for uploading files ---------------------------------------------*/\n#addFile{\n    border: none;\n    color: white;\n    padding-top: 1em;\n    padding-bottom: 1em;\n    text-align: center;\n    text-decoration: none;\n    display: inline-block;\n    font-size: 16px;\n}\n\n\n#form2{\n \tposition: fixed;\n \ttop:25%;\n \tleft:0.5em;\n}\n\n#form1 {\n \tbackground: #000; \n \tposition: fixed; \n \tbottom: 10px;\n \twidth: 76%; \n\tmargin: 7px;\n\tborder-style: dotted;\t\n}\n\n#form1 input { \n\tborder: 0; \n\tpadding: 0.5%;\n\twidth: 87%;\n\tmargin: 5px;\n}\n\n#form1 button { \n\twidth: 10%; \n\tfloat: right;\n\tmargin-top: 0.5%;\n\theight: 24px;\t\n\tbackground: rgb(130, 224, 255); \n\tborder: none; \n}\t\n\n#messages { \n\tlist-style-type: none; \n\tmargin: 0; \n\tpadding: 0; \n}\n#messages li {\n\tpadding: 5px 10px; \n}\n#messages li:nth-child(odd) { \n\tbackground: #eee; \n}\n\n\n\n/*---------------------------------------------*/\n#drop_zone{\n\theight: 35%;\n\twidth: 80%;\t\n\tfloat: right;\n\tborder-style: dotted;\n\toverflow-y: scroll;\n\tmargin: 5px;\n\tmargin-right: 12%;\n\n}\n#list{\n\tpadding-top: 0px;\n\tmargin: 0px;\n\tlist-style: none;\n}\n\nli {\n\t/*margin: 1em;*/\n\t/*padding: 1em;*/\n}\n.listitem{\n\twidth: 1%;\n\tmargin: 0px;\n\tpadding: 0.6em;\n\tlist-style: none;\n\n}\n\n\n\n\n\n#chat{\n\theight: 32%;\n\twidth: 80%;\t\n\tfloat: right;\n\tborder-style: dotted;\n\toverflow-y: scroll;\n\tmargin: 5px;\n\tmargin-right: 12%;\n}\n\n#message{\n\theight: 5%;\n\twidth: 80%;\t\n\tfloat: right;\n\tborder-style: dotted;\n\toverflow-y: hidden;\n\tmargin: 5px;\n\tmargin-right: 12%;\n}\n/*#data{\n    width: 200%;\n}\n#datasend{\n\tfloat: right;\n}*/\n\n/* holds the message and the button*/\n#post{\n\tdisplay: flex;\n}\n/* im the message*/\n#data{\n\tvertical-align: center;\t\n\twidth: 88%;\n}\n/* im the button*/\n#datasend{\n\twidth: 18%;\n}\n\n\n\n\n#effects{\n\tdisplay: none;\n\theight: 150px;\n\twidth: 15%;\n\tfloat: left;\t\n\tborder-style: dotted;\n\tmargin-top: 5.5%;\n\tmargin-bottom: 4px;\n}\n.thumb {\n\theight: 75px;\n\tborder: 1px solid #000;\n\tmargin: 10px 5px 0 0;\n}\n\n\n/* AUDIO PLAYER ---------------------------------------------*/\n\n#currentlyPlaying{\n\tdisplay: block;\n\tfloat: left;\n\tmargin: 0.5em;\n}\n\n#audioplayer{\n\twidth: 80%;\t\n\theight: 5%;\n\tmargin: 5px;\n\tfloat: right;\n\tmargin-right: 12%;\n\tborder-style: dotted;\n\ttext-align:center;\n}\n \n#pButton{\n  height:22px;\n  width: 22px;\n\n  border-style: none;\n  background-size: 100% 100%;\n  background-position: left top; \n  background-repeat: no-repeat;\n\n  padding: 1px;\n  margin: 2px;\n  margin-top: 3px;\n  float:left;\n  outline:none;\n}\n \n.play{\n\t/*background: url('../img/play.png') ;*/\n}\n.pause{\n\t/*background: url('../img/pause.png') ;*/\n}\n \n#volume_control{\n\tvertical-align: middle;\n\tmargin: 0;\n\tposition: relative;\n}\n \n#rngVolume{\n\t/*border-style: dotted;*/\n\t/*border-color: black;*/\n\twidth: 20%;\n\tdisplay: block;\n\tfloat: right;\n \tmargin-top: 1px;\n}\n\n#songName{\n\twidth: 92%;\n\tdisplay: inline;\n\tfloat: left;\n\tmargin-top: 0.5em;\n}\n/*\n#audioplayer{\n\tmargin: 2px;\n}\n*/\n.button{\n\tmargin: 2%;\n}\n\ninput[type=range] {\n\tpadding-top: 1em;\n  -webkit-appearance: none;\n  /*margin: 18px 0;*/\n  width: 100%;\n}\ninput[type=range]:focus {\n  outline: none;\n}\ninput[type=range]::-webkit-slider-runnable-track {\n  width: 100%;\n  height: 5px;\n  cursor: pointer;\n  animate: 0.2s;\n  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;\n  /*background: #3071a9;*/\n  border-radius: 1.3px;\n  border: 0.2px solid #010101;\n}\ninput[type=range]::-webkit-slider-thumb {\n  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;\n  border: 1px solid #000000;\n  height: 16px;\n  top: 20px;\n  /*vertical-align: center;*/\n  width: 16px;\n  border-radius: 3px;\n  background: #ffffff;\n  cursor: pointer;\n  -webkit-appearance: none;\n  margin-top: -7px;\n}\ninput[type=range]:focus::-webkit-slider-runnable-track {\n  /*background: #367ebd;*/\n}\ninput[type=range]::-moz-range-track {\n  width: 100%;\n  height: .4px;\n  cursor: pointer;\n  animate: 0.2s;\n  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;\n  /*background: #3071a9;*/\n  border-radius: 1.3px;\n  border: 0.2px solid #010101;\n}\ninput[type=range]::-moz-range-thumb {\n  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;\n  border: 1px solid #000000;\n  height: 36px;\n  width: 16px;\n  border-radius: 3px;\n  background: #ffffff;\n  cursor: pointer;\n}\ninput[type=range]::-ms-track {\n  width: 100%;\n  height: 8.4px;\n  cursor: pointer;\n  animate: 0.2s;\n  background: transparent;\n  border-color: transparent;\n  border-width: 16px 0;\n  color: transparent;\n}\ninput[type=range]::-ms-fill-lower {\n  background: #2a6495;\n  border: 0.2px solid #010101;\n  border-radius: 2.6px;\n  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;\n}\ninput[type=range]::-ms-fill-upper {\n  /*background: #3071a9;*/\n  border: 0.2px solid #010101;\n  border-radius: 2.6px;\n  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;\n}\ninput[type=range]::-ms-thumb {\n  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;\n  border: 1px solid #000000;\n  height: 36px;\n  width: 16px;\n  border-radius: 3px;\n  background: #ffffff;\n  cursor: pointer;\n}\ninput[type=range]:focus::-ms-fill-lower {\n  /*background: #3071a9;*/\n}\ninput[type=range]:focus::-ms-fill-upper {\n  /*background: #367ebd;*/\n}", ""]);
+exports.push([module.i, "\n\nhtml, body{\n    height: 100%;\n    width: 100%;\n    overflow-y: hidden;\n    overflow-x: hidden;\n}\n/*---------------------------------------------*/\n\n/*stops border from being round*/\ninput, textarea {\n  -webkit-appearance: none;\n  -webkit-border-radius: 0;\n}\n\n* { \n\tlist-style: none;\n}\n\n#body{ \n\tfont: 13px Helvetica, Arial; \n\tbackground-color: white;\n\n}\n#content{\n\tdisplay: block;\n\t/*height: 100%;*/\n\twidth: 100%;\n}\n\n#left{\n\tdisplay: block;\n\tfloat: left;\n\theight: 100%;\n}\n\n#right{\n\tdisplay: inline-block;\n\tfloat: right;\n\twidth: 100%;\n}\n\n#animation_container{\n    position: relative;\n    background: yellow;\n\tleft: 80px;\n\ttop: 95px;\n}\n\n#animation {\n    width: 100px;\n    height: 18px;\n    position: absolute;\n    /*background: red;*/\n}\n\n#anim_label{\n\tposition: absolute;\n\tleft: 75px;\n\ttop: 1px;\n\n}\n\n\n\n\n.listitem{\n\tcolor: white;\n}\n\n/*this is for user css styling ---------------------------------------------*/\n#header{\n\tmargin-right: 6%;\n}\n\n#title{\n\tposition: relative;\n\tfloat: left;\n}\n\n.button {\n    background-color: black; /* Green */\n    border: none;\n    color: white;\n    text-align: center;\n    text-decoration: none;\n    display: inline;\n    font-size: 16px;\n    height: 22px;\n    width: 22px;\n}\n\n.button:hover{\n\t/*margin: 0 0 0 0;*/\n\t/*padding: 0 0 0 0;*/\n\theight: 22px;\n    background-color: black; /* Green */\n    border: none;\n    color: white;\n    text-align: center;\n    text-decoration: none;\n    display: inline;\n    font-size: 16px;\n    height: 22px;\n    width: 80px;\n}\n\n.button:focus {\n \toutline: 0;\n}\n\n.rbutton {\n    background-color: black; /* Green */\n    border: none;\n    color: white;\n    text-align: center;\n    margin-top: 0.1em;\n    width: 100%;\n    text-decoration: none;\n    display: inline;\n    font-size: 16px;\n}\n\n.rbutton:focus {\n \toutline: 0;\n}\n\n#styleMenu{\n\tborder-style: dotted;\n\theight: 60%;\n\twidth: 40%;\n\tz-index: 10;\n\tleft: 50%;\n\tposition: absolute;\n\tdisplay: block;\n\tbackground-color: white;\n\tpadding: 1em;\n\tmargin-right: 3em;\n}\n\n#roomMenu{\n\tborder-style: dotted;\n\theight: auto;\n\twidth: 20%;\n\tz-index: 10;\n\tleft: 70%;\n\tposition: absolute;\n\tdisplay: block;\n\tbackground-color: white;\n\tpadding: 1em;\n\tmargin-right: 3em;\n}\n\n.styleMenuEntry{\n\tpadding-top: 0.5em;\n}\n#fontSize{\n\tfloat: right;\n}\n#borderSize{\n\tfloat: right;\n}\n#fontDropDown{\n\tfloat: right;\n}\n#borderStyle{\n\tfloat: right;\n}\n.jscolor{\n\tfloat: right;\n}\n\n/*this is for uploading files ---------------------------------------------*/\n#addFile{\n    border: none;\n    color: white;\n    padding-top: 1em;\n    padding-bottom: 1em;\n    text-align: center;\n    text-decoration: none;\n    display: inline-block;\n    font-size: 16px;\n}\n\n\n#form2{\n \tposition: fixed;\n \ttop:25%;\n \tleft:0.5em;\n}\n\n#form1 {\n \tbackground: #000; \n \tposition: fixed; \n \tbottom: 10px;\n \twidth: 76%; \n\tmargin: 7px;\n\tborder-style: dotted;\t\n}\n\n#form1 input { \n\tborder: 0; \n\tpadding: 0.5%;\n\twidth: 87%;\n\tmargin: 5px;\n}\n\n#form1 button { \n\twidth: 10%; \n\tfloat: right;\n\tmargin-top: 0.5%;\n\theight: 24px;\t\n\tbackground: rgb(130, 224, 255); \n\tborder: none; \n}\t\n\n#messages { \n\tlist-style-type: none; \n\tmargin: 0; \n\tpadding: 0; \n}\n#messages li {\n\tpadding: 5px 10px; \n}\n#messages li:nth-child(odd) { \n\tbackground: #eee; \n}\n\n\n\n/*---------------------------------------------*/\n#drop_zone{\n\theight: 35%;\n\twidth: 80%;\t\n\tfloat: right;\n\tborder-style: dotted;\n\toverflow-y: scroll;\n\tmargin: 5px;\n\tmargin-right: 12%;\n\n}\n#list{\n\tpadding-top: 0px;\n\tmargin: 0px;\n\tlist-style: none;\n}\n\nli {\n\t/*margin: 1em;*/\n\t/*padding: 1em;*/\n}\n.listitem{\n\twidth: 1%;\n\tmargin: 0px;\n\tpadding: 0.6em;\n\tlist-style: none;\n\n}\n\n\n#chat{\n\theight: 32%;\n\twidth: 80%;\t\n\tfloat: right;\n\tborder-style: dotted;\n\toverflow-y: scroll;\n\tmargin: 5px;\n\tmargin-right: 12%;\n}\n\n#message{\n\theight: 5%;\n\twidth: 80%;\t\n\tfloat: right;\n\tborder-style: dotted;\n\toverflow-y: hidden;\n\tmargin: 5px;\n\tmargin-right: 12%;\n}\n/*#data{\n    width: 200%;\n}\n#datasend{\n\tfloat: right;\n}*/\n\n/* holds the message and the button*/\n#post{\n\tdisplay: flex;\n}\n/* im the message*/\n#data{\n\tvertical-align: center;\t\n\twidth: 88%;\n}\n/* im the button*/\n#datasend{\n\twidth: 18%;\n}\n\n\n\n\n#effects{\n\tdisplay: none;\n\theight: 150px;\n\twidth: 15%;\n\tfloat: left;\t\n\tborder-style: dotted;\n\tmargin-top: 5.5%;\n\tmargin-bottom: 4px;\n}\n.thumb {\n\theight: 75px;\n\tborder: 1px solid #000;\n\tmargin: 10px 5px 0 0;\n}\n\n\n/* AUDIO PLAYER ---------------------------------------------*/\n\n#currentlyPlaying{\n\tdisplay: block;\n\tfloat: left;\n\twidth: 60%;\n\tvertical-align: center;\n\n\t/*margin: 0.5em;*/\n}\n\n#audioplayer{\n\twidth: 80%;\t\n\theight: 5%;\n\t/*margin: 5px;*/\n\tfloat: right;\n\tmargin-right: 12%;\n\tborder-style: dotted;\n\tfont-size: 11px;\n\ttext-align:left;\n}\n \n#pButton{\n  height:22px;\n  width: 22px;\n\n  border-style: none;\n  background-size: 100% 100%;\n  background-position: left top; \n  background-repeat: no-repeat;\n\n  padding: 1px;\n  margin: 2px;\n  margin-top: 3px;\n  float:left;\n  outline:none;\n}\n \n.play{\n}\n.pause{\n}\n \n\n\n \n#rngVolume{\n\twidth: 20%;\n\tfloat: right;\n}\n\n#songName{\n\twidth: 92%;\n\tdisplay: inline;\n\tfloat: left;\n\tmargin-top: 0.5em;\n}\n\n.button{\n\tmargin: .1em;\n}\n\ninput[type=range] {\n\tpadding-top: 1em;\n  -webkit-appearance: none;\n  /*margin: 18px 0;*/\n  width: 100%;\n}\ninput[type=range]:focus {\n  outline: none;\n}\ninput[type=range]::-webkit-slider-runnable-track {\n  width: 100%;\n  height: 5px;\n  cursor: pointer;\n  animate: 0.2s;\n  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;\n  /*background: #3071a9;*/\n  border-radius: 1.3px;\n  border: 0.2px solid #010101;\n}\ninput[type=range]::-webkit-slider-thumb {\n  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;\n  border: 1px solid #000000;\n  height: 16px;\n  top: 20px;\n  /*vertical-align: center;*/\n  width: 16px;\n  border-radius: 3px;\n  background: #ffffff;\n  cursor: pointer;\n  -webkit-appearance: none;\n  margin-top: -7px;\n}\ninput[type=range]:focus::-webkit-slider-runnable-track {\n  /*background: #367ebd;*/\n}\ninput[type=range]::-moz-range-track {\n  width: 100%;\n  height: .4px;\n  cursor: pointer;\n  animate: 0.2s;\n  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;\n  /*background: #3071a9;*/\n  border-radius: 1.3px;\n  border: 0.2px solid #010101;\n}\ninput[type=range]::-moz-range-thumb {\n  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;\n  border: 1px solid #000000;\n  height: 36px;\n  width: 16px;\n  border-radius: 3px;\n  background: #ffffff;\n  cursor: pointer;\n}\ninput[type=range]::-ms-track {\n  width: 100%;\n  height: 8.4px;\n  cursor: pointer;\n  animate: 0.2s;\n  background: transparent;\n  border-color: transparent;\n  border-width: 16px 0;\n  color: transparent;\n}\ninput[type=range]::-ms-fill-lower {\n  background: #2a6495;\n  border: 0.2px solid #010101;\n  border-radius: 2.6px;\n  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;\n}\ninput[type=range]::-ms-fill-upper {\n  /*background: #3071a9;*/\n  border: 0.2px solid #010101;\n  border-radius: 2.6px;\n  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;\n}\ninput[type=range]::-ms-thumb {\n  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;\n  border: 1px solid #000000;\n  height: 36px;\n  width: 16px;\n  border-radius: 3px;\n  background: #ffffff;\n  cursor: pointer;\n}\ninput[type=range]:focus::-ms-fill-lower {\n  /*background: #3071a9;*/\n}\ninput[type=range]:focus::-ms-fill-upper {\n  /*background: #367ebd;*/\n}", ""]);
 
 // exports
 
@@ -7838,13 +7833,13 @@ module.exports.parser = __webpack_require__(1);
  */
 
 var transports = __webpack_require__(14);
-var Emitter = __webpack_require__(8);
+var Emitter = __webpack_require__(9);
 var debug = __webpack_require__(4)('engine.io-client:socket');
 var index = __webpack_require__(17);
 var parser = __webpack_require__(1);
 var parseuri = __webpack_require__(20);
 var parsejson = __webpack_require__(57);
-var parseqs = __webpack_require__(9);
+var parseqs = __webpack_require__(10);
 
 /**
  * Module exports.
@@ -7976,7 +7971,7 @@ Socket.protocol = parser.protocol; // this is an int
  */
 
 Socket.Socket = Socket;
-Socket.Transport = __webpack_require__(6);
+Socket.Transport = __webpack_require__(7);
 Socket.transports = __webpack_require__(14);
 Socket.parser = __webpack_require__(1);
 
@@ -8820,9 +8815,9 @@ JSONPPolling.prototype.doWrite = function (data, fn) {
  * Module requirements.
  */
 
-var XMLHttpRequest = __webpack_require__(7);
+var XMLHttpRequest = __webpack_require__(8);
 var Polling = __webpack_require__(15);
-var Emitter = __webpack_require__(8);
+var Emitter = __webpack_require__(9);
 var inherit = __webpack_require__(3);
 var debug = __webpack_require__(4)('engine.io-client:polling-xhr');
 
@@ -9251,9 +9246,9 @@ function unloadHandler () {
  * Module dependencies.
  */
 
-var Transport = __webpack_require__(6);
+var Transport = __webpack_require__(7);
 var parser = __webpack_require__(1);
-var parseqs = __webpack_require__(9);
+var parseqs = __webpack_require__(10);
 var inherit = __webpack_require__(3);
 var yeast = __webpack_require__(26);
 var debug = __webpack_require__(4)('engine.io-client:websocket');

@@ -63,6 +63,8 @@ input, textarea {
 }
 
 
+
+
 .listitem{
 	color: white;
 }
@@ -85,15 +87,27 @@ input, textarea {
     text-decoration: none;
     display: inline;
     font-size: 16px;
+    height: 22px;
     width: 22px;
 }
+
 .button:hover{
-	width: 80px;
+	/*margin: 0 0 0 0;*/
+	/*padding: 0 0 0 0;*/
+	height: 22px;
+    background-color: black; /* Green */
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline;
+    font-size: 16px;
+    height: 22px;
+    width: 80px;
 }
 
 .button:focus {
  	outline: 0;
- 	/*width: 80px;*/
 }
 
 .rbutton {
@@ -245,9 +259,6 @@ li {
 }
 
 
-
-
-
 #chat{
 	height: 32%;
 	width: 80%;	
@@ -312,17 +323,21 @@ li {
 #currentlyPlaying{
 	display: block;
 	float: left;
-	margin: 0.5em;
+	width: 60%;
+	vertical-align: center;
+
+	/*margin: 0.5em;*/
 }
 
 #audioplayer{
 	width: 80%;	
 	height: 5%;
-	margin: 5px;
+	/*margin: 5px;*/
 	float: right;
 	margin-right: 12%;
 	border-style: dotted;
-	text-align:center;
+	font-size: 11px;
+	text-align:left;
 }
  
 #pButton{
@@ -342,25 +357,16 @@ li {
 }
  
 .play{
-	/*background: url('../img/play.png') ;*/
 }
 .pause{
-	/*background: url('../img/pause.png') ;*/
 }
  
-#volume_control{
-	vertical-align: middle;
-	margin: 0;
-	position: relative;
-}
+
+
  
 #rngVolume{
-	/*border-style: dotted;*/
-	/*border-color: black;*/
 	width: 20%;
-	display: block;
 	float: right;
- 	margin-top: 1px;
 }
 
 #songName{
@@ -369,13 +375,9 @@ li {
 	float: left;
 	margin-top: 0.5em;
 }
-/*
-#audioplayer{
-	margin: 2px;
-}
-*/
+
 .button{
-	margin: 2%;
+	margin: .1em;
 }
 
 input[type=range] {

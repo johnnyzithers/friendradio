@@ -1,3 +1,5 @@
+import 'socket.io-file';
+
 /**
  * jscolor - JavaScript Color Picker
  *

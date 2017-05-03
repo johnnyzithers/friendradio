@@ -11,10 +11,7 @@ var num_elems = 0;
 
 import io from 'socket.io-client'
 import SocketIOFileClient from 'socket.io-file-client';
-// import 'fs'
 import 'socket.io-file';
-
-// require('./js/customcss.js');
 
 
 window.$ = window.jquery = require("jquery");
@@ -22,9 +19,6 @@ window.$ = window.jquery = require("jquery");
 
 window.uploadToServer = function(){
 
-	// stop animation
-	// animation_stop();
-	// animation_enabled = 0;	
 	
 	// Send File Element to upload
 	var files_to_upload = document.getElementById('file');
@@ -97,7 +91,7 @@ uploader.on('stream', function(fileInfo) {
 });
 
 uploader.on('complete', function(fileInfo) {
-	// removeSongFromList(0);
+	removeSongFromList(0);
 });
 
 uploader.on('error', function(err) {
@@ -139,7 +133,8 @@ socket.on('update_playing', function(data){
 
 	currTrackName = data.track.substring(5);
 	console.log(currTrackName)
-	var songName = '<strong>'+escape(currTrackName.replace(/ /g,"_"))+'</strong>';
+	// var songName = '<strong>'+escape(currTrackName.replace(/ /g,"_"))+'</strong>';
+	var songName = '<strong>'+currTrackName+'</strong>';
 	updateTrackName(songName);
 });
 
@@ -284,20 +279,19 @@ var displayTrack = function(trackname, uploading, fromserver, elem_ndx){
 	li.className = "listitem";	
 	li.onclick = trackClicked;	
 	li.id = "listi"+elem_ndx;
+	
 	// width of loading bar
 	if(uploading){
 		li.style.width = "10%";
 		li.id = "listi"+elem_ndx;
-
-
 	}else{
-
 		trackname = trackname.substring(5);
 		li.style.width = "100%";
 	}
 
-	var msg = '<strong>'+escape(trackname.replace(/ /g,""))+'</strong>';
-
+	// var msg = '<strong>'+escape(trackname.replace(/ /g,""))+'</strong>';
+	// trackname = $.parseHTML(trackname);
+	var msg = '<strong>'+trackname+'</strong>';
 
 	// random color
 	var rndx = Math.floor(Math.random() * songBarColors.length);
@@ -312,8 +306,6 @@ var displayTrack = function(trackname, uploading, fromserver, elem_ndx){
 var trackClicked = function (thetrack){
 	console.log(thetrack.target);
 };
-
-
 
 
 
@@ -334,24 +326,22 @@ var createAudioPlayer = function (){
 	// var msg = '<audio id="stream_player" src= "http://192.168.1.142:9000/stream">';
 	var msg = '<audio id="stream_player" src= "http://localhost:'+client_port+'/stream">';
 	
-	console.log("createing audio playering")
-	// $("#rngVolume").show();
-	// $("#pButton").show();
-
-	var li = document.createElement('li');
-	li.innerHTML = msg;
-	li.id = "list_play";			// so we can remove it roomMenu.js
-	var pz = document.getElementById("playing");
-	pz.appendChild(li);
+	// var li = document.createElement('li');
+	// li.innerHTML = msg;
+	// li.id = "list_play";			// so we can remove it roomMenu.js
+	// var pz = document.getElementById("playing");
+	// pz.appendChild(li);
 	// // play the station, if we are autoplaying
 	
-	if(autoplay){
-		var player = document.getElementById("stream_player"); // get reference to player
-		player.play();	
-	}
+	// if(autoplay){
+	// 	var player = document.getElementById("stream_player"); // get reference to player
+	// 	player.play();	
+	// }
+	
 	// add song name to play bar
-	// currTrackName = client_playlist[currentlyPlaying];
-	var songName = '<strong>'+escape(currTrackName.replace(/ /g,"_"))+'</strong>';
+	// var tempname = $.parseHTML(currTrackName);
+	// var songName = '<strong>'+escape(currTrackName.replace(/ /g,"_"))+'</strong>';
+	var songName = '<strong>'+currTrackName+'</strong>';
 	updateTrackName(songName);
 }
 
@@ -365,13 +355,11 @@ var playAudio = function() {
 	var playpause;
 	if(player.paused == false){
 		playpause = document.getElementById("pButton"); // get reference to player
-		// playpause.src = "./client/css/pause.png";
 		playpause.className = "pause";
 		player.pause();
 		console.log("paused");
 	}else{
 		playpause = document.getElementById("pButton"); // get reference to player
-		// playpause.src = "./client/css/play.png";
 		playpause.className = "play";
 		player.play()
 		console.log("playing");

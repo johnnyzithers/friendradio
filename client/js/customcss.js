@@ -35,12 +35,6 @@ var loadImageFile = function(testEl) {
 }
 
 
-// turn this into jquery function??
-var menuState = 0;
-
-
-$(document).ready(function () {
-
 
 window.styleMenuTrig = function(ev){
 	if(!menuState){
@@ -50,6 +44,14 @@ window.styleMenuTrig = function(ev){
 	}
 	menuState = !menuState;
 }
+
+
+
+// turn this into jquery function??
+var menuState = 0;
+
+
+$(document).ready(function () {
 
 
 	$( "#bgColorPicker" ).change(function () {
