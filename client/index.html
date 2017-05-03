@@ -3,39 +3,22 @@
 	<meta charset="UTF-8">
 	<title>friend radio :)</title>
 
+
+	<!-- webpack -->
+	<script src="bundle.js"></script>
+
     <meta name="viewport" content="user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1,width=device-width">
 
-	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-
-	<script src="js/jquery-3.1.1.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<script src="/socket.io/socket.io.js"></script>
-    <script src="socket.io-file-client.js"></script> 
-	<script src="jscolor.js"></script>
-
-
-
-	 <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>jQuery UI Dialog - Default functionality</title>
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script>
-	$("#dialog").dialog( "option", "autoOpen", false );
-	
-
-  </script>
 
 </head>
 <body id="body">
 
-<div id="alertHolder" style="display: none;">
+<!-- <div id="alertHolder" style="display: none;">
  <form id="dialog" title="please enter a user name">
  	<input type="text" style="z-index:10000" name="name">
  </form>
 
-</div>
+</div> -->
 	<div id="header">
 		<!-- <div id="title"> -->
 		<h1> F R I E N DR A D I O </h1> 
@@ -43,10 +26,10 @@
 		
 		<div id="roomMenu" style="display:none;">
 			<div>
-				<input class="button" onclick="roomButtonPressed(1)" type="submit" value="ROOM 1" />
-				<input class="button" onclick="roomButtonPressed(2)" type="submit" value="ROOM 2" />
-				<input class="button" onclick="roomButtonPressed(3)" type="submit" value="ROOM 3" />
-				<input class="button" onclick="roomButtonPressed(4)" type="submit" value="ROOM 4" />
+				<input class="rbutton" onclick="window.roomButtonPressed(1)" type="submit" value="room 1" />
+				<input class="rbutton" onclick="window.roomButtonPressed(2)" type="submit" value="room 2" />
+				<input class="rbutton" onclick="window.roomButtonPressed(3)" type="submit" value="room 3" />
+				<input class="rbutton" onclick="window.roomButtonPressed(4)" type="submit" value="room 4" />
 			</div>
 		</div>
 
@@ -94,24 +77,24 @@
 		</div>
 	</div> <!-- end header -->
 
-	<div id="animation_container">
+<!-- 	<div id="animation_container">
 	    <div id ="animation">
 	    	<<<<<<<<
 	    </div>
 	    <span id="anim_label"> choose a username
 	    </span>
-	</div>
+	</div> -->
 
 
 	<div id="content">
 		<div id="left">
 			<form id="form2">
-				<input class="button" id="userbutton" type="submit" onclick="newUser()" value="+ user" /><br>
-				<input class="button" id="room_button" type="submit" value="+ room" />
+				<input class="button" id="userbutton" type="submit" onclick="newUser()" value="+  user" /><br>
+				<input class="button" id="roombutton" type="submit" value="+  room" /><br>
 				<input type="file" id="file" style="display: none;" multiple />
-				<input class="button" id="filebutton" type="button" value="+ song" onclick="document.getElementById('file').click();"/><br>
-				<input class="button" id="uploadbutton" type="submit" value="> upload"/> <br>
-				<input class="button" id="stylebutton" type="submit" value="- look" />
+				<input class="button" id="filebutton" type="button" value="+  song" onclick="document.getElementById('file').click();"/><br>
+				<input class="button" id="uploadbutton" type="button" value=">  upload"/> <br>
+				<input class="button" id="stylebutton" type="button" value=" -  style" />
 			</form>
 
 
@@ -122,7 +105,7 @@
 		 			 		 		
 		 		</div> 
 				<div id="audioplayer">
-					<button id="pButton" class="play" onclick="playAudio()"></button>
+					<button id="pButton" style="background: url(img/play.png)"  class="play" onclick="playAudio()"></button>
 					<div id="currentlyPlaying"> </div>
 					<label id="volume_control"></label>
 		    		<input type="range" oninput="setVolume(this.value)" id="rngVolume" min="0" max="1" step="0.01" value="1">
@@ -151,11 +134,27 @@
 		</div>   <!-- end right-->
 	</div> <!-- end content -->
 
+<!-- 
+	<work> 
+		work work work work work work I am working and I wish I had some great music to listen to...
+		
+		I am woeking
+		I have been working</work>
+	<double work>
+		there is more rotk to do!:( I want to go home )
+	</double>
+ -->
+
+
+
+
+
+<!-- 
 	<script src="js/helperAnimation.js"></script>
 	<script src="js/customcss.js"></script>
-	<script src="js/roommenu.js"></script>
-
-	<script src="app.js"></script>
+	<script src="js/roommenu.js"></script> -->
+<!-- 
+	<script src="app.js"></script> -->
 
 </body>
 </html>

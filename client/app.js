@@ -1,5 +1,5 @@
-var animation_enabled = 1;
-
+var animation_enabled = 0;
+var client_username = "";
 var started = 0;
 var autoplay = 1;
 var currTrackName = "";
@@ -8,11 +8,23 @@ var client_port, client_playlist;
 var track_elems = [];
 var num_elems = 0;
 
-uploadToServer = function(){
+
+import io from 'socket.io-client'
+import SocketIOFileClient from 'socket.io-file-client';
+// import 'fs'
+import 'socket.io-file';
+
+// require('./js/customcss.js');
+
+
+window.$ = window.jquery = require("jquery");
+
+
+window.uploadToServer = function(){
 
 	// stop animation
-	animation_stop();
-	animation_enabled = 0;	
+	// animation_stop();
+	// animation_enabled = 0;	
 	
 	// Send File Element to upload
 	var files_to_upload = document.getElementById('file');
@@ -24,16 +36,31 @@ uploadToServer = function(){
 
 
 
-var form = document.getElementById('form2');
+$(document).ready(function () {
 
-var ub = document.getElementById("uploadbutton");
-ub.addEventListener("click", uploadToServer);
+	var form = document.getElementById('form2');
 
-var sb = document.getElementById("stylebutton");
-sb.addEventListener("click", styleMenuTrig);
+	form.onchange = function(ev) {
+		addTrackFromFile();				// when hit upload
+		if(animation_enabled){
+			animation_file();	
+		}
+		
+	};
 
-var rb = document.getElementById("room_button");
-rb.addEventListener("click", roomMenuTrig);
+	form.onsubmit = function(ev) {
+		ev.preventDefault();
+	}
+	var ub = document.getElementById("uploadbutton");
+	ub.addEventListener("click", uploadToServer);
+
+	var sb = document.getElementById("stylebutton");
+	sb.addEventListener("click", window.styleMenuTrig);
+
+	var rb = document.getElementById("roombutton");
+	rb.addEventListener("click", window.roomMenuTrig);
+});
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // server ip 
@@ -41,7 +68,7 @@ rb.addEventListener("click", roomMenuTrig);
 
 // var socket = io.connect('http://192.168.2.4:3000');
 // var socket = io.connect('http://192.168.1.142:3000');
-var socket = io.connect('http://localhost:3000');
+window.socket = io.connect('http://localhost:3000');
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -70,8 +97,7 @@ uploader.on('stream', function(fileInfo) {
 });
 
 uploader.on('complete', function(fileInfo) {
-	// removeSongFromList(0);’
-	currTrackName = fileInfo.name;
+	// removeSongFromList(0);
 });
 
 uploader.on('error', function(err) {
@@ -88,13 +114,16 @@ uploader.on('abort', function(fileInfo) {
 ////////////////////////////////////////////////////////////////////////////////
 
 
-socket.on('metadata', function(obj){
-	console.log("metadata: ", obj.data.name);
-	currTrackName = obj.data.name;
+socket.on('upload_complete', function(obj){
+	console.log("upload_complete: ", obj.data.name);
 	addTrackFromServer(obj.data.name);
+	initAudio();
+
+
 });
 
 socket.on('update_current', function(data){
+	// removeSongFromList(0);
 	currentlyPlaying++;
 });
 
@@ -104,34 +133,67 @@ socket.on('send_port', function(data){
 	console.log("port received from server: ", client_port);
 });
 
+
+
+socket.on('update_playing', function(data){
+
+	currTrackName = data.track.substring(5);
+	console.log(currTrackName)
+	var songName = '<strong>'+escape(currTrackName.replace(/ /g,"_"))+'</strong>';
+	updateTrackName(songName);
+});
+
+
 socket.on('send_playlist', function(data){
 	client_playlist = data;
 
 	console.log("playlist for this port: ", client_playlist.length, client_playlist);
 
+
 	// if this room has tracks currently
 	if(client_playlist.length > 0){
+		currTrackName = client_playlist[0];
+
 		// display each song in the playlist
 		for(var i = 0; i < client_playlist.length; i++){
+			// have to create a new track for every playlist item
+			track_elems.push(document.createElement('li'));
 			displayTrack(client_playlist[i], 0, 1, i);
 		}
-		// init the html5 audio player
-		if(!started){
-			socket.emit('start_radio', client_port);
-			createAudioPlayer();
-			started = 1;	
-		}
+		initAudio();
+
+		
 	}
+
+
 });
 
 
-newUser = function(ev){
+window.initAudio = function(){
+	// init the html5 audio player
+	if(!started){
+		socket.emit('start_radio', client_port);
+		createAudioPlayer();
+		started = 1;	
+	}
+}
+
+// window.initAudio = initAudio;
+
+window.newUser = function(ev){
 	if(animation_enabled){
 		animation_adduser();
 	}
-	username = prompt("What's your name?")
+
+	client_username = prompt("What's your name?")
+	var id = socket.io.engine.id;
+	// tell the server
+	socket.emit('add_user', client_username, id);
+
+	// return false;
 };
 
+// window.newUser = newUser;
 
 
 socket.on('connect', function(){
@@ -141,19 +203,19 @@ socket.on('connect', function(){
 	// $("#drop_zone").hide();
 	// $("#chat").hide();
 	// $("#message").hide();
-	// $("#room_button").hide();
+	// $("#roombutton").hide();
 	// $("#audioplay").hide();
 	// $("#pButton").hide();
 	// $("#filebutton").hide();
 	// $("#uploadbutton").hide();
-
-	animation_start();
+	if(animation_enabled){
+		animation_start();	
+	}
+	
 
 	// create a socket id and username
 	// var username = prompt("What's your name?")
 	var id = socket.io.engine.id;
-	// tell the server
-	// socket.emit('add_user', username, id);
 });
 
 socket.on('updatechat', function (username, data) {
@@ -191,15 +253,15 @@ $(function(){
 // AUDIO PLAYER FUNCTIONS
 var addCount = 0;
 
-addTrackFromServer = function(trackToAdd){
+var addTrackFromServer = function(trackToAdd){
 	track_elems.pop();
-
 	track_elems.push(document.createElement('li'));
+	client_playlist.push(trackToAdd);
 	// display without upload
 	displayTrack(trackToAdd, 0, 1, track_elems.length-1);
 };
 
-addTrackFromFile = function(){
+var addTrackFromFile = function(){
 	var file_list = document.getElementById('file');
 	// console.log("file_list,", file_list.files.length)
 	for(var f = 0; f < file_list.files.length; f++){
@@ -212,13 +274,11 @@ addTrackFromFile = function(){
 }
 
 
-displayTrack = function(trackname, uploading, fromserver, elem_ndx){
+var displayTrack = function(trackname, uploading, fromserver, elem_ndx){
 
 
-	// console.log("displayTrack: ", uploading, trackname, "ELEM NDX: == ", elem_ndx);
+	console.log("displayTrack: ", uploading, trackname, "ELEM NDX: == ", elem_ndx);
 	// create the list item
-	// trackname = trackname.substring(5);
-	var msg = '<strong>'+escape(trackname.replace(/ /g,"_"))+'</strong>';
 
 	var li = track_elems[elem_ndx];
 	li.className = "listitem";	
@@ -229,9 +289,16 @@ displayTrack = function(trackname, uploading, fromserver, elem_ndx){
 		li.style.width = "10%";
 		li.id = "listi"+elem_ndx;
 
+
 	}else{
+
+		trackname = trackname.substring(5);
 		li.style.width = "100%";
 	}
+
+	var msg = '<strong>'+escape(trackname.replace(/ /g,""))+'</strong>';
+
+
 	// random color
 	var rndx = Math.floor(Math.random() * songBarColors.length);
 	li.style.backgroundColor = songBarColors[rndx];
@@ -242,32 +309,26 @@ displayTrack = function(trackname, uploading, fromserver, elem_ndx){
 	ul.appendChild(li);
 }
 
-trackClicked = function (thetrack){
+var trackClicked = function (thetrack){
 	console.log(thetrack.target);
 };
 
 
 
 
-form.onchange = function(ev) {
-	addTrackFromFile();				// when hit upload
-	animation_file();
-};
 
-form.onsubmit = function(ev) {
-	ev.preventDefault();
-}
-
-removeSongFromList = function(id){
+var removeSongFromList = function(id){
 	var ul = document.getElementById("tracklist");
+	console.log("removeSongFromList: ", id)
 	ul.removeChild(ul.childNodes[id]);
 
 }
 
 // variable to store HTML5 audio element
 
-createAudioPlayer = function (){
+var createAudioPlayer = function (){
 
+	currTrackName = client_playlist[0];
 
 	// var msg = '<audio id="stream_player" src= "http://192.168.2.4:9000/stream">';
 	// var msg = '<audio id="stream_player" src= "http://192.168.1.142:9000/stream">';
@@ -289,13 +350,17 @@ createAudioPlayer = function (){
 		player.play();	
 	}
 	// add song name to play bar
-	currTrackName = client_playlist[currentlyPlaying];
+	// currTrackName = client_playlist[currentlyPlaying];
 	var songName = '<strong>'+escape(currTrackName.replace(/ /g,"_"))+'</strong>';
-	document.getElementById("currentlyPlaying").innerHTML = songName;
+	updateTrackName(songName);
 }
 
 
-playAudio = function() {
+var updateTrackName = function(newname){
+	document.getElementById("currentlyPlaying").innerHTML = newname;
+}
+
+var playAudio = function() {
 	var player = document.getElementById("stream_player"); // get reference to player
 	var playpause;
 	if(player.paused == false){
@@ -313,9 +378,15 @@ playAudio = function() {
 	}
 }
 
-setVolume = function(volume) {
+window.setVolume = function(volume) {
 	var player = document.getElementById("stream_player"); 
 	if(player){
 		player.volume = volume;
 	}
 }
+
+
+window.onbeforeunload = function (e) {
+	console.log("leaving!!!!");
+}
+

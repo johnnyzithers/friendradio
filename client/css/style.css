@@ -63,6 +63,9 @@ input, textarea {
 }
 
 
+.listitem{
+	color: white;
+}
 
 /*this is for user css styling ---------------------------------------------*/
 #header{
@@ -80,11 +83,32 @@ input, textarea {
     color: white;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
+    display: inline;
     font-size: 16px;
+    width: 22px;
+}
+.button:hover{
+	width: 80px;
 }
 
 .button:focus {
+ 	outline: 0;
+ 	/*width: 80px;*/
+}
+
+.rbutton {
+    background-color: black; /* Green */
+    border: none;
+    color: white;
+    text-align: center;
+    margin-top: 0.1em;
+    width: 100%;
+    text-decoration: none;
+    display: inline;
+    font-size: 16px;
+}
+
+.rbutton:focus {
  	outline: 0;
 }
 
@@ -256,11 +280,12 @@ li {
 }
 /* im the message*/
 #data{
+	vertical-align: center;	
 	width: 88%;
 }
 /* im the button*/
 #datasend{
-	width: 12%;
+	width: 18%;
 }
 
 
@@ -287,7 +312,7 @@ li {
 #currentlyPlaying{
 	display: block;
 	float: left;
-	vertical-align: center;
+	margin: 0.5em;
 }
 
 #audioplayer{
@@ -317,10 +342,10 @@ li {
 }
  
 .play{
-	background: url('play.png') ;
+	/*background: url('../img/play.png') ;*/
 }
 .pause{
-	background: url('pause.png') ;
+	/*background: url('../img/pause.png') ;*/
 }
  
 #volume_control{

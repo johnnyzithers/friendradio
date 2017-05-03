@@ -6,19 +6,21 @@ const httpServer = http.Server(app);
 const io = require('socket.io')(httpServer);
 const SocketIOFile = require('socket.io-file');
 
-const fs = require('fs');
-
-
-// radio globals
+// fs for deleting files
+// const fs = require('fs');
 var port = 9000;
-// var playlist = [];
+
+
+var playlist = [];
 var playCount = 0;
 var started = 0;
 
-// chat globals
-var usernames = {};									// usernames currently connected
-var rooms = ['room1','room2','room3', 'room4'];		// rooms currently available 
+// usernames which are currently connected to the chat
+var usernames = {};
 
+
+// rooms which are currently available in chat
+var rooms = ['room1','room2','room3', 'room4'];
 var playlist1 = [];
 var playlist2 = [];
 var playlist3 = [];
@@ -45,24 +47,12 @@ app.get('/socket.io-file-client.js', (req, res, next) => {
 	return res.sendFile(__dirname + '/node_modules/socket.io-file-client/socket.io-file-client.js');
 });
 
-// io.on('streaming', function(data){
-// 	console.log("!!! hello i am streaming", data);
-// }); // listen to the event
-
-// io.on('startradio', function(data){
-// 	console.log("!!! hello i am streaming", data);
-// }); // listen to the event
-
 // ON CONNECTION, handles client --> server binary upload
 io.sockets.on('connection', (socket) => {
 	console.log('Socket connected.');
 
 	var count = 0;
 	var uploader = new SocketIOFile(socket, {
-		// uploadDir: {			// multiple directories
-		// 	music: 'data/music',
-		// 	document: 'data/document'
-		// },
 		uploadDir: 'data',								// simple directory
 		// accepts: ['audio/mpeg', 'audio/mp3'],		// chrome and some of browsers checking mp3 as 'audio/mp3', not 'audio/mpeg'
 		// maxFileSize: 4194304, 						// 4 MB. default is undefined(no limit)
@@ -81,19 +71,15 @@ io.sockets.on('connection', (socket) => {
 		console.log('Upload Complete.');
 
 		// send metadata back to all clients for room FIXME
-	  	socket.broadcast.emit('metadata', { data: fileInfo, status: 1 });
-	  	// add song to the playlist 
-	  	console.log("room number: ", socket.roomnum)
+	  	socket.broadcast.emit('upload_complete', { data: fileInfo, status: 1 });
+
 		playlists[socket.roomnum].push(fileInfo.uploadDir.substring());
 		socket.emit('send_playlist', playlists[socket.roomnum]);
 
-	  	console.log("this playlist: ", playlists[socket.roomnum], socket.roomnum);
-	  	console.log("all playlists: ", playlists);
-
-		// if(!socket.started){
-		// 	startRadio(0, socket.port, socket.roomnum, socket.started);
-		// 	socket.started = 1;
-		// }
+		console.log("this playlist: ", playlists[socket.roomnum], socket.roomnum);
+		// console.log("all playlists: ", playlists);
+	  	// add song to the playlist 
+		// playlists[socket.roomnum].push(fileInfo.uploadDir);
 	});
 	uploader.on('error', (err) => {
 		console.log('Error!', err);
@@ -105,43 +91,41 @@ io.sockets.on('connection', (socket) => {
 
  
  	// join this room
-    socket.on('join_room', function(roomnum, username) {
+    socket.on('join_room', function(roomnum) {
 		
-		var room = 'room'+roomnum;
 		socket.roomnum = roomnum;
+		var room = 'room'+socket.roomnum;
 		socket.join(room);
 		// save this room in socket session for this client
 		socket.room = room;
 		// echo to client they've connected
 		socket.emit('updatechat', 'SERVER', 'you have connected to '+room);
 		// tell room user has joined
-		socket.broadcast.to(room).emit('updatechat', 'SERVER', username + ' has connected to this room');
+		socket.broadcast.to(room).emit('updatechat', 'SERVER', socket.username + ' has connected to this room');
 		// socket.emit('updaterooms', rooms, room);
 		// send client its port
-		console.log("joining ", room, 9000+socket.roomnum , "with playlist ", playlists[socket.roomnum ]);
+		console.log("joinging ", room, 9000+roomnum);
 		// save socket for this client 
-		socket.port = 9000+socket.roomnum ;
+		socket.port = 9000+socket.roomnum;
 		socket.started = 0;
-		// socket.playlist = playlists[roomnum];				// attach playlist to socket session????
-
-
 		// send port and playlist to client
 		socket.emit('send_port', socket.port);
-		socket.emit('send_playlist', playlists[socket.roomnum ]);
+		socket.emit('send_playlist', playlists[socket.roomnum]);
 
     });
 
  	// leave this room
     socket.on('leave_room', function(room) {
-    	console.log("leaving room ", socket.roomnum , "with playlist ", playlists[socket.roomnum ]);
+        console.log("before room");
         socket.leave(room);
+        console.log("after room");
     });
 
 	// play received from client
 	socket.on('play', function(data){
 		console.log("socket play");
-		socket.started = 0;
-		playCount = -1; //??
+		started = 0;
+		playCount = -1;
 	});
 
 	// get_port received from client
@@ -168,10 +152,12 @@ io.sockets.on('connection', (socket) => {
 	// when the client says 'start_radio'
 	socket.on('start_radio', function(data){
 		// this makes it so radio starts at first upload.. probably  need another button
-		console.log("start_radio from client", data);
+		console.log("start_radio", data);
 		console.log("started?", socket.started);
 		if(!socket.started){
-			startRadio(0, socket.port, socket.roomnum, socket.started);
+			io.emit('update_playing', { track: playlists[socket.roomnum][0] });
+			startRadio(0, socket.roomnum, socket.port, socket.started);
+			socket.started = 1;
 		}
 	});
 });
@@ -212,43 +198,42 @@ function radioInit(){
 
 	console.log("first card is initialized: " + basslib.getDevice(1).IsInitialized)
 
-
-
 }
 
-var mixer = [];
-var enc_chan = [];
+var mixer, chan, ok, enc_chan;
 
-function startRadio(index, port, playlistnum, startflag){
+function startRadio(index, playlistnum, port, started){
 
-	var started = startflag;
 	// store the port so it play all over again
 	var thisport = port;
+
+	console.log("thisport: ", thisport);
+	console.log("gonna stream: ", 'http://localhost:'+thisport+'/stream');
+	// console.log("socket.port: ", socket.port);
 
 	// use mixer as a trick, because if the channel freed or added new channel, the encoder stops itself.
 	// add channels to mixer every time, and add mixer channel to encoder. so the encoder never stops..
 	// enable mixer before using it!
 	console.log("start radio")
-	console.log("gonna play: ", playlists[playlistnum][index], " on port ",  thisport);
-	
-	mixer[playlistnum]  = basslib.BASS_Mixer_StreamCreate(44100, 2, basslib.BASSFlags.BASS_SAMPLE_FLOAT);
-	var chan = basslib.BASS_StreamCreateFile(0, playlists[playlistnum][index], 0, 0, basslib.BASSFlags.BASS_STREAM_DECODE | basslib.BASSFlags.BASS_SAMPLE_FLOAT);
-	var ok = basslib.BASS_Mixer_StreamAddChannel(mixer[playlistnum], chan, basslib.BASSFlags.BASS_SAMPLE_DEFAULT);
+	console.log("gonna play: ", playlists[playlistnum][index], "started?", started);		 
+		
+	mixer  = basslib.BASS_Mixer_StreamCreate(44100, 2, basslib.BASSFlags.BASS_SAMPLE_FLOAT);
+	chan = basslib.BASS_StreamCreateFile(0,playlists[playlistnum][index],0,0,basslib.BASSFlags.BASS_STREAM_DECODE | basslib.BASSFlags.BASS_SAMPLE_FLOAT);
+	ok = basslib.BASS_Mixer_StreamAddChannel(mixer, chan, basslib.BASSFlags.BASS_SAMPLE_DEFAULT);
 	
 	console.log("pong", ok);
 	
 	basslib.EnableEncoder(true);
-	
-	enc_chan[playlistnum] = basslib.BASS_Encode_Start(mixer[playlistnum],'lame -r -m s -',basslib.BASS_Encode_Startflags.BASS_ENCODE_FP_16BIT);
+
+	enc_chan = basslib.BASS_Encode_Start(mixer,'lame -r -m s -',basslib.BASS_Encode_Startflags.BASS_ENCODE_FP_16BIT);
 	console.log("enchan error: " + basslib.BASS_ErrorGetCode()); // 0 is ok, 2 is fileopen
 
-
-	console.log("started?", started, "playlist num", playlistnum);		 
-
+	
 	if(!started){
 		started = 1;
 
-		var result = basslib.BASS_Encode_CastInit(enc_chan[playlistnum],
+
+		var result = basslib.BASS_Encode_CastInit(enc_chan,
 		                                     'http://localhost:'+thisport+'/stream',
 		                                     // 'http://192.168.1.142:'+port+'/stream',
 		                                     'hackme',
@@ -270,10 +255,10 @@ function startRadio(index, port, playlistnum, startflag){
 	console.log("any_error: ", any_error);
 	if(!any_error){
 		// basslib.BASS_ChannelSetAttribute(mixer, basslib.BASS_ATTRIB_MUSIC_VOL_GLOBAL, 0.0);
-		basslib.BASS_ChannelPlay(mixer[playlistnum], false);
+		basslib.BASS_ChannelPlay(mixer, false);
 		basslib.BASS_SetDevice(0);
 		io.emit('stream', { status: 1 });
-		io.emit('update_current', { data: 1 });
+
 	}
 
 	// //lets make a callback when position reaches to 20. seconds. 
@@ -289,19 +274,21 @@ function startRadio(index, port, playlistnum, startflag){
 		if(handle==procTOENDID){ 
 			console.log('playback finished..');
 			//delete last song
-			
-			playCount++;									// increment playlist counter
-			if(playCount < playlists[playlistnum][index].length){
-				startRadio(playCount, thisport, playlistnum, 1);
+			playCount++;											// increment playlist counter
+			console.log("last song for unlinking: ", playlists[playlistnum][playCount-1]);
+			io.emit('update_playing', { track: playlists[playlistnum][playCount] });
+
+			if(playCount < playlists[playlistnum].length){
+				startRadio(playCount, playlistnum, thisport, started);
 			}else{
 				playCount = 0;
-				startRadio(playCount, thisport, playlistnum, 1); 			// FIXME: just restarts when done
+				startRadio(playCount, playlistnum, thisport, started); 			// FIXME: just restarts when done
 			}
 		}
 	});
 }
 
-function stopRadio(mixer){
+function stopRadio(){
 	basslib.BASS_ChannelPlay(mixer, false);
 	console.log("stop error: " + basslib.BASS_ErrorGetCode()); 
 }

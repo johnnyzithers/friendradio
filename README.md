@@ -1,7 +1,5 @@
 # friendradoio
 
-Here are some installation instructions once you've cloned the repository. 
-
 ### Steps
 
 First, obtain Icecast tarball.
@@ -16,7 +14,14 @@ $ make
 $ make install
 ```
 
-Install the required node modules. 
+Icecast depends lon libogg and libvorbis, so if make fails, install these.
+
+```
+$ brew install libogg
+$ brew install libvorbis
+```
+
+Once you have clones this repository, install the required node modules. 
 
 ```
 $ cd friendradio

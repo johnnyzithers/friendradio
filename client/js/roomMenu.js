@@ -1,4 +1,6 @@
-
+// import 'socket.io-file'
+// import 'so' 'socket.io'
+// var socket = require("socket.io-client");
 
 var current_room;		
 var menuState = 0;
@@ -7,7 +9,7 @@ var menuState = 0;
 // triggered by "+room" button
 // displays or hides the menus
 //
-roomMenuTrig = function(ev){
+window.roomMenuTrig = function(ev){
 	if(!menuState){
 		document.getElementById("roomMenu").style.display = "inline-block";
 	}else{
@@ -19,12 +21,14 @@ roomMenuTrig = function(ev){
 // roomButtonPressed(room)
 // triggered by "room1", "room2".. buttons
 //
-roomButtonPressed = function(room){
-	console.log("room button");
+window.roomButtonPressed = function(room){
+	console.log("room button", room);
 
 	// first stop animation
-	animation_room();				// stopp animation
-
+	// if(animation_enabled){
+	// 	animation_room();				// stopp animation	
+	// }
+	
 	$("#drop_zone").show();
 	$("#chat").show();
 	$("#message").show();
@@ -70,7 +74,7 @@ roomButtonPressed = function(room){
 // called by roomButtonPressed()
 // clear tracklist html
 //
-clearTrackList = function(){
+var clearTrackList = function(){
 	var ul = document.getElementById("tracklist");
 	ul.innerHTML = "";
 }
@@ -79,7 +83,7 @@ clearTrackList = function(){
 // called by roomButtonPressed()
 // clear track li html 
 //
-clearAudioPlayer = function(){
+var clearAudioPlayer = function(){
 	var pz = document.getElementById("playing");	
 	var track = pz.getElementsByTagName("li");
 	track.innerHTML = "";
@@ -90,7 +94,7 @@ clearAudioPlayer = function(){
 // called by roomButtonPressed()
 // clear list item 
 //
-clearChat = function(){
+var clearChat = function(){
 	var chatul = document.getElementById("messages");
 	chatul.innerHTML = "";
 }
