@@ -7845,3 +7845,2185 @@
 [2017-05-03  17:14:46] DBUG slave/_slave_thread checking master stream list
 [2017-05-03  17:16:46] DBUG slave/_slave_thread checking master stream list
 [2017-05-03  17:18:47] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  17:20:47] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  17:22:47] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  17:24:47] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  17:26:47] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  17:28:48] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  17:30:48] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  17:32:48] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  17:34:49] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  17:36:49] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  17:38:49] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  17:40:50] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  17:42:50] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  17:44:51] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  17:46:51] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  17:48:52] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  17:50:52] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  17:52:53] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  17:54:53] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  17:56:54] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  17:58:55] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  18:00:56] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  18:02:57] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  18:04:57] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  18:06:57] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  18:08:58] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  18:10:58] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  18:12:59] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  18:14:59] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  18:17:00] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  18:19:00] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  18:21:01] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  18:23:02] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  18:25:03] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  18:27:03] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  18:29:03] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  18:30:16] INFO connection/_handle_source_request Source logging in at mountpoint "/stream" from ::1
+[2017-05-03  18:30:16] DBUG connection/connection_complete_source sources count is 0
+[2017-05-03  18:30:16] WARN format/format_get_type Unsupported or legacy stream type: "audio/mpeg". Falling back to generic minimal handler for best effort.
+[2017-05-03  18:30:16] DBUG source/source_apply_mount Applying mount information for "/stream"
+[2017-05-03  18:30:16] DBUG format-mp3/format_mp3_apply_settings sending metadata interval 16000
+[2017-05-03  18:30:16] DBUG format-mp3/format_mp3_apply_settings charset ISO8859-1
+[2017-05-03  18:30:16] WARN source/source_apply_mount Cannot open intro file "./web//stream": No such file or directory
+[2017-05-03  18:30:16] DBUG source/source_update_settings intro file is /stream
+[2017-05-03  18:30:16] DBUG source/source_update_settings public set to 0
+[2017-05-03  18:30:16] DBUG source/source_update_settings max listeners to -1
+[2017-05-03  18:30:16] DBUG source/source_update_settings queue size to 102400
+[2017-05-03  18:30:16] DBUG source/source_update_settings burst size to 65536
+[2017-05-03  18:30:16] DBUG source/source_update_settings source timeout to 10
+[2017-05-03  18:30:16] DBUG source/source_update_settings fallback_when_full to 0
+[2017-05-03  18:30:16] DBUG connection/connection_complete_source source is ready to start
+[2017-05-03  18:30:16] DBUG fserve/fserve_add_client_callback Adding client to file serving engine
+[2017-05-03  18:30:16] DBUG source/source_init Source creation complete
+[2017-05-03  18:30:16] DBUG auth/queue_auth_client ...refcount on auth_t (default mount) is now 16
+[2017-05-03  18:30:16] INFO auth/queue_auth_client auth on (default mount) has 1 pending
+[2017-05-03  18:30:16] DBUG auth/auth_run_thread 1 client(s) pending on (default mount)
+[2017-05-03  18:30:17] DBUG stats/modify_node_event update global clients (1)
+[2017-05-03  18:30:17] DBUG stats/modify_node_event update global connections (48)
+[2017-05-03  18:30:17] DBUG stats/modify_node_event update global sources (1)
+[2017-05-03  18:30:17] DBUG stats/process_source_event new source stat /stream
+[2017-05-03  18:30:17] DBUG stats/process_source_event new node listenurl (http://localhost:9000/stream)
+[2017-05-03  18:30:17] DBUG stats/process_source_event new node listener_peak (0)
+[2017-05-03  18:30:17] DBUG stats/process_source_event new node public (0)
+[2017-05-03  18:30:17] DBUG stats/process_source_event new node server_name (Unspecified name)
+[2017-05-03  18:30:17] DBUG stats/process_source_event new node server_description (Unspecified description)
+[2017-05-03  18:30:17] DBUG stats/process_source_event new node genre (various)
+[2017-05-03  18:30:17] DBUG stats/process_source_event new node bitrate (44100)
+[2017-05-03  18:30:17] DBUG stats/process_source_event new node server_type (audio/mpeg)
+[2017-05-03  18:30:17] DBUG stats/process_source_event new node authenticator (url)
+[2017-05-03  18:30:17] DBUG stats/process_source_event new node max_listeners (unlimited)
+[2017-05-03  18:30:17] DBUG stats/process_source_event new node source_ip (::1)
+[2017-05-03  18:30:17] DBUG stats/modify_node_event update global source_client_connections (25)
+[2017-05-03  18:30:17] DBUG stats/process_source_event new node listeners (0)
+[2017-05-03  18:30:17] DBUG stats/modify_node_event update "/stream" listenurl (http://localhost:9000/stream)
+[2017-05-03  18:30:17] DBUG stats/modify_node_event update global source_total_connections (25)
+[2017-05-03  18:30:17] DBUG stats/process_source_event new node slow_listeners (0)
+[2017-05-03  18:30:17] DBUG stats/modify_node_event update "/stream" listeners (0)
+[2017-05-03  18:30:17] DBUG stats/modify_node_event update "/stream" listener_peak (0)
+[2017-05-03  18:30:17] DBUG stats/process_source_event new node stream_start (Wed, 03 May 2017 18:30:16 -0400)
+[2017-05-03  18:30:17] DBUG stats/process_source_event new node stream_start_iso8601 (2017-05-03T18:30:16-0400)
+[2017-05-03  18:30:17] INFO source/source_main listener count on /stream now 0
+[2017-05-03  18:30:17] DBUG stats/process_source_event new node total_bytes_read (0)
+[2017-05-03  18:30:17] DBUG stats/process_source_event new node total_bytes_sent (0)
+[2017-05-03  18:30:17] DBUG stats/modify_node_event update "/stream" listeners (0)
+[2017-05-03  18:30:18] WARN auth_url/url_stream_start auth to server http://auth.example.org/stream_start.php failed with Could not resolve host: auth.example.org
+[2017-05-03  18:30:18] DBUG auth/auth_release ...refcount on auth_t (default mount) is now 16
+[2017-05-03  18:30:18] DBUG auth/auth_release ...refcount on auth_t (default mount) is now 15
+[2017-05-03  18:30:21] DBUG stats/modify_node_event update "/stream" total_bytes_read (65536)
+[2017-05-03  18:30:21] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-03  18:30:26] DBUG stats/modify_node_event update "/stream" total_bytes_read (147456)
+[2017-05-03  18:30:26] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-03  18:30:31] DBUG stats/modify_node_event update "/stream" total_bytes_read (229376)
+[2017-05-03  18:30:31] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-03  18:30:36] DBUG stats/modify_node_event update "/stream" total_bytes_read (311296)
+[2017-05-03  18:30:36] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-03  18:30:41] DBUG stats/modify_node_event update "/stream" total_bytes_read (378000)
+[2017-05-03  18:30:41] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-03  18:30:46] DBUG stats/modify_node_event update "/stream" total_bytes_read (459200)
+[2017-05-03  18:30:46] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-03  18:30:51] DBUG stats/modify_node_event update "/stream" total_bytes_read (475136)
+[2017-05-03  18:30:51] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-03  18:30:56] DBUG stats/modify_node_event update "/stream" total_bytes_read (475136)
+[2017-05-03  18:30:56] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-03  18:30:57] DBUG source/get_next_buffer last 1493850646, timeout 10, now 1493850657
+[2017-05-03  18:30:57] WARN source/get_next_buffer Disconnecting source due to socket timeout
+[2017-05-03  18:30:57] INFO source/source_shutdown Source from ::1 at "/stream" exiting
+[2017-05-03  18:30:57] DBUG source/source_clear_source clearing source "/stream"
+[2017-05-03  18:30:57] DBUG source/source_free_source freeing source "/stream"
+[2017-05-03  18:30:57] DBUG stats/process_source_event delete source node /stream
+[2017-05-03  18:30:57] DBUG stats/modify_node_event update global clients (0)
+[2017-05-03  18:30:57] DBUG stats/modify_node_event update global sources (0)
+[2017-05-03  18:30:58] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  19:05:20] INFO sighandler/_sig_hup Caught signal 1, scheduling config re-read...
+[2017-05-03  19:05:21] WARN CONFIG/_parse_root Warning, server version string override detected. This may lead to unexpected client software behavior.
+[2017-05-03  19:05:21] DBUG auth/get_authenticator type is url
+[2017-05-03  19:05:21] INFO auth_url/auth_get_url_auth URL based authentication setup
+[2017-05-03  19:05:21] INFO auth/auth_run_thread Authentication thread started
+[2017-05-03  19:05:21] WARN CONFIG/_parse_root Warning, <hostname> not configured, using default value "localhost". This will cause problems, e.g. with YP directory listings.
+[2017-05-03  19:05:21] WARN CONFIG/_parse_root Warning, <admin> contact not configured, using default value "icemaster@localhost".
+[2017-05-03  19:05:21] DBUG auth/auth_release ...refcount on auth_t (default mount) is now 14
+[2017-05-03  19:05:21] DBUG yp/yp_recheck_config Updating YP configuration
+[2017-05-03  19:05:21] WARN fserve/fserve_recheck_mime_types Cannot open mime types file /etc/mime.types
+[2017-05-03  19:05:21] DBUG stats/modify_node_event update global server_id (icecast 2.3)
+[2017-05-03  19:05:21] DBUG stats/modify_node_event update global host (localhost)
+[2017-05-03  19:05:21] DBUG stats/modify_node_event update global location (earth)
+[2017-05-03  19:05:21] DBUG stats/modify_node_event update global admin (icemaster@localhost)
+[2017-05-03  19:05:22] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  19:07:22] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  19:09:22] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  19:11:24] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  19:13:24] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  19:15:24] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  19:17:25] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  19:19:26] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  19:21:26] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  19:23:27] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  19:25:27] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  19:27:28] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  19:29:28] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  19:31:28] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  19:33:29] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  19:35:30] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  19:37:31] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  19:39:31] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  19:41:32] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  19:43:33] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  19:45:33] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  19:47:34] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  19:49:34] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  19:51:35] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  19:53:36] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  19:55:37] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  19:57:37] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  19:59:38] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  20:01:39] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  20:03:39] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  20:05:39] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  20:07:40] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  20:09:41] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  20:11:42] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  20:13:43] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  20:15:43] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  20:17:43] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  20:19:44] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  20:21:45] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  20:23:45] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  20:25:46] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  20:27:47] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  20:29:48] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  20:31:48] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  20:33:49] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  20:35:50] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  20:37:51] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  20:39:51] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  20:41:52] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  20:43:53] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  20:45:53] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  20:47:54] DBUG slave/_slave_thread checking master stream list
+[2017-05-03  20:49:55] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  08:40:02] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  08:42:02] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  08:44:02] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  08:46:03] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  08:48:03] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  08:50:03] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  08:52:03] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  08:54:04] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  08:56:04] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  08:58:04] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  09:00:05] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  09:02:05] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  09:04:05] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  09:06:06] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  09:08:06] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  09:10:06] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  09:12:06] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  09:14:07] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  09:16:07] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  09:18:07] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  09:20:08] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  09:22:08] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  09:24:09] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  09:26:09] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  09:28:10] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  09:30:10] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  09:32:10] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  09:34:10] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  09:36:11] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  09:38:11] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  09:40:11] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  09:42:12] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  09:44:12] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  09:46:12] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  09:48:12] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  09:50:13] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  09:52:12] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  09:54:12] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  09:56:13] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  09:58:13] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  10:00:13] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  10:02:14] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  10:04:15] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  10:06:16] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  10:08:16] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  10:10:17] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  10:21:28] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  10:23:28] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  10:25:29] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  10:27:29] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  11:22:09] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  11:24:09] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  11:26:09] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  11:28:10] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  11:30:10] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  11:32:10] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  11:34:11] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  11:36:11] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  11:38:11] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  11:40:11] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  11:42:12] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  11:44:12] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  11:46:12] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  11:48:13] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  11:50:13] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  11:52:13] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  11:54:14] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  11:56:14] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  11:58:15] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  12:00:15] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  12:02:15] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  12:04:16] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  12:06:16] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  12:08:16] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  12:10:17] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  12:12:17] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  12:14:17] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  12:16:18] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  12:18:18] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  12:20:18] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  12:22:18] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  12:24:19] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  12:26:19] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  12:28:19] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  12:51:08] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  12:53:08] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  12:54:38] INFO sighandler/_sig_die Caught signal 15, shutting down...
+[2017-05-04  12:54:38] INFO main/main Shutting down
+[2017-05-04  12:54:38] INFO fserve/fserve_shutdown file serving stopped
+[2017-05-04  12:54:38] DBUG slave/slave_shutdown waiting for slave thread
+[2017-05-04  12:54:38] DBUG fserve/fserv_thread_function fserve handler exit
+[2017-05-04  12:54:38] INFO slave/_slave_thread shutting down current relays
+[2017-05-04  12:54:38] INFO slave/_slave_thread Slave thread shutdown complete
+[2017-05-04  12:54:38] INFO auth/auth_shutdown Auth shutdown
+[2017-05-04  12:54:38] DBUG yp/destroy_yp_server Removing YP server entry for http://dir.xiph.org/cgi-bin/yp-cgi
+[2017-05-04  12:54:38] INFO yp/yp_shutdown YP thread down
+[2017-05-04  12:54:39] INFO stats/stats_shutdown stats thread finished
+[2017-05-04  12:54:39] DBUG auth/auth_release ...refcount on auth_t (default mount) is now 0
+[2017-05-04  12:54:39] INFO auth/auth_run_thread Authenication thread shutting down
+[2017-05-04  12:54:39] INFO auth_url/auth_url_clear Doing auth URL cleanup
+[2017-05-04  12:56:09] INFO main/main Icecast 2.4.3 server started
+[2017-05-04  12:56:09] DBUG yp/yp_recheck_config Updating YP configuration
+[2017-05-04  12:56:09] INFO yp/yp_recheck_config Adding new YP server "http://dir.xiph.org/cgi-bin/yp-cgi" (timeout 6s, default interval 30s)
+[2017-05-04  12:56:09] INFO connection/get_ssl_certificate No SSL capability
+[2017-05-04  12:56:09] INFO yp/yp_update_thread YP update thread started
+[2017-05-04  12:56:09] DBUG yp/check_servers Add pending yps http://dir.xiph.org/cgi-bin/yp-cgi
+[2017-05-04  12:56:10] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  12:58:10] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  13:00:12] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  13:02:12] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  13:04:13] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  13:06:13] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  13:08:13] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  13:10:14] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  13:12:14] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  13:13:57] INFO connection/_handle_source_request Source logging in at mountpoint "/stream" from ::1
+[2017-05-04  13:13:57] DBUG connection/connection_complete_source sources count is 0
+[2017-05-04  13:13:57] WARN format/format_get_type Unsupported or legacy stream type: "audio/mpeg". Falling back to generic minimal handler for best effort.
+[2017-05-04  13:13:57] DBUG source/source_apply_mount Applying mount information for "/stream"
+[2017-05-04  13:13:57] DBUG format-mp3/format_mp3_apply_settings sending metadata interval 16000
+[2017-05-04  13:13:57] DBUG format-mp3/format_mp3_apply_settings charset ISO8859-1
+[2017-05-04  13:13:57] WARN source/source_apply_mount Cannot open intro file "./web//stream": No such file or directory
+[2017-05-04  13:13:57] DBUG source/source_update_settings intro file is /stream
+[2017-05-04  13:13:57] DBUG source/source_update_settings public set to 0
+[2017-05-04  13:13:57] DBUG source/source_update_settings max listeners to -1
+[2017-05-04  13:13:57] DBUG source/source_update_settings queue size to 102400
+[2017-05-04  13:13:57] DBUG source/source_update_settings burst size to 65536
+[2017-05-04  13:13:57] DBUG source/source_update_settings source timeout to 10
+[2017-05-04  13:13:57] DBUG source/source_update_settings fallback_when_full to 0
+[2017-05-04  13:13:57] DBUG connection/connection_complete_source source is ready to start
+[2017-05-04  13:13:57] DBUG fserve/fserve_add_client_callback Adding client to file serving engine
+[2017-05-04  13:13:57] DBUG fserve/fserve_add_pending fserve handler waking up
+[2017-05-04  13:13:57] DBUG source/source_init Source creation complete
+[2017-05-04  13:13:57] DBUG auth/queue_auth_client ...refcount on auth_t (default mount) is now 2
+[2017-05-04  13:13:57] INFO auth/queue_auth_client auth on (default mount) has 1 pending
+[2017-05-04  13:13:57] DBUG stats/modify_node_event update global clients (1)
+[2017-05-04  13:13:57] DBUG stats/modify_node_event update global connections (1)
+[2017-05-04  13:13:57] DBUG stats/modify_node_event update global sources (1)
+[2017-05-04  13:13:57] DBUG stats/process_source_event new source stat /stream
+[2017-05-04  13:13:57] DBUG stats/process_source_event new node listenurl (http://localhost:9000/stream)
+[2017-05-04  13:13:57] DBUG stats/process_source_event new node listener_peak (0)
+[2017-05-04  13:13:57] DBUG stats/process_source_event new node public (0)
+[2017-05-04  13:13:57] DBUG stats/process_source_event new node server_name (Unspecified name)
+[2017-05-04  13:13:57] DBUG stats/process_source_event new node server_description (Unspecified description)
+[2017-05-04  13:13:57] DBUG stats/process_source_event new node genre (various)
+[2017-05-04  13:13:57] DBUG stats/process_source_event new node bitrate (44100)
+[2017-05-04  13:13:57] DBUG stats/process_source_event new node server_type (audio/mpeg)
+[2017-05-04  13:13:57] DBUG stats/process_source_event new node authenticator (url)
+[2017-05-04  13:13:57] DBUG stats/process_source_event new node max_listeners (unlimited)
+[2017-05-04  13:13:57] DBUG stats/process_source_event new node source_ip (::1)
+[2017-05-04  13:13:57] DBUG stats/modify_node_event update global source_client_connections (1)
+[2017-05-04  13:13:57] DBUG stats/process_source_event new node listeners (0)
+[2017-05-04  13:13:57] DBUG stats/modify_node_event update "/stream" listenurl (http://localhost:9000/stream)
+[2017-05-04  13:13:57] DBUG stats/modify_node_event update global source_total_connections (1)
+[2017-05-04  13:13:57] DBUG stats/process_source_event new node slow_listeners (0)
+[2017-05-04  13:13:57] DBUG stats/modify_node_event update "/stream" listeners (0)
+[2017-05-04  13:13:57] DBUG auth/auth_run_thread 1 client(s) pending on (default mount)
+[2017-05-04  13:13:57] DBUG stats/modify_node_event update "/stream" listener_peak (0)
+[2017-05-04  13:13:57] DBUG stats/process_source_event new node stream_start (Thu, 04 May 2017 13:13:57 -0400)
+[2017-05-04  13:13:57] DBUG stats/process_source_event new node stream_start_iso8601 (2017-05-04T13:13:57-0400)
+[2017-05-04  13:13:57] WARN auth_url/url_stream_start auth to server http://auth.example.org/stream_start.php failed with Could not resolve host: auth.example.org
+[2017-05-04  13:13:57] DBUG auth/auth_release ...refcount on auth_t (default mount) is now 2
+[2017-05-04  13:13:57] DBUG auth/auth_release ...refcount on auth_t (default mount) is now 1
+[2017-05-04  13:13:57] INFO source/source_main listener count on /stream now 0
+[2017-05-04  13:13:57] DBUG stats/process_source_event new node total_bytes_read (0)
+[2017-05-04  13:13:57] DBUG stats/process_source_event new node total_bytes_sent (0)
+[2017-05-04  13:13:57] DBUG stats/modify_node_event update "/stream" listeners (0)
+[2017-05-04  13:14:02] DBUG stats/modify_node_event update "/stream" total_bytes_read (81920)
+[2017-05-04  13:14:02] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:14:07] DBUG stats/modify_node_event update "/stream" total_bytes_read (163840)
+[2017-05-04  13:14:07] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:14:12] DBUG stats/modify_node_event update "/stream" total_bytes_read (229600)
+[2017-05-04  13:14:12] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:14:14] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  13:14:17] DBUG stats/modify_node_event update "/stream" total_bytes_read (312200)
+[2017-05-04  13:14:17] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:14:22] DBUG stats/modify_node_event update "/stream" total_bytes_read (393216)
+[2017-05-04  13:14:22] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:14:27] DBUG stats/modify_node_event update "/stream" total_bytes_read (475136)
+[2017-05-04  13:14:27] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:14:32] DBUG stats/modify_node_event update "/stream" total_bytes_read (557056)
+[2017-05-04  13:14:32] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:14:37] DBUG stats/modify_node_event update "/stream" total_bytes_read (638976)
+[2017-05-04  13:14:37] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:14:42] DBUG stats/modify_node_event update "/stream" total_bytes_read (720896)
+[2017-05-04  13:14:42] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:14:47] DBUG stats/modify_node_event update "/stream" total_bytes_read (802816)
+[2017-05-04  13:14:47] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:14:48] DBUG client/client_read_bytes reading from connection has failed
+[2017-05-04  13:14:48] INFO source/get_next_buffer End of Stream /stream
+[2017-05-04  13:14:48] INFO source/source_shutdown Source from ::1 at "/stream" exiting
+[2017-05-04  13:14:48] DBUG source/source_clear_source clearing source "/stream"
+[2017-05-04  13:14:48] DBUG source/source_free_source freeing source "/stream"
+[2017-05-04  13:14:48] DBUG stats/process_source_event delete source node /stream
+[2017-05-04  13:14:48] DBUG stats/modify_node_event update global clients (0)
+[2017-05-04  13:14:48] DBUG stats/modify_node_event update global sources (0)
+[2017-05-04  13:14:48] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  13:15:00] INFO connection/_handle_source_request Source logging in at mountpoint "/stream" from ::1
+[2017-05-04  13:15:00] DBUG connection/connection_complete_source sources count is 0
+[2017-05-04  13:15:00] WARN format/format_get_type Unsupported or legacy stream type: "audio/mpeg". Falling back to generic minimal handler for best effort.
+[2017-05-04  13:15:00] DBUG source/source_apply_mount Applying mount information for "/stream"
+[2017-05-04  13:15:00] DBUG format-mp3/format_mp3_apply_settings sending metadata interval 16000
+[2017-05-04  13:15:00] DBUG format-mp3/format_mp3_apply_settings charset ISO8859-1
+[2017-05-04  13:15:00] WARN source/source_apply_mount Cannot open intro file "./web//stream": No such file or directory
+[2017-05-04  13:15:00] DBUG source/source_update_settings intro file is /stream
+[2017-05-04  13:15:00] DBUG source/source_update_settings public set to 0
+[2017-05-04  13:15:00] DBUG source/source_update_settings max listeners to -1
+[2017-05-04  13:15:00] DBUG source/source_update_settings queue size to 102400
+[2017-05-04  13:15:00] DBUG source/source_update_settings burst size to 65536
+[2017-05-04  13:15:00] DBUG source/source_update_settings source timeout to 10
+[2017-05-04  13:15:00] DBUG source/source_update_settings fallback_when_full to 0
+[2017-05-04  13:15:00] DBUG connection/connection_complete_source source is ready to start
+[2017-05-04  13:15:00] DBUG fserve/fserve_add_client_callback Adding client to file serving engine
+[2017-05-04  13:15:00] DBUG stats/modify_node_event update global clients (1)
+[2017-05-04  13:15:00] DBUG stats/modify_node_event update global connections (2)
+[2017-05-04  13:15:00] DBUG stats/modify_node_event update global sources (1)
+[2017-05-04  13:15:00] DBUG stats/process_source_event new source stat /stream
+[2017-05-04  13:15:00] DBUG stats/process_source_event new node listenurl (http://localhost:9000/stream)
+[2017-05-04  13:15:00] DBUG stats/process_source_event new node listener_peak (0)
+[2017-05-04  13:15:00] DBUG stats/process_source_event new node public (0)
+[2017-05-04  13:15:00] DBUG stats/process_source_event new node server_name (Unspecified name)
+[2017-05-04  13:15:00] DBUG stats/process_source_event new node server_description (Unspecified description)
+[2017-05-04  13:15:00] DBUG stats/process_source_event new node genre (various)
+[2017-05-04  13:15:00] DBUG stats/process_source_event new node bitrate (44100)
+[2017-05-04  13:15:00] DBUG stats/process_source_event new node server_type (audio/mpeg)
+[2017-05-04  13:15:00] DBUG stats/process_source_event new node authenticator (url)
+[2017-05-04  13:15:00] DBUG stats/process_source_event new node max_listeners (unlimited)
+[2017-05-04  13:15:00] DBUG source/source_init Source creation complete
+[2017-05-04  13:15:00] DBUG auth/queue_auth_client ...refcount on auth_t (default mount) is now 2
+[2017-05-04  13:15:00] INFO auth/queue_auth_client auth on (default mount) has 1 pending
+[2017-05-04  13:15:00] DBUG auth/auth_run_thread 1 client(s) pending on (default mount)
+[2017-05-04  13:15:00] WARN auth_url/url_stream_start auth to server http://auth.example.org/stream_start.php failed with Could not resolve host: auth.example.org
+[2017-05-04  13:15:00] DBUG auth/auth_release ...refcount on auth_t (default mount) is now 2
+[2017-05-04  13:15:00] DBUG auth/auth_release ...refcount on auth_t (default mount) is now 1
+[2017-05-04  13:15:01] DBUG stats/process_source_event new node source_ip (::1)
+[2017-05-04  13:15:01] DBUG stats/modify_node_event update global source_client_connections (2)
+[2017-05-04  13:15:01] DBUG stats/process_source_event new node listeners (0)
+[2017-05-04  13:15:01] DBUG stats/modify_node_event update "/stream" listenurl (http://localhost:9000/stream)
+[2017-05-04  13:15:01] DBUG stats/modify_node_event update global source_total_connections (2)
+[2017-05-04  13:15:01] DBUG stats/process_source_event new node slow_listeners (0)
+[2017-05-04  13:15:01] DBUG stats/modify_node_event update "/stream" listeners (0)
+[2017-05-04  13:15:01] DBUG stats/modify_node_event update "/stream" listener_peak (0)
+[2017-05-04  13:15:01] DBUG stats/process_source_event new node stream_start (Thu, 04 May 2017 13:15:00 -0400)
+[2017-05-04  13:15:01] DBUG stats/process_source_event new node stream_start_iso8601 (2017-05-04T13:15:00-0400)
+[2017-05-04  13:15:01] INFO source/source_main listener count on /stream now 0
+[2017-05-04  13:15:01] DBUG stats/process_source_event new node total_bytes_read (0)
+[2017-05-04  13:15:01] DBUG stats/process_source_event new node total_bytes_sent (0)
+[2017-05-04  13:15:01] DBUG stats/modify_node_event update "/stream" listeners (0)
+[2017-05-04  13:15:05] DBUG stats/modify_node_event update "/stream" total_bytes_read (65536)
+[2017-05-04  13:15:05] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:15:10] DBUG stats/modify_node_event update "/stream" total_bytes_read (147456)
+[2017-05-04  13:15:10] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:15:14] DBUG client/client_read_bytes reading from connection has failed
+[2017-05-04  13:15:14] INFO source/get_next_buffer End of Stream /stream
+[2017-05-04  13:15:14] INFO source/source_shutdown Source from ::1 at "/stream" exiting
+[2017-05-04  13:15:14] DBUG source/source_clear_source clearing source "/stream"
+[2017-05-04  13:15:14] DBUG source/source_free_source freeing source "/stream"
+[2017-05-04  13:15:14] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  13:15:14] DBUG stats/stats_clear_virtual_mounts releasing /stream stats
+[2017-05-04  13:15:14] DBUG stats/modify_node_event update global clients (0)
+[2017-05-04  13:15:14] DBUG stats/modify_node_event update global sources (0)
+[2017-05-04  13:15:23] INFO connection/_handle_source_request Source logging in at mountpoint "/stream" from ::1
+[2017-05-04  13:15:23] DBUG connection/connection_complete_source sources count is 0
+[2017-05-04  13:15:23] WARN format/format_get_type Unsupported or legacy stream type: "audio/mpeg". Falling back to generic minimal handler for best effort.
+[2017-05-04  13:15:23] DBUG source/source_apply_mount Applying mount information for "/stream"
+[2017-05-04  13:15:23] DBUG format-mp3/format_mp3_apply_settings sending metadata interval 16000
+[2017-05-04  13:15:23] DBUG format-mp3/format_mp3_apply_settings charset ISO8859-1
+[2017-05-04  13:15:23] WARN source/source_apply_mount Cannot open intro file "./web//stream": No such file or directory
+[2017-05-04  13:15:23] DBUG source/source_update_settings intro file is /stream
+[2017-05-04  13:15:23] DBUG source/source_update_settings public set to 0
+[2017-05-04  13:15:23] DBUG source/source_update_settings max listeners to -1
+[2017-05-04  13:15:23] DBUG source/source_update_settings queue size to 102400
+[2017-05-04  13:15:23] DBUG source/source_update_settings burst size to 65536
+[2017-05-04  13:15:23] DBUG source/source_update_settings source timeout to 10
+[2017-05-04  13:15:23] DBUG source/source_update_settings fallback_when_full to 0
+[2017-05-04  13:15:23] DBUG connection/connection_complete_source source is ready to start
+[2017-05-04  13:15:23] DBUG fserve/fserve_add_client_callback Adding client to file serving engine
+[2017-05-04  13:15:23] DBUG source/source_init Source creation complete
+[2017-05-04  13:15:23] DBUG auth/queue_auth_client ...refcount on auth_t (default mount) is now 2
+[2017-05-04  13:15:23] INFO auth/queue_auth_client auth on (default mount) has 1 pending
+[2017-05-04  13:15:23] DBUG stats/modify_node_event update global clients (1)
+[2017-05-04  13:15:23] DBUG stats/modify_node_event update global connections (3)
+[2017-05-04  13:15:23] DBUG stats/modify_node_event update global sources (1)
+[2017-05-04  13:15:23] DBUG stats/process_source_event new source stat /stream
+[2017-05-04  13:15:23] DBUG stats/process_source_event new node listenurl (http://localhost:9000/stream)
+[2017-05-04  13:15:23] DBUG stats/process_source_event new node listener_peak (0)
+[2017-05-04  13:15:23] DBUG stats/process_source_event new node public (0)
+[2017-05-04  13:15:23] DBUG stats/process_source_event new node server_name (Unspecified name)
+[2017-05-04  13:15:23] DBUG stats/process_source_event new node server_description (Unspecified description)
+[2017-05-04  13:15:23] DBUG stats/process_source_event new node genre (various)
+[2017-05-04  13:15:23] DBUG stats/process_source_event new node bitrate (44100)
+[2017-05-04  13:15:23] DBUG stats/process_source_event new node server_type (audio/mpeg)
+[2017-05-04  13:15:23] DBUG stats/process_source_event new node authenticator (url)
+[2017-05-04  13:15:23] DBUG stats/process_source_event new node max_listeners (unlimited)
+[2017-05-04  13:15:23] DBUG stats/process_source_event new node source_ip (::1)
+[2017-05-04  13:15:23] DBUG stats/modify_node_event update global source_client_connections (3)
+[2017-05-04  13:15:23] DBUG stats/process_source_event new node listeners (0)
+[2017-05-04  13:15:23] DBUG stats/modify_node_event update "/stream" listenurl (http://localhost:9000/stream)
+[2017-05-04  13:15:23] DBUG stats/modify_node_event update global source_total_connections (3)
+[2017-05-04  13:15:23] DBUG stats/process_source_event new node slow_listeners (0)
+[2017-05-04  13:15:23] DBUG stats/modify_node_event update "/stream" listeners (0)
+[2017-05-04  13:15:23] DBUG stats/modify_node_event update "/stream" listener_peak (0)
+[2017-05-04  13:15:23] DBUG stats/process_source_event new node stream_start (Thu, 04 May 2017 13:15:23 -0400)
+[2017-05-04  13:15:23] DBUG stats/process_source_event new node stream_start_iso8601 (2017-05-04T13:15:23-0400)
+[2017-05-04  13:15:23] DBUG auth/auth_run_thread 1 client(s) pending on (default mount)
+[2017-05-04  13:15:23] WARN auth_url/url_stream_start auth to server http://auth.example.org/stream_start.php failed with Could not resolve host: auth.example.org
+[2017-05-04  13:15:23] DBUG auth/auth_release ...refcount on auth_t (default mount) is now 2
+[2017-05-04  13:15:23] DBUG auth/auth_release ...refcount on auth_t (default mount) is now 1
+[2017-05-04  13:15:23] INFO source/source_main listener count on /stream now 0
+[2017-05-04  13:15:24] DBUG stats/process_source_event new node total_bytes_read (0)
+[2017-05-04  13:15:24] DBUG stats/process_source_event new node total_bytes_sent (0)
+[2017-05-04  13:15:24] DBUG stats/modify_node_event update "/stream" listeners (0)
+[2017-05-04  13:15:28] DBUG stats/modify_node_event update "/stream" total_bytes_read (65536)
+[2017-05-04  13:15:28] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:15:33] DBUG stats/modify_node_event update "/stream" total_bytes_read (147456)
+[2017-05-04  13:15:33] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:15:38] DBUG stats/modify_node_event update "/stream" total_bytes_read (229376)
+[2017-05-04  13:15:38] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:15:43] DBUG stats/modify_node_event update "/stream" total_bytes_read (311296)
+[2017-05-04  13:15:43] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:15:45] DBUG client/client_read_bytes reading from connection has failed
+[2017-05-04  13:15:45] INFO source/get_next_buffer End of Stream /stream
+[2017-05-04  13:15:45] INFO source/source_shutdown Source from ::1 at "/stream" exiting
+[2017-05-04  13:15:45] DBUG source/source_clear_source clearing source "/stream"
+[2017-05-04  13:15:45] DBUG source/source_free_source freeing source "/stream"
+[2017-05-04  13:15:45] DBUG stats/process_source_event delete source node /stream
+[2017-05-04  13:15:45] DBUG stats/modify_node_event update global clients (0)
+[2017-05-04  13:15:45] DBUG stats/modify_node_event update global sources (0)
+[2017-05-04  13:15:46] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  13:17:13] INFO connection/_handle_source_request Source logging in at mountpoint "/stream" from ::1
+[2017-05-04  13:17:13] DBUG connection/connection_complete_source sources count is 0
+[2017-05-04  13:17:13] WARN format/format_get_type Unsupported or legacy stream type: "audio/mpeg". Falling back to generic minimal handler for best effort.
+[2017-05-04  13:17:13] DBUG source/source_apply_mount Applying mount information for "/stream"
+[2017-05-04  13:17:13] DBUG format-mp3/format_mp3_apply_settings sending metadata interval 16000
+[2017-05-04  13:17:13] DBUG format-mp3/format_mp3_apply_settings charset ISO8859-1
+[2017-05-04  13:17:13] WARN source/source_apply_mount Cannot open intro file "./web//stream": No such file or directory
+[2017-05-04  13:17:13] DBUG source/source_update_settings intro file is /stream
+[2017-05-04  13:17:13] DBUG source/source_update_settings public set to 0
+[2017-05-04  13:17:13] DBUG source/source_update_settings max listeners to -1
+[2017-05-04  13:17:13] DBUG source/source_update_settings queue size to 102400
+[2017-05-04  13:17:13] DBUG source/source_update_settings burst size to 65536
+[2017-05-04  13:17:13] DBUG source/source_update_settings source timeout to 10
+[2017-05-04  13:17:13] DBUG source/source_update_settings fallback_when_full to 0
+[2017-05-04  13:17:13] DBUG connection/connection_complete_source source is ready to start
+[2017-05-04  13:17:13] DBUG fserve/fserve_add_client_callback Adding client to file serving engine
+[2017-05-04  13:17:13] DBUG source/source_init Source creation complete
+[2017-05-04  13:17:13] DBUG auth/queue_auth_client ...refcount on auth_t (default mount) is now 2
+[2017-05-04  13:17:13] INFO auth/queue_auth_client auth on (default mount) has 1 pending
+[2017-05-04  13:17:13] DBUG auth/auth_run_thread 1 client(s) pending on (default mount)
+[2017-05-04  13:17:13] WARN auth_url/url_stream_start auth to server http://auth.example.org/stream_start.php failed with Could not resolve host: auth.example.org
+[2017-05-04  13:17:13] DBUG auth/auth_release ...refcount on auth_t (default mount) is now 2
+[2017-05-04  13:17:13] DBUG auth/auth_release ...refcount on auth_t (default mount) is now 1
+[2017-05-04  13:17:13] DBUG stats/modify_node_event update global clients (1)
+[2017-05-04  13:17:13] DBUG stats/modify_node_event update global connections (4)
+[2017-05-04  13:17:13] DBUG stats/modify_node_event update global sources (1)
+[2017-05-04  13:17:13] DBUG stats/process_source_event new source stat /stream
+[2017-05-04  13:17:13] DBUG stats/process_source_event new node listenurl (http://localhost:9000/stream)
+[2017-05-04  13:17:13] DBUG stats/process_source_event new node listener_peak (0)
+[2017-05-04  13:17:13] DBUG stats/process_source_event new node public (0)
+[2017-05-04  13:17:13] DBUG stats/process_source_event new node server_name (Unspecified name)
+[2017-05-04  13:17:13] DBUG stats/process_source_event new node server_description (Unspecified description)
+[2017-05-04  13:17:13] DBUG stats/process_source_event new node genre (various)
+[2017-05-04  13:17:13] DBUG stats/process_source_event new node bitrate (44100)
+[2017-05-04  13:17:13] DBUG stats/process_source_event new node server_type (audio/mpeg)
+[2017-05-04  13:17:13] DBUG stats/process_source_event new node authenticator (url)
+[2017-05-04  13:17:13] DBUG stats/process_source_event new node max_listeners (unlimited)
+[2017-05-04  13:17:13] DBUG stats/process_source_event new node source_ip (::1)
+[2017-05-04  13:17:13] DBUG stats/modify_node_event update global source_client_connections (4)
+[2017-05-04  13:17:13] DBUG stats/process_source_event new node listeners (0)
+[2017-05-04  13:17:13] DBUG stats/modify_node_event update "/stream" listenurl (http://localhost:9000/stream)
+[2017-05-04  13:17:13] DBUG stats/modify_node_event update global source_total_connections (4)
+[2017-05-04  13:17:13] DBUG stats/process_source_event new node slow_listeners (0)
+[2017-05-04  13:17:13] DBUG stats/modify_node_event update "/stream" listeners (0)
+[2017-05-04  13:17:13] DBUG stats/modify_node_event update "/stream" listener_peak (0)
+[2017-05-04  13:17:13] DBUG stats/process_source_event new node stream_start (Thu, 04 May 2017 13:17:13 -0400)
+[2017-05-04  13:17:13] DBUG stats/process_source_event new node stream_start_iso8601 (2017-05-04T13:17:13-0400)
+[2017-05-04  13:17:13] INFO source/source_main listener count on /stream now 0
+[2017-05-04  13:17:14] DBUG stats/process_source_event new node total_bytes_read (0)
+[2017-05-04  13:17:14] DBUG stats/process_source_event new node total_bytes_sent (0)
+[2017-05-04  13:17:14] DBUG stats/modify_node_event update "/stream" listeners (0)
+[2017-05-04  13:17:18] DBUG stats/modify_node_event update "/stream" total_bytes_read (65536)
+[2017-05-04  13:17:18] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:17:23] DBUG stats/modify_node_event update "/stream" total_bytes_read (147456)
+[2017-05-04  13:17:23] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:17:28] DBUG stats/modify_node_event update "/stream" total_bytes_read (229376)
+[2017-05-04  13:17:28] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:17:33] DBUG stats/modify_node_event update "/stream" total_bytes_read (311296)
+[2017-05-04  13:17:33] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:17:38] DBUG stats/modify_node_event update "/stream" total_bytes_read (393216)
+[2017-05-04  13:17:38] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:17:43] DBUG stats/modify_node_event update "/stream" total_bytes_read (459200)
+[2017-05-04  13:17:43] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:17:46] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  13:17:48] DBUG stats/modify_node_event update "/stream" total_bytes_read (541800)
+[2017-05-04  13:17:48] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:17:49] DBUG client/client_read_bytes reading from connection has failed
+[2017-05-04  13:17:49] INFO source/get_next_buffer End of Stream /stream
+[2017-05-04  13:17:49] INFO source/source_shutdown Source from ::1 at "/stream" exiting
+[2017-05-04  13:17:49] DBUG source/source_clear_source clearing source "/stream"
+[2017-05-04  13:17:49] DBUG source/source_free_source freeing source "/stream"
+[2017-05-04  13:17:49] DBUG stats/process_source_event delete source node /stream
+[2017-05-04  13:17:49] DBUG stats/modify_node_event update global clients (0)
+[2017-05-04  13:17:49] DBUG stats/modify_node_event update global sources (0)
+[2017-05-04  13:17:49] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  13:18:59] INFO connection/_handle_source_request Source logging in at mountpoint "/stream" from ::1
+[2017-05-04  13:18:59] DBUG connection/connection_complete_source sources count is 0
+[2017-05-04  13:18:59] WARN format/format_get_type Unsupported or legacy stream type: "audio/mpeg". Falling back to generic minimal handler for best effort.
+[2017-05-04  13:18:59] DBUG source/source_apply_mount Applying mount information for "/stream"
+[2017-05-04  13:18:59] DBUG format-mp3/format_mp3_apply_settings sending metadata interval 16000
+[2017-05-04  13:18:59] DBUG format-mp3/format_mp3_apply_settings charset ISO8859-1
+[2017-05-04  13:18:59] WARN source/source_apply_mount Cannot open intro file "./web//stream": No such file or directory
+[2017-05-04  13:18:59] DBUG source/source_update_settings intro file is /stream
+[2017-05-04  13:18:59] DBUG source/source_update_settings public set to 0
+[2017-05-04  13:18:59] DBUG source/source_update_settings max listeners to -1
+[2017-05-04  13:18:59] DBUG source/source_update_settings queue size to 102400
+[2017-05-04  13:18:59] DBUG source/source_update_settings burst size to 65536
+[2017-05-04  13:18:59] DBUG source/source_update_settings source timeout to 10
+[2017-05-04  13:18:59] DBUG source/source_update_settings fallback_when_full to 0
+[2017-05-04  13:18:59] DBUG connection/connection_complete_source source is ready to start
+[2017-05-04  13:18:59] DBUG fserve/fserve_add_client_callback Adding client to file serving engine
+[2017-05-04  13:18:59] DBUG source/source_init Source creation complete
+[2017-05-04  13:18:59] DBUG auth/queue_auth_client ...refcount on auth_t (default mount) is now 2
+[2017-05-04  13:18:59] INFO auth/queue_auth_client auth on (default mount) has 1 pending
+[2017-05-04  13:18:59] DBUG auth/auth_run_thread 1 client(s) pending on (default mount)
+[2017-05-04  13:18:59] WARN auth_url/url_stream_start auth to server http://auth.example.org/stream_start.php failed with Could not resolve host: auth.example.org
+[2017-05-04  13:18:59] DBUG auth/auth_release ...refcount on auth_t (default mount) is now 2
+[2017-05-04  13:18:59] DBUG auth/auth_release ...refcount on auth_t (default mount) is now 1
+[2017-05-04  13:18:59] DBUG stats/modify_node_event update global clients (1)
+[2017-05-04  13:18:59] DBUG stats/modify_node_event update global connections (5)
+[2017-05-04  13:18:59] DBUG stats/modify_node_event update global sources (1)
+[2017-05-04  13:18:59] DBUG stats/process_source_event new source stat /stream
+[2017-05-04  13:18:59] DBUG stats/process_source_event new node listenurl (http://localhost:9000/stream)
+[2017-05-04  13:18:59] DBUG stats/process_source_event new node listener_peak (0)
+[2017-05-04  13:18:59] DBUG stats/process_source_event new node public (0)
+[2017-05-04  13:18:59] DBUG stats/process_source_event new node server_name (Unspecified name)
+[2017-05-04  13:18:59] DBUG stats/process_source_event new node server_description (Unspecified description)
+[2017-05-04  13:18:59] DBUG stats/process_source_event new node genre (various)
+[2017-05-04  13:18:59] DBUG stats/process_source_event new node bitrate (44100)
+[2017-05-04  13:18:59] DBUG stats/process_source_event new node server_type (audio/mpeg)
+[2017-05-04  13:18:59] DBUG stats/process_source_event new node authenticator (url)
+[2017-05-04  13:18:59] DBUG stats/process_source_event new node max_listeners (unlimited)
+[2017-05-04  13:18:59] DBUG stats/process_source_event new node source_ip (::1)
+[2017-05-04  13:18:59] DBUG stats/modify_node_event update global source_client_connections (5)
+[2017-05-04  13:18:59] DBUG stats/process_source_event new node listeners (0)
+[2017-05-04  13:18:59] DBUG stats/modify_node_event update "/stream" listenurl (http://localhost:9000/stream)
+[2017-05-04  13:18:59] DBUG stats/modify_node_event update global source_total_connections (5)
+[2017-05-04  13:18:59] DBUG stats/process_source_event new node slow_listeners (0)
+[2017-05-04  13:18:59] DBUG stats/modify_node_event update "/stream" listeners (0)
+[2017-05-04  13:18:59] DBUG stats/modify_node_event update "/stream" listener_peak (0)
+[2017-05-04  13:18:59] DBUG stats/process_source_event new node stream_start (Thu, 04 May 2017 13:18:59 -0400)
+[2017-05-04  13:18:59] DBUG stats/process_source_event new node stream_start_iso8601 (2017-05-04T13:18:59-0400)
+[2017-05-04  13:18:59] INFO source/source_main listener count on /stream now 0
+[2017-05-04  13:18:59] DBUG stats/process_source_event new node total_bytes_read (0)
+[2017-05-04  13:18:59] DBUG stats/process_source_event new node total_bytes_sent (0)
+[2017-05-04  13:18:59] DBUG stats/modify_node_event update "/stream" listeners (0)
+[2017-05-04  13:19:04] DBUG stats/modify_node_event update "/stream" total_bytes_read (81920)
+[2017-05-04  13:19:04] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:19:09] DBUG stats/modify_node_event update "/stream" total_bytes_read (148400)
+[2017-05-04  13:19:09] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:19:14] DBUG stats/modify_node_event update "/stream" total_bytes_read (229376)
+[2017-05-04  13:19:14] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:19:19] DBUG stats/modify_node_event update "/stream" total_bytes_read (311296)
+[2017-05-04  13:19:19] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:19:24] DBUG stats/modify_node_event update "/stream" total_bytes_read (393216)
+[2017-05-04  13:19:24] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:19:29] DBUG stats/modify_node_event update "/stream" total_bytes_read (475136)
+[2017-05-04  13:19:29] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:19:34] DBUG stats/modify_node_event update "/stream" total_bytes_read (557056)
+[2017-05-04  13:19:34] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:19:39] DBUG stats/modify_node_event update "/stream" total_bytes_read (638976)
+[2017-05-04  13:19:39] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:19:44] DBUG stats/modify_node_event update "/stream" total_bytes_read (720896)
+[2017-05-04  13:19:44] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:19:49] DBUG stats/modify_node_event update "/stream" total_bytes_read (786800)
+[2017-05-04  13:19:49] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:19:49] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  13:19:54] DBUG stats/modify_node_event update "/stream" total_bytes_read (869400)
+[2017-05-04  13:19:54] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:19:59] DBUG stats/modify_node_event update "/stream" total_bytes_read (950272)
+[2017-05-04  13:19:59] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:20:04] DBUG stats/modify_node_event update "/stream" total_bytes_read (1032192)
+[2017-05-04  13:20:04] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:20:09] DBUG stats/modify_node_event update "/stream" total_bytes_read (1114112)
+[2017-05-04  13:20:09] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:20:14] DBUG stats/modify_node_event update "/stream" total_bytes_read (1196032)
+[2017-05-04  13:20:14] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:20:19] DBUG stats/modify_node_event update "/stream" total_bytes_read (1277952)
+[2017-05-04  13:20:19] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:20:24] DBUG stats/modify_node_event update "/stream" total_bytes_read (1359872)
+[2017-05-04  13:20:24] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:20:29] DBUG stats/modify_node_event update "/stream" total_bytes_read (1441792)
+[2017-05-04  13:20:29] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:20:30] DBUG client/client_read_bytes reading from connection has failed
+[2017-05-04  13:20:30] INFO source/get_next_buffer End of Stream /stream
+[2017-05-04  13:20:30] INFO source/source_shutdown Source from ::1 at "/stream" exiting
+[2017-05-04  13:20:30] DBUG source/source_clear_source clearing source "/stream"
+[2017-05-04  13:20:30] DBUG source/source_free_source freeing source "/stream"
+[2017-05-04  13:20:30] DBUG stats/process_source_event delete source node /stream
+[2017-05-04  13:20:30] DBUG stats/modify_node_event update global clients (0)
+[2017-05-04  13:20:30] DBUG stats/modify_node_event update global sources (0)
+[2017-05-04  13:20:30] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  13:20:43] INFO connection/_handle_source_request Source logging in at mountpoint "/stream" from ::1
+[2017-05-04  13:20:43] DBUG connection/connection_complete_source sources count is 0
+[2017-05-04  13:20:43] WARN format/format_get_type Unsupported or legacy stream type: "audio/mpeg". Falling back to generic minimal handler for best effort.
+[2017-05-04  13:20:43] DBUG source/source_apply_mount Applying mount information for "/stream"
+[2017-05-04  13:20:43] DBUG format-mp3/format_mp3_apply_settings sending metadata interval 16000
+[2017-05-04  13:20:43] DBUG format-mp3/format_mp3_apply_settings charset ISO8859-1
+[2017-05-04  13:20:43] WARN source/source_apply_mount Cannot open intro file "./web//stream": No such file or directory
+[2017-05-04  13:20:43] DBUG source/source_update_settings intro file is /stream
+[2017-05-04  13:20:43] DBUG source/source_update_settings public set to 0
+[2017-05-04  13:20:43] DBUG source/source_update_settings max listeners to -1
+[2017-05-04  13:20:43] DBUG source/source_update_settings queue size to 102400
+[2017-05-04  13:20:43] DBUG source/source_update_settings burst size to 65536
+[2017-05-04  13:20:43] DBUG source/source_update_settings source timeout to 10
+[2017-05-04  13:20:43] DBUG source/source_update_settings fallback_when_full to 0
+[2017-05-04  13:20:43] DBUG connection/connection_complete_source source is ready to start
+[2017-05-04  13:20:43] DBUG fserve/fserve_add_client_callback Adding client to file serving engine
+[2017-05-04  13:20:43] DBUG source/source_init Source creation complete
+[2017-05-04  13:20:43] DBUG auth/queue_auth_client ...refcount on auth_t (default mount) is now 2
+[2017-05-04  13:20:43] INFO auth/queue_auth_client auth on (default mount) has 1 pending
+[2017-05-04  13:20:43] DBUG auth/auth_run_thread 1 client(s) pending on (default mount)
+[2017-05-04  13:20:43] WARN auth_url/url_stream_start auth to server http://auth.example.org/stream_start.php failed with Could not resolve host: auth.example.org
+[2017-05-04  13:20:43] DBUG auth/auth_release ...refcount on auth_t (default mount) is now 2
+[2017-05-04  13:20:43] DBUG auth/auth_release ...refcount on auth_t (default mount) is now 1
+[2017-05-04  13:20:43] DBUG stats/modify_node_event update global clients (1)
+[2017-05-04  13:20:43] DBUG stats/modify_node_event update global connections (6)
+[2017-05-04  13:20:43] DBUG stats/modify_node_event update global sources (1)
+[2017-05-04  13:20:43] DBUG stats/process_source_event new source stat /stream
+[2017-05-04  13:20:43] DBUG stats/process_source_event new node listenurl (http://localhost:9000/stream)
+[2017-05-04  13:20:43] DBUG stats/process_source_event new node listener_peak (0)
+[2017-05-04  13:20:43] DBUG stats/process_source_event new node public (0)
+[2017-05-04  13:20:43] DBUG stats/process_source_event new node server_name (Unspecified name)
+[2017-05-04  13:20:43] DBUG stats/process_source_event new node server_description (Unspecified description)
+[2017-05-04  13:20:43] DBUG stats/process_source_event new node genre (various)
+[2017-05-04  13:20:43] DBUG stats/process_source_event new node bitrate (44100)
+[2017-05-04  13:20:43] DBUG stats/process_source_event new node server_type (audio/mpeg)
+[2017-05-04  13:20:43] DBUG stats/process_source_event new node authenticator (url)
+[2017-05-04  13:20:43] DBUG stats/process_source_event new node max_listeners (unlimited)
+[2017-05-04  13:20:43] DBUG stats/process_source_event new node source_ip (::1)
+[2017-05-04  13:20:43] DBUG stats/modify_node_event update global source_client_connections (6)
+[2017-05-04  13:20:43] DBUG stats/process_source_event new node listeners (0)
+[2017-05-04  13:20:43] DBUG stats/modify_node_event update "/stream" listenurl (http://localhost:9000/stream)
+[2017-05-04  13:20:43] DBUG stats/modify_node_event update global source_total_connections (6)
+[2017-05-04  13:20:43] DBUG stats/process_source_event new node slow_listeners (0)
+[2017-05-04  13:20:43] DBUG stats/modify_node_event update "/stream" listeners (0)
+[2017-05-04  13:20:43] DBUG stats/modify_node_event update "/stream" listener_peak (0)
+[2017-05-04  13:20:43] DBUG stats/process_source_event new node stream_start (Thu, 04 May 2017 13:20:43 -0400)
+[2017-05-04  13:20:43] DBUG stats/process_source_event new node stream_start_iso8601 (2017-05-04T13:20:43-0400)
+[2017-05-04  13:20:43] INFO source/source_main listener count on /stream now 0
+[2017-05-04  13:20:44] DBUG stats/process_source_event new node total_bytes_read (0)
+[2017-05-04  13:20:44] DBUG stats/process_source_event new node total_bytes_sent (0)
+[2017-05-04  13:20:44] DBUG stats/modify_node_event update "/stream" listeners (0)
+[2017-05-04  13:20:48] DBUG stats/modify_node_event update "/stream" total_bytes_read (50400)
+[2017-05-04  13:20:48] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:20:53] DBUG stats/modify_node_event update "/stream" total_bytes_read (131072)
+[2017-05-04  13:20:53] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:20:58] DBUG stats/modify_node_event update "/stream" total_bytes_read (212992)
+[2017-05-04  13:20:58] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:21:03] DBUG stats/modify_node_event update "/stream" total_bytes_read (294912)
+[2017-05-04  13:21:03] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:21:08] DBUG stats/modify_node_event update "/stream" total_bytes_read (376832)
+[2017-05-04  13:21:08] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:21:13] DBUG stats/modify_node_event update "/stream" total_bytes_read (458752)
+[2017-05-04  13:21:13] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:21:18] DBUG stats/modify_node_event update "/stream" total_bytes_read (540672)
+[2017-05-04  13:21:18] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:21:23] DBUG stats/modify_node_event update "/stream" total_bytes_read (607600)
+[2017-05-04  13:21:23] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:21:28] DBUG stats/modify_node_event update "/stream" total_bytes_read (688800)
+[2017-05-04  13:21:28] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:21:33] DBUG stats/modify_node_event update "/stream" total_bytes_read (770048)
+[2017-05-04  13:21:33] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:21:38] DBUG stats/modify_node_event update "/stream" total_bytes_read (851968)
+[2017-05-04  13:21:38] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:21:43] DBUG stats/modify_node_event update "/stream" total_bytes_read (933888)
+[2017-05-04  13:21:43] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:21:48] DBUG stats/modify_node_event update "/stream" total_bytes_read (1015808)
+[2017-05-04  13:21:48] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:21:53] DBUG stats/modify_node_event update "/stream" total_bytes_read (1097728)
+[2017-05-04  13:21:53] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:21:58] DBUG stats/modify_node_event update "/stream" total_bytes_read (1179648)
+[2017-05-04  13:21:58] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:22:03] DBUG stats/modify_node_event update "/stream" total_bytes_read (1261568)
+[2017-05-04  13:22:03] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:22:08] DBUG stats/modify_node_event update "/stream" total_bytes_read (1327104)
+[2017-05-04  13:22:08] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:22:13] DBUG stats/modify_node_event update "/stream" total_bytes_read (1409800)
+[2017-05-04  13:22:13] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:22:18] DBUG stats/modify_node_event update "/stream" total_bytes_read (1490944)
+[2017-05-04  13:22:18] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:22:23] DBUG stats/modify_node_event update "/stream" total_bytes_read (1572864)
+[2017-05-04  13:22:23] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:22:28] DBUG stats/modify_node_event update "/stream" total_bytes_read (1654784)
+[2017-05-04  13:22:28] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:22:31] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  13:22:33] DBUG stats/modify_node_event update "/stream" total_bytes_read (1736704)
+[2017-05-04  13:22:33] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:22:38] DBUG stats/modify_node_event update "/stream" total_bytes_read (1818624)
+[2017-05-04  13:22:38] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:22:43] DBUG stats/modify_node_event update "/stream" total_bytes_read (1900544)
+[2017-05-04  13:22:43] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:22:48] DBUG stats/modify_node_event update "/stream" total_bytes_read (1966080)
+[2017-05-04  13:22:48] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:22:53] DBUG stats/modify_node_event update "/stream" total_bytes_read (2048000)
+[2017-05-04  13:22:53] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:22:58] DBUG stats/modify_node_event update "/stream" total_bytes_read (2080768)
+[2017-05-04  13:22:58] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:23:03] DBUG stats/modify_node_event update "/stream" total_bytes_read (2080768)
+[2017-05-04  13:23:03] DBUG stats/modify_node_event update "/stream" total_bytes_sent (0)
+[2017-05-04  13:23:05] DBUG source/get_next_buffer last 1493918574, timeout 10, now 1493918585
+[2017-05-04  13:23:05] WARN source/get_next_buffer Disconnecting source due to socket timeout
+[2017-05-04  13:23:05] INFO source/source_shutdown Source from ::1 at "/stream" exiting
+[2017-05-04  13:23:05] DBUG source/source_clear_source clearing source "/stream"
+[2017-05-04  13:23:05] DBUG source/source_free_source freeing source "/stream"
+[2017-05-04  13:23:05] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  13:23:05] DBUG stats/stats_clear_virtual_mounts releasing /stream stats
+[2017-05-04  13:23:05] DBUG stats/modify_node_event update global clients (0)
+[2017-05-04  13:23:05] DBUG stats/modify_node_event update global sources (0)
+[2017-05-04  13:25:05] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  13:27:06] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  13:29:06] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  13:29:34] INFO connection/_handle_source_request Source logging in at mountpoint "/stream" from ::1
+[2017-05-04  13:29:34] DBUG connection/connection_complete_source sources count is 0
+[2017-05-04  13:29:34] WARN format/format_get_type Unsupported or legacy stream type: "audio/mpeg". Falling back to generic minimal handler for best effort.
+[2017-05-04  13:29:34] DBUG source/source_apply_mount Applying mount information for "/stream"
+[2017-05-04  13:29:34] DBUG format-mp3/format_mp3_apply_settings sending metadata interval 16000
+[2017-05-04  13:29:34] DBUG format-mp3/format_mp3_apply_settings charset ISO8859-1
+[2017-05-04  13:29:34] WARN source/source_apply_mount Cannot open intro file "./web//stream": No such file or directory
+[2017-05-04  13:29:34] DBUG source/source_update_settings intro file is /stream
+[2017-05-04  13:29:34] DBUG source/source_update_settings public set to 0
+[2017-05-04  13:29:34] DBUG source/source_update_settings max listeners to -1
+[2017-05-04  13:29:34] DBUG source/source_update_settings queue size to 102400
+[2017-05-04  13:29:34] DBUG source/source_update_settings burst size to 65536
+[2017-05-04  13:29:34] DBUG source/source_update_settings source timeout to 10
+[2017-05-04  13:29:34] DBUG source/source_update_settings fallback_when_full to 0
+[2017-05-04  13:29:34] DBUG connection/connection_complete_source source is ready to start
+[2017-05-04  13:29:34] DBUG fserve/fserve_add_client_callback Adding client to file serving engine
+[2017-05-04  13:29:34] INFO auth/auth_add_listener adding client for authentication
+[2017-05-04  13:29:34] DBUG auth/queue_auth_client ...refcount on auth_t (default mount) is now 2
+[2017-05-04  13:29:34] INFO auth/queue_auth_client auth on (default mount) has 1 pending
+[2017-05-04  13:29:34] DBUG auth/auth_run_thread 1 client(s) pending on (default mount)
+[2017-05-04  13:29:34] DBUG auth/add_listener_to_source max on /stream is -1 (cur 0)
+[2017-05-04  13:29:34] DBUG auth/add_listener_to_source Added client to /stream
+[2017-05-04  13:29:34] DBUG auth/add_authenticated_listener client authenticated, passed to source
+[2017-05-04  13:29:34] DBUG source/source_init Source creation complete
+[2017-05-04  13:29:34] DBUG auth/queue_auth_client ...refcount on auth_t (default mount) is now 3
+[2017-05-04  13:29:34] INFO auth/queue_auth_client auth on (default mount) has 1 pending
+[2017-05-04  13:29:34] DBUG auth/auth_run_thread 1 client(s) pending on (default mount)
+[2017-05-04  13:29:34] WARN auth_url/url_stream_start auth to server http://auth.example.org/stream_start.php failed with Could not resolve host: auth.example.org
+[2017-05-04  13:29:34] DBUG auth/auth_release ...refcount on auth_t (default mount) is now 3
+[2017-05-04  13:29:34] DBUG auth/auth_release ...refcount on auth_t (default mount) is now 2
+[2017-05-04  13:29:34] DBUG source/source_main Client added for mountpoint (/stream)
+[2017-05-04  13:29:34] INFO source/source_main listener count on /stream now 1
+[2017-05-04  13:29:34] DBUG stats/modify_node_event update global clients (1)
+[2017-05-04  13:29:34] DBUG stats/modify_node_event update global connections (7)
+[2017-05-04  13:29:34] DBUG stats/modify_node_event update global sources (1)
+[2017-05-04  13:29:34] DBUG stats/process_source_event new source stat /stream
+[2017-05-04  13:29:34] DBUG stats/process_source_event new node listenurl (http://localhost:9000/stream)
+[2017-05-04  13:29:34] DBUG stats/process_source_event new node listener_peak (0)
+[2017-05-04  13:29:34] DBUG stats/process_source_event new node public (0)
+[2017-05-04  13:29:34] DBUG stats/process_source_event new node server_name (Unspecified name)
+[2017-05-04  13:29:34] DBUG stats/process_source_event new node server_description (Unspecified description)
+[2017-05-04  13:29:34] DBUG stats/process_source_event new node genre (various)
+[2017-05-04  13:29:34] DBUG stats/process_source_event new node bitrate (44100)
+[2017-05-04  13:29:34] DBUG stats/process_source_event new node server_type (audio/mpeg)
+[2017-05-04  13:29:34] DBUG stats/process_source_event new node authenticator (url)
+[2017-05-04  13:29:34] DBUG stats/process_source_event new node max_listeners (unlimited)
+[2017-05-04  13:29:34] DBUG stats/modify_node_event update global clients (2)
+[2017-05-04  13:29:34] DBUG stats/modify_node_event update global connections (8)
+[2017-05-04  13:29:34] DBUG stats/modify_node_event update global client_connections (1)
+[2017-05-04  13:29:34] DBUG stats/process_source_event new node source_ip (::1)
+[2017-05-04  13:29:34] DBUG stats/modify_node_event update global source_client_connections (7)
+[2017-05-04  13:29:34] DBUG stats/process_source_event new node listeners (0)
+[2017-05-04  13:29:34] DBUG stats/modify_node_event update "/stream" listenurl (http://localhost:9000/stream)
+[2017-05-04  13:29:34] DBUG stats/modify_node_event update global source_total_connections (7)
+[2017-05-04  13:29:34] DBUG stats/process_source_event new node slow_listeners (0)
+[2017-05-04  13:29:34] DBUG stats/modify_node_event update "/stream" listeners (0)
+[2017-05-04  13:29:34] DBUG stats/modify_node_event update "/stream" listener_peak (0)
+[2017-05-04  13:29:34] DBUG stats/process_source_event new node stream_start (Thu, 04 May 2017 13:29:34 -0400)
+[2017-05-04  13:29:34] DBUG stats/process_source_event new node stream_start_iso8601 (2017-05-04T13:29:34-0400)
+[2017-05-04  13:29:34] DBUG stats/process_source_event new node total_bytes_read (0)
+[2017-05-04  13:29:34] DBUG stats/process_source_event new node total_bytes_sent (0)
+[2017-05-04  13:29:34] DBUG stats/modify_node_event update "/stream" listener_peak (1)
+[2017-05-04  13:29:34] DBUG stats/modify_node_event update "/stream" listeners (1)
+[2017-05-04  13:29:34] DBUG format/format_check_http_buffer processing pending client headers
+[2017-05-04  13:29:34] DBUG stats/modify_node_event update global listeners (1)
+[2017-05-04  13:29:34] DBUG stats/modify_node_event update global listener_connections (1)
+[2017-05-04  13:29:39] DBUG stats/modify_node_event update "/stream" total_bytes_read (81920)
+[2017-05-04  13:29:39] DBUG stats/modify_node_event update "/stream" total_bytes_sent (81733)
+[2017-05-04  13:29:44] DBUG stats/modify_node_event update "/stream" total_bytes_read (163840)
+[2017-05-04  13:29:44] DBUG stats/modify_node_event update "/stream" total_bytes_sent (164333)
+[2017-05-04  13:29:49] DBUG stats/modify_node_event update "/stream" total_bytes_read (229376)
+[2017-05-04  13:29:49] DBUG stats/modify_node_event update "/stream" total_bytes_sent (228733)
+[2017-05-04  13:29:54] DBUG stats/modify_node_event update "/stream" total_bytes_read (311296)
+[2017-05-04  13:29:54] DBUG stats/modify_node_event update "/stream" total_bytes_sent (311333)
+[2017-05-04  13:29:59] DBUG stats/modify_node_event update "/stream" total_bytes_read (393216)
+[2017-05-04  13:29:59] DBUG stats/modify_node_event update "/stream" total_bytes_sent (392533)
+[2017-05-04  13:30:03] DBUG client/client_read_bytes reading from connection has failed
+[2017-05-04  13:30:03] INFO source/get_next_buffer End of Stream /stream
+[2017-05-04  13:30:03] INFO source/source_shutdown Source from ::1 at "/stream" exiting
+[2017-05-04  13:30:03] DBUG source/source_clear_source clearing source "/stream"
+[2017-05-04  13:30:03] INFO source/source_clear_source 1 active listeners on /stream released
+[2017-05-04  13:30:03] DBUG source/source_free_source freeing source "/stream"
+[2017-05-04  13:30:03] DBUG stats/process_source_event delete source node /stream
+[2017-05-04  13:30:03] DBUG stats/modify_node_event update global clients (1)
+[2017-05-04  13:30:03] DBUG stats/modify_node_event update global clients (0)
+[2017-05-04  13:30:03] DBUG stats/modify_node_event update global listeners (0)
+[2017-05-04  13:30:03] DBUG stats/modify_node_event update global sources (0)
+[2017-05-04  13:30:04] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  13:30:13] INFO auth/auth_add_listener adding client for authentication
+[2017-05-04  13:30:13] DBUG auth/queue_auth_client ...refcount on auth_t (default mount) is now 3
+[2017-05-04  13:30:13] INFO auth/queue_auth_client auth on (default mount) has 1 pending
+[2017-05-04  13:30:13] INFO connection/_handle_source_request Source logging in at mountpoint "/stream" from ::1
+[2017-05-04  13:30:13] DBUG connection/connection_complete_source sources count is 0
+[2017-05-04  13:30:13] WARN format/format_get_type Unsupported or legacy stream type: "audio/mpeg". Falling back to generic minimal handler for best effort.
+[2017-05-04  13:30:13] DBUG source/source_apply_mount Applying mount information for "/stream"
+[2017-05-04  13:30:13] DBUG format-mp3/format_mp3_apply_settings sending metadata interval 16000
+[2017-05-04  13:30:13] DBUG format-mp3/format_mp3_apply_settings charset ISO8859-1
+[2017-05-04  13:30:13] WARN source/source_apply_mount Cannot open intro file "./web//stream": No such file or directory
+[2017-05-04  13:30:13] DBUG source/source_update_settings intro file is /stream
+[2017-05-04  13:30:13] DBUG source/source_update_settings public set to 0
+[2017-05-04  13:30:13] DBUG source/source_update_settings max listeners to -1
+[2017-05-04  13:30:13] DBUG source/source_update_settings queue size to 102400
+[2017-05-04  13:30:13] DBUG source/source_update_settings burst size to 65536
+[2017-05-04  13:30:13] DBUG source/source_update_settings source timeout to 10
+[2017-05-04  13:30:13] DBUG source/source_update_settings fallback_when_full to 0
+[2017-05-04  13:30:13] DBUG connection/connection_complete_source source is ready to start
+[2017-05-04  13:30:13] DBUG fserve/fserve_add_client_callback Adding client to file serving engine
+[2017-05-04  13:30:13] DBUG stats/modify_node_event update global clients (1)
+[2017-05-04  13:30:13] DBUG stats/modify_node_event update global connections (9)
+[2017-05-04  13:30:13] DBUG stats/modify_node_event update global clients (2)
+[2017-05-04  13:30:13] DBUG stats/modify_node_event update global connections (10)
+[2017-05-04  13:30:13] DBUG stats/modify_node_event update global client_connections (2)
+[2017-05-04  13:30:13] DBUG stats/modify_node_event update global sources (1)
+[2017-05-04  13:30:13] DBUG stats/process_source_event new source stat /stream
+[2017-05-04  13:30:13] DBUG stats/process_source_event new node listenurl (http://localhost:9000/stream)
+[2017-05-04  13:30:13] DBUG stats/process_source_event new node listener_peak (0)
+[2017-05-04  13:30:13] DBUG stats/process_source_event new node public (0)
+[2017-05-04  13:30:13] DBUG stats/process_source_event new node server_name (Unspecified name)
+[2017-05-04  13:30:13] DBUG stats/process_source_event new node server_description (Unspecified description)
+[2017-05-04  13:30:13] DBUG stats/process_source_event new node genre (various)
+[2017-05-04  13:30:13] DBUG stats/process_source_event new node bitrate (44100)
+[2017-05-04  13:30:13] DBUG stats/process_source_event new node server_type (audio/mpeg)
+[2017-05-04  13:30:13] DBUG stats/process_source_event new node authenticator (url)
+[2017-05-04  13:30:13] DBUG stats/process_source_event new node max_listeners (unlimited)
+[2017-05-04  13:30:13] DBUG auth/auth_run_thread 1 client(s) pending on (default mount)
+[2017-05-04  13:30:13] DBUG auth/add_listener_to_source max on /stream is -1 (cur 0)
+[2017-05-04  13:30:13] DBUG auth/add_listener_to_source Added client to /stream
+[2017-05-04  13:30:13] DBUG auth/add_authenticated_listener client authenticated, passed to source
+[2017-05-04  13:30:13] DBUG source/source_init Source creation complete
+[2017-05-04  13:30:13] DBUG auth/queue_auth_client ...refcount on auth_t (default mount) is now 4
+[2017-05-04  13:30:13] INFO auth/queue_auth_client auth on (default mount) has 1 pending
+[2017-05-04  13:30:13] DBUG auth/auth_run_thread 1 client(s) pending on (default mount)
+[2017-05-04  13:30:13] WARN auth_url/url_stream_start auth to server http://auth.example.org/stream_start.php failed with Could not resolve host: auth.example.org
+[2017-05-04  13:30:13] DBUG auth/auth_release ...refcount on auth_t (default mount) is now 4
+[2017-05-04  13:30:13] DBUG auth/auth_release ...refcount on auth_t (default mount) is now 3
+[2017-05-04  13:30:14] DBUG source/source_main Client added for mountpoint (/stream)
+[2017-05-04  13:30:14] INFO source/source_main listener count on /stream now 1
+[2017-05-04  13:30:14] DBUG stats/process_source_event new node source_ip (::1)
+[2017-05-04  13:30:14] DBUG stats/modify_node_event update global source_client_connections (8)
+[2017-05-04  13:30:14] DBUG stats/process_source_event new node listeners (0)
+[2017-05-04  13:30:14] DBUG stats/modify_node_event update "/stream" listenurl (http://localhost:9000/stream)
+[2017-05-04  13:30:14] DBUG stats/modify_node_event update global source_total_connections (8)
+[2017-05-04  13:30:14] DBUG stats/process_source_event new node slow_listeners (0)
+[2017-05-04  13:30:14] DBUG stats/modify_node_event update "/stream" listeners (0)
+[2017-05-04  13:30:14] DBUG stats/modify_node_event update "/stream" listener_peak (0)
+[2017-05-04  13:30:14] DBUG stats/process_source_event new node stream_start (Thu, 04 May 2017 13:30:13 -0400)
+[2017-05-04  13:30:14] DBUG stats/process_source_event new node stream_start_iso8601 (2017-05-04T13:30:13-0400)
+[2017-05-04  13:30:14] DBUG stats/process_source_event new node total_bytes_read (0)
+[2017-05-04  13:30:14] DBUG stats/process_source_event new node total_bytes_sent (0)
+[2017-05-04  13:30:14] DBUG stats/modify_node_event update "/stream" listener_peak (1)
+[2017-05-04  13:30:14] DBUG stats/modify_node_event update "/stream" listeners (1)
+[2017-05-04  13:30:14] DBUG format/format_check_http_buffer processing pending client headers
+[2017-05-04  13:30:14] DBUG stats/modify_node_event update global listeners (1)
+[2017-05-04  13:30:14] DBUG stats/modify_node_event update global listener_connections (2)
+[2017-05-04  13:30:18] DBUG stats/modify_node_event update "/stream" total_bytes_read (65536)
+[2017-05-04  13:30:18] DBUG stats/modify_node_event update "/stream" total_bytes_sent (64931)
+[2017-05-04  13:30:23] DBUG stats/modify_node_event update "/stream" total_bytes_read (147456)
+[2017-05-04  13:30:23] DBUG stats/modify_node_event update "/stream" total_bytes_sent (147531)
+[2017-05-04  13:30:28] DBUG stats/modify_node_event update "/stream" total_bytes_read (229376)
+[2017-05-04  13:30:28] DBUG stats/modify_node_event update "/stream" total_bytes_sent (228731)
+[2017-05-04  13:30:33] DBUG stats/modify_node_event update "/stream" total_bytes_read (311296)
+[2017-05-04  13:30:33] DBUG stats/modify_node_event update "/stream" total_bytes_sent (311331)
+[2017-05-04  13:30:38] DBUG stats/modify_node_event update "/stream" total_bytes_read (393216)
+[2017-05-04  13:30:38] DBUG stats/modify_node_event update "/stream" total_bytes_sent (392531)
+[2017-05-04  13:30:43] DBUG stats/modify_node_event update "/stream" total_bytes_read (459200)
+[2017-05-04  13:30:43] DBUG stats/modify_node_event update "/stream" total_bytes_sent (459731)
+[2017-05-04  13:30:48] DBUG stats/modify_node_event update "/stream" total_bytes_read (541800)
+[2017-05-04  13:30:48] DBUG stats/modify_node_event update "/stream" total_bytes_sent (542331)
+[2017-05-04  13:30:53] DBUG stats/modify_node_event update "/stream" total_bytes_read (622592)
+[2017-05-04  13:30:53] DBUG stats/modify_node_event update "/stream" total_bytes_sent (622131)
+[2017-05-04  13:30:58] DBUG stats/modify_node_event update "/stream" total_bytes_read (704512)
+[2017-05-04  13:30:58] DBUG stats/modify_node_event update "/stream" total_bytes_sent (704731)
+[2017-05-04  13:31:03] DBUG stats/modify_node_event update "/stream" total_bytes_read (786432)
+[2017-05-04  13:31:03] DBUG stats/modify_node_event update "/stream" total_bytes_sent (785931)
+[2017-05-04  13:31:08] DBUG stats/modify_node_event update "/stream" total_bytes_read (868352)
+[2017-05-04  13:31:08] DBUG stats/modify_node_event update "/stream" total_bytes_sent (868531)
+[2017-05-04  13:31:13] DBUG stats/modify_node_event update "/stream" total_bytes_read (950272)
+[2017-05-04  13:31:13] DBUG stats/modify_node_event update "/stream" total_bytes_sent (949731)
+[2017-05-04  13:31:18] DBUG stats/modify_node_event update "/stream" total_bytes_read (1032192)
+[2017-05-04  13:31:18] DBUG stats/modify_node_event update "/stream" total_bytes_sent (1032331)
+[2017-05-04  13:31:23] DBUG stats/modify_node_event update "/stream" total_bytes_read (1114112)
+[2017-05-04  13:31:23] DBUG stats/modify_node_event update "/stream" total_bytes_sent (1113531)
+[2017-05-04  13:31:28] DBUG stats/modify_node_event update "/stream" total_bytes_read (1179648)
+[2017-05-04  13:31:28] DBUG stats/modify_node_event update "/stream" total_bytes_sent (1179331)
+[2017-05-04  13:31:33] DBUG stats/modify_node_event update "/stream" total_bytes_read (1261568)
+[2017-05-04  13:31:33] DBUG stats/modify_node_event update "/stream" total_bytes_sent (1261931)
+[2017-05-04  13:31:38] DBUG stats/modify_node_event update "/stream" total_bytes_read (1343488)
+[2017-05-04  13:31:38] DBUG stats/modify_node_event update "/stream" total_bytes_sent (1343131)
+[2017-05-04  13:31:43] DBUG stats/modify_node_event update "/stream" total_bytes_read (1425408)
+[2017-05-04  13:31:43] DBUG stats/modify_node_event update "/stream" total_bytes_sent (1425731)
+[2017-05-04  13:31:48] DBUG stats/modify_node_event update "/stream" total_bytes_read (1507328)
+[2017-05-04  13:31:48] DBUG stats/modify_node_event update "/stream" total_bytes_sent (1506931)
+[2017-05-04  13:31:53] DBUG stats/modify_node_event update "/stream" total_bytes_read (1589248)
+[2017-05-04  13:31:53] DBUG stats/modify_node_event update "/stream" total_bytes_sent (1589531)
+[2017-05-04  13:31:58] DBUG stats/modify_node_event update "/stream" total_bytes_read (1671168)
+[2017-05-04  13:31:58] DBUG stats/modify_node_event update "/stream" total_bytes_sent (1670731)
+[2017-05-04  13:31:58] DBUG client/client_read_bytes reading from connection has failed
+[2017-05-04  13:31:58] INFO source/get_next_buffer End of Stream /stream
+[2017-05-04  13:31:58] INFO source/source_shutdown Source from ::1 at "/stream" exiting
+[2017-05-04  13:31:58] DBUG source/source_clear_source clearing source "/stream"
+[2017-05-04  13:31:58] INFO source/source_clear_source 1 active listeners on /stream released
+[2017-05-04  13:31:58] DBUG source/source_free_source freeing source "/stream"
+[2017-05-04  13:31:58] DBUG stats/process_source_event delete source node /stream
+[2017-05-04  13:31:58] DBUG stats/modify_node_event update global clients (1)
+[2017-05-04  13:31:58] DBUG stats/modify_node_event update global clients (0)
+[2017-05-04  13:31:58] DBUG stats/modify_node_event update global listeners (0)
+[2017-05-04  13:31:58] DBUG stats/modify_node_event update global sources (0)
+[2017-05-04  13:31:59] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  13:33:21] INFO connection/_handle_source_request Source logging in at mountpoint "/stream" from ::1
+[2017-05-04  13:33:21] DBUG connection/connection_complete_source sources count is 0
+[2017-05-04  13:33:21] WARN format/format_get_type Unsupported or legacy stream type: "audio/mpeg". Falling back to generic minimal handler for best effort.
+[2017-05-04  13:33:21] DBUG source/source_apply_mount Applying mount information for "/stream"
+[2017-05-04  13:33:21] DBUG format-mp3/format_mp3_apply_settings sending metadata interval 16000
+[2017-05-04  13:33:21] DBUG format-mp3/format_mp3_apply_settings charset ISO8859-1
+[2017-05-04  13:33:21] WARN source/source_apply_mount Cannot open intro file "./web//stream": No such file or directory
+[2017-05-04  13:33:21] DBUG source/source_update_settings intro file is /stream
+[2017-05-04  13:33:21] DBUG source/source_update_settings public set to 0
+[2017-05-04  13:33:21] DBUG source/source_update_settings max listeners to -1
+[2017-05-04  13:33:21] DBUG source/source_update_settings queue size to 102400
+[2017-05-04  13:33:21] DBUG source/source_update_settings burst size to 65536
+[2017-05-04  13:33:21] DBUG source/source_update_settings source timeout to 10
+[2017-05-04  13:33:21] DBUG source/source_update_settings fallback_when_full to 0
+[2017-05-04  13:33:21] DBUG connection/connection_complete_source source is ready to start
+[2017-05-04  13:33:21] DBUG fserve/fserve_add_client_callback Adding client to file serving engine
+[2017-05-04  13:33:21] INFO auth/auth_add_listener adding client for authentication
+[2017-05-04  13:33:21] DBUG auth/queue_auth_client ...refcount on auth_t (default mount) is now 4
+[2017-05-04  13:33:21] INFO auth/queue_auth_client auth on (default mount) has 1 pending
+[2017-05-04  13:33:21] DBUG source/source_init Source creation complete
+[2017-05-04  13:33:21] DBUG auth/queue_auth_client ...refcount on auth_t (default mount) is now 5
+[2017-05-04  13:33:21] INFO auth/queue_auth_client auth on (default mount) has 2 pending
+[2017-05-04  13:33:21] DBUG stats/modify_node_event update global clients (1)
+[2017-05-04  13:33:21] DBUG stats/modify_node_event update global connections (11)
+[2017-05-04  13:33:21] DBUG stats/modify_node_event update global sources (1)
+[2017-05-04  13:33:21] DBUG stats/process_source_event new source stat /stream
+[2017-05-04  13:33:21] DBUG stats/process_source_event new node listenurl (http://localhost:9000/stream)
+[2017-05-04  13:33:21] DBUG stats/process_source_event new node listener_peak (0)
+[2017-05-04  13:33:21] DBUG stats/process_source_event new node public (0)
+[2017-05-04  13:33:21] DBUG stats/process_source_event new node server_name (Unspecified name)
+[2017-05-04  13:33:21] DBUG stats/process_source_event new node server_description (Unspecified description)
+[2017-05-04  13:33:21] DBUG stats/process_source_event new node genre (various)
+[2017-05-04  13:33:21] DBUG stats/process_source_event new node bitrate (44100)
+[2017-05-04  13:33:21] DBUG stats/process_source_event new node server_type (audio/mpeg)
+[2017-05-04  13:33:21] DBUG stats/process_source_event new node authenticator (url)
+[2017-05-04  13:33:21] DBUG stats/process_source_event new node max_listeners (unlimited)
+[2017-05-04  13:33:21] DBUG stats/modify_node_event update global clients (2)
+[2017-05-04  13:33:21] DBUG stats/modify_node_event update global connections (12)
+[2017-05-04  13:33:21] DBUG stats/modify_node_event update global client_connections (3)
+[2017-05-04  13:33:21] DBUG stats/process_source_event new node source_ip (::1)
+[2017-05-04  13:33:21] DBUG stats/modify_node_event update global source_client_connections (9)
+[2017-05-04  13:33:21] DBUG stats/process_source_event new node listeners (0)
+[2017-05-04  13:33:21] DBUG stats/modify_node_event update "/stream" listenurl (http://localhost:9000/stream)
+[2017-05-04  13:33:21] DBUG stats/modify_node_event update global source_total_connections (9)
+[2017-05-04  13:33:21] DBUG stats/process_source_event new node slow_listeners (0)
+[2017-05-04  13:33:21] DBUG stats/modify_node_event update "/stream" listeners (0)
+[2017-05-04  13:33:21] DBUG stats/modify_node_event update "/stream" listener_peak (0)
+[2017-05-04  13:33:21] DBUG stats/process_source_event new node stream_start (Thu, 04 May 2017 13:33:21 -0400)
+[2017-05-04  13:33:21] DBUG stats/process_source_event new node stream_start_iso8601 (2017-05-04T13:33:21-0400)
+[2017-05-04  13:33:21] DBUG auth/auth_run_thread 2 client(s) pending on (default mount)
+[2017-05-04  13:33:21] DBUG auth/add_listener_to_source max on /stream is -1 (cur 0)
+[2017-05-04  13:33:21] DBUG auth/add_listener_to_source Added client to /stream
+[2017-05-04  13:33:21] DBUG auth/add_authenticated_listener client authenticated, passed to source
+[2017-05-04  13:33:21] DBUG auth/auth_run_thread 1 client(s) pending on (default mount)
+[2017-05-04  13:33:21] WARN auth_url/url_stream_start auth to server http://auth.example.org/stream_start.php failed with Could not resolve host: auth.example.org
+[2017-05-04  13:33:21] DBUG auth/auth_release ...refcount on auth_t (default mount) is now 5
+[2017-05-04  13:33:21] DBUG auth/auth_release ...refcount on auth_t (default mount) is now 4
+[2017-05-04  13:33:22] DBUG source/source_main Client added for mountpoint (/stream)
+[2017-05-04  13:33:22] INFO source/source_main listener count on /stream now 1
+[2017-05-04  13:33:22] DBUG stats/process_source_event new node total_bytes_read (0)
+[2017-05-04  13:33:22] DBUG stats/process_source_event new node total_bytes_sent (0)
+[2017-05-04  13:33:22] DBUG stats/modify_node_event update "/stream" listener_peak (1)
+[2017-05-04  13:33:22] DBUG stats/modify_node_event update "/stream" listeners (1)
+[2017-05-04  13:33:22] DBUG format/format_check_http_buffer processing pending client headers
+[2017-05-04  13:33:22] DBUG stats/modify_node_event update global listeners (1)
+[2017-05-04  13:33:22] DBUG stats/modify_node_event update global listener_connections (3)
+[2017-05-04  13:33:26] DBUG stats/modify_node_event update "/stream" total_bytes_read (65536)
+[2017-05-04  13:33:26] DBUG stats/modify_node_event update "/stream" total_bytes_sent (64933)
+[2017-05-04  13:33:31] DBUG stats/modify_node_event update "/stream" total_bytes_read (147456)
+[2017-05-04  13:33:31] DBUG stats/modify_node_event update "/stream" total_bytes_sent (147533)
+[2017-05-04  13:33:36] DBUG stats/modify_node_event update "/stream" total_bytes_read (229376)
+[2017-05-04  13:33:36] DBUG stats/modify_node_event update "/stream" total_bytes_sent (228733)
+[2017-05-04  13:33:41] DBUG stats/modify_node_event update "/stream" total_bytes_read (311296)
+[2017-05-04  13:33:41] DBUG stats/modify_node_event update "/stream" total_bytes_sent (311333)
+[2017-05-04  13:33:46] DBUG stats/modify_node_event update "/stream" total_bytes_read (378000)
+[2017-05-04  13:33:46] DBUG stats/modify_node_event update "/stream" total_bytes_sent (378533)
+[2017-05-04  13:33:51] DBUG stats/modify_node_event update "/stream" total_bytes_read (459200)
+[2017-05-04  13:33:51] DBUG stats/modify_node_event update "/stream" total_bytes_sent (459733)
+[2017-05-04  13:33:53] DBUG client/client_read_bytes reading from connection has failed
+[2017-05-04  13:33:53] INFO source/get_next_buffer End of Stream /stream
+[2017-05-04  13:33:53] INFO source/source_shutdown Source from ::1 at "/stream" exiting
+[2017-05-04  13:33:53] DBUG source/source_clear_source clearing source "/stream"
+[2017-05-04  13:33:53] INFO source/source_clear_source 1 active listeners on /stream released
+[2017-05-04  13:33:53] DBUG source/source_free_source freeing source "/stream"
+[2017-05-04  13:33:54] DBUG stats/process_source_event delete source node /stream
+[2017-05-04  13:33:54] DBUG stats/modify_node_event update global clients (1)
+[2017-05-04  13:33:54] DBUG stats/modify_node_event update global clients (0)
+[2017-05-04  13:33:54] DBUG stats/modify_node_event update global listeners (0)
+[2017-05-04  13:33:54] DBUG stats/modify_node_event update global sources (0)
+[2017-05-04  13:33:54] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  13:35:54] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  13:37:55] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  13:39:55] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  13:41:55] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  13:43:56] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  13:45:56] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  13:47:03] INFO sighandler/_sig_die Caught signal 2, shutting down...
+[2017-05-04  13:47:03] INFO main/main Shutting down
+[2017-05-04  13:47:03] INFO fserve/fserve_shutdown file serving stopped
+[2017-05-04  13:47:03] DBUG slave/slave_shutdown waiting for slave thread
+[2017-05-04  13:47:03] DBUG fserve/fserv_thread_function fserve handler exit
+[2017-05-04  13:47:04] INFO sighandler/_sig_die Caught signal 2, shutting down...
+[2017-05-04  13:47:04] INFO sighandler/_sig_die Caught signal 2, shutting down...
+[2017-05-04  13:47:04] INFO sighandler/_sig_die Caught signal 2, shutting down...
+[2017-05-04  13:47:04] INFO sighandler/_sig_die Caught signal 2, shutting down...
+[2017-05-04  13:47:04] INFO slave/_slave_thread shutting down current relays
+[2017-05-04  13:47:04] INFO slave/_slave_thread Slave thread shutdown complete
+[2017-05-04  13:47:04] INFO auth/auth_shutdown Auth shutdown
+[2017-05-04  13:47:04] DBUG yp/destroy_yp_server Removing YP server entry for http://dir.xiph.org/cgi-bin/yp-cgi
+[2017-05-04  13:47:04] INFO yp/yp_shutdown YP thread down
+[2017-05-04  13:47:05] INFO stats/stats_shutdown stats thread finished
+[2017-05-04  13:47:05] DBUG auth/auth_release ...refcount on auth_t (default mount) is now 3
+[2017-05-04  20:27:25] INFO main/main Icecast 2.4.3 server started
+[2017-05-04  20:27:25] DBUG yp/yp_recheck_config Updating YP configuration
+[2017-05-04  20:27:25] INFO yp/yp_recheck_config Adding new YP server "http://dir.xiph.org/cgi-bin/yp-cgi" (timeout 6s, default interval 30s)
+[2017-05-04  20:27:25] INFO yp/yp_update_thread YP update thread started
+[2017-05-04  20:27:25] INFO connection/get_ssl_certificate No SSL capability
+[2017-05-04  20:27:26] DBUG yp/check_servers Add pending yps http://dir.xiph.org/cgi-bin/yp-cgi
+[2017-05-04  20:27:26] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  20:29:27] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  20:30:44] DBUG stats/modify_node_event update global clients (1)
+[2017-05-04  20:30:44] DBUG stats/modify_node_event update global connections (1)
+[2017-05-04  20:30:44] DBUG stats/modify_node_event update global clients (2)
+[2017-05-04  20:30:44] DBUG stats/modify_node_event update global connections (2)
+[2017-05-04  20:30:54] DBUG stats/modify_node_event update global clients (1)
+[2017-05-04  20:30:54] DBUG stats/modify_node_event update global clients (0)
+[2017-05-04  20:31:08] INFO connection/_handle_source_request Source logging in at mountpoint "/stream" from ::1
+[2017-05-04  20:31:08] DBUG connection/connection_complete_source sources count is 0
+[2017-05-04  20:31:08] WARN format/format_get_type Unsupported or legacy stream type: "audio/mpeg". Falling back to generic minimal handler for best effort.
+[2017-05-04  20:31:08] DBUG source/source_apply_mount Applying mount information for "/stream"
+[2017-05-04  20:31:08] DBUG format-mp3/format_mp3_apply_settings sending metadata interval 16000
+[2017-05-04  20:31:08] DBUG format-mp3/format_mp3_apply_settings charset ISO8859-1
+[2017-05-04  20:31:08] WARN source/source_apply_mount Cannot open intro file "./web//stream": No such file or directory
+[2017-05-04  20:31:08] DBUG source/source_update_settings intro file is /stream
+[2017-05-04  20:31:08] DBUG source/source_update_settings public set to 0
+[2017-05-04  20:31:08] DBUG source/source_update_settings max listeners to -1
+[2017-05-04  20:31:08] DBUG source/source_update_settings queue size to 102400
+[2017-05-04  20:31:08] DBUG source/source_update_settings burst size to 65536
+[2017-05-04  20:31:08] DBUG source/source_update_settings source timeout to 10
+[2017-05-04  20:31:08] DBUG source/source_update_settings fallback_when_full to 0
+[2017-05-04  20:31:08] DBUG connection/connection_complete_source source is ready to start
+[2017-05-04  20:31:08] DBUG fserve/fserve_add_client_callback Adding client to file serving engine
+[2017-05-04  20:31:08] DBUG fserve/fserve_add_pending fserve handler waking up
+[2017-05-04  20:31:08] INFO auth/auth_add_listener adding client for authentication
+[2017-05-04  20:31:08] DBUG auth/queue_auth_client ...refcount on auth_t (default mount) is now 2
+[2017-05-04  20:31:08] INFO auth/queue_auth_client auth on (default mount) has 1 pending
+[2017-05-04  20:31:08] DBUG source/source_init Source creation complete
+[2017-05-04  20:31:08] DBUG auth/queue_auth_client ...refcount on auth_t (default mount) is now 3
+[2017-05-04  20:31:08] INFO auth/queue_auth_client auth on (default mount) has 2 pending
+[2017-05-04  20:31:08] DBUG auth/auth_run_thread 2 client(s) pending on (default mount)
+[2017-05-04  20:31:08] DBUG auth/add_listener_to_source max on /stream is -1 (cur 0)
+[2017-05-04  20:31:08] DBUG auth/add_listener_to_source Added client to /stream
+[2017-05-04  20:31:08] DBUG auth/add_authenticated_listener client authenticated, passed to source
+[2017-05-04  20:31:08] DBUG auth/auth_run_thread 1 client(s) pending on (default mount)
+[2017-05-04  20:31:08] DBUG stats/modify_node_event update global clients (1)
+[2017-05-04  20:31:08] DBUG stats/modify_node_event update global connections (3)
+[2017-05-04  20:31:08] DBUG stats/modify_node_event update global sources (1)
+[2017-05-04  20:31:08] DBUG stats/process_source_event new source stat /stream
+[2017-05-04  20:31:08] DBUG stats/process_source_event new node listenurl (http://localhost:9000/stream)
+[2017-05-04  20:31:08] DBUG stats/process_source_event new node listener_peak (0)
+[2017-05-04  20:31:08] DBUG stats/process_source_event new node public (0)
+[2017-05-04  20:31:08] DBUG stats/process_source_event new node server_name (Unspecified name)
+[2017-05-04  20:31:08] DBUG stats/process_source_event new node server_description (Unspecified description)
+[2017-05-04  20:31:08] DBUG stats/process_source_event new node genre (various)
+[2017-05-04  20:31:08] DBUG stats/process_source_event new node bitrate (44100)
+[2017-05-04  20:31:08] DBUG stats/process_source_event new node server_type (audio/mpeg)
+[2017-05-04  20:31:08] DBUG stats/process_source_event new node authenticator (url)
+[2017-05-04  20:31:08] DBUG stats/process_source_event new node max_listeners (unlimited)
+[2017-05-04  20:31:08] DBUG stats/modify_node_event update global clients (2)
+[2017-05-04  20:31:08] DBUG stats/modify_node_event update global connections (4)
+[2017-05-04  20:31:08] DBUG stats/modify_node_event update global client_connections (1)
+[2017-05-04  20:31:08] DBUG stats/process_source_event new node source_ip (::1)
+[2017-05-04  20:31:08] DBUG stats/modify_node_event update global source_client_connections (1)
+[2017-05-04  20:31:08] DBUG stats/process_source_event new node listeners (0)
+[2017-05-04  20:31:08] DBUG stats/modify_node_event update "/stream" listenurl (http://localhost:9000/stream)
+[2017-05-04  20:31:08] DBUG stats/modify_node_event update global source_total_connections (1)
+[2017-05-04  20:31:08] DBUG stats/process_source_event new node slow_listeners (0)
+[2017-05-04  20:31:08] DBUG stats/modify_node_event update "/stream" listeners (0)
+[2017-05-04  20:31:08] DBUG stats/modify_node_event update "/stream" listener_peak (0)
+[2017-05-04  20:31:08] DBUG stats/process_source_event new node stream_start (Thu, 04 May 2017 20:31:08 -0400)
+[2017-05-04  20:31:08] DBUG stats/process_source_event new node stream_start_iso8601 (2017-05-04T20:31:08-0400)
+[2017-05-04  20:31:08] DBUG source/source_main Client added for mountpoint (/stream)
+[2017-05-04  20:31:08] INFO source/source_main listener count on /stream now 1
+[2017-05-04  20:31:08] WARN auth_url/url_stream_start auth to server http://auth.example.org/stream_start.php failed with Could not resolve host: auth.example.org
+[2017-05-04  20:31:08] DBUG auth/auth_release ...refcount on auth_t (default mount) is now 3
+[2017-05-04  20:31:08] DBUG auth/auth_release ...refcount on auth_t (default mount) is now 2
+[2017-05-04  20:31:08] DBUG stats/process_source_event new node total_bytes_read (0)
+[2017-05-04  20:31:08] DBUG stats/process_source_event new node total_bytes_sent (0)
+[2017-05-04  20:31:08] DBUG stats/modify_node_event update "/stream" listener_peak (1)
+[2017-05-04  20:31:08] DBUG stats/modify_node_event update "/stream" listeners (1)
+[2017-05-04  20:31:08] DBUG format/format_check_http_buffer processing pending client headers
+[2017-05-04  20:31:09] DBUG stats/modify_node_event update global listeners (1)
+[2017-05-04  20:31:09] DBUG stats/modify_node_event update global listener_connections (1)
+[2017-05-04  20:31:13] DBUG stats/modify_node_event update "/stream" total_bytes_read (65800)
+[2017-05-04  20:31:13] DBUG stats/modify_node_event update "/stream" total_bytes_sent (66333)
+[2017-05-04  20:31:18] DBUG stats/modify_node_event update "/stream" total_bytes_read (147456)
+[2017-05-04  20:31:18] DBUG stats/modify_node_event update "/stream" total_bytes_sent (147533)
+[2017-05-04  20:31:23] DBUG stats/modify_node_event update "/stream" total_bytes_read (229376)
+[2017-05-04  20:31:23] DBUG stats/modify_node_event update "/stream" total_bytes_sent (228733)
+[2017-05-04  20:31:27] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  20:31:28] DBUG stats/modify_node_event update "/stream" total_bytes_read (311296)
+[2017-05-04  20:31:28] DBUG stats/modify_node_event update "/stream" total_bytes_sent (311333)
+[2017-05-04  20:31:33] DBUG stats/modify_node_event update "/stream" total_bytes_read (393216)
+[2017-05-04  20:31:33] DBUG stats/modify_node_event update "/stream" total_bytes_sent (392533)
+[2017-05-04  20:31:38] DBUG stats/modify_node_event update "/stream" total_bytes_read (475136)
+[2017-05-04  20:31:38] DBUG stats/modify_node_event update "/stream" total_bytes_sent (475133)
+[2017-05-04  20:31:43] DBUG stats/modify_node_event update "/stream" total_bytes_read (557056)
+[2017-05-04  20:31:43] DBUG stats/modify_node_event update "/stream" total_bytes_sent (556333)
+[2017-05-04  20:31:48] DBUG stats/modify_node_event update "/stream" total_bytes_read (638976)
+[2017-05-04  20:31:48] DBUG stats/modify_node_event update "/stream" total_bytes_sent (638933)
+[2017-05-04  20:31:53] DBUG stats/modify_node_event update "/stream" total_bytes_read (705600)
+[2017-05-04  20:31:53] DBUG stats/modify_node_event update "/stream" total_bytes_sent (706133)
+[2017-05-04  20:31:58] DBUG stats/modify_node_event update "/stream" total_bytes_read (786800)
+[2017-05-04  20:31:58] DBUG stats/modify_node_event update "/stream" total_bytes_sent (787333)
+[2017-05-04  20:32:03] DBUG stats/modify_node_event update "/stream" total_bytes_read (868352)
+[2017-05-04  20:32:03] DBUG stats/modify_node_event update "/stream" total_bytes_sent (868533)
+[2017-05-04  20:32:08] DBUG stats/modify_node_event update "/stream" total_bytes_read (950272)
+[2017-05-04  20:32:08] DBUG stats/modify_node_event update "/stream" total_bytes_sent (949733)
+[2017-05-04  20:32:13] DBUG stats/modify_node_event update "/stream" total_bytes_read (1032192)
+[2017-05-04  20:32:13] DBUG stats/modify_node_event update "/stream" total_bytes_sent (1032333)
+[2017-05-04  20:32:18] DBUG stats/modify_node_event update "/stream" total_bytes_read (1114112)
+[2017-05-04  20:32:18] DBUG stats/modify_node_event update "/stream" total_bytes_sent (1113533)
+[2017-05-04  20:32:23] DBUG stats/modify_node_event update "/stream" total_bytes_read (1196032)
+[2017-05-04  20:32:23] DBUG stats/modify_node_event update "/stream" total_bytes_sent (1196133)
+[2017-05-04  20:32:28] DBUG stats/modify_node_event update "/stream" total_bytes_read (1277952)
+[2017-05-04  20:32:28] DBUG stats/modify_node_event update "/stream" total_bytes_sent (1277333)
+[2017-05-04  20:32:33] DBUG stats/modify_node_event update "/stream" total_bytes_read (1344000)
+[2017-05-04  20:32:33] DBUG stats/modify_node_event update "/stream" total_bytes_sent (1344533)
+[2017-05-04  20:32:38] DBUG stats/modify_node_event update "/stream" total_bytes_read (1426600)
+[2017-05-04  20:32:38] DBUG stats/modify_node_event update "/stream" total_bytes_sent (1427133)
+[2017-05-04  20:32:43] DBUG stats/modify_node_event update "/stream" total_bytes_read (1507328)
+[2017-05-04  20:32:43] DBUG stats/modify_node_event update "/stream" total_bytes_sent (1506933)
+[2017-05-04  20:32:48] DBUG stats/modify_node_event update "/stream" total_bytes_read (1589248)
+[2017-05-04  20:32:48] DBUG stats/modify_node_event update "/stream" total_bytes_sent (1589533)
+[2017-05-04  20:32:53] DBUG stats/modify_node_event update "/stream" total_bytes_read (1671168)
+[2017-05-04  20:32:53] DBUG stats/modify_node_event update "/stream" total_bytes_sent (1670733)
+[2017-05-04  20:32:58] DBUG stats/modify_node_event update "/stream" total_bytes_read (1753088)
+[2017-05-04  20:32:58] DBUG stats/modify_node_event update "/stream" total_bytes_sent (1753333)
+[2017-05-04  20:33:03] DBUG stats/modify_node_event update "/stream" total_bytes_read (1835008)
+[2017-05-04  20:33:03] DBUG stats/modify_node_event update "/stream" total_bytes_sent (1834533)
+[2017-05-04  20:33:08] DBUG stats/modify_node_event update "/stream" total_bytes_read (1916928)
+[2017-05-04  20:33:08] DBUG stats/modify_node_event update "/stream" total_bytes_sent (1917133)
+[2017-05-04  20:33:13] DBUG stats/modify_node_event update "/stream" total_bytes_read (1998848)
+[2017-05-04  20:33:13] DBUG stats/modify_node_event update "/stream" total_bytes_sent (1998333)
+[2017-05-04  20:33:18] DBUG stats/modify_node_event update "/stream" total_bytes_read (2064384)
+[2017-05-04  20:33:18] DBUG stats/modify_node_event update "/stream" total_bytes_sent (2064133)
+[2017-05-04  20:33:23] DBUG stats/modify_node_event update "/stream" total_bytes_read (2146304)
+[2017-05-04  20:33:23] DBUG stats/modify_node_event update "/stream" total_bytes_sent (2146733)
+[2017-05-04  20:33:27] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  20:33:28] DBUG stats/modify_node_event update "/stream" total_bytes_read (2228224)
+[2017-05-04  20:33:28] DBUG stats/modify_node_event update "/stream" total_bytes_sent (2227933)
+[2017-05-04  20:33:33] DBUG stats/modify_node_event update "/stream" total_bytes_read (2310144)
+[2017-05-04  20:33:33] DBUG stats/modify_node_event update "/stream" total_bytes_sent (2310533)
+[2017-05-04  20:33:38] DBUG stats/modify_node_event update "/stream" total_bytes_read (2392064)
+[2017-05-04  20:33:38] DBUG stats/modify_node_event update "/stream" total_bytes_sent (2391733)
+[2017-05-04  20:33:43] DBUG stats/modify_node_event update "/stream" total_bytes_read (2473984)
+[2017-05-04  20:33:43] DBUG stats/modify_node_event update "/stream" total_bytes_sent (2474333)
+[2017-05-04  20:33:48] INFO auth/auth_add_listener adding client for authentication
+[2017-05-04  20:33:48] DBUG auth/queue_auth_client ...refcount on auth_t (default mount) is now 3
+[2017-05-04  20:33:48] INFO auth/queue_auth_client auth on (default mount) has 1 pending
+[2017-05-04  20:33:48] DBUG auth/auth_run_thread 1 client(s) pending on (default mount)
+[2017-05-04  20:33:48] DBUG auth/add_listener_to_source max on /stream is -1 (cur 1)
+[2017-05-04  20:33:48] DBUG auth/add_listener_to_source Added client to /stream
+[2017-05-04  20:33:48] DBUG auth/add_authenticated_listener client authenticated, passed to source
+[2017-05-04  20:33:48] DBUG source/source_main Client added for mountpoint (/stream)
+[2017-05-04  20:33:48] INFO source/source_main listener count on /stream now 2
+[2017-05-04  20:33:48] DBUG stats/modify_node_event update global clients (3)
+[2017-05-04  20:33:48] DBUG stats/modify_node_event update global connections (5)
+[2017-05-04  20:33:48] DBUG stats/modify_node_event update global client_connections (2)
+[2017-05-04  20:33:48] DBUG stats/modify_node_event update "/stream" total_bytes_read (2555904)
+[2017-05-04  20:33:48] DBUG stats/modify_node_event update "/stream" total_bytes_sent (2555533)
+[2017-05-04  20:33:48] DBUG stats/modify_node_event update "/stream" listener_peak (2)
+[2017-05-04  20:33:48] DBUG stats/modify_node_event update "/stream" listeners (2)
+[2017-05-04  20:33:48] DBUG format/format_check_http_buffer processing pending client headers
+[2017-05-04  20:33:48] DBUG client/client_send_bytes Client connection died
+[2017-05-04  20:33:48] DBUG source/source_main Client removed
+[2017-05-04  20:33:48] DBUG client/client_send_bytes Client connection died
+[2017-05-04  20:33:48] DBUG source/source_main Client removed
+[2017-05-04  20:33:48] INFO source/source_main listener count on /stream now 0
+[2017-05-04  20:33:48] DBUG stats/modify_node_event update global listeners (2)
+[2017-05-04  20:33:48] DBUG stats/modify_node_event update global listener_connections (2)
+[2017-05-04  20:33:48] DBUG stats/modify_node_event update global listeners (1)
+[2017-05-04  20:33:48] DBUG stats/modify_node_event update global clients (2)
+[2017-05-04  20:33:48] DBUG stats/modify_node_event update global listeners (0)
+[2017-05-04  20:33:48] DBUG stats/modify_node_event update global clients (1)
+[2017-05-04  20:33:48] DBUG stats/modify_node_event update "/stream" listeners (0)
+[2017-05-04  20:33:53] DBUG stats/modify_node_event update "/stream" total_bytes_read (2637824)
+[2017-05-04  20:33:53] DBUG stats/modify_node_event update "/stream" total_bytes_sent (2565866)
+[2017-05-04  20:33:58] DBUG stats/modify_node_event update "/stream" total_bytes_read (2703400)
+[2017-05-04  20:33:58] DBUG stats/modify_node_event update "/stream" total_bytes_sent (2565866)
+[2017-05-04  20:34:03] DBUG stats/modify_node_event update "/stream" total_bytes_read (2786000)
+[2017-05-04  20:34:03] DBUG stats/modify_node_event update "/stream" total_bytes_sent (2565866)
+[2017-05-04  20:34:08] DBUG stats/modify_node_event update "/stream" total_bytes_read (2868600)
+[2017-05-04  20:34:08] DBUG stats/modify_node_event update "/stream" total_bytes_sent (2565866)
+[2017-05-04  20:34:13] DBUG stats/modify_node_event update "/stream" total_bytes_read (2949120)
+[2017-05-04  20:34:13] DBUG stats/modify_node_event update "/stream" total_bytes_sent (2565866)
+[2017-05-04  20:34:18] DBUG stats/modify_node_event update "/stream" total_bytes_read (3031040)
+[2017-05-04  20:34:18] DBUG stats/modify_node_event update "/stream" total_bytes_sent (2565866)
+[2017-05-04  20:34:23] DBUG stats/modify_node_event update "/stream" total_bytes_read (3047424)
+[2017-05-04  20:34:23] DBUG stats/modify_node_event update "/stream" total_bytes_sent (2565866)
+[2017-05-04  20:34:28] DBUG stats/modify_node_event update "/stream" total_bytes_read (3047424)
+[2017-05-04  20:34:28] DBUG stats/modify_node_event update "/stream" total_bytes_sent (2565866)
+[2017-05-04  20:34:29] DBUG source/get_next_buffer last 1493944458, timeout 10, now 1493944469
+[2017-05-04  20:34:29] WARN source/get_next_buffer Disconnecting source due to socket timeout
+[2017-05-04  20:34:29] INFO source/source_shutdown Source from ::1 at "/stream" exiting
+[2017-05-04  20:34:29] DBUG source/source_clear_source clearing source "/stream"
+[2017-05-04  20:34:29] DBUG source/source_free_source freeing source "/stream"
+[2017-05-04  20:34:29] DBUG stats/process_source_event delete source node /stream
+[2017-05-04  20:34:29] DBUG stats/modify_node_event update global clients (0)
+[2017-05-04  20:34:29] DBUG stats/modify_node_event update global sources (0)
+[2017-05-04  20:34:29] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  20:36:30] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  20:38:30] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  20:40:30] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  20:42:31] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  20:44:24] INFO auth/auth_add_listener adding client for authentication
+[2017-05-04  20:44:24] DBUG auth/queue_auth_client ...refcount on auth_t (default mount) is now 4
+[2017-05-04  20:44:24] INFO auth/queue_auth_client auth on (default mount) has 1 pending
+[2017-05-04  20:44:24] INFO connection/_handle_source_request Source logging in at mountpoint "/stream" from ::1
+[2017-05-04  20:44:24] DBUG connection/connection_complete_source sources count is 0
+[2017-05-04  20:44:24] WARN format/format_get_type Unsupported or legacy stream type: "audio/mpeg". Falling back to generic minimal handler for best effort.
+[2017-05-04  20:44:24] DBUG source/source_apply_mount Applying mount information for "/stream"
+[2017-05-04  20:44:24] DBUG format-mp3/format_mp3_apply_settings sending metadata interval 16000
+[2017-05-04  20:44:24] DBUG format-mp3/format_mp3_apply_settings charset ISO8859-1
+[2017-05-04  20:44:24] WARN source/source_apply_mount Cannot open intro file "./web//stream": No such file or directory
+[2017-05-04  20:44:24] DBUG source/source_update_settings intro file is /stream
+[2017-05-04  20:44:24] DBUG source/source_update_settings public set to 0
+[2017-05-04  20:44:24] DBUG source/source_update_settings max listeners to -1
+[2017-05-04  20:44:24] DBUG source/source_update_settings queue size to 102400
+[2017-05-04  20:44:24] DBUG source/source_update_settings burst size to 65536
+[2017-05-04  20:44:24] DBUG source/source_update_settings source timeout to 10
+[2017-05-04  20:44:24] DBUG source/source_update_settings fallback_when_full to 0
+[2017-05-04  20:44:24] DBUG connection/connection_complete_source source is ready to start
+[2017-05-04  20:44:24] DBUG fserve/fserve_add_client_callback Adding client to file serving engine
+[2017-05-04  20:44:24] DBUG stats/modify_node_event update global clients (1)
+[2017-05-04  20:44:24] DBUG stats/modify_node_event update global connections (6)
+[2017-05-04  20:44:24] DBUG stats/modify_node_event update global clients (2)
+[2017-05-04  20:44:24] DBUG stats/modify_node_event update global connections (7)
+[2017-05-04  20:44:24] DBUG stats/modify_node_event update global client_connections (3)
+[2017-05-04  20:44:24] DBUG stats/modify_node_event update global sources (1)
+[2017-05-04  20:44:24] DBUG stats/process_source_event new source stat /stream
+[2017-05-04  20:44:24] DBUG stats/process_source_event new node listenurl (http://localhost:9000/stream)
+[2017-05-04  20:44:24] DBUG stats/process_source_event new node listener_peak (0)
+[2017-05-04  20:44:24] DBUG stats/process_source_event new node public (0)
+[2017-05-04  20:44:24] DBUG stats/process_source_event new node server_name (Unspecified name)
+[2017-05-04  20:44:24] DBUG stats/process_source_event new node server_description (Unspecified description)
+[2017-05-04  20:44:24] DBUG stats/process_source_event new node genre (various)
+[2017-05-04  20:44:24] DBUG stats/process_source_event new node bitrate (44100)
+[2017-05-04  20:44:24] DBUG stats/process_source_event new node server_type (audio/mpeg)
+[2017-05-04  20:44:24] DBUG stats/process_source_event new node authenticator (url)
+[2017-05-04  20:44:24] DBUG stats/process_source_event new node max_listeners (unlimited)
+[2017-05-04  20:44:24] DBUG auth/auth_run_thread 1 client(s) pending on (default mount)
+[2017-05-04  20:44:24] DBUG auth/add_listener_to_source max on /stream is -1 (cur 0)
+[2017-05-04  20:44:24] DBUG auth/add_listener_to_source Added client to /stream
+[2017-05-04  20:44:24] DBUG auth/add_authenticated_listener client authenticated, passed to source
+[2017-05-04  20:44:24] DBUG source/source_init Source creation complete
+[2017-05-04  20:44:24] DBUG auth/queue_auth_client ...refcount on auth_t (default mount) is now 5
+[2017-05-04  20:44:24] INFO auth/queue_auth_client auth on (default mount) has 1 pending
+[2017-05-04  20:44:24] DBUG auth/auth_run_thread 1 client(s) pending on (default mount)
+[2017-05-04  20:44:24] WARN auth_url/url_stream_start auth to server http://auth.example.org/stream_start.php failed with Could not resolve host: auth.example.org
+[2017-05-04  20:44:24] DBUG auth/auth_release ...refcount on auth_t (default mount) is now 5
+[2017-05-04  20:44:24] DBUG auth/auth_release ...refcount on auth_t (default mount) is now 4
+[2017-05-04  20:44:24] DBUG stats/process_source_event new node source_ip (::1)
+[2017-05-04  20:44:24] DBUG stats/modify_node_event update global source_client_connections (2)
+[2017-05-04  20:44:24] DBUG stats/process_source_event new node listeners (0)
+[2017-05-04  20:44:24] DBUG stats/modify_node_event update "/stream" listenurl (http://localhost:9000/stream)
+[2017-05-04  20:44:24] DBUG stats/modify_node_event update global source_total_connections (2)
+[2017-05-04  20:44:24] DBUG stats/process_source_event new node slow_listeners (0)
+[2017-05-04  20:44:24] DBUG stats/modify_node_event update "/stream" listeners (0)
+[2017-05-04  20:44:24] DBUG stats/modify_node_event update "/stream" listener_peak (0)
+[2017-05-04  20:44:24] DBUG stats/process_source_event new node stream_start (Thu, 04 May 2017 20:44:24 -0400)
+[2017-05-04  20:44:24] DBUG stats/process_source_event new node stream_start_iso8601 (2017-05-04T20:44:24-0400)
+[2017-05-04  20:44:24] DBUG source/source_main Client added for mountpoint (/stream)
+[2017-05-04  20:44:24] INFO source/source_main listener count on /stream now 1
+[2017-05-04  20:44:24] DBUG format/format_check_http_buffer processing pending client headers
+[2017-05-04  20:44:24] DBUG stats/process_source_event new node total_bytes_read (0)
+[2017-05-04  20:44:24] DBUG stats/process_source_event new node total_bytes_sent (0)
+[2017-05-04  20:44:24] DBUG stats/modify_node_event update "/stream" listener_peak (1)
+[2017-05-04  20:44:24] DBUG stats/modify_node_event update "/stream" listeners (1)
+[2017-05-04  20:44:24] DBUG stats/modify_node_event update global listeners (1)
+[2017-05-04  20:44:24] DBUG stats/modify_node_event update global listener_connections (3)
+[2017-05-04  20:44:29] DBUG stats/modify_node_event update "/stream" total_bytes_read (81920)
+[2017-05-04  20:44:29] DBUG stats/modify_node_event update "/stream" total_bytes_sent (81734)
+[2017-05-04  20:44:31] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  20:44:34] DBUG stats/modify_node_event update "/stream" total_bytes_read (148400)
+[2017-05-04  20:44:34] DBUG stats/modify_node_event update "/stream" total_bytes_sent (148934)
+[2017-05-04  20:44:39] DBUG stats/modify_node_event update "/stream" total_bytes_read (229600)
+[2017-05-04  20:44:39] DBUG stats/modify_node_event update "/stream" total_bytes_sent (230134)
+[2017-05-04  20:44:44] DBUG client/client_send_bytes Client connection died
+[2017-05-04  20:44:44] DBUG source/source_main Client removed
+[2017-05-04  20:44:44] INFO source/source_main listener count on /stream now 0
+[2017-05-04  20:44:44] DBUG stats/modify_node_event update "/stream" total_bytes_read (312200)
+[2017-05-04  20:44:44] DBUG stats/modify_node_event update "/stream" total_bytes_sent (312734)
+[2017-05-04  20:44:44] DBUG stats/modify_node_event update global listeners (0)
+[2017-05-04  20:44:44] DBUG stats/modify_node_event update global clients (1)
+[2017-05-04  20:44:44] DBUG stats/modify_node_event update "/stream" listeners (0)
+[2017-05-04  20:44:49] DBUG stats/modify_node_event update "/stream" total_bytes_read (393216)
+[2017-05-04  20:44:49] DBUG stats/modify_node_event update "/stream" total_bytes_sent (314134)
+[2017-05-04  20:44:54] DBUG stats/modify_node_event update "/stream" total_bytes_read (475136)
+[2017-05-04  20:44:54] DBUG stats/modify_node_event update "/stream" total_bytes_sent (314134)
+[2017-05-04  20:44:59] DBUG stats/modify_node_event update "/stream" total_bytes_read (557056)
+[2017-05-04  20:44:59] DBUG stats/modify_node_event update "/stream" total_bytes_sent (314134)
+[2017-05-04  20:45:04] DBUG stats/modify_node_event update "/stream" total_bytes_read (638976)
+[2017-05-04  20:45:04] DBUG stats/modify_node_event update "/stream" total_bytes_sent (314134)
+[2017-05-04  20:45:09] DBUG stats/modify_node_event update "/stream" total_bytes_read (720896)
+[2017-05-04  20:45:09] DBUG stats/modify_node_event update "/stream" total_bytes_sent (314134)
+[2017-05-04  20:45:14] DBUG stats/modify_node_event update "/stream" total_bytes_read (802816)
+[2017-05-04  20:45:14] DBUG stats/modify_node_event update "/stream" total_bytes_sent (314134)
+[2017-05-04  20:45:19] DBUG stats/modify_node_event update "/stream" total_bytes_read (869400)
+[2017-05-04  20:45:19] DBUG stats/modify_node_event update "/stream" total_bytes_sent (314134)
+[2017-05-04  20:45:24] DBUG stats/modify_node_event update "/stream" total_bytes_read (950600)
+[2017-05-04  20:45:24] DBUG stats/modify_node_event update "/stream" total_bytes_sent (314134)
+[2017-05-04  20:45:29] DBUG stats/modify_node_event update "/stream" total_bytes_read (1032192)
+[2017-05-04  20:45:29] DBUG stats/modify_node_event update "/stream" total_bytes_sent (314134)
+[2017-05-04  20:45:34] DBUG stats/modify_node_event update "/stream" total_bytes_read (1114112)
+[2017-05-04  20:45:34] DBUG stats/modify_node_event update "/stream" total_bytes_sent (314134)
+[2017-05-04  20:45:39] DBUG stats/modify_node_event update "/stream" total_bytes_read (1196032)
+[2017-05-04  20:45:39] DBUG stats/modify_node_event update "/stream" total_bytes_sent (314134)
+[2017-05-04  20:45:44] DBUG stats/modify_node_event update "/stream" total_bytes_read (1277952)
+[2017-05-04  20:45:44] DBUG stats/modify_node_event update "/stream" total_bytes_sent (314134)
+[2017-05-04  20:45:49] DBUG stats/modify_node_event update "/stream" total_bytes_read (1359872)
+[2017-05-04  20:45:49] DBUG stats/modify_node_event update "/stream" total_bytes_sent (314134)
+[2017-05-04  20:45:54] DBUG stats/modify_node_event update "/stream" total_bytes_read (1441792)
+[2017-05-04  20:45:54] DBUG stats/modify_node_event update "/stream" total_bytes_sent (314134)
+[2017-05-04  20:45:59] DBUG stats/modify_node_event update "/stream" total_bytes_read (1507800)
+[2017-05-04  20:45:59] DBUG stats/modify_node_event update "/stream" total_bytes_sent (314134)
+[2017-05-04  20:46:04] DBUG stats/modify_node_event update "/stream" total_bytes_read (1590400)
+[2017-05-04  20:46:04] DBUG stats/modify_node_event update "/stream" total_bytes_sent (314134)
+[2017-05-04  20:46:09] DBUG stats/modify_node_event update "/stream" total_bytes_read (1671600)
+[2017-05-04  20:46:09] DBUG stats/modify_node_event update "/stream" total_bytes_sent (314134)
+[2017-05-04  20:46:14] DBUG stats/modify_node_event update "/stream" total_bytes_read (1753088)
+[2017-05-04  20:46:14] DBUG stats/modify_node_event update "/stream" total_bytes_sent (314134)
+[2017-05-04  20:46:19] DBUG stats/modify_node_event update "/stream" total_bytes_read (1835008)
+[2017-05-04  20:46:19] DBUG stats/modify_node_event update "/stream" total_bytes_sent (314134)
+[2017-05-04  20:46:24] DBUG stats/modify_node_event update "/stream" total_bytes_read (1916928)
+[2017-05-04  20:46:24] DBUG stats/modify_node_event update "/stream" total_bytes_sent (314134)
+[2017-05-04  20:46:29] DBUG stats/modify_node_event update "/stream" total_bytes_read (1998848)
+[2017-05-04  20:46:29] DBUG stats/modify_node_event update "/stream" total_bytes_sent (314134)
+[2017-05-04  20:46:32] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  20:46:34] DBUG stats/modify_node_event update "/stream" total_bytes_read (2080768)
+[2017-05-04  20:46:34] DBUG stats/modify_node_event update "/stream" total_bytes_sent (314134)
+[2017-05-04  20:46:39] DBUG stats/modify_node_event update "/stream" total_bytes_read (2162688)
+[2017-05-04  20:46:39] DBUG stats/modify_node_event update "/stream" total_bytes_sent (314134)
+[2017-05-04  20:46:44] DBUG stats/modify_node_event update "/stream" total_bytes_read (2228800)
+[2017-05-04  20:46:44] DBUG stats/modify_node_event update "/stream" total_bytes_sent (314134)
+[2017-05-04  20:46:49] DBUG stats/modify_node_event update "/stream" total_bytes_read (2311400)
+[2017-05-04  20:46:49] DBUG stats/modify_node_event update "/stream" total_bytes_sent (314134)
+[2017-05-04  20:46:54] DBUG stats/modify_node_event update "/stream" total_bytes_read (2392064)
+[2017-05-04  20:46:54] DBUG stats/modify_node_event update "/stream" total_bytes_sent (314134)
+[2017-05-04  20:46:59] DBUG stats/modify_node_event update "/stream" total_bytes_read (2473984)
+[2017-05-04  20:46:59] DBUG stats/modify_node_event update "/stream" total_bytes_sent (314134)
+[2017-05-04  20:47:04] DBUG stats/modify_node_event update "/stream" total_bytes_read (2555904)
+[2017-05-04  20:47:04] DBUG stats/modify_node_event update "/stream" total_bytes_sent (314134)
+[2017-05-04  20:47:09] DBUG stats/modify_node_event update "/stream" total_bytes_read (2637824)
+[2017-05-04  20:47:09] DBUG stats/modify_node_event update "/stream" total_bytes_sent (314134)
+[2017-05-04  20:47:14] DBUG stats/modify_node_event update "/stream" total_bytes_read (2719744)
+[2017-05-04  20:47:14] DBUG stats/modify_node_event update "/stream" total_bytes_sent (314134)
+[2017-05-04  20:47:19] DBUG stats/modify_node_event update "/stream" total_bytes_read (2801664)
+[2017-05-04  20:47:19] DBUG stats/modify_node_event update "/stream" total_bytes_sent (314134)
+[2017-05-04  20:47:24] DBUG stats/modify_node_event update "/stream" total_bytes_read (2883584)
+[2017-05-04  20:47:24] DBUG stats/modify_node_event update "/stream" total_bytes_sent (314134)
+[2017-05-04  20:47:29] DBUG stats/modify_node_event update "/stream" total_bytes_read (2949800)
+[2017-05-04  20:47:29] DBUG stats/modify_node_event update "/stream" total_bytes_sent (314134)
+[2017-05-04  20:47:34] DBUG stats/modify_node_event update "/stream" total_bytes_read (3032400)
+[2017-05-04  20:47:34] DBUG stats/modify_node_event update "/stream" total_bytes_sent (314134)
+[2017-05-04  20:47:39] DBUG stats/modify_node_event update "/stream" total_bytes_read (3047424)
+[2017-05-04  20:47:39] DBUG stats/modify_node_event update "/stream" total_bytes_sent (314134)
+[2017-05-04  20:47:44] DBUG stats/modify_node_event update "/stream" total_bytes_read (3047424)
+[2017-05-04  20:47:44] DBUG stats/modify_node_event update "/stream" total_bytes_sent (314134)
+[2017-05-04  20:47:45] DBUG source/get_next_buffer last 1493945254, timeout 10, now 1493945265
+[2017-05-04  20:47:45] WARN source/get_next_buffer Disconnecting source due to socket timeout
+[2017-05-04  20:47:45] INFO source/source_shutdown Source from ::1 at "/stream" exiting
+[2017-05-04  20:47:45] DBUG source/source_clear_source clearing source "/stream"
+[2017-05-04  20:47:45] DBUG source/source_free_source freeing source "/stream"
+[2017-05-04  20:47:45] DBUG stats/process_source_event delete source node /stream
+[2017-05-04  20:47:45] DBUG stats/modify_node_event update global clients (0)
+[2017-05-04  20:47:45] DBUG stats/modify_node_event update global sources (0)
+[2017-05-04  20:47:46] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  20:49:46] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  20:51:46] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  20:53:47] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  20:55:47] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  20:57:47] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  20:59:48] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  21:01:48] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  21:03:48] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  21:05:10] INFO auth/auth_add_listener adding client for authentication
+[2017-05-04  21:05:10] DBUG auth/queue_auth_client ...refcount on auth_t (default mount) is now 5
+[2017-05-04  21:05:10] INFO auth/queue_auth_client auth on (default mount) has 1 pending
+[2017-05-04  21:05:10] INFO connection/_handle_source_request Source logging in at mountpoint "/stream" from ::1
+[2017-05-04  21:05:10] DBUG connection/connection_complete_source sources count is 0
+[2017-05-04  21:05:10] WARN format/format_get_type Unsupported or legacy stream type: "audio/mpeg". Falling back to generic minimal handler for best effort.
+[2017-05-04  21:05:10] DBUG source/source_apply_mount Applying mount information for "/stream"
+[2017-05-04  21:05:10] DBUG format-mp3/format_mp3_apply_settings sending metadata interval 16000
+[2017-05-04  21:05:10] DBUG format-mp3/format_mp3_apply_settings charset ISO8859-1
+[2017-05-04  21:05:10] WARN source/source_apply_mount Cannot open intro file "./web//stream": No such file or directory
+[2017-05-04  21:05:10] DBUG source/source_update_settings intro file is /stream
+[2017-05-04  21:05:10] DBUG source/source_update_settings public set to 0
+[2017-05-04  21:05:10] DBUG source/source_update_settings max listeners to -1
+[2017-05-04  21:05:10] DBUG source/source_update_settings queue size to 102400
+[2017-05-04  21:05:10] DBUG source/source_update_settings burst size to 65536
+[2017-05-04  21:05:10] DBUG source/source_update_settings source timeout to 10
+[2017-05-04  21:05:10] DBUG source/source_update_settings fallback_when_full to 0
+[2017-05-04  21:05:10] DBUG connection/connection_complete_source source is ready to start
+[2017-05-04  21:05:10] DBUG fserve/fserve_add_client_callback Adding client to file serving engine
+[2017-05-04  21:05:10] DBUG auth/auth_run_thread 1 client(s) pending on (default mount)
+[2017-05-04  21:05:10] DBUG auth/add_listener_to_source max on /stream is -1 (cur 0)
+[2017-05-04  21:05:10] DBUG auth/add_listener_to_source Added client to /stream
+[2017-05-04  21:05:10] DBUG auth/add_authenticated_listener client authenticated, passed to source
+[2017-05-04  21:05:10] DBUG source/source_init Source creation complete
+[2017-05-04  21:05:10] DBUG auth/queue_auth_client ...refcount on auth_t (default mount) is now 6
+[2017-05-04  21:05:10] INFO auth/queue_auth_client auth on (default mount) has 1 pending
+[2017-05-04  21:05:10] DBUG stats/modify_node_event update global clients (1)
+[2017-05-04  21:05:10] DBUG stats/modify_node_event update global connections (8)
+[2017-05-04  21:05:10] DBUG stats/modify_node_event update global client_connections (4)
+[2017-05-04  21:05:10] DBUG stats/modify_node_event update global clients (2)
+[2017-05-04  21:05:10] DBUG stats/modify_node_event update global connections (9)
+[2017-05-04  21:05:10] DBUG stats/modify_node_event update global sources (1)
+[2017-05-04  21:05:10] DBUG stats/process_source_event new source stat /stream
+[2017-05-04  21:05:10] DBUG stats/process_source_event new node listenurl (http://localhost:9000/stream)
+[2017-05-04  21:05:10] DBUG stats/process_source_event new node listener_peak (0)
+[2017-05-04  21:05:10] DBUG stats/process_source_event new node public (0)
+[2017-05-04  21:05:10] DBUG stats/process_source_event new node server_name (Unspecified name)
+[2017-05-04  21:05:10] DBUG stats/process_source_event new node server_description (Unspecified description)
+[2017-05-04  21:05:10] DBUG stats/process_source_event new node genre (various)
+[2017-05-04  21:05:10] DBUG stats/process_source_event new node bitrate (44100)
+[2017-05-04  21:05:10] DBUG stats/process_source_event new node server_type (audio/mpeg)
+[2017-05-04  21:05:10] DBUG stats/process_source_event new node authenticator (url)
+[2017-05-04  21:05:10] DBUG stats/process_source_event new node max_listeners (unlimited)
+[2017-05-04  21:05:10] DBUG stats/process_source_event new node source_ip (::1)
+[2017-05-04  21:05:10] DBUG stats/modify_node_event update global source_client_connections (3)
+[2017-05-04  21:05:10] DBUG stats/process_source_event new node listeners (0)
+[2017-05-04  21:05:10] DBUG stats/modify_node_event update "/stream" listenurl (http://localhost:9000/stream)
+[2017-05-04  21:05:10] DBUG stats/modify_node_event update global source_total_connections (3)
+[2017-05-04  21:05:10] DBUG stats/process_source_event new node slow_listeners (0)
+[2017-05-04  21:05:10] DBUG stats/modify_node_event update "/stream" listeners (0)
+[2017-05-04  21:05:10] DBUG stats/modify_node_event update "/stream" listener_peak (0)
+[2017-05-04  21:05:10] DBUG stats/process_source_event new node stream_start (Thu, 04 May 2017 21:05:10 -0400)
+[2017-05-04  21:05:10] DBUG stats/process_source_event new node stream_start_iso8601 (2017-05-04T21:05:10-0400)
+[2017-05-04  21:05:10] DBUG auth/auth_run_thread 1 client(s) pending on (default mount)
+[2017-05-04  21:05:10] DBUG source/source_main Client added for mountpoint (/stream)
+[2017-05-04  21:05:10] INFO source/source_main listener count on /stream now 1
+[2017-05-04  21:05:10] DBUG stats/process_source_event new node total_bytes_read (0)
+[2017-05-04  21:05:10] DBUG stats/process_source_event new node total_bytes_sent (0)
+[2017-05-04  21:05:10] DBUG stats/modify_node_event update "/stream" listener_peak (1)
+[2017-05-04  21:05:10] DBUG stats/modify_node_event update "/stream" listeners (1)
+[2017-05-04  21:05:10] DBUG format/format_check_http_buffer processing pending client headers
+[2017-05-04  21:05:11] DBUG stats/modify_node_event update global listeners (1)
+[2017-05-04  21:05:11] DBUG stats/modify_node_event update global listener_connections (4)
+[2017-05-04  21:05:11] WARN auth_url/url_stream_start auth to server http://auth.example.org/stream_start.php failed with Could not resolve host: auth.example.org
+[2017-05-04  21:05:11] DBUG auth/auth_release ...refcount on auth_t (default mount) is now 6
+[2017-05-04  21:05:11] DBUG auth/auth_release ...refcount on auth_t (default mount) is now 5
+[2017-05-04  21:05:15] DBUG stats/modify_node_event update "/stream" total_bytes_read (81920)
+[2017-05-04  21:05:15] DBUG stats/modify_node_event update "/stream" total_bytes_sent (81724)
+[2017-05-04  21:05:20] DBUG stats/modify_node_event update "/stream" total_bytes_read (147456)
+[2017-05-04  21:05:20] DBUG stats/modify_node_event update "/stream" total_bytes_sent (147524)
+[2017-05-04  21:05:25] DBUG client/client_send_bytes Client connection died
+[2017-05-04  21:05:25] DBUG source/source_main Client removed
+[2017-05-04  21:05:25] INFO source/source_main listener count on /stream now 0
+[2017-05-04  21:05:25] DBUG stats/modify_node_event update "/stream" total_bytes_read (229376)
+[2017-05-04  21:05:25] DBUG stats/modify_node_event update "/stream" total_bytes_sent (228724)
+[2017-05-04  21:05:25] DBUG stats/modify_node_event update global listeners (0)
+[2017-05-04  21:05:25] DBUG stats/modify_node_event update global clients (1)
+[2017-05-04  21:05:25] DBUG stats/modify_node_event update "/stream" listeners (0)
+[2017-05-04  21:05:30] DBUG stats/modify_node_event update "/stream" total_bytes_read (311296)
+[2017-05-04  21:05:30] DBUG stats/modify_node_event update "/stream" total_bytes_sent (230124)
+[2017-05-04  21:05:35] DBUG stats/modify_node_event update "/stream" total_bytes_read (393216)
+[2017-05-04  21:05:35] DBUG stats/modify_node_event update "/stream" total_bytes_sent (230124)
+[2017-05-04  21:05:40] DBUG stats/modify_node_event update "/stream" total_bytes_read (475136)
+[2017-05-04  21:05:40] DBUG stats/modify_node_event update "/stream" total_bytes_sent (230124)
+[2017-05-04  21:05:45] INFO auth/auth_add_listener adding client for authentication
+[2017-05-04  21:05:45] DBUG auth/queue_auth_client ...refcount on auth_t (default mount) is now 6
+[2017-05-04  21:05:45] INFO auth/queue_auth_client auth on (default mount) has 1 pending
+[2017-05-04  21:05:45] INFO connection/_handle_source_request Source logging in at mountpoint "/stream" from ::1
+[2017-05-04  21:05:45] DBUG fserve/fserve_add_client Adding client to file serving engine
+[2017-05-04  21:05:45] WARN connection/source_startup Mountpoint /stream in use
+[2017-05-04  21:05:45] DBUG stats/modify_node_event update global clients (2)
+[2017-05-04  21:05:45] DBUG stats/modify_node_event update global connections (10)
+[2017-05-04  21:05:45] DBUG stats/modify_node_event update global client_connections (5)
+[2017-05-04  21:05:45] DBUG stats/modify_node_event update global clients (3)
+[2017-05-04  21:05:45] DBUG stats/modify_node_event update global connections (11)
+[2017-05-04  21:05:45] DBUG auth/auth_run_thread 1 client(s) pending on (default mount)
+[2017-05-04  21:05:45] DBUG auth/add_listener_to_source max on /stream is -1 (cur 0)
+[2017-05-04  21:05:45] DBUG auth/add_listener_to_source Added client to /stream
+[2017-05-04  21:05:45] DBUG auth/add_authenticated_listener client authenticated, passed to source
+[2017-05-04  21:05:45] DBUG source/source_main Client added for mountpoint (/stream)
+[2017-05-04  21:05:45] INFO source/source_main listener count on /stream now 1
+[2017-05-04  21:05:45] DBUG stats/modify_node_event update global clients (2)
+[2017-05-04  21:05:45] DBUG stats/modify_node_event update "/stream" total_bytes_read (557056)
+[2017-05-04  21:05:45] DBUG stats/modify_node_event update "/stream" total_bytes_sent (230124)
+[2017-05-04  21:05:45] DBUG stats/modify_node_event update "/stream" listeners (1)
+[2017-05-04  21:05:45] DBUG format/format_check_http_buffer processing pending client headers
+[2017-05-04  21:05:45] DBUG stats/modify_node_event update global listeners (1)
+[2017-05-04  21:05:45] DBUG stats/modify_node_event update global listener_connections (5)
+[2017-05-04  21:05:49] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  21:05:50] DBUG stats/modify_node_event update "/stream" total_bytes_read (638976)
+[2017-05-04  21:05:50] DBUG stats/modify_node_event update "/stream" total_bytes_sent (376248)
+[2017-05-04  21:05:53] DBUG client/client_send_bytes Client connection died
+[2017-05-04  21:05:53] DBUG source/source_main Client removed
+[2017-05-04  21:05:53] INFO source/source_main listener count on /stream now 0
+[2017-05-04  21:05:54] DBUG stats/modify_node_event update global listeners (0)
+[2017-05-04  21:05:54] DBUG stats/modify_node_event update global clients (1)
+[2017-05-04  21:05:54] DBUG stats/modify_node_event update "/stream" listeners (0)
+[2017-05-04  21:05:55] DBUG stats/modify_node_event update "/stream" total_bytes_read (720896)
+[2017-05-04  21:05:55] DBUG stats/modify_node_event update "/stream" total_bytes_sent (428048)
+[2017-05-04  21:06:00] DBUG stats/modify_node_event update "/stream" total_bytes_read (786800)
+[2017-05-04  21:06:00] DBUG stats/modify_node_event update "/stream" total_bytes_sent (428048)
+[2017-05-04  21:06:05] DBUG stats/modify_node_event update "/stream" total_bytes_read (869400)
+[2017-05-04  21:06:05] DBUG stats/modify_node_event update "/stream" total_bytes_sent (428048)
+[2017-05-04  21:06:10] DBUG stats/modify_node_event update "/stream" total_bytes_read (950272)
+[2017-05-04  21:06:10] DBUG stats/modify_node_event update "/stream" total_bytes_sent (428048)
+[2017-05-04  21:06:15] DBUG stats/modify_node_event update "/stream" total_bytes_read (1032192)
+[2017-05-04  21:06:15] DBUG stats/modify_node_event update "/stream" total_bytes_sent (428048)
+[2017-05-04  21:06:20] DBUG stats/modify_node_event update "/stream" total_bytes_read (1114112)
+[2017-05-04  21:06:20] DBUG stats/modify_node_event update "/stream" total_bytes_sent (428048)
+[2017-05-04  21:06:25] DBUG stats/modify_node_event update "/stream" total_bytes_read (1196032)
+[2017-05-04  21:06:25] DBUG stats/modify_node_event update "/stream" total_bytes_sent (428048)
+[2017-05-04  21:06:30] DBUG stats/modify_node_event update "/stream" total_bytes_read (1277952)
+[2017-05-04  21:06:30] DBUG stats/modify_node_event update "/stream" total_bytes_sent (428048)
+[2017-05-04  21:06:30] INFO auth/auth_add_listener adding client for authentication
+[2017-05-04  21:06:30] DBUG auth/queue_auth_client ...refcount on auth_t (default mount) is now 7
+[2017-05-04  21:06:30] INFO auth/queue_auth_client auth on (default mount) has 1 pending
+[2017-05-04  21:06:30] INFO connection/_handle_source_request Source logging in at mountpoint "/stream" from ::1
+[2017-05-04  21:06:30] DBUG fserve/fserve_add_client Adding client to file serving engine
+[2017-05-04  21:06:30] WARN connection/source_startup Mountpoint /stream in use
+[2017-05-04  21:06:30] DBUG stats/modify_node_event update global clients (2)
+[2017-05-04  21:06:30] DBUG stats/modify_node_event update global connections (12)
+[2017-05-04  21:06:30] DBUG stats/modify_node_event update global client_connections (6)
+[2017-05-04  21:06:30] DBUG stats/modify_node_event update global clients (3)
+[2017-05-04  21:06:30] DBUG stats/modify_node_event update global connections (13)
+[2017-05-04  21:06:30] DBUG stats/modify_node_event update global clients (2)
+[2017-05-04  21:06:30] DBUG auth/auth_run_thread 1 client(s) pending on (default mount)
+[2017-05-04  21:06:30] DBUG auth/add_listener_to_source max on /stream is -1 (cur 0)
+[2017-05-04  21:06:30] DBUG auth/add_listener_to_source Added client to /stream
+[2017-05-04  21:06:30] DBUG auth/add_authenticated_listener client authenticated, passed to source
+[2017-05-04  21:06:30] DBUG source/source_main Client added for mountpoint (/stream)
+[2017-05-04  21:06:30] INFO source/source_main listener count on /stream now 1
+[2017-05-04  21:06:30] DBUG format/format_check_http_buffer processing pending client headers
+[2017-05-04  21:06:30] DBUG stats/modify_node_event update "/stream" listeners (1)
+[2017-05-04  21:06:30] DBUG stats/modify_node_event update global listeners (1)
+[2017-05-04  21:06:30] DBUG stats/modify_node_event update global listener_connections (6)
+[2017-05-04  21:06:35] DBUG stats/modify_node_event update "/stream" total_bytes_read (1359872)
+[2017-05-04  21:06:35] DBUG stats/modify_node_event update "/stream" total_bytes_sent (571372)
+[2017-05-04  21:06:37] DBUG client/client_send_bytes Client connection died
+[2017-05-04  21:06:37] DBUG source/source_main Client removed
+[2017-05-04  21:06:37] INFO source/source_main listener count on /stream now 0
+[2017-05-04  21:06:38] DBUG stats/modify_node_event update global listeners (0)
+[2017-05-04  21:06:38] DBUG stats/modify_node_event update global clients (1)
+[2017-05-04  21:06:38] DBUG stats/modify_node_event update "/stream" listeners (0)
+[2017-05-04  21:06:40] DBUG stats/modify_node_event update "/stream" total_bytes_read (1426600)
+[2017-05-04  21:06:40] DBUG stats/modify_node_event update "/stream" total_bytes_sent (604972)
+[2017-05-04  21:06:41] INFO auth/auth_add_listener adding client for authentication
+[2017-05-04  21:06:41] DBUG auth/queue_auth_client ...refcount on auth_t (default mount) is now 8
+[2017-05-04  21:06:41] INFO auth/queue_auth_client auth on (default mount) has 1 pending
+[2017-05-04  21:06:41] INFO auth/auth_add_listener adding client for authentication
+[2017-05-04  21:06:41] DBUG auth/queue_auth_client ...refcount on auth_t (default mount) is now 9
+[2017-05-04  21:06:41] INFO auth/queue_auth_client auth on (default mount) has 2 pending
+[2017-05-04  21:06:41] DBUG auth/auth_run_thread 2 client(s) pending on (default mount)
+[2017-05-04  21:06:41] DBUG auth/add_listener_to_source max on /stream is -1 (cur 0)
+[2017-05-04  21:06:41] DBUG auth/add_listener_to_source Added client to /stream
+[2017-05-04  21:06:41] DBUG auth/add_authenticated_listener client authenticated, passed to source
+[2017-05-04  21:06:41] DBUG auth/auth_run_thread 1 client(s) pending on (default mount)
+[2017-05-04  21:06:41] DBUG auth/add_listener_to_source max on /stream is -1 (cur 0)
+[2017-05-04  21:06:41] DBUG auth/add_listener_to_source Added client to /stream
+[2017-05-04  21:06:41] DBUG auth/add_authenticated_listener client authenticated, passed to source
+[2017-05-04  21:06:41] DBUG stats/modify_node_event update global clients (2)
+[2017-05-04  21:06:41] DBUG stats/modify_node_event update global connections (14)
+[2017-05-04  21:06:41] DBUG stats/modify_node_event update global client_connections (7)
+[2017-05-04  21:06:41] DBUG stats/modify_node_event update global clients (3)
+[2017-05-04  21:06:41] DBUG stats/modify_node_event update global connections (15)
+[2017-05-04  21:06:41] DBUG stats/modify_node_event update global client_connections (8)
+[2017-05-04  21:06:41] DBUG source/source_main Client added for mountpoint (/stream)
+[2017-05-04  21:06:41] DBUG source/source_main Client added for mountpoint (/stream)
+[2017-05-04  21:06:41] INFO source/source_main listener count on /stream now 2
+[2017-05-04  21:06:41] DBUG stats/modify_node_event update "/stream" listener_peak (2)
+[2017-05-04  21:06:41] DBUG stats/modify_node_event update "/stream" listeners (2)
+[2017-05-04  21:06:41] DBUG format/format_check_http_buffer processing pending client headers
+[2017-05-04  21:06:41] DBUG format/format_check_http_buffer processing pending client headers
+[2017-05-04  21:06:42] DBUG stats/modify_node_event update global listeners (1)
+[2017-05-04  21:06:42] DBUG stats/modify_node_event update global listener_connections (7)
+[2017-05-04  21:06:42] DBUG stats/modify_node_event update global listeners (2)
+[2017-05-04  21:06:42] DBUG stats/modify_node_event update global listener_connections (8)
+[2017-05-04  21:06:45] DBUG stats/modify_node_event update "/stream" total_bytes_read (1507328)
+[2017-05-04  21:06:45] DBUG stats/modify_node_event update "/stream" total_bytes_sent (830020)
+[2017-05-04  21:06:50] DBUG stats/modify_node_event update "/stream" total_bytes_read (1589248)
+[2017-05-04  21:06:50] DBUG stats/modify_node_event update "/stream" total_bytes_sent (995220)
+[2017-05-04  21:06:55] DBUG stats/modify_node_event update "/stream" total_bytes_read (1671168)
+[2017-05-04  21:06:55] DBUG stats/modify_node_event update "/stream" total_bytes_sent (1157620)
+[2017-05-04  21:07:00] DBUG stats/modify_node_event update "/stream" total_bytes_read (1753088)
+[2017-05-04  21:07:00] DBUG stats/modify_node_event update "/stream" total_bytes_sent (1322820)
+[2017-05-04  21:07:05] DBUG stats/modify_node_event update "/stream" total_bytes_read (1835008)
+[2017-05-04  21:07:05] DBUG stats/modify_node_event update "/stream" total_bytes_sent (1485220)
+[2017-05-04  21:07:10] DBUG stats/modify_node_event update "/stream" total_bytes_read (1916928)
+[2017-05-04  21:07:10] DBUG stats/modify_node_event update "/stream" total_bytes_sent (1650420)
+[2017-05-04  21:07:15] DBUG stats/modify_node_event update "/stream" total_bytes_read (1998848)
+[2017-05-04  21:07:15] DBUG stats/modify_node_event update "/stream" total_bytes_sent (1812820)
+[2017-05-04  21:07:17] DBUG client/client_send_bytes Client connection died
+[2017-05-04  21:07:17] DBUG source/source_main Client removed
+[2017-05-04  21:07:17] DBUG client/client_send_bytes Client connection died
+[2017-05-04  21:07:17] DBUG source/source_main Client removed
+[2017-05-04  21:07:17] INFO source/source_main listener count on /stream now 0
+[2017-05-04  21:07:17] DBUG stats/modify_node_event update global listeners (1)
+[2017-05-04  21:07:17] DBUG stats/modify_node_event update global clients (2)
+[2017-05-04  21:07:17] DBUG stats/modify_node_event update global listeners (0)
+[2017-05-04  21:07:17] DBUG stats/modify_node_event update global clients (1)
+[2017-05-04  21:07:17] DBUG stats/modify_node_event update "/stream" listeners (0)
+[2017-05-04  21:07:20] DBUG stats/modify_node_event update "/stream" total_bytes_read (2080768)
+[2017-05-04  21:07:20] DBUG stats/modify_node_event update "/stream" total_bytes_sent (1885620)
+[2017-05-04  21:07:25] DBUG stats/modify_node_event update "/stream" total_bytes_read (2147600)
+[2017-05-04  21:07:25] DBUG stats/modify_node_event update "/stream" total_bytes_sent (1885620)
+[2017-05-04  21:07:30] DBUG stats/modify_node_event update "/stream" total_bytes_read (2228800)
+[2017-05-04  21:07:30] DBUG stats/modify_node_event update "/stream" total_bytes_sent (1885620)
+[2017-05-04  21:07:35] DBUG stats/modify_node_event update "/stream" total_bytes_read (2310144)
+[2017-05-04  21:07:35] DBUG stats/modify_node_event update "/stream" total_bytes_sent (1885620)
+[2017-05-04  21:07:40] DBUG stats/modify_node_event update "/stream" total_bytes_read (2392064)
+[2017-05-04  21:07:40] DBUG stats/modify_node_event update "/stream" total_bytes_sent (1885620)
+[2017-05-04  21:07:45] DBUG stats/modify_node_event update "/stream" total_bytes_read (2473984)
+[2017-05-04  21:07:45] DBUG stats/modify_node_event update "/stream" total_bytes_sent (1885620)
+[2017-05-04  21:07:49] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  21:07:50] DBUG stats/modify_node_event update "/stream" total_bytes_read (2555904)
+[2017-05-04  21:07:50] DBUG stats/modify_node_event update "/stream" total_bytes_sent (1885620)
+[2017-05-04  21:07:55] DBUG stats/modify_node_event update "/stream" total_bytes_read (2637824)
+[2017-05-04  21:07:55] DBUG stats/modify_node_event update "/stream" total_bytes_sent (1885620)
+[2017-05-04  21:08:00] DBUG stats/modify_node_event update "/stream" total_bytes_read (2719744)
+[2017-05-04  21:08:00] DBUG stats/modify_node_event update "/stream" total_bytes_sent (1885620)
+[2017-05-04  21:08:05] DBUG stats/modify_node_event update "/stream" total_bytes_read (2801664)
+[2017-05-04  21:08:05] DBUG stats/modify_node_event update "/stream" total_bytes_sent (1885620)
+[2017-05-04  21:08:10] DBUG stats/modify_node_event update "/stream" total_bytes_read (2868600)
+[2017-05-04  21:08:10] DBUG stats/modify_node_event update "/stream" total_bytes_sent (1885620)
+[2017-05-04  21:08:15] DBUG stats/modify_node_event update "/stream" total_bytes_read (2949120)
+[2017-05-04  21:08:15] DBUG stats/modify_node_event update "/stream" total_bytes_sent (1885620)
+[2017-05-04  21:08:20] DBUG stats/modify_node_event update "/stream" total_bytes_read (3031040)
+[2017-05-04  21:08:20] DBUG stats/modify_node_event update "/stream" total_bytes_sent (1885620)
+[2017-05-04  21:08:25] DBUG stats/modify_node_event update "/stream" total_bytes_read (3047424)
+[2017-05-04  21:08:25] DBUG stats/modify_node_event update "/stream" total_bytes_sent (1885620)
+[2017-05-04  21:08:30] DBUG stats/modify_node_event update "/stream" total_bytes_read (3047424)
+[2017-05-04  21:08:30] DBUG stats/modify_node_event update "/stream" total_bytes_sent (1885620)
+[2017-05-04  21:08:31] DBUG source/get_next_buffer last 1493946500, timeout 10, now 1493946511
+[2017-05-04  21:08:31] WARN source/get_next_buffer Disconnecting source due to socket timeout
+[2017-05-04  21:08:31] INFO source/source_shutdown Source from ::1 at "/stream" exiting
+[2017-05-04  21:08:31] DBUG source/source_clear_source clearing source "/stream"
+[2017-05-04  21:08:31] DBUG source/source_free_source freeing source "/stream"
+[2017-05-04  21:08:31] DBUG stats/process_source_event delete source node /stream
+[2017-05-04  21:08:31] DBUG stats/modify_node_event update global clients (0)
+[2017-05-04  21:08:31] DBUG stats/modify_node_event update global sources (0)
+[2017-05-04  21:08:31] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  21:09:41] INFO connection/_handle_source_request Source logging in at mountpoint "/stream" from ::1
+[2017-05-04  21:09:41] DBUG connection/connection_complete_source sources count is 0
+[2017-05-04  21:09:41] WARN format/format_get_type Unsupported or legacy stream type: "audio/mpeg". Falling back to generic minimal handler for best effort.
+[2017-05-04  21:09:41] DBUG source/source_apply_mount Applying mount information for "/stream"
+[2017-05-04  21:09:41] DBUG format-mp3/format_mp3_apply_settings sending metadata interval 16000
+[2017-05-04  21:09:41] DBUG format-mp3/format_mp3_apply_settings charset ISO8859-1
+[2017-05-04  21:09:41] WARN source/source_apply_mount Cannot open intro file "./web//stream": No such file or directory
+[2017-05-04  21:09:41] DBUG source/source_update_settings intro file is /stream
+[2017-05-04  21:09:41] DBUG source/source_update_settings public set to 0
+[2017-05-04  21:09:41] DBUG source/source_update_settings max listeners to -1
+[2017-05-04  21:09:41] DBUG source/source_update_settings queue size to 102400
+[2017-05-04  21:09:41] DBUG source/source_update_settings burst size to 65536
+[2017-05-04  21:09:41] DBUG source/source_update_settings source timeout to 10
+[2017-05-04  21:09:41] DBUG source/source_update_settings fallback_when_full to 0
+[2017-05-04  21:09:41] DBUG connection/connection_complete_source source is ready to start
+[2017-05-04  21:09:41] DBUG fserve/fserve_add_client_callback Adding client to file serving engine
+[2017-05-04  21:09:41] INFO auth/auth_add_listener adding client for authentication
+[2017-05-04  21:09:41] DBUG auth/queue_auth_client ...refcount on auth_t (default mount) is now 10
+[2017-05-04  21:09:41] INFO auth/queue_auth_client auth on (default mount) has 1 pending
+[2017-05-04  21:09:41] DBUG auth/auth_run_thread 1 client(s) pending on (default mount)
+[2017-05-04  21:09:41] DBUG auth/add_listener_to_source max on /stream is -1 (cur 0)
+[2017-05-04  21:09:41] DBUG auth/add_listener_to_source Added client to /stream
+[2017-05-04  21:09:41] DBUG auth/add_authenticated_listener client authenticated, passed to source
+[2017-05-04  21:09:41] DBUG source/source_init Source creation complete
+[2017-05-04  21:09:41] DBUG auth/queue_auth_client ...refcount on auth_t (default mount) is now 11
+[2017-05-04  21:09:41] INFO auth/queue_auth_client auth on (default mount) has 1 pending
+[2017-05-04  21:09:41] DBUG auth/auth_run_thread 1 client(s) pending on (default mount)
+[2017-05-04  21:09:41] WARN auth_url/url_stream_start auth to server http://auth.example.org/stream_start.php failed with Could not resolve host: auth.example.org
+[2017-05-04  21:09:41] DBUG auth/auth_release ...refcount on auth_t (default mount) is now 11
+[2017-05-04  21:09:41] DBUG auth/auth_release ...refcount on auth_t (default mount) is now 10
+[2017-05-04  21:09:42] DBUG stats/modify_node_event update global clients (1)
+[2017-05-04  21:09:42] DBUG stats/modify_node_event update global connections (16)
+[2017-05-04  21:09:42] DBUG stats/modify_node_event update global sources (1)
+[2017-05-04  21:09:42] DBUG stats/process_source_event new source stat /stream
+[2017-05-04  21:09:42] DBUG stats/process_source_event new node listenurl (http://localhost:9000/stream)
+[2017-05-04  21:09:42] DBUG stats/process_source_event new node listener_peak (0)
+[2017-05-04  21:09:42] DBUG stats/process_source_event new node public (0)
+[2017-05-04  21:09:42] DBUG stats/process_source_event new node server_name (Unspecified name)
+[2017-05-04  21:09:42] DBUG stats/process_source_event new node server_description (Unspecified description)
+[2017-05-04  21:09:42] DBUG stats/process_source_event new node genre (various)
+[2017-05-04  21:09:42] DBUG stats/process_source_event new node bitrate (44100)
+[2017-05-04  21:09:42] DBUG stats/process_source_event new node server_type (audio/mpeg)
+[2017-05-04  21:09:42] DBUG stats/process_source_event new node authenticator (url)
+[2017-05-04  21:09:42] DBUG stats/process_source_event new node max_listeners (unlimited)
+[2017-05-04  21:09:42] DBUG stats/modify_node_event update global clients (2)
+[2017-05-04  21:09:42] DBUG stats/modify_node_event update global connections (17)
+[2017-05-04  21:09:42] DBUG stats/modify_node_event update global client_connections (9)
+[2017-05-04  21:09:42] DBUG stats/process_source_event new node source_ip (::1)
+[2017-05-04  21:09:42] DBUG stats/modify_node_event update global source_client_connections (4)
+[2017-05-04  21:09:42] DBUG stats/process_source_event new node listeners (0)
+[2017-05-04  21:09:42] DBUG stats/modify_node_event update "/stream" listenurl (http://localhost:9000/stream)
+[2017-05-04  21:09:42] DBUG stats/modify_node_event update global source_total_connections (4)
+[2017-05-04  21:09:42] DBUG stats/process_source_event new node slow_listeners (0)
+[2017-05-04  21:09:42] DBUG stats/modify_node_event update "/stream" listeners (0)
+[2017-05-04  21:09:42] DBUG stats/modify_node_event update "/stream" listener_peak (0)
+[2017-05-04  21:09:42] DBUG stats/process_source_event new node stream_start (Thu, 04 May 2017 21:09:41 -0400)
+[2017-05-04  21:09:42] DBUG stats/process_source_event new node stream_start_iso8601 (2017-05-04T21:09:41-0400)
+[2017-05-04  21:09:42] DBUG source/source_main Client added for mountpoint (/stream)
+[2017-05-04  21:09:42] INFO source/source_main listener count on /stream now 1
+[2017-05-04  21:09:42] DBUG stats/process_source_event new node total_bytes_read (0)
+[2017-05-04  21:09:42] DBUG stats/process_source_event new node total_bytes_sent (0)
+[2017-05-04  21:09:42] DBUG stats/modify_node_event update "/stream" listener_peak (1)
+[2017-05-04  21:09:42] DBUG stats/modify_node_event update "/stream" listeners (1)
+[2017-05-04  21:09:42] DBUG format/format_check_http_buffer processing pending client headers
+[2017-05-04  21:09:42] DBUG stats/modify_node_event update global listeners (1)
+[2017-05-04  21:09:42] DBUG stats/modify_node_event update global listener_connections (9)
+[2017-05-04  21:09:46] DBUG stats/modify_node_event update "/stream" total_bytes_read (65536)
+[2017-05-04  21:09:46] DBUG stats/modify_node_event update "/stream" total_bytes_sent (64924)
+[2017-05-04  21:09:51] DBUG stats/modify_node_event update "/stream" total_bytes_read (147456)
+[2017-05-04  21:09:51] DBUG stats/modify_node_event update "/stream" total_bytes_sent (147524)
+[2017-05-04  21:09:56] DBUG stats/modify_node_event update "/stream" total_bytes_read (229376)
+[2017-05-04  21:09:56] DBUG stats/modify_node_event update "/stream" total_bytes_sent (228724)
+[2017-05-04  21:10:01] DBUG stats/modify_node_event update "/stream" total_bytes_read (311296)
+[2017-05-04  21:10:01] DBUG stats/modify_node_event update "/stream" total_bytes_sent (311324)
+[2017-05-04  21:10:06] DBUG stats/modify_node_event update "/stream" total_bytes_read (376832)
+[2017-05-04  21:10:06] DBUG stats/modify_node_event update "/stream" total_bytes_sent (377124)
+[2017-05-04  21:10:11] DBUG stats/modify_node_event update "/stream" total_bytes_read (458752)
+[2017-05-04  21:10:11] DBUG stats/modify_node_event update "/stream" total_bytes_sent (458324)
+[2017-05-04  21:10:14] DBUG client/client_send_bytes Client connection died
+[2017-05-04  21:10:14] DBUG source/source_main Client removed
+[2017-05-04  21:10:14] INFO source/source_main listener count on /stream now 0
+[2017-05-04  21:10:14] DBUG stats/modify_node_event update global listeners (0)
+[2017-05-04  21:10:14] DBUG stats/modify_node_event update global clients (1)
+[2017-05-04  21:10:14] DBUG stats/modify_node_event update "/stream" listeners (0)
+[2017-05-04  21:10:16] DBUG stats/modify_node_event update "/stream" total_bytes_read (540672)
+[2017-05-04  21:10:16] DBUG stats/modify_node_event update "/stream" total_bytes_sent (511524)
+[2017-05-04  21:10:21] DBUG stats/modify_node_event update "/stream" total_bytes_read (622592)
+[2017-05-04  21:10:21] DBUG stats/modify_node_event update "/stream" total_bytes_sent (511524)
+[2017-05-04  21:10:26] DBUG stats/modify_node_event update "/stream" total_bytes_read (704512)
+[2017-05-04  21:10:26] DBUG stats/modify_node_event update "/stream" total_bytes_sent (511524)
+[2017-05-04  21:10:31] DBUG stats/modify_node_event update "/stream" total_bytes_read (786432)
+[2017-05-04  21:10:31] DBUG stats/modify_node_event update "/stream" total_bytes_sent (511524)
+[2017-05-04  21:10:32] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  21:10:36] DBUG stats/modify_node_event update "/stream" total_bytes_read (868352)
+[2017-05-04  21:10:36] DBUG stats/modify_node_event update "/stream" total_bytes_sent (511524)
+[2017-05-04  21:10:41] DBUG stats/modify_node_event update "/stream" total_bytes_read (950272)
+[2017-05-04  21:10:41] DBUG stats/modify_node_event update "/stream" total_bytes_sent (511524)
+[2017-05-04  21:10:46] DBUG stats/modify_node_event update "/stream" total_bytes_read (1016400)
+[2017-05-04  21:10:46] DBUG stats/modify_node_event update "/stream" total_bytes_sent (511524)
+[2017-05-04  21:10:51] DBUG stats/modify_node_event update "/stream" total_bytes_read (1099000)
+[2017-05-04  21:10:51] DBUG stats/modify_node_event update "/stream" total_bytes_sent (511524)
+[2017-05-04  21:10:56] DBUG stats/modify_node_event update "/stream" total_bytes_read (1179648)
+[2017-05-04  21:10:56] DBUG stats/modify_node_event update "/stream" total_bytes_sent (511524)
+[2017-05-04  21:11:01] DBUG stats/modify_node_event update "/stream" total_bytes_read (1261568)
+[2017-05-04  21:11:01] DBUG stats/modify_node_event update "/stream" total_bytes_sent (511524)
+[2017-05-04  21:11:06] DBUG stats/modify_node_event update "/stream" total_bytes_read (1343488)
+[2017-05-04  21:11:06] DBUG stats/modify_node_event update "/stream" total_bytes_sent (511524)
+[2017-05-04  21:11:11] DBUG stats/modify_node_event update "/stream" total_bytes_read (1425408)
+[2017-05-04  21:11:11] DBUG stats/modify_node_event update "/stream" total_bytes_sent (511524)
+[2017-05-04  21:11:16] DBUG stats/modify_node_event update "/stream" total_bytes_read (1507328)
+[2017-05-04  21:11:16] DBUG stats/modify_node_event update "/stream" total_bytes_sent (511524)
+[2017-05-04  21:11:21] DBUG stats/modify_node_event update "/stream" total_bytes_read (1589248)
+[2017-05-04  21:11:21] DBUG stats/modify_node_event update "/stream" total_bytes_sent (511524)
+[2017-05-04  21:11:26] DBUG stats/modify_node_event update "/stream" total_bytes_read (1671168)
+[2017-05-04  21:11:26] DBUG stats/modify_node_event update "/stream" total_bytes_sent (511524)
+[2017-05-04  21:11:31] DBUG stats/modify_node_event update "/stream" total_bytes_read (1737400)
+[2017-05-04  21:11:31] DBUG stats/modify_node_event update "/stream" total_bytes_sent (511524)
+[2017-05-04  21:11:36] DBUG stats/modify_node_event update "/stream" total_bytes_read (1818624)
+[2017-05-04  21:11:36] DBUG stats/modify_node_event update "/stream" total_bytes_sent (511524)
+[2017-05-04  21:11:41] DBUG stats/modify_node_event update "/stream" total_bytes_read (1900544)
+[2017-05-04  21:11:41] DBUG stats/modify_node_event update "/stream" total_bytes_sent (511524)
+[2017-05-04  21:11:46] DBUG stats/modify_node_event update "/stream" total_bytes_read (1982464)
+[2017-05-04  21:11:46] DBUG stats/modify_node_event update "/stream" total_bytes_sent (511524)
+[2017-05-04  21:11:51] DBUG stats/modify_node_event update "/stream" total_bytes_read (2064384)
+[2017-05-04  21:11:51] DBUG stats/modify_node_event update "/stream" total_bytes_sent (511524)
+[2017-05-04  21:11:56] DBUG stats/modify_node_event update "/stream" total_bytes_read (2146304)
+[2017-05-04  21:11:56] DBUG stats/modify_node_event update "/stream" total_bytes_sent (511524)
+[2017-05-04  21:12:01] DBUG stats/modify_node_event update "/stream" total_bytes_read (2228224)
+[2017-05-04  21:12:01] DBUG stats/modify_node_event update "/stream" total_bytes_sent (511524)
+[2017-05-04  21:12:06] DBUG stats/modify_node_event update "/stream" total_bytes_read (2310144)
+[2017-05-04  21:12:06] DBUG stats/modify_node_event update "/stream" total_bytes_sent (511524)
+[2017-05-04  21:12:11] DBUG stats/modify_node_event update "/stream" total_bytes_read (2375800)
+[2017-05-04  21:12:11] DBUG stats/modify_node_event update "/stream" total_bytes_sent (511524)
+[2017-05-04  21:12:16] DBUG stats/modify_node_event update "/stream" total_bytes_read (2458400)
+[2017-05-04  21:12:16] DBUG stats/modify_node_event update "/stream" total_bytes_sent (511524)
+[2017-05-04  21:12:21] DBUG stats/modify_node_event update "/stream" total_bytes_read (2539520)
+[2017-05-04  21:12:21] DBUG stats/modify_node_event update "/stream" total_bytes_sent (511524)
+[2017-05-04  21:12:26] DBUG stats/modify_node_event update "/stream" total_bytes_read (2621440)
+[2017-05-04  21:12:26] DBUG stats/modify_node_event update "/stream" total_bytes_sent (511524)
+[2017-05-04  21:12:31] DBUG stats/modify_node_event update "/stream" total_bytes_read (2703360)
+[2017-05-04  21:12:31] DBUG stats/modify_node_event update "/stream" total_bytes_sent (511524)
+[2017-05-04  21:12:32] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  21:12:36] DBUG stats/modify_node_event update "/stream" total_bytes_read (2785280)
+[2017-05-04  21:12:36] DBUG stats/modify_node_event update "/stream" total_bytes_sent (511524)
+[2017-05-04  21:12:41] DBUG stats/modify_node_event update "/stream" total_bytes_read (2867200)
+[2017-05-04  21:12:41] DBUG stats/modify_node_event update "/stream" total_bytes_sent (511524)
+[2017-05-04  21:12:46] DBUG stats/modify_node_event update "/stream" total_bytes_read (2949120)
+[2017-05-04  21:12:46] DBUG stats/modify_node_event update "/stream" total_bytes_sent (511524)
+[2017-05-04  21:12:51] DBUG stats/modify_node_event update "/stream" total_bytes_read (3031040)
+[2017-05-04  21:12:51] DBUG stats/modify_node_event update "/stream" total_bytes_sent (511524)
+[2017-05-04  21:12:56] DBUG stats/modify_node_event update "/stream" total_bytes_read (3047424)
+[2017-05-04  21:12:56] DBUG stats/modify_node_event update "/stream" total_bytes_sent (511524)
+[2017-05-04  21:13:01] DBUG stats/modify_node_event update "/stream" total_bytes_read (3047424)
+[2017-05-04  21:13:01] DBUG stats/modify_node_event update "/stream" total_bytes_sent (511524)
+[2017-05-04  21:13:03] DBUG source/get_next_buffer last 1493946772, timeout 10, now 1493946783
+[2017-05-04  21:13:03] WARN source/get_next_buffer Disconnecting source due to socket timeout
+[2017-05-04  21:13:03] INFO source/source_shutdown Source from ::1 at "/stream" exiting
+[2017-05-04  21:13:03] DBUG source/source_clear_source clearing source "/stream"
+[2017-05-04  21:13:03] DBUG source/source_free_source freeing source "/stream"
+[2017-05-04  21:13:03] DBUG stats/process_source_event delete source node /stream
+[2017-05-04  21:13:03] DBUG stats/modify_node_event update global clients (0)
+[2017-05-04  21:13:03] DBUG stats/modify_node_event update global sources (0)
+[2017-05-04  21:13:04] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  21:15:04] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  21:17:05] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  21:19:05] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  21:21:06] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  21:23:10] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  21:25:10] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  21:27:10] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  21:29:11] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  21:31:11] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  21:33:12] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  21:35:12] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  21:37:13] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  21:39:14] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  21:41:15] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  21:43:16] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  21:45:16] DBUG slave/_slave_thread checking master stream list
+[2017-05-04  21:47:07] INFO sighandler/_sig_die Caught signal 2, shutting down...
+[2017-05-04  21:47:07] INFO main/main Shutting down
+[2017-05-04  21:47:07] INFO fserve/fserve_shutdown file serving stopped
+[2017-05-04  21:47:07] DBUG slave/slave_shutdown waiting for slave thread
+[2017-05-04  21:47:07] INFO slave/_slave_thread shutting down current relays
+[2017-05-04  21:47:07] INFO slave/_slave_thread Slave thread shutdown complete
+[2017-05-04  21:47:07] INFO auth/auth_shutdown Auth shutdown
+[2017-05-04  21:47:07] DBUG fserve/fserv_thread_function fserve handler exit
+[2017-05-04  21:47:07] DBUG yp/destroy_yp_server Removing YP server entry for http://dir.xiph.org/cgi-bin/yp-cgi
+[2017-05-04  21:47:07] INFO yp/yp_shutdown YP thread down
+[2017-05-04  21:47:07] INFO sighandler/_sig_die Caught signal 2, shutting down...
+[2017-05-04  21:47:07] INFO sighandler/_sig_die Caught signal 2, shutting down...
+[2017-05-04  21:47:07] INFO stats/stats_shutdown stats thread finished
+[2017-05-04  21:47:07] DBUG auth/auth_release ...refcount on auth_t (default mount) is now 9
+[2017-05-07  16:51:42] INFO main/main Icecast 2.4.3 server started
+[2017-05-07  16:51:42] DBUG yp/yp_recheck_config Updating YP configuration
+[2017-05-07  16:51:42] INFO yp/yp_recheck_config Adding new YP server "http://dir.xiph.org/cgi-bin/yp-cgi" (timeout 6s, default interval 30s)
+[2017-05-07  16:51:42] INFO yp/yp_update_thread YP update thread started
+[2017-05-07  16:51:42] INFO connection/get_ssl_certificate No SSL capability
+[2017-05-07  16:51:42] DBUG yp/check_servers Add pending yps http://dir.xiph.org/cgi-bin/yp-cgi
+[2017-05-07  16:51:43] DBUG slave/_slave_thread checking master stream list
+[2017-05-07  16:52:14] INFO auth/auth_add_listener adding client for authentication
+[2017-05-07  16:52:14] DBUG auth/queue_auth_client ...refcount on auth_t (default mount) is now 2
+[2017-05-07  16:52:14] INFO auth/queue_auth_client auth on (default mount) has 1 pending
+[2017-05-07  16:52:14] INFO connection/_handle_source_request Source logging in at mountpoint "/stream" from ::1
+[2017-05-07  16:52:14] DBUG connection/connection_complete_source sources count is 0
+[2017-05-07  16:52:14] WARN format/format_get_type Unsupported or legacy stream type: "audio/mpeg". Falling back to generic minimal handler for best effort.
+[2017-05-07  16:52:14] DBUG source/source_apply_mount Applying mount information for "/stream"
+[2017-05-07  16:52:14] DBUG format-mp3/format_mp3_apply_settings sending metadata interval 16000
+[2017-05-07  16:52:14] DBUG format-mp3/format_mp3_apply_settings charset ISO8859-1
+[2017-05-07  16:52:14] WARN source/source_apply_mount Cannot open intro file "./web//stream": No such file or directory
+[2017-05-07  16:52:14] DBUG source/source_update_settings intro file is /stream
+[2017-05-07  16:52:14] DBUG source/source_update_settings public set to 0
+[2017-05-07  16:52:14] DBUG source/source_update_settings max listeners to -1
+[2017-05-07  16:52:14] DBUG source/source_update_settings queue size to 102400
+[2017-05-07  16:52:14] DBUG source/source_update_settings burst size to 65536
+[2017-05-07  16:52:14] DBUG source/source_update_settings source timeout to 10
+[2017-05-07  16:52:14] DBUG source/source_update_settings fallback_when_full to 0
+[2017-05-07  16:52:14] DBUG connection/connection_complete_source source is ready to start
+[2017-05-07  16:52:14] DBUG fserve/fserve_add_client_callback Adding client to file serving engine
+[2017-05-07  16:52:14] DBUG fserve/fserve_add_pending fserve handler waking up
+[2017-05-07  16:52:14] DBUG source/source_init Source creation complete
+[2017-05-07  16:52:14] DBUG auth/queue_auth_client ...refcount on auth_t (default mount) is now 3
+[2017-05-07  16:52:14] INFO auth/queue_auth_client auth on (default mount) has 2 pending
+[2017-05-07  16:52:14] DBUG auth/auth_run_thread 2 client(s) pending on (default mount)
+[2017-05-07  16:52:14] DBUG auth/add_listener_to_source max on /stream is -1 (cur 0)
+[2017-05-07  16:52:14] DBUG auth/add_listener_to_source Added client to /stream
+[2017-05-07  16:52:14] DBUG auth/add_authenticated_listener client authenticated, passed to source
+[2017-05-07  16:52:14] DBUG auth/auth_run_thread 1 client(s) pending on (default mount)
+[2017-05-07  16:52:14] WARN auth_url/url_stream_start auth to server http://auth.example.org/stream_start.php failed with Could not resolve host: auth.example.org
+[2017-05-07  16:52:14] DBUG auth/auth_release ...refcount on auth_t (default mount) is now 3
+[2017-05-07  16:52:14] DBUG auth/auth_release ...refcount on auth_t (default mount) is now 2
+[2017-05-07  16:52:14] DBUG stats/modify_node_event update global clients (1)
+[2017-05-07  16:52:14] DBUG stats/modify_node_event update global connections (1)
+[2017-05-07  16:52:14] DBUG stats/modify_node_event update global client_connections (1)
+[2017-05-07  16:52:14] DBUG stats/modify_node_event update global clients (2)
+[2017-05-07  16:52:14] DBUG stats/modify_node_event update global connections (2)
+[2017-05-07  16:52:14] DBUG stats/modify_node_event update global sources (1)
+[2017-05-07  16:52:14] DBUG stats/process_source_event new source stat /stream
+[2017-05-07  16:52:14] DBUG stats/process_source_event new node listenurl (http://localhost:9000/stream)
+[2017-05-07  16:52:14] DBUG stats/process_source_event new node listener_peak (0)
+[2017-05-07  16:52:14] DBUG stats/process_source_event new node public (0)
+[2017-05-07  16:52:14] DBUG stats/process_source_event new node server_name (Unspecified name)
+[2017-05-07  16:52:14] DBUG stats/process_source_event new node server_description (Unspecified description)
+[2017-05-07  16:52:14] DBUG stats/process_source_event new node genre (various)
+[2017-05-07  16:52:14] DBUG stats/process_source_event new node bitrate (44100)
+[2017-05-07  16:52:14] DBUG stats/process_source_event new node server_type (audio/mpeg)
+[2017-05-07  16:52:14] DBUG stats/process_source_event new node authenticator (url)
+[2017-05-07  16:52:14] DBUG stats/process_source_event new node max_listeners (unlimited)
+[2017-05-07  16:52:14] DBUG stats/process_source_event new node source_ip (::1)
+[2017-05-07  16:52:14] DBUG stats/modify_node_event update global source_client_connections (1)
+[2017-05-07  16:52:14] DBUG stats/process_source_event new node listeners (0)
+[2017-05-07  16:52:14] DBUG stats/modify_node_event update "/stream" listenurl (http://localhost:9000/stream)
+[2017-05-07  16:52:14] DBUG stats/modify_node_event update global source_total_connections (1)
+[2017-05-07  16:52:14] DBUG stats/process_source_event new node slow_listeners (0)
+[2017-05-07  16:52:14] DBUG stats/modify_node_event update "/stream" listeners (0)
+[2017-05-07  16:52:14] DBUG stats/modify_node_event update "/stream" listener_peak (0)
+[2017-05-07  16:52:14] DBUG stats/process_source_event new node stream_start (Sun, 07 May 2017 16:52:14 -0400)
+[2017-05-07  16:52:14] DBUG stats/process_source_event new node stream_start_iso8601 (2017-05-07T16:52:14-0400)
+[2017-05-07  16:52:14] DBUG source/source_main Client added for mountpoint (/stream)
+[2017-05-07  16:52:14] INFO source/source_main listener count on /stream now 1
+[2017-05-07  16:52:15] DBUG stats/process_source_event new node total_bytes_read (0)
+[2017-05-07  16:52:15] DBUG stats/process_source_event new node total_bytes_sent (0)
+[2017-05-07  16:52:15] DBUG stats/modify_node_event update "/stream" listener_peak (1)
+[2017-05-07  16:52:15] DBUG stats/modify_node_event update "/stream" listeners (1)
+[2017-05-07  16:52:15] DBUG format/format_check_http_buffer processing pending client headers
+[2017-05-07  16:52:15] DBUG stats/modify_node_event update global listeners (1)
+[2017-05-07  16:52:15] DBUG stats/modify_node_event update global listener_connections (1)
+[2017-05-07  16:52:19] DBUG stats/modify_node_event update "/stream" total_bytes_read (65536)
+[2017-05-07  16:52:19] DBUG stats/modify_node_event update "/stream" total_bytes_sent (64933)
+[2017-05-07  16:52:24] DBUG stats/modify_node_event update "/stream" total_bytes_read (147456)
+[2017-05-07  16:52:24] DBUG stats/modify_node_event update "/stream" total_bytes_sent (147533)
+[2017-05-07  16:52:29] DBUG stats/modify_node_event update "/stream" total_bytes_read (229376)
+[2017-05-07  16:52:29] DBUG stats/modify_node_event update "/stream" total_bytes_sent (228733)
+[2017-05-07  16:52:34] DBUG stats/modify_node_event update "/stream" total_bytes_read (311296)
+[2017-05-07  16:52:34] DBUG stats/modify_node_event update "/stream" total_bytes_sent (311333)
+[2017-05-07  16:52:39] DBUG stats/modify_node_event update "/stream" total_bytes_read (393216)
+[2017-05-07  16:52:39] DBUG stats/modify_node_event update "/stream" total_bytes_sent (392533)
+[2017-05-07  16:52:39] DBUG client/client_send_bytes Client connection died
+[2017-05-07  16:52:39] DBUG source/source_main Client removed
+[2017-05-07  16:52:39] INFO source/source_main listener count on /stream now 0
+[2017-05-07  16:52:39] DBUG stats/modify_node_event update global listeners (0)
+[2017-05-07  16:52:39] DBUG stats/modify_node_event update global clients (1)
+[2017-05-07  16:52:39] DBUG stats/modify_node_event update "/stream" listeners (0)
+[2017-05-07  16:52:44] INFO connection/_handle_source_request Source logging in at mountpoint "/stream" from ::1
+[2017-05-07  16:52:44] DBUG fserve/fserve_add_client Adding client to file serving engine
+[2017-05-07  16:52:44] WARN connection/source_startup Mountpoint /stream in use
+[2017-05-07  16:52:44] INFO auth/auth_add_listener adding client for authentication
+[2017-05-07  16:52:44] DBUG auth/queue_auth_client ...refcount on auth_t (default mount) is now 3
+[2017-05-07  16:52:44] INFO auth/queue_auth_client auth on (default mount) has 1 pending
+[2017-05-07  16:52:44] DBUG auth/auth_run_thread 1 client(s) pending on (default mount)
+[2017-05-07  16:52:44] DBUG auth/add_listener_to_source max on /stream is -1 (cur 0)
+[2017-05-07  16:52:44] DBUG auth/add_listener_to_source Added client to /stream
+[2017-05-07  16:52:44] DBUG auth/add_authenticated_listener client authenticated, passed to source
+[2017-05-07  16:52:44] DBUG source/source_main Client added for mountpoint (/stream)
+[2017-05-07  16:52:44] INFO source/source_main listener count on /stream now 1
+[2017-05-07  16:52:44] DBUG stats/modify_node_event update global clients (2)
+[2017-05-07  16:52:44] DBUG stats/modify_node_event update global connections (3)
+[2017-05-07  16:52:44] DBUG stats/modify_node_event update global clients (3)
+[2017-05-07  16:52:44] DBUG stats/modify_node_event update global connections (4)
+[2017-05-07  16:52:44] DBUG stats/modify_node_event update global client_connections (2)
+[2017-05-07  16:52:44] DBUG stats/modify_node_event update global clients (2)
+[2017-05-07  16:52:44] DBUG stats/modify_node_event update "/stream" total_bytes_read (475136)
+[2017-05-07  16:52:44] DBUG stats/modify_node_event update "/stream" total_bytes_sent (395333)
+[2017-05-07  16:52:44] DBUG stats/modify_node_event update "/stream" listeners (1)
+[2017-05-07  16:52:44] DBUG format/format_check_http_buffer processing pending client headers
+[2017-05-07  16:52:44] DBUG stats/modify_node_event update global listeners (1)
+[2017-05-07  16:52:44] DBUG stats/modify_node_event update global listener_connections (2)
+[2017-05-07  16:52:49] DBUG stats/modify_node_event update "/stream" total_bytes_read (541800)
+[2017-05-07  16:52:49] DBUG stats/modify_node_event update "/stream" total_bytes_sent (527466)
+[2017-05-07  16:52:54] DBUG stats/modify_node_event update "/stream" total_bytes_read (623000)
+[2017-05-07  16:52:54] DBUG stats/modify_node_event update "/stream" total_bytes_sent (608666)
+[2017-05-07  16:52:59] DBUG stats/modify_node_event update "/stream" total_bytes_read (704512)
+[2017-05-07  16:52:59] DBUG stats/modify_node_event update "/stream" total_bytes_sent (689866)
+[2017-05-07  16:53:04] DBUG stats/modify_node_event update "/stream" total_bytes_read (786432)
+[2017-05-07  16:53:04] DBUG stats/modify_node_event update "/stream" total_bytes_sent (771066)
+[2017-05-07  16:53:09] DBUG stats/modify_node_event update "/stream" total_bytes_read (868352)
+[2017-05-07  16:53:09] DBUG stats/modify_node_event update "/stream" total_bytes_sent (853666)
+[2017-05-07  16:53:14] DBUG stats/modify_node_event update "/stream" total_bytes_read (950272)
+[2017-05-07  16:53:14] DBUG stats/modify_node_event update "/stream" total_bytes_sent (934866)
+[2017-05-07  16:53:19] DBUG stats/modify_node_event update "/stream" total_bytes_read (1032192)
+[2017-05-07  16:53:19] DBUG stats/modify_node_event update "/stream" total_bytes_sent (1017466)
+[2017-05-07  16:53:24] DBUG stats/modify_node_event update "/stream" total_bytes_read (1114112)
+[2017-05-07  16:53:24] DBUG stats/modify_node_event update "/stream" total_bytes_sent (1098666)
+[2017-05-07  16:53:29] DBUG stats/modify_node_event update "/stream" total_bytes_read (1180200)
+[2017-05-07  16:53:29] DBUG stats/modify_node_event update "/stream" total_bytes_sent (1165866)
+[2017-05-07  16:53:34] DBUG stats/modify_node_event update "/stream" total_bytes_read (1262800)
+[2017-05-07  16:53:34] DBUG stats/modify_node_event update "/stream" total_bytes_sent (1248466)
+[2017-05-07  16:53:39] DBUG stats/modify_node_event update "/stream" total_bytes_read (1343488)
+[2017-05-07  16:53:39] DBUG stats/modify_node_event update "/stream" total_bytes_sent (1328266)
+[2017-05-07  16:53:44] DBUG slave/_slave_thread checking master stream list
+[2017-05-07  16:53:44] DBUG stats/modify_node_event update "/stream" total_bytes_read (1425408)
+[2017-05-07  16:53:44] DBUG stats/modify_node_event update "/stream" total_bytes_sent (1410866)
+[2017-05-07  16:53:49] DBUG stats/modify_node_event update "/stream" total_bytes_read (1507328)
+[2017-05-07  16:53:49] DBUG stats/modify_node_event update "/stream" total_bytes_sent (1492066)
+[2017-05-07  16:53:51] DBUG client/client_read_bytes reading from connection has failed
+[2017-05-07  16:53:51] INFO source/get_next_buffer End of Stream /stream
+[2017-05-07  16:53:51] INFO source/source_shutdown Source from ::1 at "/stream" exiting
+[2017-05-07  16:53:51] DBUG source/source_clear_source clearing source "/stream"
+[2017-05-07  16:53:51] INFO source/source_clear_source 1 active listeners on /stream released
+[2017-05-07  16:53:51] DBUG source/source_free_source freeing source "/stream"
+[2017-05-07  16:53:52] DBUG stats/process_source_event delete source node /stream
+[2017-05-07  16:53:52] DBUG stats/modify_node_event update global clients (1)
+[2017-05-07  16:53:52] DBUG stats/modify_node_event update global clients (0)
+[2017-05-07  16:53:52] DBUG stats/modify_node_event update global listeners (0)
+[2017-05-07  16:53:52] DBUG stats/modify_node_event update global sources (0)
+[2017-05-07  16:53:52] DBUG slave/_slave_thread checking master stream list
+[2017-05-07  16:54:02] INFO connection/_handle_source_request Source logging in at mountpoint "/stream" from ::1
+[2017-05-07  16:54:02] DBUG connection/connection_complete_source sources count is 0
+[2017-05-07  16:54:02] WARN format/format_get_type Unsupported or legacy stream type: "audio/mpeg". Falling back to generic minimal handler for best effort.
+[2017-05-07  16:54:02] DBUG source/source_apply_mount Applying mount information for "/stream"
+[2017-05-07  16:54:02] DBUG format-mp3/format_mp3_apply_settings sending metadata interval 16000
+[2017-05-07  16:54:02] DBUG format-mp3/format_mp3_apply_settings charset ISO8859-1
+[2017-05-07  16:54:02] WARN source/source_apply_mount Cannot open intro file "./web//stream": No such file or directory
+[2017-05-07  16:54:02] DBUG source/source_update_settings intro file is /stream
+[2017-05-07  16:54:02] DBUG source/source_update_settings public set to 0
+[2017-05-07  16:54:02] DBUG source/source_update_settings max listeners to -1
+[2017-05-07  16:54:02] DBUG source/source_update_settings queue size to 102400
+[2017-05-07  16:54:02] DBUG source/source_update_settings burst size to 65536
+[2017-05-07  16:54:02] DBUG source/source_update_settings source timeout to 10
+[2017-05-07  16:54:02] DBUG source/source_update_settings fallback_when_full to 0
+[2017-05-07  16:54:02] DBUG connection/connection_complete_source source is ready to start
+[2017-05-07  16:54:02] DBUG fserve/fserve_add_client_callback Adding client to file serving engine
+[2017-05-07  16:54:02] INFO auth/auth_add_listener adding client for authentication
+[2017-05-07  16:54:02] DBUG auth/queue_auth_client ...refcount on auth_t (default mount) is now 4
+[2017-05-07  16:54:02] INFO auth/queue_auth_client auth on (default mount) has 1 pending
+[2017-05-07  16:54:02] DBUG source/source_init Source creation complete
+[2017-05-07  16:54:02] DBUG auth/queue_auth_client ...refcount on auth_t (default mount) is now 5
+[2017-05-07  16:54:02] INFO auth/queue_auth_client auth on (default mount) has 2 pending
+[2017-05-07  16:54:02] DBUG auth/auth_run_thread 2 client(s) pending on (default mount)
+[2017-05-07  16:54:02] DBUG auth/add_listener_to_source max on /stream is -1 (cur 0)
+[2017-05-07  16:54:02] DBUG auth/add_listener_to_source Added client to /stream
+[2017-05-07  16:54:02] DBUG auth/add_authenticated_listener client authenticated, passed to source
+[2017-05-07  16:54:02] DBUG auth/auth_run_thread 1 client(s) pending on (default mount)
+[2017-05-07  16:54:02] WARN auth_url/url_stream_start auth to server http://auth.example.org/stream_start.php failed with Could not resolve host: auth.example.org
+[2017-05-07  16:54:02] DBUG auth/auth_release ...refcount on auth_t (default mount) is now 5
+[2017-05-07  16:54:02] DBUG auth/auth_release ...refcount on auth_t (default mount) is now 4
+[2017-05-07  16:54:02] DBUG stats/modify_node_event update global clients (1)
+[2017-05-07  16:54:02] DBUG stats/modify_node_event update global connections (5)
+[2017-05-07  16:54:02] DBUG stats/modify_node_event update global sources (1)
+[2017-05-07  16:54:02] DBUG stats/process_source_event new source stat /stream
+[2017-05-07  16:54:02] DBUG stats/process_source_event new node listenurl (http://localhost:9000/stream)
+[2017-05-07  16:54:02] DBUG stats/process_source_event new node listener_peak (0)
+[2017-05-07  16:54:02] DBUG stats/process_source_event new node public (0)
+[2017-05-07  16:54:02] DBUG stats/process_source_event new node server_name (Unspecified name)
+[2017-05-07  16:54:02] DBUG stats/process_source_event new node server_description (Unspecified description)
+[2017-05-07  16:54:02] DBUG stats/process_source_event new node genre (various)
+[2017-05-07  16:54:02] DBUG stats/process_source_event new node bitrate (44100)
+[2017-05-07  16:54:02] DBUG stats/process_source_event new node server_type (audio/mpeg)
+[2017-05-07  16:54:02] DBUG stats/process_source_event new node authenticator (url)
+[2017-05-07  16:54:02] DBUG stats/process_source_event new node max_listeners (unlimited)
+[2017-05-07  16:54:02] DBUG stats/modify_node_event update global clients (2)
+[2017-05-07  16:54:02] DBUG stats/modify_node_event update global connections (6)
+[2017-05-07  16:54:02] DBUG stats/modify_node_event update global client_connections (3)
+[2017-05-07  16:54:02] DBUG stats/process_source_event new node source_ip (::1)
+[2017-05-07  16:54:02] DBUG stats/modify_node_event update global source_client_connections (2)
+[2017-05-07  16:54:02] DBUG stats/process_source_event new node listeners (0)
+[2017-05-07  16:54:02] DBUG stats/modify_node_event update "/stream" listenurl (http://localhost:9000/stream)
+[2017-05-07  16:54:02] DBUG stats/modify_node_event update global source_total_connections (2)
+[2017-05-07  16:54:02] DBUG stats/process_source_event new node slow_listeners (0)
+[2017-05-07  16:54:02] DBUG stats/modify_node_event update "/stream" listeners (0)
+[2017-05-07  16:54:02] DBUG stats/modify_node_event update "/stream" listener_peak (0)
+[2017-05-07  16:54:02] DBUG stats/process_source_event new node stream_start (Sun, 07 May 2017 16:54:02 -0400)
+[2017-05-07  16:54:02] DBUG stats/process_source_event new node stream_start_iso8601 (2017-05-07T16:54:02-0400)
+[2017-05-07  16:54:02] DBUG source/source_main Client added for mountpoint (/stream)
+[2017-05-07  16:54:02] INFO source/source_main listener count on /stream now 1
+[2017-05-07  16:54:02] DBUG stats/process_source_event new node total_bytes_read (0)
+[2017-05-07  16:54:02] DBUG stats/process_source_event new node total_bytes_sent (0)
+[2017-05-07  16:54:02] DBUG stats/modify_node_event update "/stream" listener_peak (1)
+[2017-05-07  16:54:02] DBUG stats/modify_node_event update "/stream" listeners (1)
+[2017-05-07  16:54:03] DBUG format/format_check_http_buffer processing pending client headers
+[2017-05-07  16:54:03] DBUG stats/modify_node_event update global listeners (1)
+[2017-05-07  16:54:03] DBUG stats/modify_node_event update global listener_connections (3)
+[2017-05-07  16:54:07] DBUG stats/modify_node_event update "/stream" total_bytes_read (65800)
+[2017-05-07  16:54:07] DBUG stats/modify_node_event update "/stream" total_bytes_sent (66331)
+[2017-05-07  16:54:09] DBUG client/client_send_bytes Client connection died
+[2017-05-07  16:54:09] DBUG source/source_main Client removed
+[2017-05-07  16:54:09] INFO source/source_main listener count on /stream now 0
+[2017-05-07  16:54:09] DBUG stats/modify_node_event update global listeners (0)
+[2017-05-07  16:54:09] DBUG stats/modify_node_event update global clients (1)
+[2017-05-07  16:54:09] DBUG stats/modify_node_event update "/stream" listeners (0)
+[2017-05-07  16:54:09] DBUG client/client_read_bytes reading from connection has failed
+[2017-05-07  16:54:09] INFO source/get_next_buffer End of Stream /stream
+[2017-05-07  16:54:09] INFO source/source_shutdown Source from ::1 at "/stream" exiting
+[2017-05-07  16:54:09] DBUG source/source_clear_source clearing source "/stream"
+[2017-05-07  16:54:09] DBUG source/source_free_source freeing source "/stream"
+[2017-05-07  16:54:09] DBUG stats/process_source_event delete source node /stream
+[2017-05-07  16:54:09] DBUG stats/modify_node_event update global clients (0)
+[2017-05-07  16:54:09] DBUG stats/modify_node_event update global sources (0)
+[2017-05-07  16:54:10] DBUG slave/_slave_thread checking master stream list

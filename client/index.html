@@ -99,18 +99,23 @@
 
 		</div>
 		<div id="right">
-		 	<div id="play_zone">
-		 		<div id="playing">
-		 			 		 		
-		 		</div> 
-				<div id="audioplayer">
-					<button id="pButton" style="background: url(img/play.png)"  class="play" onclick="playAudio()"></button>
-					<div id="currentlyPlaying"> </div>
-					<label id="volume_control"></label>
-		    		<input type="range" oninput="setVolume(this.value)" id="rngVolume" min="0" max="1" step="0.01" value="1">
 
+			<div id="audioplayer">
+				<div id="playing">
+	 			
+					<button id="pButton"  class="play" onclick="window.playAudio()">
+						<img id="play_graphic" src="./img/play.png">
+					</button>
+					
 				</div>
-		 	</div>
+				
+				<div id="currentlyPlaying"> </div>
+				
+				<label id="volume_control"></label>
+	    		<input type="range" oninput="setVolume(this.value)" id="volume_slider" min="0" max="1" step="0.01" value="1">
+			</div>
+
+
 
 
 			<div id="drop_zone">
@@ -122,38 +127,20 @@
 			    <ul id="messages"></ul>
 			</div>
 
+
+
 			<div id="message">
-			
 				<form onSubmit="return false;" id="post">
 					<label> </label><input id="data"/>
 					<input type="button" id="datasend" value="send" />
-
 				</form>
 			</div>
+
+
+
 		</div>   <!-- end right-->
 	</div> <!-- end content -->
 
-<!-- 
-	<work> 
-		work work work work work work I am working and I wish I had some great music to listen to...
-		
-		I am woeking
-		I have been working</work>
-	<double work>
-		there is more rotk to do!:( I want to go home )
-	</double>
- -->
-
-
-
-
-
-<!-- 
-	<script src="js/helperAnimation.js"></script>
-	<script src="js/customcss.js"></script>
-	<script src="js/roommenu.js"></script> -->
-<!-- 
-	<script src="app.js"></script> -->
 
 </body>
 </html>

@@ -4649,6 +4649,9 @@ window.uploadToServer = function(){
 
 $(document).ready(function () {
 
+
+	$('#pButton').css("background-image", "url(./img/play.png)");  
+
 	var form = document.getElementById('form2');
 
 	form.onchange = function(ev) {
@@ -4908,6 +4911,7 @@ var displayTrack = function(trackname, uploading, fromserver, elem_ndx){
 
 	// var msg = '<strong>'+escape(trackname.replace(/ /g,""))+'</strong>';
 	// trackname = $.parseHTML(trackname);
+	console.log(trackname)
 	var msg = '<strong>'+trackname+'</strong>';
 
 	// random color
@@ -4937,24 +4941,32 @@ var removeSongFromList = function(id){
 
 var createAudioPlayer = function (){
 
+
+	$('#divID').css("background-image", "url(/myimage.jpg)");  
+
 	currTrackName = client_playlist[0];
 
 	// var msg = '<audio id="stream_player" src= "http://192.168.2.4:9000/stream">';
 	// var msg = '<audio id="stream_player" src= "http://192.168.1.142:9000/stream">';
 	var msg = '<audio id="stream_player" src= "http://localhost:'+client_port+'/stream">';
 	
-	// var li = document.createElement('li');
-	// li.innerHTML = msg;
-	// li.id = "list_play";			// so we can remove it roomMenu.js
-	// var pz = document.getElementById("playing");
-	// pz.appendChild(li);
+	var li = document.createElement('li');
+	li.innerHTML = msg;
+	li.id = "list_play";			// so we can remove it roomMenu.js
+	
+
+	var pz = document.getElementById("playing");
+	pz.appendChild(li);
+
+
+
 	// // play the station, if we are autoplaying
 	
 	// if(autoplay){
 	// 	var player = document.getElementById("stream_player"); // get reference to player
 	// 	player.play();	
 	// }
-	
+
 	// add song name to play bar
 	// var tempname = $.parseHTML(currTrackName);
 	// var songName = '<strong>'+escape(currTrackName.replace(/ /g,"_"))+'</strong>';
@@ -4967,16 +4979,26 @@ var updateTrackName = function(newname){
 	document.getElementById("currentlyPlaying").innerHTML = newname;
 }
 
-var playAudio = function() {
+window.playAudio = function() {
+
 	var player = document.getElementById("stream_player"); // get reference to player
+	
+
+
 	var playpause;
 	if(player.paused == false){
 		playpause = document.getElementById("pButton"); // get reference to player
+
+		
+
 		playpause.className = "pause";
 		player.pause();
 		console.log("paused");
 	}else{
 		playpause = document.getElementById("pButton"); // get reference to player
+
+		
+
 		playpause.className = "play";
 		player.play()
 		console.log("playing");
@@ -5019,7 +5041,7 @@ var border_w = ["1px","2px","3px","4px","5px","6px","7px",
 
 var icecreamColors = ['#22BFDE','#F06791','#DEB237','#9CC068','#777777']
 var mellowColors = ['#45A3AF','#210A8E', '#663795','#DB5700'];
-var partyColors = ['#F400BA', 'EBF80E', 'FF0048', '09F7CF', '04106E'];
+var partyColors = ['#F400BA', '#EBF80E', '#FF0048', '#09F7CF', '#0048FF'];
 var greens = ['#70E26C','#7AC960','#78B259','#509E63','#3C896C'];
 
 window.chatWindowColors = ['#ccffff','#b3ffff','#99ffff','#80ffff','#66ffff']; 
@@ -7713,7 +7735,7 @@ exports = module.exports = __webpack_require__(44)(undefined);
 
 
 // module
-exports.push([module.i, "\n\nhtml, body{\n    height: 100%;\n    width: 100%;\n    overflow-y: hidden;\n    overflow-x: hidden;\n}\n/*---------------------------------------------*/\n\n/*stops border from being round*/\ninput, textarea {\n  -webkit-appearance: none;\n  -webkit-border-radius: 0;\n}\n\n* { \n\tlist-style: none;\n}\n\n#body{ \n\tfont: 13px Helvetica, Arial; \n\tbackground-color: white;\n\n}\n#content{\n\tdisplay: block;\n\t/*height: 100%;*/\n\twidth: 100%;\n}\n\n#left{\n\tdisplay: block;\n\tfloat: left;\n\theight: 100%;\n}\n\n#right{\n\tdisplay: inline-block;\n\tfloat: right;\n\twidth: 100%;\n}\n\n#animation_container{\n    position: relative;\n    background: yellow;\n\tleft: 80px;\n\ttop: 95px;\n}\n\n#animation {\n    width: 100px;\n    height: 18px;\n    position: absolute;\n    /*background: red;*/\n}\n\n#anim_label{\n\tposition: absolute;\n\tleft: 75px;\n\ttop: 1px;\n\n}\n\n\n\n\n.listitem{\n\tcolor: white;\n}\n\n/*this is for user css styling ---------------------------------------------*/\n#header{\n\tmargin-right: 6%;\n}\n\n#title{\n\tposition: relative;\n\tfloat: left;\n}\n\n.button {\n    background-color: black; /* Green */\n    border: none;\n    color: white;\n    text-align: center;\n    text-decoration: none;\n    display: inline;\n    font-size: 16px;\n    height: 22px;\n    width: 22px;\n}\n\n.button:hover{\n\t/*margin: 0 0 0 0;*/\n\t/*padding: 0 0 0 0;*/\n\theight: 22px;\n    background-color: black; /* Green */\n    border: none;\n    color: white;\n    text-align: center;\n    text-decoration: none;\n    display: inline;\n    font-size: 16px;\n    height: 22px;\n    width: 80px;\n}\n\n.button:focus {\n \toutline: 0;\n}\n\n.rbutton {\n    background-color: black; /* Green */\n    border: none;\n    color: white;\n    text-align: center;\n    margin-top: 0.1em;\n    width: 100%;\n    text-decoration: none;\n    display: inline;\n    font-size: 16px;\n}\n\n.rbutton:focus {\n \toutline: 0;\n}\n\n#styleMenu{\n\tborder-style: dotted;\n\theight: 60%;\n\twidth: 40%;\n\tz-index: 10;\n\tleft: 50%;\n\tposition: absolute;\n\tdisplay: block;\n\tbackground-color: white;\n\tpadding: 1em;\n\tmargin-right: 3em;\n}\n\n#roomMenu{\n\tborder-style: dotted;\n\theight: auto;\n\twidth: 20%;\n\tz-index: 10;\n\tleft: 70%;\n\tposition: absolute;\n\tdisplay: block;\n\tbackground-color: white;\n\tpadding: 1em;\n\tmargin-right: 3em;\n}\n\n.styleMenuEntry{\n\tpadding-top: 0.5em;\n}\n#fontSize{\n\tfloat: right;\n}\n#borderSize{\n\tfloat: right;\n}\n#fontDropDown{\n\tfloat: right;\n}\n#borderStyle{\n\tfloat: right;\n}\n.jscolor{\n\tfloat: right;\n}\n\n/*this is for uploading files ---------------------------------------------*/\n#addFile{\n    border: none;\n    color: white;\n    padding-top: 1em;\n    padding-bottom: 1em;\n    text-align: center;\n    text-decoration: none;\n    display: inline-block;\n    font-size: 16px;\n}\n\n\n#form2{\n \tposition: fixed;\n \ttop:25%;\n \tleft:0.5em;\n}\n\n#form1 {\n \tbackground: #000; \n \tposition: fixed; \n \tbottom: 10px;\n \twidth: 76%; \n\tmargin: 7px;\n\tborder-style: dotted;\t\n}\n\n#form1 input { \n\tborder: 0; \n\tpadding: 0.5%;\n\twidth: 87%;\n\tmargin: 5px;\n}\n\n#form1 button { \n\twidth: 10%; \n\tfloat: right;\n\tmargin-top: 0.5%;\n\theight: 24px;\t\n\tbackground: rgb(130, 224, 255); \n\tborder: none; \n}\t\n\n#messages { \n\tlist-style-type: none; \n\tmargin: 0; \n\tpadding: 0; \n}\n#messages li {\n\tpadding: 5px 10px; \n}\n#messages li:nth-child(odd) { \n\tbackground: #eee; \n}\n\n\n\n/*---------------------------------------------*/\n#drop_zone{\n\theight: 35%;\n\twidth: 80%;\t\n\tfloat: right;\n\tborder-style: dotted;\n\toverflow-y: scroll;\n\tmargin: 5px;\n\tmargin-right: 12%;\n\n}\n#list{\n\tpadding-top: 0px;\n\tmargin: 0px;\n\tlist-style: none;\n}\n\nli {\n\t/*margin: 1em;*/\n\t/*padding: 1em;*/\n}\n.listitem{\n\twidth: 1%;\n\tmargin: 0px;\n\tpadding: 0.6em;\n\tlist-style: none;\n\n}\n\n\n#chat{\n\theight: 32%;\n\twidth: 80%;\t\n\tfloat: right;\n\tborder-style: dotted;\n\toverflow-y: scroll;\n\tmargin: 5px;\n\tmargin-right: 12%;\n}\n\n#message{\n\theight: 5%;\n\twidth: 80%;\t\n\tfloat: right;\n\tborder-style: dotted;\n\toverflow-y: hidden;\n\tmargin: 5px;\n\tmargin-right: 12%;\n}\n/*#data{\n    width: 200%;\n}\n#datasend{\n\tfloat: right;\n}*/\n\n/* holds the message and the button*/\n#post{\n\tdisplay: flex;\n}\n/* im the message*/\n#data{\n\tvertical-align: center;\t\n\twidth: 88%;\n}\n/* im the button*/\n#datasend{\n\twidth: 18%;\n}\n\n\n\n\n#effects{\n\tdisplay: none;\n\theight: 150px;\n\twidth: 15%;\n\tfloat: left;\t\n\tborder-style: dotted;\n\tmargin-top: 5.5%;\n\tmargin-bottom: 4px;\n}\n.thumb {\n\theight: 75px;\n\tborder: 1px solid #000;\n\tmargin: 10px 5px 0 0;\n}\n\n\n/* AUDIO PLAYER ---------------------------------------------*/\n\n#currentlyPlaying{\n\tdisplay: block;\n\tfloat: left;\n\twidth: 60%;\n\tvertical-align: center;\n\n\t/*margin: 0.5em;*/\n}\n\n#audioplayer{\n\twidth: 80%;\t\n\theight: 5%;\n\t/*margin: 5px;*/\n\tfloat: right;\n\tmargin-right: 12%;\n\tborder-style: dotted;\n\tfont-size: 11px;\n\ttext-align:left;\n}\n \n#pButton{\n  height:22px;\n  width: 22px;\n\n  border-style: none;\n  background-size: 100% 100%;\n  background-position: left top; \n  background-repeat: no-repeat;\n\n  padding: 1px;\n  margin: 2px;\n  margin-top: 3px;\n  float:left;\n  outline:none;\n}\n \n.play{\n}\n.pause{\n}\n \n\n\n \n#rngVolume{\n\twidth: 20%;\n\tfloat: right;\n}\n\n#songName{\n\twidth: 92%;\n\tdisplay: inline;\n\tfloat: left;\n\tmargin-top: 0.5em;\n}\n\n.button{\n\tmargin: .1em;\n}\n\ninput[type=range] {\n\tpadding-top: 1em;\n  -webkit-appearance: none;\n  /*margin: 18px 0;*/\n  width: 100%;\n}\ninput[type=range]:focus {\n  outline: none;\n}\ninput[type=range]::-webkit-slider-runnable-track {\n  width: 100%;\n  height: 5px;\n  cursor: pointer;\n  animate: 0.2s;\n  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;\n  /*background: #3071a9;*/\n  border-radius: 1.3px;\n  border: 0.2px solid #010101;\n}\ninput[type=range]::-webkit-slider-thumb {\n  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;\n  border: 1px solid #000000;\n  height: 16px;\n  top: 20px;\n  /*vertical-align: center;*/\n  width: 16px;\n  border-radius: 3px;\n  background: #ffffff;\n  cursor: pointer;\n  -webkit-appearance: none;\n  margin-top: -7px;\n}\ninput[type=range]:focus::-webkit-slider-runnable-track {\n  /*background: #367ebd;*/\n}\ninput[type=range]::-moz-range-track {\n  width: 100%;\n  height: .4px;\n  cursor: pointer;\n  animate: 0.2s;\n  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;\n  /*background: #3071a9;*/\n  border-radius: 1.3px;\n  border: 0.2px solid #010101;\n}\ninput[type=range]::-moz-range-thumb {\n  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;\n  border: 1px solid #000000;\n  height: 36px;\n  width: 16px;\n  border-radius: 3px;\n  background: #ffffff;\n  cursor: pointer;\n}\ninput[type=range]::-ms-track {\n  width: 100%;\n  height: 8.4px;\n  cursor: pointer;\n  animate: 0.2s;\n  background: transparent;\n  border-color: transparent;\n  border-width: 16px 0;\n  color: transparent;\n}\ninput[type=range]::-ms-fill-lower {\n  background: #2a6495;\n  border: 0.2px solid #010101;\n  border-radius: 2.6px;\n  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;\n}\ninput[type=range]::-ms-fill-upper {\n  /*background: #3071a9;*/\n  border: 0.2px solid #010101;\n  border-radius: 2.6px;\n  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;\n}\ninput[type=range]::-ms-thumb {\n  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;\n  border: 1px solid #000000;\n  height: 36px;\n  width: 16px;\n  border-radius: 3px;\n  background: #ffffff;\n  cursor: pointer;\n}\ninput[type=range]:focus::-ms-fill-lower {\n  /*background: #3071a9;*/\n}\ninput[type=range]:focus::-ms-fill-upper {\n  /*background: #367ebd;*/\n}", ""]);
+exports.push([module.i, "\n\nhtml, body{\n    height: 100%;\n    width: 100%;\n    overflow-y: hidden;\n    overflow-x: hidden;\n}\n/*---------------------------------------------*/\n\n/*stops border from being round*/\ninput, textarea {\n  -webkit-appearance: none;\n  -webkit-border-radius: 0;\n}\n\n* { \n\tlist-style: none;\n}\n\n#body{ \n\tfont: 13px Helvetica, Arial; \n\tbackground-color: white;\n\n}\n#content{\n\tdisplay: block;\n\t/*height: 100%;*/\n\twidth: 100%;\n}\n\n#left{\n\tdisplay: block;\n\tfloat: left;\n\theight: 100%;\n}\n\n#right{\n\tdisplay: inline-block;\n\tfloat: right;\n\twidth: 100%;\n}\n\n#animation_container{\n    position: relative;\n    background: yellow;\n\tleft: 80px;\n\ttop: 95px;\n}\n\n#animation {\n    width: 100px;\n    height: 18px;\n    position: absolute;\n    /*background: red;*/\n}\n\n#anim_label{\n\tposition: absolute;\n\tleft: 75px;\n\ttop: 1px;\n\n}\n\n\n\n\n/*this is for user css styling ---------------------------------------------*/\n#header{\n\tmargin-right: 6%;\n}\n\n#title{\n\tposition: relative;\n\tfloat: left;\n}\n\n.button {\n    background-color: black; /* Green */\n    border: none;\n    color: white;\n    text-align: center;\n    text-decoration: none;\n    display: inline;\n    font-size: 16px;\n    height: 22px;\n    width: 22px;\n}\n\n.button:hover{\n\t/*margin: 0 0 0 0;*/\n\t/*padding: 0 0 0 0;*/\n\theight: 22px;\n    background-color: black; /* Green */\n    border: none;\n    color: white;\n    text-align: center;\n    text-decoration: none;\n    display: inline;\n    font-size: 16px;\n    height: 22px;\n    width: 80px;\n}\n\n.button:focus {\n \toutline: 0;\n}\n\n.rbutton {\n    background-color: black; /* Green */\n    border: none;\n    color: white;\n    text-align: center;\n    margin-top: 0.1em;\n    width: 100%;\n    text-decoration: none;\n    display: inline;\n    font-size: 16px;\n}\n\n.rbutton:focus {\n \toutline: 0;\n}\n\n#styleMenu{\n\tborder-style: dotted;\n\theight: 60%;\n\twidth: 40%;\n\tz-index: 10;\n\tleft: 50%;\n\tposition: absolute;\n\tdisplay: block;\n\tbackground-color: white;\n\tpadding: 1em;\n\tmargin-right: 3em;\n}\n\n#roomMenu{\n\tborder-style: dotted;\n\theight: auto;\n\twidth: 20%;\n\tz-index: 10;\n\tleft: 70%;\n\tposition: absolute;\n\tdisplay: block;\n\tbackground-color: white;\n\tpadding: 1em;\n\tmargin-right: 3em;\n}\n\n.styleMenuEntry{\n\tpadding-top: 0.5em;\n}\n#fontSize{\n\tfloat: right;\n}\n#borderSize{\n\tfloat: right;\n}\n#fontDropDown{\n\tfloat: right;\n}\n#borderStyle{\n\tfloat: right;\n}\n.jscolor{\n\tfloat: right;\n}\n\n/*this is for uploading files ---------------------------------------------*/\n#addFile{\n    border: none;\n    color: white;\n    padding-top: 1em;\n    padding-bottom: 1em;\n    text-align: center;\n    text-decoration: none;\n    display: inline-block;\n    font-size: 16px;\n}\n\n\n#form2{\n \tposition: fixed;\n \ttop:25%;\n \tleft:0.5em;\n}\n\n#form1 {\n \tbackground: #000; \n \tposition: fixed; \n \tbottom: 10px;\n \twidth: 76%; \n\tmargin: 7px;\n\tborder-style: dotted;\t\n}\n\n#form1 input { \n\tborder: 0; \n\tpadding: 0.5%;\n\twidth: 87%;\n\tmargin: 5px;\n}\n\n#form1 button { \n\twidth: 10%; \n\tfloat: right;\n\tmargin-top: 0.5%;\n\theight: 24px;\t\n\tbackground: rgb(130, 224, 255); \n\tborder: none; \n}\t\n\n#messages { \n\tlist-style-type: none; \n\tmargin: 0; \n\tpadding: 0; \n}\n#messages li {\n\tpadding: 5px 10px; \n}\n#messages li:nth-child(odd) { \n\tbackground: #eee; \n}\n\n\n\n/*---------------------------------------------*/\n#drop_zone{\n\theight: 35%;\n\twidth: 80%;\t\n\tfloat: right;\n\tborder-style: dotted;\n\toverflow-y: scroll;\n\tmargin: 5px;\n\tmargin-right: 12%;\n\n}\n#list{\n\tpadding-top: 0px;\n\tmargin: 0px;\n\tlist-style: none;\n}\n\nli {\n\t/*margin: 1em;*/\n\t/*padding: 1em;*/\n}\n.listitem{\n\twidth: 1%;\n\tmargin: 0px;\n\tpadding: 0.1em;\n\tlist-style: none;\n\n}\n\n\n#chat{\n\theight: 32%;\n\twidth: 80%;\t\n\tfloat: right;\n\tborder-style: dotted;\n\toverflow-y: scroll;\n\tmargin: 5px;\n\tmargin-right: 12%;\n}\n\n#message{\n\theight: 5%;\n\twidth: 80%;\t\n\tfloat: right;\n\tborder-style: dotted;\n\toverflow-y: hidden;\n\tmargin: 5px;\n\tmargin-right: 12%;\n}\n/*#data{\n    width: 200%;\n}\n#datasend{\n\tfloat: right;\n}*/\n\n/* holds the message and the button*/\n#post{\n\n\t/* vertical center!\t*/\n\tposition: relative;\n\ttop: 50%;\n\ttransform: translateY(-50%);\n\n\tdisplay: flex;\n}\n/* im the message*/\n#data{\n\tvertical-align: center;\t\n\twidth: 88%;\n}\n/* im the button*/\n#datasend{\n\twidth: 18%;\n}\n\n\n\n\n#effects{\n\tdisplay: none;\n\theight: 150px;\n\twidth: 15%;\n\tfloat: left;\t\n\tborder-style: dotted;\n\tmargin-top: 5.5%;\n\tmargin-bottom: 4px;\n}\n.thumb {\n\theight: 75px;\n\tborder: 1px solid #000;\n\tmargin: 10px 5px 0 0;\n}\n\n\n/* AUDIO PLAYER ---------------------------------------------*/\n\n#currentlyPlaying{\n\tdisplay: block;\n\tfloat: left;\n\twidth: 60%;\n\t\n\t/* vertical center!\t*/\n\tposition: relative;\n\ttop: 50%;\n\ttransform: translateY(-50%);\n}\n\n#audioplayer{\n\twidth: 80%;\t\n\theight: 5%;\n\t/*margin: 5px;*/\n\tfloat: right;\n\tmargin-right: 12%;\n\tborder-style: dotted;\n\tfont-size: 11px;\n\ttext-align:left;\n}\n \n#pButton{\n  height:22px;\n  width: 22px;\n\n  /*background-image: url(img/play.png);*/\n  border-style: none;\n  background-size: 100% 100%;\n  background-position: left top; \n  background-repeat: no-repeat;\n\n  padding: 1px;\n  margin: 2px;\n  margin-top: 3px;\n  float:left;\n  outline:none;\n}\n \n.play{\n}\n.pause{\n}\n \n\n#play_graphic{\n\twidth: 10%;\n}\n \n#volume_slider{\n\twidth: 20%;\n\tfloat: right;\n\t/* vertical center!\t*/\n\tposition: relative;\n\ttop: 25%;\n\ttransform: translateY(-50%);\n}\n\n#songName{\n\twidth: 92%;\n\tdisplay: inline;\n\tfloat: left;\n\tmargin-top: 0.5em;\n}\n\n.button{\n\tmargin: .1em;\n}\n\n/*CHAT ENTER CSS*/\n\n#datasend{\n    padding:10px;\n    background: white; \n    cursor:pointer;\n    /*-webkit-border-radius: 5px;*/\n    /*border-radius: 2px; */\n    border-style: none;\n    margin-right: 2px;\n}\n\n\n    \n/*SLIDER CSS*/\ninput[type=range] {\n\tpadding-top: 1em;\n \t-webkit-appearance: none;\n\t/*margin: 18px 0;*/\n\twidth: 100%;\n}\ninput[type=range]:focus {\n\toutline: none;\n}\ninput[type=range]::-webkit-slider-runnable-track {\n\twidth: 100%;\n\theight: 5px;\n\tcursor: pointer;\n\tanimate: 0.2s;\n\tbox-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;\n\t/*background: #3071a9;*/\n\tborder-radius: 1.3px;\n\tborder: 0.2px solid #010101;\n}\ninput[type=range]::-webkit-slider-thumb {\n\tbox-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;\n\tborder: 1px solid #000000;\n\theight: 16px;\n\ttop: 20px;\n\t/*vertical-align: center;*/\n\twidth: 16px;\n\tborder-radius: 3px;\n\tbackground: #ffffff;\n\tcursor: pointer;\n\t-webkit-appearance: none;\n\tmargin-top: -7px;\n}\ninput[type=range]:focus::-webkit-slider-runnable-track {\n  /*background: #367ebd;*/\n}\ninput[type=range]::-moz-range-track {\n\twidth: 100%;\n\theight: .4px;\n\tcursor: pointer;\n\tanimate: 0.2s;\n\tbox-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;\n\t/*background: #3071a9;*/\n\tborder-radius: 1.3px;\n\tborder: 0.2px solid #010101;\n}\ninput[type=range]::-moz-range-thumb {\n\tbox-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;\n\tborder: 1px solid #000000;\n\theight: 36px;\n\twidth: 16px;\n\tborder-radius: 3px;\n\tbackground: #ffffff;\n\tcursor: pointer;\n}\ninput[type=range]::-ms-track {\n\twidth: 100%;\n\theight: 8.4px;\n\tcursor: pointer;\n\tanimate: 0.2s;\n\tbackground: transparent;\n\tborder-color: transparent;\n\tborder-width: 16px 0;\n\tcolor: transparent;\n}\ninput[type=range]::-ms-fill-lower {\n\tbackground: #2a6495;\n\tborder: 0.2px solid #010101;\n\tborder-radius: 2.6px;\n\tbox-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;\n}\ninput[type=range]::-ms-fill-upper {\n\t/*background: #3071a9;*/\n\tborder: 0.2px solid #010101;\n\tborder-radius: 2.6px;\n\tbox-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;\n}\ninput[type=range]::-ms-thumb {\n\tbox-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;\n\tborder: 1px solid #000000;\n\theight: 36px;\n\twidth: 16px;\n\tborder-radius: 3px;\n\tbackground: #ffffff;\n\tcursor: pointer;\n}\ninput[type=range]:focus::-ms-fill-lower {\n\t/*background: #3071a9;*/\n}\ninput[type=range]:focus::-ms-fill-upper {\n\t/*background: #367ebd;*/\n}", ""]);
 
 // exports
 

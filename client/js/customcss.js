@@ -12,7 +12,7 @@ var border_w = ["1px","2px","3px","4px","5px","6px","7px",
 
 var icecreamColors = ['#22BFDE','#F06791','#DEB237','#9CC068','#777777']
 var mellowColors = ['#45A3AF','#210A8E', '#663795','#DB5700'];
-var partyColors = ['#F400BA', 'EBF80E', 'FF0048', '09F7CF', '04106E'];
+var partyColors = ['#F400BA', '#EBF80E', '#FF0048', '#09F7CF', '#0048FF'];
 var greens = ['#70E26C','#7AC960','#78B259','#509E63','#3C896C'];
 
 window.chatWindowColors = ['#ccffff','#b3ffff','#99ffff','#80ffff','#66ffff']; 

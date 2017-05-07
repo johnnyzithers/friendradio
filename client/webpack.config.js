@@ -17,17 +17,14 @@ module.exports = {
 				{
 					loader: 'style-loader', 
 				},
-				// 				{
-				// 	loader: 'url-loader', 
-				// 	// options: { 
-				// 	// 	limit: 8192 
-				// 	// }	
-				// },
 				{
 					loader: 'css-loader' ,
 				},
-
-			]}
+			]},
+			{
+				test: /\.png$/, 
+				loader: 'file-loader'
+			}
 		]
     },
     node: {

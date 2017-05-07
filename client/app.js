@@ -32,6 +32,9 @@ window.uploadToServer = function(){
 
 $(document).ready(function () {
 
+
+	$('#pButton').css("background-image", "url(./img/play.png)");  
+
 	var form = document.getElementById('form2');
 
 	form.onchange = function(ev) {
@@ -291,6 +294,7 @@ var displayTrack = function(trackname, uploading, fromserver, elem_ndx){
 
 	// var msg = '<strong>'+escape(trackname.replace(/ /g,""))+'</strong>';
 	// trackname = $.parseHTML(trackname);
+	console.log(trackname)
 	var msg = '<strong>'+trackname+'</strong>';
 
 	// random color
@@ -320,24 +324,32 @@ var removeSongFromList = function(id){
 
 var createAudioPlayer = function (){
 
+
+	$('#divID').css("background-image", "url(/myimage.jpg)");  
+
 	currTrackName = client_playlist[0];
 
 	// var msg = '<audio id="stream_player" src= "http://192.168.2.4:9000/stream">';
 	// var msg = '<audio id="stream_player" src= "http://192.168.1.142:9000/stream">';
 	var msg = '<audio id="stream_player" src= "http://localhost:'+client_port+'/stream">';
 	
-	// var li = document.createElement('li');
-	// li.innerHTML = msg;
-	// li.id = "list_play";			// so we can remove it roomMenu.js
-	// var pz = document.getElementById("playing");
-	// pz.appendChild(li);
+	var li = document.createElement('li');
+	li.innerHTML = msg;
+	li.id = "list_play";			// so we can remove it roomMenu.js
+	
+
+	var pz = document.getElementById("playing");
+	pz.appendChild(li);
+
+
+
 	// // play the station, if we are autoplaying
 	
 	// if(autoplay){
 	// 	var player = document.getElementById("stream_player"); // get reference to player
 	// 	player.play();	
 	// }
-	
+
 	// add song name to play bar
 	// var tempname = $.parseHTML(currTrackName);
 	// var songName = '<strong>'+escape(currTrackName.replace(/ /g,"_"))+'</strong>';
@@ -350,16 +362,26 @@ var updateTrackName = function(newname){
 	document.getElementById("currentlyPlaying").innerHTML = newname;
 }
 
-var playAudio = function() {
+window.playAudio = function() {
+
 	var player = document.getElementById("stream_player"); // get reference to player
+	
+
+
 	var playpause;
 	if(player.paused == false){
 		playpause = document.getElementById("pButton"); // get reference to player
+
+		
+
 		playpause.className = "pause";
 		player.pause();
 		console.log("paused");
 	}else{
 		playpause = document.getElementById("pButton"); // get reference to player
+
+		
+
 		playpause.className = "play";
 		player.play()
 		console.log("playing");

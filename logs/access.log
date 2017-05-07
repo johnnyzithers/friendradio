@@ -167,3 +167,37 @@
 ::1 - - [03/May/2017:17:13:17 -0400] "SOURCE /stream HTTP/1.0" 200 19 "-" "-" 22
 ::1 - - [03/May/2017:17:14:37 -0400] "SOURCE /stream HTTP/1.0" 403 538 "-" "-" 0
 ::1 - - [03/May/2017:17:14:45 -0400] "SOURCE /stream HTTP/1.0" 200 19 "-" "-" 62
+::1 - - [03/May/2017:18:30:57 -0400] "SOURCE /stream HTTP/1.0" 200 19 "-" "-" 41
+::1 - - [04/May/2017:13:14:48 -0400] "SOURCE /stream HTTP/1.0" 200 19 "-" "-" 51
+::1 - - [04/May/2017:13:15:14 -0400] "SOURCE /stream HTTP/1.0" 200 19 "-" "-" 14
+::1 - - [04/May/2017:13:15:45 -0400] "SOURCE /stream HTTP/1.0" 200 19 "-" "-" 22
+::1 - - [04/May/2017:13:17:49 -0400] "SOURCE /stream HTTP/1.0" 200 19 "-" "-" 36
+::1 - - [04/May/2017:13:20:30 -0400] "SOURCE /stream HTTP/1.0" 200 19 "-" "-" 91
+::1 - - [04/May/2017:13:23:05 -0400] "SOURCE /stream HTTP/1.0" 200 19 "-" "-" 142
+::1 - - [04/May/2017:13:30:03 -0400] "SOURCE /stream HTTP/1.0" 200 19 "-" "-" 29
+::1 - - [04/May/2017:13:30:03 -0400] "GET /stream HTTP/1.1" 200 475133 "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36" 29
+::1 - - [04/May/2017:13:31:58 -0400] "SOURCE /stream HTTP/1.0" 200 19 "-" "-" 105
+::1 - - [04/May/2017:13:31:58 -0400] "GET /stream HTTP/1.1" 200 1670731 "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36" 105
+::1 - - [04/May/2017:13:33:53 -0400] "SOURCE /stream HTTP/1.0" 200 19 "-" "-" 32
+::1 - - [04/May/2017:13:33:53 -0400] "GET /stream HTTP/1.1" 200 507333 "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36" 32
+::1 - - [04/May/2017:20:33:48 -0400] "GET /stream HTTP/1.1" 200 2556933 "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36" 160
+::1 - - [04/May/2017:20:33:48 -0400] "GET /stream HTTP/1.1" 200 8933 "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36" 0
+::1 - - [04/May/2017:20:34:29 -0400] "SOURCE /stream HTTP/1.0" 200 19 "-" "-" 201
+::1 - - [04/May/2017:20:44:44 -0400] "GET /stream HTTP/1.1" 200 314134 "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36" 20
+::1 - - [04/May/2017:20:47:45 -0400] "SOURCE /stream HTTP/1.0" 200 19 "-" "-" 201
+::1 - - [04/May/2017:21:05:25 -0400] "GET /stream HTTP/1.1" 200 230124 "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36" 15
+::1 - - [04/May/2017:21:05:45 -0400] "SOURCE /stream HTTP/1.0" 403 538 "-" "-" 0
+::1 - - [04/May/2017:21:05:53 -0400] "GET /stream HTTP/1.1" 200 197924 "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36" 8
+::1 - - [04/May/2017:21:06:30 -0400] "SOURCE /stream HTTP/1.0" 403 538 "-" "-" 0
+::1 - - [04/May/2017:21:06:37 -0400] "GET /stream HTTP/1.1" 200 176924 "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36" 7
+::1 - - [04/May/2017:21:07:17 -0400] "GET /stream HTTP/1.1" 200 640324 "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36" 36
+::1 - - [04/May/2017:21:07:17 -0400] "GET /stream HTTP/1.1" 200 640324 "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36" 36
+::1 - - [04/May/2017:21:08:31 -0400] "SOURCE /stream HTTP/1.0" 200 19 "-" "-" 201
+::1 - - [04/May/2017:21:10:14 -0400] "GET /stream HTTP/1.1" 200 511524 "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36" 33
+::1 - - [04/May/2017:21:13:03 -0400] "SOURCE /stream HTTP/1.0" 200 19 "-" "-" 202
+::1 - - [07/May/2017:16:52:39 -0400] "GET /stream HTTP/1.1" 200 395333 "http://localhost:3000/" "Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1" 25
+::1 - - [07/May/2017:16:52:44 -0400] "SOURCE /stream HTTP/1.0" 403 538 "-" "-" 0
+::1 - - [07/May/2017:16:53:51 -0400] "SOURCE /stream HTTP/1.0" 200 19 "-" "-" 97
+::1 - - [07/May/2017:16:53:51 -0400] "GET /stream HTTP/1.1" 200 1145733 "http://localhost:3000/" "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Mobile Safari/537.36" 67
+::1 - - [07/May/2017:16:54:09 -0400] "GET /stream HTTP/1.1" 200 101331 "http://localhost:3000/" "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Mobile Safari/537.36" 7
+::1 - - [07/May/2017:16:54:09 -0400] "SOURCE /stream HTTP/1.0" 200 19 "-" "-" 7
