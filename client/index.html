@@ -1,0 +1,71 @@
+ <html>
+<head>
+	<meta charset="UTF-8">
+	<title>friend radio :)</title>
+	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+	<div id="header">
+		<h1> F R I E N DR A D I O </h1> 
+	</div>
+	<div id="content">
+		<div id="left">
+			<form id="form2">
+				<input class="button" id="userbutton" onclick="newUser()" value=" +  user" /><br>
+				<input class="button" id="roombutton" value=" +  room" /><br>
+				<input type="file" id="file" style="display: none;" multiple />
+				<input class="button" id="filebutton" value=" +  song" onclick="document.getElementById('file').click();"/><br>
+				<input class="button" id="uploadbutton" value=" >  upload"/> <br>
+			</form>
+
+
+		</div>
+		<div id="right">
+
+			<div id="audioplayer">
+				<div id="playing">
+	 			
+					<button id="pButton"  class="play" onclick="window.playAudio()">
+						<img id="play_graphic" src="./img/play.png">
+					</button>
+					
+				</div>
+				
+				<div id="currentlyPlaying">
+					<div id="stream_player"></div>
+					<!-- This is where the title of currently playing song will display --> 
+				</div>
+				
+				<!-- <label id="volume_control"></label> -->
+	    		<!-- <input type="range" oninput="setVolume(this.value)" id="volume_slider" min="0" max="1" step="0.01" value="1"> -->
+			</div>
+
+			<div id="drop_zone">
+				<output id="tracklist"></output>
+				<!-- This is where the playlist will populate --> 
+			</div>
+
+			<div id="chat">
+			    <ul id="messages"></ul>
+			    <!-- This is where the chat messages will populate --> 
+			</div>
+
+			<div id="message">
+				<form onSubmit="return false;" id="post">
+					<label> </label><input id="data"/>
+					<input type="button" id="datasend" value="send" />
+				</form>
+			</div>
+
+		</div>   <!-- end right-->
+	</div> <!-- end content -->
+
+</body>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/room.js"></script>
+<script src="js/app.js"></script>
+
+</html> 
