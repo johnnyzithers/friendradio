@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "nodemon --exec 'mocha -R min'"
   },
   "author": "",
   "license": "ISC",
@@ -14,6 +14,7 @@
     "mongodb": "^2.2.33",
     "mongoose": "^5.3.16",
     "multer": "^1.4.1",
+    "nodemon": "^1.18.8",
     "socket.io": "^2.1.1",
     "socket.io-client": "^2.1.1"
   }
