@@ -18,3 +18,4 @@ const RoomSchema = new Schema({
 const User = mongoose.model('room', RoomSchema);
 
 module.exports = Room;
+
