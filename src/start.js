@@ -10,15 +10,25 @@ import multer from 'multer'
 import path from 'path'
 import HLSServer from 'hls-server'
 
-
-// var   Grid        = require('gridfs');
 const ffmpegPath  = require('@ffmpeg-installer/ffmpeg').path;
 const ffmpeg      = require('fluent-ffmpeg');
 const ffmpegOnProgress = require('ffmpeg-on-progress')
+const app         = express(); 
+
+var   server1      = require('http').createServer(app);
+var   server2     = require('http').createServer(app);
+
+// HLS Server
+var hls = new HLSServer(server1, {
+  path: '/streams',     // Base URI to output HLS streams
+  dir: './tmp'           // Directory that input files are stored
+})
+
+var   io          = require('socket.io')(server2);
+var   httpAttach  = require('http-attach')
+
 
 ffmpeg.setFfmpegPath(ffmpegPath);
-
-const app         = express(); 
 
 function addCors (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -27,12 +37,9 @@ function addCors (req, res, next) {
 }
 
 
+
 var uploadTrackNum = 0;
 var streamTrackNum = 0;
-
-
-
-
 
 const trackRoute = express.Router()
 app.use(express.static('./public/'), cors());
@@ -47,20 +54,6 @@ app.use(cors({
   credentials: true,
   origin: "http://localhost:3001"
 }));
-
-var   server1      = require('http').createServer(app);
-var   server2     = require('http').createServer(app);
-
-// HLS Server
-var hls = new HLSServer(server1, {
-  path: '/streams',     // Base URI to output HLS streams
-  dir: './tmp'           // Directory that input files are stored
-})
-
-
-
-var   io          = require('socket.io')(server2);
-var   httpAttach  = require('http-attach')
 
 httpAttach(server1, addCors)
 

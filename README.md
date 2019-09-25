@@ -1,5 +1,4 @@
-# GraphQL-MongoDB-Example
-
+# Friendradio hls 
 All the important code is in `src/start.js`.
 
 Install, build and run:
@@ -10,10 +9,4 @@ yarn run build
 yarn start
 ```
 
-For Local Development 
-
-You need to start Mongodb for Local development 
-
-```
-npm run startdev
-```
+You also need to start mongo shell.
