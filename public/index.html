@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>FRIEND RADIO </title>
+	<script src="scripts/jquery.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<!-- <script type="module" src="scripts/client.js"></script> -->
+
+	<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+	<!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
+<script src="/socket.io/socket.io.js"></script>
+
+</head>
+
+
+<body>
+
+    <script data-main="scripts/client" src="scripts/require.js"></script>
+
+<div>
+	<!-- POST / UPLOAD  -->
+	<div id="upload">
+		
+		  <input id="file-input" type="file" name="upload-track">
+		<button id=”post-stream” class="btn1"> UPLOAD </button>
+		
+	</div>
+
+	<!-- GET / STREAM  -->
+	<div id="stream">
+
+		<div id='playlist_div'>
+			<button id=”get-stream” class="btn2">PLAY</button>
+			<ul id='playlist'>
+				<!-- playlist populates here -->
+			</ul>
+		</div>
+
+		<div id='video_div'>
+	      
+		</div>
+
+	</div>
+
+</div>
+
+<ul id="messages"></ul>
+<form action="">
+	<input id="m" autocomplete="off" /><button>Send</button>
+</form>
+
+</body>
+</html>

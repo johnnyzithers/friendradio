@@ -1,14 +1,19 @@
-##Getting Started
+# GraphQL-MongoDB-Example
 
-Must have mongodb running
+All the important code is in `src/start.js`.
+
+Install, build and run:
+
 ```
-brew install mongodb
-./mongod
+yarn install
+yarn run build
+yarn start
 ```
 
-Then launch the server
-```
-node server.js
-```
+For Local Development 
 
-navigate to http://localhost:3005/
+You need to start Mongodb for Local development 
+
+```
+npm run startdev
+```
