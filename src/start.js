@@ -333,9 +333,9 @@ function removeAllFilesFromDir(directory) {
 }
 
 
-// Also mount the app here
+Also mount the app here
 
-// 
+
 
 
 
