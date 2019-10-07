@@ -68,7 +68,7 @@ var storage = multer.diskStorage({
 })
 
 const PORT = 3001
-const MONGO_URL = 'mongodb://localhost:27017/fr_test'
+const MONGO_URL = 'mongodb://heroku_csm1p15v:rn77mngmt257a8qvjk7df0u798@ds331548.mlab.com:31548/heroku_csm1p15v'
 const HLS_UPLOAD_DIR = './uploads/hls/';
 const UPLOAD_PATH = './uploads';
 const upload = multer({ dest: `${UPLOAD_PATH}/` }); // multer configuration
