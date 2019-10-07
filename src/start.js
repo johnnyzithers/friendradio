@@ -284,18 +284,18 @@ app.use('/newRoom/:roomNum', function (req, res) {
     return res.status(400).json({ message: "Invalid room num in URL parameter. Must be a single String of 12 bytes or a string of 24 hex characters" }); 
   }
 
-  // create DBs for new room and new playlist
-  const collection = db.collection('rooms');
+  // // create DBs for new room and new playlist
+  // const collection = db.collection('rooms');
 
-  var newRoom = [
-    { roomID: rID, playlist: [] }
-  ];
+  // var newRoom = [
+  //   { roomID: rID, playlist: [] }
+  // ];
 
-  db.collection("employees").insertOne(myobj, function(err, res) {  
-    if (err) throw err;  
-    console.log("1 record inserted");  
-    db.close();  
-  });  
+  // db.collection("employees").insertOne(myobj, function(err, res) {  
+  //   if (err) throw err;  
+  //   console.log("1 record inserted");  
+  //   db.close();  
+  // });  
 
   res.status(201).json({ room: newRoom.roomID });
 });
