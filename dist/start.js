@@ -37,7 +37,6 @@
 // }
 
 
-
 // var uploadTrackNum = 0;
 // var streamTrackNum = 0;
 
@@ -139,7 +138,7 @@
 //     //     }
 //     //     // Loop through all the files and fetch the necessary information
 //     //     files.forEach((file) => {
-          
+
 //     //       bucket.openDownloadStreamByName(file.filename)
 //     //       .pipe(fs.createWriteStream('./tmp/track'+streamTrackNum+'/'+file.filename))
 //     //       .on('error', function(error) {
@@ -177,7 +176,7 @@
 //     //     } else {
 //     //       console.log("no upload error");
 //     //     }
-          
+
 //     //     // path of mp3 on server, for ffmpeg
 //     //     let mp3Path = req.file.path;
 
@@ -198,7 +197,7 @@
 //     //         var count = 0;
 
 //     //         files.forEach(function(file){
-              
+
 //     //           // FIXME filtering out ds_store
 //     //           if (file == ".DS_Store"){
 //     //             console.log("trackStorageCallback() -- filtering .DS_Store...");
@@ -220,7 +219,7 @@
 //     //         });
 //     //       });
 //     //       res.status(201).json({ message: "HLS files successfully uploaded to mongo: "});
-          
+
 //     //       // add this track to the room playlist
 //     //       // FIXME better way to do this
 //     //       var room = rooms.find(function(r) {
@@ -228,7 +227,7 @@
 //     //       });
 //     //       room.playlist.push({ uri: filename, name: req.body.name });
 //     //       console.log("adding "+ req.body.name + " to room " + room.roomID);
-          
+
 //     //       // remove tempory files once mongo upload complete
 //     //       removeAllFilesFromDir("hls");
 //     //       removeAllFilesFromDir("mp3");
@@ -239,7 +238,7 @@
 
 //     //     // ffmpeg call to create the .m3u8 and .ts segments from mp3
 //     //     ffmpeg(mp3Path, { timeout: 432000 }).addOptions([
-	
+
 //     //           '-profile:v baseline', // baseline profile (level 3.0) for H264 video codec
 //     //           '-level 3.0', 
 //     //           '-s 640x360',          // 640px width, 360px height output video dimensions
@@ -272,7 +271,7 @@
 //   var room = rooms.find(function(r) {
 //     return r.roomID ==  rID;
 //   });
-        
+
 //   console.log("requesting playlist for room "+rID);
 //   res.status(201).json({ playlist: room.playlist});
 // });
@@ -304,7 +303,7 @@
 
 // io.on('connection', function(socket){
 //   console.log('a user connected');
-  
+
 //   socket.on('disconnect', function(){
 //     console.log('user disconnected');
 //   });
@@ -335,5 +334,4 @@
 // app.set('port', 3001);  // for track uploading
 // server1.listen(3002);   // for hls streaming 
 // server2.listen(3001);   // for socket io
-
-
+"use strict";
