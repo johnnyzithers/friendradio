@@ -332,14 +332,6 @@ function removeAllFilesFromDir(directory) {
   });
 }
 
-
-Also mount the app here
-
-
-
-
-
-
 app.set('port', 3001);  // for track uploading
 server1.listen(3002);   // for hls streaming 
 server2.listen(3001);   // for socket io
