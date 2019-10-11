@@ -1,10 +1,9 @@
 {
   "name": "friendradio_experiment",
   "version": "0.1.0",
-  "description": "All the important code is in `src/start.js`.",
+  "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "heroku-prebuild": "echo This runs before Heroku installs your dependencies.",
     "startdev": "nodemon --exec babel-node src/index.js",
     "start": "node dist/index.js",
     "build": "babel -d dist/ src/",
@@ -13,8 +12,6 @@
   "author": "Duncan MacConnell <duncanmacconnell@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.6.2",
-    "@babel/register": "^7.6.2",
     "babel-cli": "^6.18.0",
     "babel-core": "^6.20.0",
     "babel-plugin-syntax-async-functions": "^6.13.0",
@@ -36,13 +33,5 @@
     "request-promise": "^4.2.4",
     "socket.io": "^2.3.0",
     "zlib": "^1.0.5"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/johnnyzithers/friendradio.git"
-  },
-  "bugs": {
-    "url": "https://github.com/johnnyzithers/friendradio/issues"
-  },
-  "homepage": "https://github.com/johnnyzithers/friendradio#readme"
+  }
 }
