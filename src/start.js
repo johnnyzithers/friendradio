@@ -10,25 +10,27 @@ import multer from 'multer'
 import path from 'path'
 import HLSServer from 'hls-server'
 
-const ffmpegPath  = require('@ffmpeg-installer/ffmpeg').path;
-const ffmpeg      = require('fluent-ffmpeg');
-const ffmpegOnProgress = require('ffmpeg-on-progress')
+// these required for serving HLS public and sockete content
 const app         = express(); 
-
-var   server1      = require('http').createServer(app);
+var   server1     = require('http').createServer(app);
 var   server2     = require('http').createServer(app);
+var   io          = require('socket.io')(server2);
+var   httpAttach  = require('http-attach')
+var commandExists = require('command-exists');
+
+// these required for audio encoding
+const ffmpegPath        = require('@ffmpeg-installer/ffmpeg').path;
+const ffmpeg            = require('fluent-ffmpeg');
+const ffmpegOnProgress  = require('ffmpeg-on-progress')
+// sete path to ffmpeg 
+ffmpeg.setFfmpegPath(ffmpegPath);
 
 // HLS Server
 var hls = new HLSServer(server1, {
-  path: '/streams',     // Base URI to output HLS streams
-  dir: './tmp'           // Directory that input files are stored
+  path: '/streams',       // Base URI to output HLS streams
+  dir: './tmp'            // Directory that input files are stored
 })
 
-var   io          = require('socket.io')(server2);
-var   httpAttach  = require('http-attach')
-
-
-ffmpeg.setFfmpegPath(ffmpegPath);
 
 function addCors (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -37,9 +39,6 @@ function addCors (req, res, next) {
 }
 
 
-
-var uploadTrackNum = 0;
-var streamTrackNum = 0;
 
 const trackRoute = express.Router()
 app.use(express.static('./public/'), cors());
@@ -76,6 +75,12 @@ const upload = multer({ dest: `${UPLOAD_PATH}/` }); // multer configuration
 
 let db
 
+
+
+
+var uploadTrackNum = 0;
+var streamTrackNum = 0;
+
 //FIXME this should be in a different higher level db
 // for now just stubbing out the data we will need
 var rooms = [];
@@ -105,6 +110,14 @@ initRooms();
 
 
 export const start = async () => {
+
+  // invoked without a callback, it returns a promise
+  commandExists('ffmpeg').then(function (command) {
+    console.log("ffmpeg installed!");
+  }).catch(function () {
+    console.log("please install ffmpeg!");
+  });
+
   try 
   {
     // reference to the mongo database
@@ -331,8 +344,9 @@ function removeAllFilesFromDir(directory) {
     });
   });
 }
+// console.log(process.env.PORT);
 
-app.set('port', process.env.PORT);  // for track uploading
+// app.set('port', process.env.PORT);  // for track uploading
 server1.listen(3002);   // for hls streaming 
 server2.listen(3001);   // for socket io
 
