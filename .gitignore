@@ -1,7 +1,9 @@
 node_modules
 yarn-error.log
 .env
-./tmp/*
-./upload/hls/*
-./upload/mp3/*
-./dist/*
+./tmp/
+./upload/hls/
+./upload/mp3/
+./dist/
+package-lock.json
+yarn.lock
