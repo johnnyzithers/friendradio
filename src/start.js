@@ -68,7 +68,9 @@ var storage = multer.diskStorage({
 
 // const PORT = 3001
 // const MONGO_URL = 'mongodb://heroku_csm1p15v:rn77mngmt257a8qvjk7df0u798@ds331548.mlab.com:31548/heroku_csm1p15v'
+//FIXME not safe, pass it in
 const MONGO_URL = 'mongodb://localhost:27017/fr_test'
+const FR_ROOM_URL = 'mongodb://localhost:27017/fr_rooms'
 const HLS_UPLOAD_DIR = './uploads/hls/';
 const UPLOAD_PATH = './uploads';
 const upload = multer({ dest: `${UPLOAD_PATH}/` }); // multer configuration
@@ -108,14 +110,34 @@ function initRooms()
 
 initRooms();
 
+function generateID(){
+  return '_' + Math.random().toString(36).substr(2, 9);
+}
+
+function createRoomMongo(adminUser)
+{
+  db = await MongoClient.connect(FR_ROOM_URL);
+  const collection = db.collection('rooms');
+  var newRoom = {
+    playlist: [],
+    id: generateID,
+    admin: adminUser
+  };
+  console.log(newRoom);
+
+  // playlist
+  // users
+
+  return newRoom;
+}
 
 export const start = async () => {
 
   // invoked without a callback, it returns a promise
   commandExists('ffmpeg').then(function (command) {
-    console.log("ffmpeg installed!");
+    console.log("FFmpeg installed!");
   }).catch(function () {
-    console.log("please install ffmpeg!");
+    console.log("Error: FFmpeg is not installed. Please install FFmpeg!");
   });
 
   try 
@@ -123,7 +145,7 @@ export const start = async () => {
     // reference to the mongo database
     db = await MongoClient.connect(MONGO_URL);
 
-    // route for streaming track by ID
+    // stream requeste route
     trackRoute.get('/:trackID', (req, res) => {
       // FIXME 
       console.log("streamTrackNum: " + streamTrackNum);
@@ -152,7 +174,6 @@ export const start = async () => {
         }
         // Loop through all the files and fetch the necessary information
         files.forEach((file) => {
-          
           bucket.openDownloadStreamByName(file.filename)
           .pipe(fs.createWriteStream('./tmp/track'+streamTrackNum+'/'+file.filename))
           .on('error', function(error) {
@@ -168,7 +189,7 @@ export const start = async () => {
       });
     });
 
-    // upload tracks 
+    // upload MP3 route 
     trackRoute.post('/:roomNum', (req, res) => {
      try {
         var rID = req.params.roomNum;
@@ -215,10 +236,7 @@ export const start = async () => {
               // FIXME filtering out ds_store
               if (file == ".DS_Store"){
                 console.log("trackStorageCallback() -- filtering .DS_Store...");
-              // }
-              // else if (file == "output.m3u8") {
-
-              } else {``
+              } else {
                 // stream the file to database using gridfs
                 fs.createReadStream(`${HLS_UPLOAD_DIR}`+file)
                 .pipe(bucket.openUploadStream(file))
@@ -314,10 +332,12 @@ app.use('/newRoom/:roomNum', function (req, res) {
   res.status(201).json({ room: newRoom.roomID });
 });
 
+//FIXME mongo
+var userNames = {};
 
 io.on('connection', function(socket){
   console.log('a user connected');
-  
+  createRoomMongo()
   socket.on('disconnect', function(){
     console.log('user disconnected');
   });
@@ -326,6 +346,11 @@ io.on('connection', function(socket){
     io.emit('chat message', msg);
   });
 
+  socket.on('setSocketId' function(data) {
+      var userName = data.name;
+      var userId = data.userId;
+      userNames[userName] = userId;
+  });
 });
 
 // Helper function to delete files from dir

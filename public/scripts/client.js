@@ -4,6 +4,11 @@ var currTrack = 0;
 
 $(function () {
     var socket = io();
+
+	// create this new user    
+	data = {name: userName, userId: socket.id};
+	socket.emit('setSocketId', data);
+
     $('form').submit(function(e){
       e.preventDefault(); // prevents page reloading
       socket.emit('chat message', $('#m').val());
