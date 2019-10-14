@@ -2,7 +2,6 @@ import {MongoClient, ObjectID} from 'mongodb'
 import express from 'express'
 import bodyParser from 'body-parser'
 import cors from 'cors'
-import {prepare} from "../util/index"
 import assert from 'assert'
 import fs from 'fs'
 import mongodb from 'mongodb'
@@ -116,19 +115,24 @@ function generateID(){
 
 function createRoomMongo(adminUser)
 {
-  db = await MongoClient.connect(FR_ROOM_URL);
-  const collection = db.collection('rooms');
-  var newRoom = {
-    playlist: [],
-    id: generateID,
-    admin: adminUser
-  };
-  console.log(newRoom);
+  try{
+    // db = await MongoClient.connect(FR_ROOM_URL);
+    const collection = db.collection('rooms');
+    var newRoom = {
+      playlist: [],
+      id: generateID,
+      admin: adminUser
+    };
+    console.log(newRoom);
 
-  // playlist
-  // users
+    // playlist
+    // users
 
-  return newRoom;
+    return newRoom;
+  }catch(e){
+    console.log(e)
+  }
+
 }
 
 export const start = async () => {
@@ -346,7 +350,7 @@ io.on('connection', function(socket){
     io.emit('chat message', msg);
   });
 
-  socket.on('setSocketId' function(data) {
+  socket.on('setSocketId', function(data) {
       var userName = data.name;
       var userId = data.userId;
       userNames[userName] = userId;
