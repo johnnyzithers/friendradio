@@ -9,6 +9,10 @@ import multer from 'multer'
 import path from 'path'
 import HLSServer from 'hls-server'
 
+const u  = require('./users.js')
+const r  = require('./rooms.js')
+
+
 // these required for serving HLS public and sockete content
 const app         = express(); 
 var   server1     = require('http').createServer(app);
@@ -109,31 +113,6 @@ function initRooms()
 
 initRooms();
 
-function generateID(){
-  return '_' + Math.random().toString(36).substr(2, 9);
-}
-
-function createRoomMongo(adminUser)
-{
-  try{
-    // db = await MongoClient.connect(FR_ROOM_URL);
-    const collection = db.collection('rooms');
-    var newRoom = {
-      playlist: [],
-      id: generateID,
-      admin: adminUser
-    };
-    console.log(newRoom);
-
-    // playlist
-    // users
-
-    return newRoom;
-  }catch(e){
-    console.log(e)
-  }
-
-}
 
 export const start = async () => {
 
@@ -340,8 +319,11 @@ app.use('/newRoom/:roomNum', function (req, res) {
 var userNames = {};
 
 io.on('connection', function(socket){
+  
+  let newuser;
   console.log('a user connected');
-  createRoomMongo()
+  
+
   socket.on('disconnect', function(){
     console.log('user disconnected');
   });
@@ -354,6 +336,9 @@ io.on('connection', function(socket){
       var userName = data.name;
       var userId = data.userId;
       userNames[userName] = userId;
+      newuser = users.createUserMongo();
+      rooms.createRoomMongo(newuser);
+
   });
 });
 
