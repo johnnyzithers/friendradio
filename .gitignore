@@ -1,7 +1,10 @@
 node_modules
 yarn-error.log
 .env
-./tmp/
+./tmp/track0/*
+./tmp/track1/*
+./tmp/track2/*
+
 ./upload/hls/
 ./upload/mp3/
 ./dist/
