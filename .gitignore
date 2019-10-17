@@ -4,7 +4,6 @@ yarn-error.log
 ./tmp/track0/*
 ./tmp/track1/*
 ./tmp/track2/*
-
 ./upload/hls/
 ./upload/mp3/
 ./dist/

@@ -48,17 +48,14 @@ httpAttach(server1, addCors)
 
 const trackRoute = express.Router()
 app.use(express.static('./public/'), cors());
-app.use(express.static('./public/scripts'), cors());
+// app.use(express.static('./public/scripts'), cors());
+
 app.use(bodyParser.json({
   limit: '500mb'
 }));
+
 app.use('/tracks', trackRoute);
 
-// app.use(addCors);
-// app.use(cors({
-//   credentials: true,
-//   origin: "http://localhost:3001"
-// }));
 
 
 // cant use memory storage with fluent ffmpeg, because this calls ffmpeg exec
@@ -71,9 +68,7 @@ var storage = multer.diskStorage({
   }
 })
 
-// const PORT = 3001
-// const MONGO_URL = 'mongodb://heroku_csm1p15v:rn77mngmt257a8qvjk7df0u798@ds331548.mlab.com:31548/heroku_csm1p15v'
-//FIXME not safe, pass it in
+
 const MONGO_URL = 'mongodb://localhost:27017/fr_test'
 const HLS_UPLOAD_DIR = './uploads/hls/';
 const UPLOAD_PATH = './uploads';
@@ -90,7 +85,7 @@ var streamTrackNum = 0;
 
 export const start = async () => {
 
-  // invoked without a callback, it returns a promise
+  // ensure ffmpeg installed
   commandExists('ffmpeg').then(function (command) {
     console.log("FFmpeg installed!");
   }).catch(function () {
@@ -102,10 +97,9 @@ export const start = async () => {
     // reference to the mongo database
     db = await MongoClient.connect(MONGO_URL);
 
-    // stream requeste route
+    // stream request route
     trackRoute.get('/:trackID', (req, res) => {
-      // FIXME 
-      console.log("streamTrackNum: " + streamTrackNum);
+      
       try {
         var trackID = new ObjectID(req.params.trackID);
       } catch(err) {
@@ -122,7 +116,6 @@ export const start = async () => {
 
       // find all files
       collection.find({}).toArray((err, files) => {
-        // Error checking
         if(!files || files.length === 0){
             return res.status(404).json({
                 responseCode: 1,
@@ -189,7 +182,6 @@ export const start = async () => {
             var count = 0;
 
             files.forEach(function(file){
-              
               // FIXME filtering out ds_store
               if (file == ".DS_Store"){
                 console.log("trackStorageCallback() -- filtering .DS_Store...");
@@ -252,25 +244,25 @@ export const start = async () => {
   }
 }
 
-app.get('/playlist/:roomNum', function (req, res) {
-  try {
-    var rID = req.params.roomNum;
-  } catch(err) {
-    console.log(err);
-    return res.status(400).json({ message: "Invalid room num in URL parameter. Must be a single String of 12 bytes or a string of 24 hex characters" }); 
-  }
+// app.get('/playlist/:roomNum', function (req, res) {
+//   try {
+//     var rID = req.params.roomNum;
+//   } catch(err) {
+//     console.log(err);
+//     return res.status(400).json({ message: "Invalid room num in URL parameter. Must be a single String of 12 bytes or a string of 24 hex characters" }); 
+//   }
 
-  var room = r.getRoomMongo(rID)
-  .then(function(theroom){
-      // send client their room id
+//   var room = r.getRoomMongo(rID)
+//   .then(function(theroom){
+//       // send client their room id
 
-    console.log("requesting playlist for room "+rID);
-    console.log(theroom)
-    res.status(201).json({ playlist: room.playlist});    // theroom.playlist.push({ uri: filename, name: req.body.name });
+//     console.log("requesting playlist for room "+rID);
+//     console.log(theroom)
+//     res.status(201).json({ playlist: room.playlist});    // theroom.playlist.push({ uri: filename, name: req.body.name });
 
-  }).  catch(error => { console.log('caught', error.message); });
+//   }).  catch(error => { console.log('caught', error.message); });
   
-});
+// });
 
 app.use('/newRoom/:roomNum/:adminUser', function (req, res) {
   try {
@@ -280,19 +272,13 @@ app.use('/newRoom/:roomNum/:adminUser', function (req, res) {
     return res.status(400).json({ message: "Invalid room num in URL parameter. Must be a single String of 12 bytes or a string of 24 hex characters" }); 
   }
 
-  // // create DBs for new room and new playlist
-  // const collection = db.collection('rooms');
-
-  // var newRoom = [
-  //   { roomID: rID, playlist: [] }
-  // ];
-
-  // db.collection("employees").insertOne(myobj, function(err, res) {  
-  //   if (err) throw err;  
-  //   console.log("1 record inserted");  
-  //   db.close();  
-  // });  
-
+  var newRoom = r.createRoomMongo(newuser)
+    .then(function(room){
+      // send client their room id
+      io.emit('room id', room._id);
+    }).catch(function(error){
+      console.log(error,'Promise error');
+    });
   res.status(201).json({ room: newRoom.roomID });
 });
 
@@ -303,7 +289,6 @@ io.on('connection', function(socket){
   
   let newuser;
   console.log('a user connected');
-  
 
   socket.on('disconnect', function(){
     console.log('user disconnected');
