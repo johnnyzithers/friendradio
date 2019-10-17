@@ -32,7 +32,6 @@ export async function getRoomMongo(o_id)
     db = await MongoClient.connect(FR_ROOM_URL);
     const collection = db.collection('rooms');
     var o_id = new ObjectId(o_id);
-    console.log(+ o_id);
     const result = await collection.findOne({"_id": o_id});
     console.log("getRoomMongo(): finding room by id: " + result._id);
     return result

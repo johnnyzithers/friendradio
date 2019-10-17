@@ -7,12 +7,16 @@ var user;
 $(function () {
     var socket = io();
 
-	// create this new user    
-	if (user == null){
-		console.log("new user");
-		data = {name: "coolName28", userId: socket.id};
-		socket.emit('setSocketId', data);
-	}
+	socket.on('connect', () => {
+		// create this new user    
+		if (user == null){
+			data = {name: "coolName28", userId: socket.id};
+			console.log("new user: " + data.name + " " + data.userId);
+			socket.emit('newUser', data);
+		}
+	});
+
+
 
     $('form').submit(function(e){
       e.preventDefault(); // prevents page reloading
@@ -121,16 +125,16 @@ $(document).ready(function()
 		.then(function(response) {	 	  
 			return response.json();
 		})
-		.then(function(myJson) {
-			// use socket io to signal others to upate playlist
-			fetch('/playlist/'+r_id, {
-		        method: 'GET',
-		    })
-		    .then(function(response) {
-		    	console.log(response)
-		    	return response.json();
-		    })
-		});
+		// .then(function(myJson) {
+		// 	// use socket io to signal others to upate playlist
+		// 	// fetch('/playlist/'+r_id, {
+		//  //        method: 'GET',
+		//  //    })
+		//  //    .then(function(response) {
+		//  //    	console.log(response)
+		//  //    	return response.json();
+		//  //    })
+		// });
 	}
 
 	$(".btn2").click(function (){

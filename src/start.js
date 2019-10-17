@@ -141,7 +141,7 @@ export const start = async () => {
 
     // upload MP3 route 
     trackRoute.post('/:roomNum', (req, res) => {
-     try {
+     try {  
         var rID = req.params.roomNum;
       } catch(err) {
         console.log(err);
@@ -202,18 +202,19 @@ export const start = async () => {
           console.log("rid here is " + rID)
           // add this track to the room playlist          
           var room = r.getRoomMongo(rID)
-          .then(function(theroom){
+          .then(function(theroom)
+          {
             theroom.playlist.push({ uri: filename, name: req.body.name });
             var result = r.updatePlaylist(rID, theroom.playlist);
             return result;
-          }).then(function(newplaylist){
-            
+          }).then(function(newplaylist)
+          {
             // send playlist to client
             io.emit('playlist', {id: rID, playlist: newplaylist});
             // remove tempory files once mongo upload complete
             removeAllFilesFromDir("hls");
             removeAllFilesFromDir("mp3");
-            // res.json(newplaylist)
+            // and send the response
             res.status(201).json({ message: "HLS successfully uploaded"});
             return res;
           }).catch(error => { console.log('caught =>', error.message); });
@@ -231,7 +232,8 @@ export const start = async () => {
               '-f hls'               // HLS format
           ])
           .audioCodec('libmp3lame')
-          .on('error', function(err, stdout, stderr) {
+          .on('error', function(err, stdout, stderr) 
+          {
             console.log('Error: ' + err.message);
             console.log('ffmpeg output:\n' + stdout);
             console.log('ffmpeg stderr:\n' + stderr);
@@ -264,14 +266,15 @@ export const start = async () => {
   
 // });
 
-app.use('/newRoom/:roomNum/:adminUser', function (req, res) {
+app.use('/newRoom/:adminUser', function (req, res) {
   try {
-    var rID = req.params.roomNum;
+    var user = req.params.adminUser;
   } catch(err) {
     console.log(err);
-    return res.status(400).json({ message: "Invalid room num in URL parameter. Must be a single String of 12 bytes or a string of 24 hex characters" }); 
+    return res.status(400).json({ message: "Invalid user for creating room!" }); 
   }
 
+  // TODO get admin user
   var newRoom = r.createRoomMongo(newuser)
     .then(function(room){
       // send client their room id
@@ -282,13 +285,8 @@ app.use('/newRoom/:roomNum/:adminUser', function (req, res) {
   res.status(201).json({ room: newRoom.roomID });
 });
 
-//FIXME mongo
-var userNames = {};
 
-io.on('connection', function(socket){
-  
-  let newuser;
-  console.log('a user connected');
+io.on('connection', function(socket){  
 
   socket.on('disconnect', function(){
     console.log('user disconnected');
@@ -298,21 +296,19 @@ io.on('connection', function(socket){
     io.emit('chat message', msg);
   });
 
-  socket.on('setSocketId', async function(data) {
+  socket.on('newUser', async function(data) {
 
-      var userName = data.name;
-      var userId = data.userId;
-
-      userNames[userName] = userId;
-      newuser = u.createUserMongo(userId);
-
+      console.log("new User: " + data.name + " " + data.userId);
+      // create a new user
+      var newuser = u.createUserMongo(data.name);
+      // and a new room for them
       var newRoom = r.createRoomMongo(newuser)
-        .then(function(room){
-          // send client their room id
-          io.emit('room id', room._id);
-        }).catch(function(error){
-          console.log(error,'Promise error');
-        });
+      .then(function(room){
+        // send client their room id
+        io.emit('room id', room._id);
+      }).catch(function(error){
+        console.log(error,'Promise error');
+      });
   });
 });
 

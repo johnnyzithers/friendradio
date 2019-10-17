@@ -1,8 +1,9 @@
 // import {MongoClient, ObjectID} from 'mongodb'
 var ObjectId = require('mongodb').ObjectID;
 var MongoClient = require('mongodb').MongoClient;
+const middleWare = require('middleWare');
 
-const FR_USER_URL = 'mongodb://localhost:27017/fr_users'
+const FR_ROOM_URL = 'mongodb://localhost:27017/fr_rooms'
 var exports = module.exports = {};
 
 let db
@@ -12,26 +13,20 @@ function generateUserID (){
   return userIdNum++;
 }
 
-export const createUserMongo = async (u_id) => {
-  console.log(u_id)
-   try{
-    db = await MongoClient.connect(FR_USER_URL);
-    const collection = db.collection('users');
-    var newUser = {
-      username: [],
-      // id: u_id,
+export const createUserMongo = async (uname) => {
+  try{
+    
+    var newuser = {
+      username: uname,
       since: Date.now()
-      // etc
     };
-
-    console.log("new user " + newUser.id);
-
-    // playlist
-    // users
-
-    return newUser;
+    
+    db = await MongoClient.connect(FR_ROOM_URL);
+    const collection = db.collection('users');
+    const result = await collection.insertOne(newuser);
+    return newuser
   }catch(e){
-    console.log(e)
+    console.log(e);
   }
 }
 
