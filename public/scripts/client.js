@@ -1,13 +1,18 @@
-var ROOM = 11231;
+var r_id;
 var currPlaylist = [];
 var currTrack = 0;
+
+var user;
 
 $(function () {
     var socket = io();
 
 	// create this new user    
-	data = {name: "coolName28", userId: socket.id};
-	socket.emit('setSocketId', data);
+	if (user == null){
+		console.log("new user");
+		data = {name: "coolName28", userId: socket.id};
+		socket.emit('setSocketId', data);
+	}
 
     $('form').submit(function(e){
       e.preventDefault(); // prevents page reloading
@@ -15,9 +20,34 @@ $(function () {
       $('#m').val('');
       return false;
     });
+    
     socket.on('chat message', function(msg){
       $('#messages').append($('<li>').text(msg));
     });
+
+    socket.on('playlist', function(pl){
+
+    	//fixme check if id is this room
+    	currPlaylist = pl.playlist;
+    	var stream_div = document.getElementById('stream');
+		var playlist_div = document.getElementById('playlist');
+		playlist_div.innerHTML = '';
+
+		for (var i = 0; i < currPlaylist.length; i++) {
+
+			var trackName = document.createElement("li");
+			var text = document.createTextNode(currPlaylist[i].name);
+			trackName.appendChild(text);
+			document.getElementById('playlist').appendChild(trackName);
+		//  		// stream_div.appendChild()
+			stream_div.style.display = "block";
+		}
+    });
+
+    socket.on('room id', function(roomid){
+    	console.log("this room is " + roomid);
+    	r_id = roomid;
+    })
   });
 
 
@@ -82,7 +112,9 @@ $(document).ready(function()
 	    fd.set("track", file);
     	fd.set("name",  file.name);
 
-	    fetch('/tracks/'+ROOM, {
+    	console.log("post with rid "+r_id);
+
+	    fetch('/tracks/'+r_id, {
 	        method: 'POST',
 	        body: fd,
 	    })
@@ -91,33 +123,13 @@ $(document).ready(function()
 		})
 		.then(function(myJson) {
 			// use socket io to signal others to upate playlist
-			fetch('/playlist/'+ROOM, {
+			fetch('/playlist/'+r_id, {
 		        method: 'GET',
 		    })
 		    .then(function(response) {
+		    	console.log(response)
 		    	return response.json();
 		    })
-		    .then(function(jsonRes) {
-
-
-		    	var stream_div = document.getElementById('stream');
-		    	var playlist_div = document.getElementById('playlist');
-		    	playlist_div.innerHTML = '';
-
-		    	currPlaylist = jsonRes.playlist;
-
-		    	for (var i = 0; i < currPlaylist.length; i++) {
-		    	
-	
-					var trackName = document.createElement("li");
-					var text = document.createTextNode(currPlaylist[i].name);
-					trackName.appendChild(text);
-					document.getElementById('playlist').appendChild(trackName);
-		   //  		// stream_div.appendChild()
-		    		stream_div.style.display = "block";
-		    	}
-		    	console.log(JSON.stringify(jsonRes));
-		    });
 		});
 	}
 

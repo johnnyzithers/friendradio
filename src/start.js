@@ -9,9 +9,9 @@ import multer from 'multer'
 import path from 'path'
 import HLSServer from 'hls-server'
 
+// local js module filese
 const u  = require('./users.js')
 const r  = require('./rooms.js')
-
 
 // these required for serving HLS public and sockete content
 const app         = express(); 
@@ -25,7 +25,7 @@ var commandExists = require('command-exists');
 const ffmpegPath        = require('@ffmpeg-installer/ffmpeg').path;
 const ffmpeg            = require('fluent-ffmpeg');
 const ffmpegOnProgress  = require('ffmpeg-on-progress')
-// sete path to ffmpeg 
+// set path to ffmpeg 
 ffmpeg.setFfmpegPath(ffmpegPath);
 
 // HLS Server
@@ -34,12 +34,15 @@ var hls = new HLSServer(server1, {
   dir: './tmp'            // Directory that input files are stored
 })
 
-
+// set up cors for hls server
 function addCors (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next()
 }
+
+// attach cors to the http server
+httpAttach(server1, addCors)
 
 
 
@@ -51,13 +54,12 @@ app.use(bodyParser.json({
 }));
 app.use('/tracks', trackRoute);
 
-app.use(addCors);
-app.use(cors({
-  credentials: true,
-  origin: "http://localhost:3001"
-}));
+// app.use(addCors);
+// app.use(cors({
+//   credentials: true,
+//   origin: "http://localhost:3001"
+// }));
 
-httpAttach(server1, addCors)
 
 // cant use memory storage with fluent ffmpeg, because this calls ffmpeg exec
 var storage = multer.diskStorage({
@@ -73,45 +75,17 @@ var storage = multer.diskStorage({
 // const MONGO_URL = 'mongodb://heroku_csm1p15v:rn77mngmt257a8qvjk7df0u798@ds331548.mlab.com:31548/heroku_csm1p15v'
 //FIXME not safe, pass it in
 const MONGO_URL = 'mongodb://localhost:27017/fr_test'
-const FR_ROOM_URL = 'mongodb://localhost:27017/fr_rooms'
 const HLS_UPLOAD_DIR = './uploads/hls/';
 const UPLOAD_PATH = './uploads';
 const upload = multer({ dest: `${UPLOAD_PATH}/` }); // multer configuration
 
-let db
-
+let db 
 
 
 
 var uploadTrackNum = 0;
 var streamTrackNum = 0;
 
-//FIXME this should be in a different higher level db
-// for now just stubbing out the data we will need
-var rooms = [];
-
-function Room(_roomID, _playlist, _particpants)
-{
-  this.roomID         = _roomID;
-  this.playlist       = _playlist;
-  this.particpants    = _particpants;
-}
-
-// FIXME dummy this just creates 2 rooms with different ids
-function initRooms()
-{
-    var q = [];
-    var id = 11231;
-    var p = 0;
-    var r = new Room( id, q, p);
-    rooms[0] = r;
-    id = 10429;
-    var s = new Room( id, q, p);
-    rooms[1] = s;
-    console.log(rooms)
-}
-
-initRooms();
 
 
 export const start = async () => {
@@ -233,22 +207,24 @@ export const start = async () => {
               }
             });
           });
-          res.status(201).json({ message: "HLS files successfully uploaded to mongo: "});
-          
-          // add this track to the room playlist
-          // FIXME better way to do this
-          var room = rooms.find(function(r) {
-            return r.roomID ==  rID;
-          });
-          room.playlist.push({ uri: filename, name: req.body.name });
-          console.log("adding "+ req.body.name + " to room " + room.roomID);
-          
-          // remove tempory files once mongo upload complete
-          removeAllFilesFromDir("hls");
-          removeAllFilesFromDir("mp3");
-
-          // and return the response
-          return res;
+          console.log("rid here is " + rID)
+          // add this track to the room playlist          
+          var room = r.getRoomMongo(rID)
+          .then(function(theroom){
+            theroom.playlist.push({ uri: filename, name: req.body.name });
+            var result = r.updatePlaylist(rID, theroom.playlist);
+            return result;
+          }).then(function(newplaylist){
+            
+            // send playlist to client
+            io.emit('playlist', {id: rID, playlist: newplaylist});
+            // remove tempory files once mongo upload complete
+            removeAllFilesFromDir("hls");
+            removeAllFilesFromDir("mp3");
+            // res.json(newplaylist)
+            res.status(201).json({ message: "HLS successfully uploaded"});
+            return res;
+          }).catch(error => { console.log('caught =>', error.message); });
         }
 
         // ffmpeg call to create the .m3u8 and .ts segments from mp3
@@ -283,15 +259,20 @@ app.get('/playlist/:roomNum', function (req, res) {
     console.log(err);
     return res.status(400).json({ message: "Invalid room num in URL parameter. Must be a single String of 12 bytes or a string of 24 hex characters" }); 
   }
-  var room = rooms.find(function(r) {
-    return r.roomID ==  rID;
-  });
-        
-  console.log("requesting playlist for room "+rID);
-  res.status(201).json({ playlist: room.playlist});
+
+  var room = r.getRoomMongo(rID)
+  .then(function(theroom){
+      // send client their room id
+
+    console.log("requesting playlist for room "+rID);
+    console.log(theroom)
+    res.status(201).json({ playlist: room.playlist});    // theroom.playlist.push({ uri: filename, name: req.body.name });
+
+  }).  catch(error => { console.log('caught', error.message); });
+  
 });
 
-app.use('/newRoom/:roomNum', function (req, res) {
+app.use('/newRoom/:roomNum/:adminUser', function (req, res) {
   try {
     var rID = req.params.roomNum;
   } catch(err) {
@@ -299,18 +280,18 @@ app.use('/newRoom/:roomNum', function (req, res) {
     return res.status(400).json({ message: "Invalid room num in URL parameter. Must be a single String of 12 bytes or a string of 24 hex characters" }); 
   }
 
-  // create DBs for new room and new playlist
-  const collection = db.collection('rooms');
+  // // create DBs for new room and new playlist
+  // const collection = db.collection('rooms');
 
-  var newRoom = [
-    { roomID: rID, playlist: [] }
-  ];
+  // var newRoom = [
+  //   { roomID: rID, playlist: [] }
+  // ];
 
-  db.collection("employees").insertOne(myobj, function(err, res) {  
-    if (err) throw err;  
-    console.log("1 record inserted");  
-    db.close();  
-  });  
+  // db.collection("employees").insertOne(myobj, function(err, res) {  
+  //   if (err) throw err;  
+  //   console.log("1 record inserted");  
+  //   db.close();  
+  // });  
 
   res.status(201).json({ room: newRoom.roomID });
 });
@@ -332,13 +313,21 @@ io.on('connection', function(socket){
     io.emit('chat message', msg);
   });
 
-  socket.on('setSocketId', function(data) {
+  socket.on('setSocketId', async function(data) {
+
       var userName = data.name;
       var userId = data.userId;
-      userNames[userName] = userId;
-      newuser = users.createUserMongo();
-      rooms.createRoomMongo(newuser);
 
+      userNames[userName] = userId;
+      newuser = u.createUserMongo(userId);
+
+      var newRoom = r.createRoomMongo(newuser)
+        .then(function(room){
+          // send client their room id
+          io.emit('room id', room._id);
+        }).catch(function(error){
+          console.log(error,'Promise error');
+        });
   });
 });
 
