@@ -43,22 +43,16 @@ function addCors (req, res, next) {
 
 // attach cors to the http server
 httpAttach(server1, addCors)
-
-
-
 const trackRoute = express.Router()
 app.use(express.static('./public/'), cors());
-// app.use(express.static('./public/scripts'), cors());
+app.use('/tracks', trackRoute);
 
+// mas body res size - therfore max mp3 size
 app.use(bodyParser.json({
   limit: '500mb'
 }));
 
-app.use('/tracks', trackRoute);
-
-
-
-// cant use memory storage with fluent ffmpeg, because this calls ffmpeg exec
+// set up multer stogarge - must use disk storage
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, './uploads/mp3')
@@ -68,23 +62,20 @@ var storage = multer.diskStorage({
   }
 })
 
-
+// paths
 const MONGO_URL = 'mongodb://localhost:27017/fr_test'
 const HLS_UPLOAD_DIR = './uploads/hls/';
 const UPLOAD_PATH = './uploads';
 const upload = multer({ dest: `${UPLOAD_PATH}/` }); // multer configuration
 
+// FIXME these are dumb globals for dev
 let db 
-
-
-
 var uploadTrackNum = 0;
 var streamTrackNum = 0;
 
 
-
 export const start = async () => {
-
+  
   // ensure ffmpeg installed
   commandExists('ffmpeg').then(function (command) {
     console.log("FFmpeg installed!");
@@ -241,79 +232,92 @@ export const start = async () => {
           .output(`${HLS_UPLOAD_DIR}`+filename+`.m3u8`).on('end', trackStorageCallback).run() 
       });
     });
-  } catch (e) {
+
+    app.use('/newRoom/:adminUser', function (req, res) {
+      try {
+        var user = req.params.adminUser;
+      } catch(err) {
+        console.log(err);
+        return res.status(400).json({ message: "Invalid user for creating room!" }); 
+      }
+
+      // TODO get admin user
+      var newRoom = r.createRoomMongo(newuser)
+        .then(function(room){
+          // send client their room id
+          io.emit('room id', room._id);
+        }).catch(function(error){
+          console.log(error,'Promise error');
+        });
+      res.status(201).json({ room: newRoom.roomID });
+    });
+
+
+    io.on('connection', function(socket){  
+
+      socket.on('disconnect', function(){
+        console.log('user disconnected');
+      });
+
+      socket.on('chat message', function(msg){
+        io.to(msg.room).emit('chat message', msg);
+      });
+
+      socket.on('newUser', async function(data) {
+          console.log("new User: " + data.name + " " + data.userId + " " + data.room);
+          
+          // create a new user
+          u.createUserMongo(data)
+          .then(function (newuser){
+
+            // save the username
+            socket.name = newuser.username;
+            
+            if(data.room == "new room")
+            {
+              // and a new room for them
+              var newRoom = r.createRoomMongo(newuser)
+              .then(function(room){
+                // join the room 
+                socket.join(room._id);
+                // send client their room id
+                socket.emit('room id', room._id);
+                // tell everyone else in the room
+                io.to(room._id).emit('user joined', newuser.username);
+              }).catch(function(error){
+                console.log(error,'Promise error');
+              });
+              // otherwise we go to the room they entered
+              // FIXME right now this by id, should be by url?
+            }else{
+              var theroom = r.getRoomMongo(data.room)
+              .then(function(room){
+                // join the room 
+                socket.join(room._id);
+                // send client their room id
+                io.emit('room id', room._id);
+                // tell everyone else in the room
+                io.to(room._id).emit(newuser.username+' has joined the room');
+              }).catch(function(error){
+                console.log(error, 'Promise error');
+              });
+            }
+
+          }).catch(function(error){
+              console.log(error, 'Promise error');
+          });
+
+      });
+    });
+    
+    } catch (e) {
     console.log(e)
   }
 }
 
-// app.get('/playlist/:roomNum', function (req, res) {
-//   try {
-//     var rID = req.params.roomNum;
-//   } catch(err) {
-//     console.log(err);
-//     return res.status(400).json({ message: "Invalid room num in URL parameter. Must be a single String of 12 bytes or a string of 24 hex characters" }); 
-//   }
-
-//   var room = r.getRoomMongo(rID)
-//   .then(function(theroom){
-//       // send client their room id
-
-//     console.log("requesting playlist for room "+rID);
-//     console.log(theroom)
-//     res.status(201).json({ playlist: room.playlist});    // theroom.playlist.push({ uri: filename, name: req.body.name });
-
-//   }).  catch(error => { console.log('caught', error.message); });
-  
-// });
-
-app.use('/newRoom/:adminUser', function (req, res) {
-  try {
-    var user = req.params.adminUser;
-  } catch(err) {
-    console.log(err);
-    return res.status(400).json({ message: "Invalid user for creating room!" }); 
-  }
-
-  // TODO get admin user
-  var newRoom = r.createRoomMongo(newuser)
-    .then(function(room){
-      // send client their room id
-      io.emit('room id', room._id);
-    }).catch(function(error){
-      console.log(error,'Promise error');
-    });
-  res.status(201).json({ room: newRoom.roomID });
-});
-
-
-io.on('connection', function(socket){  
-
-  socket.on('disconnect', function(){
-    console.log('user disconnected');
-  });
-
-  socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
-  });
-
-  socket.on('newUser', async function(data) {
-
-      console.log("new User: " + data.name + " " + data.userId);
-      // create a new user
-      var newuser = u.createUserMongo(data.name);
-      // and a new room for them
-      var newRoom = r.createRoomMongo(newuser)
-      .then(function(room){
-        // send client their room id
-        io.emit('room id', room._id);
-      }).catch(function(error){
-        console.log(error,'Promise error');
-      });
-  });
-});
-
 // Helper function to delete files from dir
 // this should be error checked to make sure only files in  this project can be removed
+// FIXME this should be moved to utility module
 function removeAllFilesFromDir(directory) {
 
   fs.readdir(UPLOAD_PATH+"/"+directory, (err, files) => {

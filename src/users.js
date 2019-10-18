@@ -4,33 +4,30 @@ var MongoClient = require('mongodb').MongoClient;
 const middleWare = require('middleWare');
 
 const FR_ROOM_URL = 'mongodb://localhost:27017/fr_rooms'
-var exports = module.exports = {};
 
 let db
-let userIdNum = 0
 
-function generateUserID (){
-  return userIdNum++;
-}
 
-export const createUserMongo = async (uname) => {
+export async function createUserMongo(data) {
   try{
-    
     var newuser = {
-      username: uname,
+      username: data.name,
+      socketid: data.userId,
       since: Date.now()
     };
     
     db = await MongoClient.connect(FR_ROOM_URL);
     const collection = db.collection('users');
     const result = await collection.insertOne(newuser);
+
+    console.log("createUserMongo(): creating user: " + newuser.username);
+
     return newuser
   }catch(e){
     console.log(e);
   }
 }
 
-module.exports.userIdNum = userIdNum;
 
 module.exports.createUserMongo = createUserMongo;
 // module.exports.generateUserID = generateUserID;

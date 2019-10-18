@@ -1,32 +1,28 @@
-var r_id;
 var currPlaylist = [];
 var currTrack = 0;
 
-var user;
+var uname;
 
-$(function () {
+
+$(document).ready(function() 
+{
     var socket = io();
 
 	socket.on('connect', () => {
 		// create this new user    
-		if (user == null){
-			data = {name: "coolName28", userId: socket.id};
-			console.log("new user: " + data.name + " " + data.userId);
+		if (uname == null){
+			uname = prompt("Please enter a user name", "coolName28");
+			room = prompt("Which room would you like to go to?", "new room");
+			data = {name: uname, userId: socket.id, room};
+			socket.username = data.name;
+			console.log("new user: " + data.name + " " + data.userId + " " + room);
 			socket.emit('newUser', data);
 		}
 	});
-
-
-
-    $('form').submit(function(e){
-      e.preventDefault(); // prevents page reloading
-      socket.emit('chat message', $('#m').val());
-      $('#m').val('');
-      return false;
-    });
     
     socket.on('chat message', function(msg){
-      $('#messages').append($('<li>').text(msg));
+    	console.log(msg);
+      	$('#messages').append($('<li>').text(msg.user + ": " + msg.data));
     });
 
     socket.on('playlist', function(pl){
@@ -49,15 +45,28 @@ $(function () {
     });
 
     socket.on('room id', function(roomid){
+
     	console.log("this room is " + roomid);
-    	r_id = roomid;
-    })
-  });
+    	socket.room = roomid;
+    });
 
+    socket.on('user joined', function(user){
+		$('#messages').append($(`<li style="font-style:italic;font-size:32px;\">`).text(user +" has joined the room"));
 
-$(document).ready(function() 
-{
-	console.log("FRIENDRADIO client!");
+    });
+  
+
+    $('form').submit(function(e){
+		e.preventDefault(); // prevents page reloading
+		var msg = {
+			data: $('#m').val(), 
+			user: socket.username,
+			room: socket.room
+		};
+		socket.emit('chat message', msg);
+		$('#m').val('');
+		return false;
+    });
 
 	function getStream(){
 		console.log("getStream()");
@@ -116,9 +125,9 @@ $(document).ready(function()
 	    fd.set("track", file);
     	fd.set("name",  file.name);
 
-    	console.log("post with rid "+r_id);
+    	console.log("post with rid "+socket.room);
 
-	    fetch('/tracks/'+r_id, {
+	    fetch('/tracks/'+socket.room, {
 	        method: 'POST',
 	        body: fd,
 	    })
@@ -127,7 +136,7 @@ $(document).ready(function()
 		})
 		// .then(function(myJson) {
 		// 	// use socket io to signal others to upate playlist
-		// 	// fetch('/playlist/'+r_id, {
+		// 	// fetch('/playlist/'+socket.room, {
 		//  //        method: 'GET',
 		//  //    })
 		//  //    .then(function(response) {
