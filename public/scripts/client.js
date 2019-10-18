@@ -13,15 +13,14 @@ $(document).ready(function()
 		if (uname == null){
 			uname = prompt("Please enter a user name", "coolName28");
 			room = prompt("Which room would you like to go to?", "new room");
-			data = {name: uname, userId: socket.id, room};
-			socket.username = data.name;
-			console.log("new user: " + data.name + " " + data.userId + " " + room);
-			socket.emit('newUser', data);
+			data = {user: uname, room: room};
+			socket.username = data.user;
+
+			socket.emit('new user', data);
 		}
 	});
     
     socket.on('chat message', function(msg){
-    	console.log(msg);
       	$('#messages').append($('<li>').text(msg.user + ": " + msg.data));
     });
 
@@ -45,14 +44,12 @@ $(document).ready(function()
     });
 
     socket.on('room id', function(roomid){
-
     	console.log("this room is " + roomid);
     	socket.room = roomid;
     });
 
     socket.on('user joined', function(user){
 		$('#messages').append($(`<li style="font-style:italic;font-size:32px;\">`).text(user +" has joined the room"));
-
     });
   
 

@@ -190,7 +190,7 @@ export const start = async () => {
               }
             });
           });
-          console.log("rid here is " + rID)
+        
           // add this track to the room playlist          
           var room = r.getRoomMongo(rID)
           .then(function(theroom)
@@ -233,6 +233,10 @@ export const start = async () => {
       });
     });
 
+    /* Creates a new room with adminUser
+     *  @adminUser  - user with admin privledges
+     *
+     */
     app.use('/newRoom/:adminUser', function (req, res) {
       try {
         var user = req.params.adminUser;
@@ -252,19 +256,34 @@ export const start = async () => {
       res.status(201).json({ room: newRoom.roomID });
     });
 
-
+    /* Manages Socket.io connections and events 
+     *
+     */ 
     io.on('connection', function(socket){  
-
+      
+      /* Receives disconnect events from client 
+       *
+       */
       socket.on('disconnect', function(){
         console.log('user disconnected');
       });
 
+      /* Receives chat message events from client
+       *  @msg.user - user posting the message
+       *  @msg.room - room message is posted to
+       *  @msg.data - text message contents
+       */
       socket.on('chat message', function(msg){
         io.to(msg.room).emit('chat message', msg);
       });
 
-      socket.on('newUser', async function(data) {
-          console.log("new User: " + data.name + " " + data.userId + " " + data.room);
+      /* Receives new user events from client
+       * (this also would be the login route)
+       *  @data.user - new user posting the message
+       *  @data.room - new room OR room the user is joining on login
+       */
+      socket.on('new user', async function(data) {
+          console.log("new User: " + data.user + " " + data.room);
           
           // create a new user
           u.createUserMongo(data)
@@ -315,9 +334,11 @@ export const start = async () => {
   }
 }
 
-// Helper function to delete files from dir
-// this should be error checked to make sure only files in  this project can be removed
-// FIXME this should be moved to utility module
+/* Helper function to delete files from dir
+ * this should be error checked to make sure only files in  this project can be removed
+ * FIXME this should be moved to utility module
+ *  @directory - directory to be emptied
+ */
 function removeAllFilesFromDir(directory) {
 
   fs.readdir(UPLOAD_PATH+"/"+directory, (err, files) => {

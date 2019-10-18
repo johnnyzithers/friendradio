@@ -1,20 +1,19 @@
-// import {MongoClient, ObjectID} from 'mongodb'
 var ObjectId = require('mongodb').ObjectID;
 var MongoClient = require('mongodb').MongoClient;
 const middleWare = require('middleWare');
 
+const FR_ROOM_URL = 'mongodb://localhost:27017/fr_test'
 
-const FR_ROOM_URL = 'mongodb://localhost:27017/fr_rooms'
-var exports = module.exports = {};
-let db
-
-let roomIdNum = 0
-
-
+/* Mongo update the playlist of the specified room 
+ *  @o_id         - room id
+ *  @newplaylist  - new complete playlist
+ * 
+ *  return : playlist
+ */
 export async function updatePlaylist(o_id, newplaylist)
 {
   try{
-    db = await MongoClient.connect(FR_ROOM_URL);
+    const db = await MongoClient.connect(FR_ROOM_URL);
     const collection = db.collection('rooms');
     var o_id = new ObjectId(o_id);
     var query = { _id: o_id };
@@ -26,10 +25,16 @@ export async function updatePlaylist(o_id, newplaylist)
     console.log(e);
   }
 }
+
+/* Mongo create and store room by id
+ *  @o_id - room id
+ * 
+ *  return : found room
+ */
 export async function getRoomMongo(o_id)
 {
   try{
-    db = await MongoClient.connect(FR_ROOM_URL);
+    const db = await MongoClient.connect(FR_ROOM_URL);
     const collection = db.collection('rooms');
     var o_id = new ObjectId(o_id);
     const result = await collection.findOne({"_id": o_id});
@@ -40,7 +45,12 @@ export async function getRoomMongo(o_id)
   }
 }
 
-export async function createRoomMongo(adminUser ) {
+/* Mongo create room by user
+ *  @adminUser - user creating the room
+ * 
+ *  return : created room
+ */
+export async function createRoomMongo(adminUser) {
   try{
     
     var newroom = {
@@ -48,7 +58,7 @@ export async function createRoomMongo(adminUser ) {
       admin: adminUser
     };
     
-    db = await MongoClient.connect(FR_ROOM_URL);
+    const db = await MongoClient.connect(FR_ROOM_URL);
     const collection = db.collection('rooms');
     var o_id = new ObjectId(o_id);
     const result = await collection.insertOne(newroom);
@@ -60,5 +70,4 @@ export async function createRoomMongo(adminUser ) {
 
 module.exports.createRoomMongo = createRoomMongo;
 module.exports.updatePlaylist = updatePlaylist;
-// module.exports.generateRoomID = generateRoomID; //FIXME doesnt need export
 module.exports.getRoomMongo = getRoomMongo;
