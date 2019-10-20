@@ -16,7 +16,7 @@ $(document).ready(function()
 			data = {user: uname, room: room};
 			socket.username = data.user;
 
-			socket.emit('new user', data);
+			socket.emit('new login', data);
 		}
 	});
     

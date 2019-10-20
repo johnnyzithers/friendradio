@@ -244,15 +244,20 @@ export const start = async () => {
         console.log(err);
         return res.status(400).json({ message: "Invalid user for creating room!" }); 
       }
-
-      // TODO get admin user
-      var newRoom = r.createRoomMongo(newuser)
+      // get the user
+      u.getUserMongoByName(user)
+      .then(function(result){
+        r.createRoomMongo(result)
         .then(function(room){
           // send client their room id
           io.emit('room id', room._id);
         }).catch(function(error){
           console.log(error,'Promise error');
         });
+      }).catch(function(error){
+        console.log(error,'Promise error')
+      });
+
       res.status(201).json({ room: newRoom.roomID });
     });
 
@@ -282,16 +287,15 @@ export const start = async () => {
        *  @data.user - new user posting the message
        *  @data.room - new room OR room the user is joining on login
        */
-      socket.on('new user', async function(data) {
+      socket.on('new login', async function(data) {
           console.log("new User: " + data.user + " " + data.room);
           
           // create a new user
           u.createUserMongo(data)
           .then(function (newuser){
-
             // save the username
             socket.name = newuser.username;
-            
+            // if no room provided, create a new room
             if(data.room == "new room")
             {
               // and a new room for them
