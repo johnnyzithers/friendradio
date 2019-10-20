@@ -86,7 +86,7 @@ export const start = async () => {
   try 
   {
     // reference to the mongo database
-    db = await MongoClient.connect(MONGO_URL);
+    db = await MongoClient.connect(MONGO_URL, { useUnifiedTopology: true });
 
     // stream request route
     trackRoute.get('/:trackID', (req, res) => {

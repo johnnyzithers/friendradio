@@ -7,18 +7,21 @@
     "startdev": "nodemon --exec babel-node src/index.js",
     "start": "node dist/index.js",
     "build": "babel -d dist/ src/",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "Duncan MacConnell <duncanmacconnell@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-    "babel-cli": "^6.18.0",
-    "babel-core": "^6.20.0",
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/plugin-transform-regenerator": "^7.4.5",
+    "@babel/preset-env": "^7.6.3",
     "babel-plugin-syntax-async-functions": "^6.13.0",
-    "babel-plugin-transform-regenerator": "^6.20.0",
-    "babel-preset-es2015": "^6.18.0"
+    "jest": "^24.9.0"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.6.0",
+    "@babel/register": "^7.6.2",
     "@ffmpeg-installer/ffmpeg": "^1.0.19",
     "body-parser": "^1.19.0",
     "command-exists": "^1.2.8",
@@ -28,7 +31,7 @@
     "fluent-ffmpeg": "^2.1.2",
     "hls-server": "^1.5.0",
     "middleware": "^1.0.0",
-    "mongodb": "^2.2.15",
+    "mongodb": "^2.2.33",
     "multer": "^1.4.2",
     "nodemon": "^1.18.3",
     "request": "^2.88.0",
