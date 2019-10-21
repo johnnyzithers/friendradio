@@ -67,12 +67,9 @@ $(document).ready(function()
 
 	function getStream(){
 		console.log("getStream()");
-
-		// FIXME dummy ID
-		var id = '5d7d70bbac0481659f11dd32';
 		
 		// fetch pulls down all the MONGO hls files for this track
-	 	fetch('/tracks/'+socket.room+"/"+id, {
+	 	fetch('/tracks/'+socket.room+"/"+currTrack, {
 	        method: 'GET',
 	    })
 		.then(function(response) {	 	  

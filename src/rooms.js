@@ -52,12 +52,14 @@ export async function getRoomMongo(o_id)
  */
 export async function createRoomMongo(adminUser) {
   try{
-    
+    let url = generate5characters();
+
     var newroom = {
       playlist: [],
+      endpoint: url,
+      uploadCount: 0,
       admin: adminUser
     };
-    
     const db = await MongoClient.connect(FR_ROOM_URL);
     const collection = db.collection('rooms');
     var o_id = new ObjectId(o_id);
@@ -67,6 +69,12 @@ export async function createRoomMongo(adminUser) {
     console.log(e);
   }
 }
+
+function generate5characters(){
+  var random_string = Math.random().toString(32).substring(2, 5) + Math.random().toString(32).substring(2, 5);    
+  return random_string
+}
+
 
 module.exports.createRoomMongo = createRoomMongo;
 module.exports.updatePlaylist = updatePlaylist;

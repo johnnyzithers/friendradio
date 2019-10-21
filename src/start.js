@@ -92,51 +92,55 @@ export const start = async () => {
     db = await MongoClient.connect(MONGO_URL);
 
     // stream request route
-    trackRoute.get('/:roomNum/:trackID', (req, res) => {
-      
+    trackRoute.get('/:roomID/:trackNum', (req, res) => {
+      //FIXME
       try {
-        var trackID = new ObjectID(req.params.trackID);
-        var roomNum = new ObjectID(req.params.roomNum);
+        var trackNum = req.params.trackNum;
+        var roomID = new ObjectID(req.params.roomID);
       } catch(err) {
         console.log(err);
         return res.status(400).json({ message: "Invalid trackID in URL parameter. Must be a single String of 12 bytes or a string of 24 hex characters" }); 
       }
 
       // get room by id
+      r.getRoomMongo(roomID)
+        .then(function(room)
+        {
+          // set the grid fs bucket
+          let bucket = new mongodb.GridFSBucket(db, {
+            bucketName: room.endpoint+trackNum
+          });
 
-      let bucket = new mongodb.GridFSBucket(db, {
-        bucketName: 'track'+streamTrackNum
-      });
+          // set the appropriate mongo collections
+          const collection = db.collection(room.endpoint+trackNum+'.files');    
 
-      // set the appropriate mongo collections
-      const collection = db.collection('track'+streamTrackNum+'.files');    
+          // find all hls files
+          collection.find({}).toArray((err, files) => {
+            if(!files || files.length === 0){
+                return res.status(404).json({
+                    responseCode: 1,
+                    responseMessage: "error"
+                });
+            }
+            // Create dir for this track's hls
+            createDirIfDoesntExist(process.env.PWD+'/tmp/track'+streamTrackNum);
 
-      // find all files
-      collection.find({}).toArray((err, files) => {
-        if(!files || files.length === 0){
-            return res.status(404).json({
-                responseCode: 1,
-                responseMessage: "error"
+            // fetch the hls data
+            files.forEach((file) => {
+              bucket.openDownloadStreamByName(file.filename)
+              .pipe(fs.createWriteStream('./tmp/track'+streamTrackNum+'/'+file.filename))
+              .on('error', function(error) {
+                assert.ifError(error);
+              })
+              .on('finish', function() {
+                  // fired for each file
+              });       
             });
-        }
-        // Create dir for this track
-        createDirIfDoesntExist(process.env.PWD+'/tmp/track'+streamTrackNum);
-
-        // Loop through all the files and fetch the necessary information
-        files.forEach((file) => {
-          bucket.openDownloadStreamByName(file.filename)
-          .pipe(fs.createWriteStream('./tmp/track'+streamTrackNum+'/'+file.filename))
-          .on('error', function(error) {
-            assert.ifError(error);
-          })
-          .on('finish', function() {
-              // fired for each file
-          });       
-        });
-        streamTrackNum = streamTrackNum + 1;
-        res.json(files);
-        return res;
-      });
+            streamTrackNum = streamTrackNum + 1;
+            res.json(files);
+            return res;
+          });
+        }).catch(error => { console.log('caught =>', error.message); });
     });
 
     // upload MP3 route 
@@ -168,42 +172,41 @@ export const start = async () => {
         // use multer storage filename as mongo file names
         let filename = req.file.path.replace(/^.*[\\\/]/, '');
 
-        // get reference to gridfs
-        let bucket = new mongodb.GridFSBucket(db, {
-          bucketName: 'track'+uploadTrackNum
-        });
         uploadTrackNum = uploadTrackNum + 1;
         // callback function for saving ffmpeg files to db
         function trackStorageCallback()
         {
-
-          fs.readdir(`${HLS_UPLOAD_DIR}`,function(err,files){
-            if(err) throw err;
-            var count = 0;
-
-            files.forEach(function(file){
-              // FIXME filtering out ds_store
-              if (file == ".DS_Store"){
-                console.log("trackStorageCallback() -- filtering .DS_Store...");
-              } else {
-                // stream the file to database using gridfs
-                fs.createReadStream(`${HLS_UPLOAD_DIR}`+file)
-                .pipe(bucket.openUploadStream(file))
-                .on('error', ()=>{
-                    console.log("Some error occured:"+error);
-                    res.send(error);
-                })
-                .on('finish', ()=>{
-                    // FIXME validate all the files arrived
-                });
-              }
-            });
-          });
-          
-          // add this track to the room playlist          
-          var room = r.getRoomMongo(rID)
+          // get the room
+          r.getRoomMongo(rID)
           .then(function(theroom)
           {
+            // get reference to gridfs
+            let bucket = new mongodb.GridFSBucket(db, {
+              bucketName: theroom.endpoint+theroom.uploadCount
+            });
+            // stream the hls files to mongo
+            fs.readdir(`${HLS_UPLOAD_DIR}`,function(err,files){
+              if(err) throw err;
+
+              files.forEach(function(file){
+                // FIXME filtering out ds_store
+                if (file == ".DS_Store"){
+                  console.log("trackStorageCallback() -- filtering .DS_Store...");
+                } else {
+                  // stream the file to database using gridfs
+                  fs.createReadStream(`${HLS_UPLOAD_DIR}`+file)
+                  .pipe(bucket.openUploadStream(file))
+                  .on('error', ()=>{
+                      console.log("Some error occured:"+error);
+                      res.send(error);
+                  })
+                  .on('finish', ()=>{
+                      // FIXME validate all the files arrived
+                  });
+                }
+              });
+            });
+            // add this track to the room playlist          
             theroom.playlist.push({ uri: filename, name: req.body.name });
             var result = r.updatePlaylist(rID, theroom.playlist);
             return result;
@@ -260,12 +263,9 @@ export const start = async () => {
         .then(function(room){
           // send client their room id
           io.emit('room id', room._id);
-        }).catch(function(error){
-          console.log(error,'Promise error');
-        });
-      }).catch(function(error){
-        console.log(error,'Promise error')
-      });
+        }).catch(error => { console.log('caught =>', error.message); });
+      }).catch(error => { console.log('caught =>', error.message); });
+
 
       res.status(201).json({ room: newRoom.roomID });
     });
@@ -316,9 +316,8 @@ export const start = async () => {
                 socket.emit('room id', room._id);
                 // tell everyone else in the room
                 io.to(room._id).emit('user joined', newuser.username);
-              }).catch(function(error){
-                console.log(error,'Promise error');
-              });
+              }).catch(error => { console.log('caught =>', error.message); });
+
               // otherwise we go to the room they entered
               // FIXME right now this by id, should be by url?
             }else{
@@ -330,15 +329,9 @@ export const start = async () => {
                 io.emit('room id', room._id);
                 // tell everyone else in the room
                 io.to(room._id).emit(newuser.username+' has joined the room');
-              }).catch(function(error){
-                console.log(error, 'Promise error');
-              });
+              }).catch(error => { console.log('caught =>', error.message); });
             }
-
-          }).catch(function(error){
-              console.log(error, 'Promise error');
-          });
-
+          }).catch(error => { console.log('caught =>', error.message); });
       });
     });
     
