@@ -15,7 +15,7 @@ $(document).ready(function()
 			room = prompt("Which room would you like to go to?", "new room");
 			data = {user: uname, room: room};
 			socket.username = data.user;
-
+			socket.room = room;
 			socket.emit('new login', data);
 		}
 	});
@@ -70,9 +70,9 @@ $(document).ready(function()
 
 		// FIXME dummy ID
 		var id = '5d7d70bbac0481659f11dd32';
-
+		
 		// fetch pulls down all the MONGO hls files for this track
-	 	fetch('/tracks/'+id, {
+	 	fetch('/tracks/'+socket.room+"/"+id, {
 	        method: 'GET',
 	    })
 		.then(function(response) {	 	  

@@ -62,11 +62,11 @@ var storage = multer.diskStorage({
   }
 })
 
-// paths
+// FIX ME
 const MONGO_URL = 'mongodb://localhost:27017/fr_test'
-const HLS_UPLOAD_DIR = './uploads/hls/';
-const UPLOAD_PATH = './uploads';
-const upload = multer({ dest: `${UPLOAD_PATH}/` }); // multer configuration
+const HLS_UPLOAD_DIR = process.env.PWD + '/uploads/hls/';
+const UPLOAD_PATH = process.env.PWD + '/uploads/';
+const upload = multer({ dest: `${UPLOAD_PATH}` }); // multer configuration
 
 // FIXME these are dumb globals for dev
 let db 
@@ -75,7 +75,10 @@ var streamTrackNum = 0;
 
 
 export const start = async () => {
-  
+  // ensure upload dir structure 
+  createDirIfDoesntExist(process.env.PWD+'/uploads/mp3/');
+  createDirIfDoesntExist(process.env.PWD+'/uploads/hls/');
+  createDirIfDoesntExist(process.env.PWD+'/tmp/');
   // ensure ffmpeg installed
   commandExists('ffmpeg').then(function (command) {
     console.log("FFmpeg installed!");
@@ -86,17 +89,20 @@ export const start = async () => {
   try 
   {
     // reference to the mongo database
-    db = await MongoClient.connect(MONGO_URL, { useUnifiedTopology: true });
+    db = await MongoClient.connect(MONGO_URL);
 
     // stream request route
-    trackRoute.get('/:trackID', (req, res) => {
+    trackRoute.get('/:roomNum/:trackID', (req, res) => {
       
       try {
         var trackID = new ObjectID(req.params.trackID);
+        var roomNum = new ObjectID(req.params.roomNum);
       } catch(err) {
         console.log(err);
         return res.status(400).json({ message: "Invalid trackID in URL parameter. Must be a single String of 12 bytes or a string of 24 hex characters" }); 
       }
+
+      // get room by id
 
       let bucket = new mongodb.GridFSBucket(db, {
         bucketName: 'track'+streamTrackNum
@@ -113,6 +119,9 @@ export const start = async () => {
                 responseMessage: "error"
             });
         }
+        // Create dir for this track
+        createDirIfDoesntExist(process.env.PWD+'/tmp/track'+streamTrackNum);
+
         // Loop through all the files and fetch the necessary information
         files.forEach((file) => {
           bucket.openDownloadStreamByName(file.filename)
@@ -190,7 +199,7 @@ export const start = async () => {
               }
             });
           });
-        
+          
           // add this track to the room playlist          
           var room = r.getRoomMongo(rID)
           .then(function(theroom)
@@ -237,7 +246,7 @@ export const start = async () => {
      *  @adminUser  - user with admin privledges
      *
      */
-    app.use('/newRoom/:adminUser', function (req, res) {
+    app.use('/:newRoom/:adminUser', function (req, res) {
       try {
         var user = req.params.adminUser;
       } catch(err) {
@@ -338,6 +347,13 @@ export const start = async () => {
   }
 }
 
+export async function createDirIfDoesntExist(dir) {
+  console.log("I am creating "+dir);
+  if (!fs.existsSync(dir)){
+      fs.mkdirSync(dir);
+  }
+}
+
 /* Helper function to delete files from dir
  * this should be error checked to make sure only files in  this project can be removed
  * FIXME this should be moved to utility module
@@ -345,9 +361,9 @@ export const start = async () => {
  */
 function removeAllFilesFromDir(directory) {
 
-  fs.readdir(UPLOAD_PATH+"/"+directory, (err, files) => {
+  fs.readdir(UPLOAD_PATH+directory, (err, files) => {
     files.forEach(file => {
-      fs.unlink(UPLOAD_PATH+"/"+directory+"/"+file, (err) => {
+      fs.unlink(UPLOAD_PATH+directory+"/"+file, (err) => {
         if (err) {
             console.log("Failed to delete local file from "+UPLOAD_PATH+" "+directory+": "+err);
         } else {
@@ -357,7 +373,7 @@ function removeAllFilesFromDir(directory) {
     });
   });
 }
-// console.log(process.env.PORT);
+console.log(process.env.PORT);
 
 // app.set('port', process.env.PORT);  // for track uploading
 server1.listen(3002);   // for hls streaming 
