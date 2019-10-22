@@ -5,8 +5,8 @@ import fs from 'fs'
  *  @directory - directory to be emptied
  */
  export async function createDirIfDoesntExist(dir) {
-  console.log("I am creating "+dir);
   if (!fs.existsSync(dir)){
+      // console.log("I am creating "+dir);
       fs.mkdirSync(dir);
   }
 }

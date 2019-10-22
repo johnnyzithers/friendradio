@@ -71,8 +71,10 @@ const upload = multer({ dest: `${UPLOAD_PATH}` }); // multer configuration
 
 // FIXME these are dumb globals for dev
 let db 
-var uploadTrackNum = 0;
-var streamTrackNum = 0;
+
+export const init = async () => {
+
+}
 
 
 export const start = async () => {
@@ -106,7 +108,7 @@ export const start = async () => {
         console.log(err);
         return res.status(400).json({ message: "Invalid trackID in URL parameter. Must be a single String of 12 bytes or a string of 24 hex characters" }); 
       }
-      console.log("!!!!! " +trackNum + " " +roomID);
+      
       // get room by id
       r.getRoomMongo(roomID)
         .then(function(room)
@@ -117,10 +119,8 @@ export const start = async () => {
             bucketName: room.endpoint+trackNum
           });
 
-
           utils.createDirIfDoesntExist(process.env.PWD+'/tmp/'+room.endpoint);
 
-          
           // set the appropriate mongo collections
           const collection = db.collection(room.endpoint+trackNum+'.files');    
 
@@ -184,7 +184,6 @@ export const start = async () => {
         // use multer storage filename as mongo file names
         let filename = req.file.path.replace(/^.*[\\\/]/, '');
 
-        uploadTrackNum = uploadTrackNum + 1;
         // callback function for saving ffmpeg files to db
         function trackStorageCallback()
         {
@@ -196,6 +195,9 @@ export const start = async () => {
             let bucket = new mongodb.GridFSBucket(db, {
               bucketName: theroom.endpoint+theroom.uploadCount
             });
+            
+            r.updateUploadCount(theroom._id, theroom.uploadCount + 1);
+            
             // stream the hls files to mongo
             fs.readdir(`${HLS_UPLOAD_DIR}`,function(err,files){
               if(err) throw err;
