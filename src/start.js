@@ -12,6 +12,7 @@ import HLSServer from 'hls-server'
 // local js module filese
 const u  = require('./users.js')
 const r  = require('./rooms.js')
+const utils  = require('./utils.js')
 
 // these required for serving HLS public and sockete content
 const app         = express(); 
@@ -76,9 +77,9 @@ var streamTrackNum = 0;
 
 export const start = async () => {
   // ensure upload dir structure 
-  createDirIfDoesntExist(process.env.PWD+'/uploads/mp3/');
-  createDirIfDoesntExist(process.env.PWD+'/uploads/hls/');
-  createDirIfDoesntExist(process.env.PWD+'/tmp/');
+  utils.createDirIfDoesntExist(process.env.PWD+'/uploads/mp3/');
+  utils.createDirIfDoesntExist(process.env.PWD+'/uploads/hls/');
+  utils.createDirIfDoesntExist(process.env.PWD+'/tmp/');
   // ensure ffmpeg installed
   commandExists('ffmpeg').then(function (command) {
     console.log("FFmpeg installed!");
@@ -91,7 +92,11 @@ export const start = async () => {
     // reference to the mongo database
     db = await MongoClient.connect(MONGO_URL);
 
-    // stream request route
+
+    /* Stream request route
+     *  @roomID   - id of room to stream playlist from 
+     *  @trackNum - track number to stream
+     */
     trackRoute.get('/:roomID/:trackNum', (req, res) => {
       //FIXME
       try {
@@ -101,16 +106,21 @@ export const start = async () => {
         console.log(err);
         return res.status(400).json({ message: "Invalid trackID in URL parameter. Must be a single String of 12 bytes or a string of 24 hex characters" }); 
       }
-
+      console.log("!!!!! " +trackNum + " " +roomID);
       // get room by id
       r.getRoomMongo(roomID)
         .then(function(room)
         {
+
           // set the grid fs bucket
           let bucket = new mongodb.GridFSBucket(db, {
             bucketName: room.endpoint+trackNum
           });
 
+
+          utils.createDirIfDoesntExist(process.env.PWD+'/tmp/'+room.endpoint);
+
+          
           // set the appropriate mongo collections
           const collection = db.collection(room.endpoint+trackNum+'.files');    
 
@@ -123,12 +133,12 @@ export const start = async () => {
                 });
             }
             // Create dir for this track's hls
-            createDirIfDoesntExist(process.env.PWD+'/tmp/track'+streamTrackNum);
+            utils.createDirIfDoesntExist(process.env.PWD+'/tmp/'+room.endpoint+'/'+trackNum);
 
             // fetch the hls data
             files.forEach((file) => {
               bucket.openDownloadStreamByName(file.filename)
-              .pipe(fs.createWriteStream('./tmp/track'+streamTrackNum+'/'+file.filename))
+              .pipe(fs.createWriteStream('./tmp/'+room.endpoint+'/'+trackNum+'/'+file.filename))
               .on('error', function(error) {
                 assert.ifError(error);
               })
@@ -136,17 +146,19 @@ export const start = async () => {
                   // fired for each file
               });       
             });
-            streamTrackNum = streamTrackNum + 1;
             res.json(files);
             return res;
           });
         }).catch(error => { console.log('caught =>', error.message); });
     });
 
-    // upload MP3 route 
-    trackRoute.post('/:roomNum', (req, res) => {
+    /* Upload mp3 route
+     *  @roomID  - id of room mp3 should be posted to
+     *
+     */
+    trackRoute.post('/:roomID', (req, res) => {
      try {  
-        var rID = req.params.roomNum;
+        var rID = req.params.roomID;
       } catch(err) {
         console.log(err);
         return res.status(400).json({ message: "Invalid room num in URL parameter. Must be a single String of 12 bytes or a string of 24 hex characters" }); 
@@ -215,8 +227,8 @@ export const start = async () => {
             // send playlist to client
             io.emit('playlist', {id: rID, playlist: newplaylist});
             // remove tempory files once mongo upload complete
-            removeAllFilesFromDir("hls");
-            removeAllFilesFromDir("mp3");
+            utils.removeAllFilesFromDir("hls");
+            utils.removeAllFilesFromDir("mp3");
             // and send the response
             res.status(201).json({ message: "HLS successfully uploaded"});
             return res;
@@ -249,7 +261,7 @@ export const start = async () => {
      *  @adminUser  - user with admin privledges
      *
      */
-    app.use('/:newRoom/:adminUser', function (req, res) {
+    app.use('/newRoom/:adminUser', function (req, res) {
       try {
         var user = req.params.adminUser;
       } catch(err) {
@@ -265,8 +277,6 @@ export const start = async () => {
           io.emit('room id', room._id);
         }).catch(error => { console.log('caught =>', error.message); });
       }).catch(error => { console.log('caught =>', error.message); });
-
-
       res.status(201).json({ room: newRoom.roomID });
     });
 
@@ -314,6 +324,8 @@ export const start = async () => {
                 socket.join(room._id);
                 // send client their room id
                 socket.emit('room id', room._id);
+                io.emit('room endpoint', room.endpoint);  
+
                 // tell everyone else in the room
                 io.to(room._id).emit('user joined', newuser.username);
               }).catch(error => { console.log('caught =>', error.message); });
@@ -327,10 +339,14 @@ export const start = async () => {
                 socket.join(room._id);
                 // send client their room id
                 io.emit('room id', room._id);
+                io.emit('room endpoint', room.endpoint);
+
                 // tell everyone else in the room
                 io.to(room._id).emit(newuser.username+' has joined the room');
               }).catch(error => { console.log('caught =>', error.message); });
             }
+            // send shortened endpoint url to client
+
           }).catch(error => { console.log('caught =>', error.message); });
       });
     });
@@ -340,32 +356,7 @@ export const start = async () => {
   }
 }
 
-export async function createDirIfDoesntExist(dir) {
-  console.log("I am creating "+dir);
-  if (!fs.existsSync(dir)){
-      fs.mkdirSync(dir);
-  }
-}
 
-/* Helper function to delete files from dir
- * this should be error checked to make sure only files in  this project can be removed
- * FIXME this should be moved to utility module
- *  @directory - directory to be emptied
- */
-function removeAllFilesFromDir(directory) {
-
-  fs.readdir(UPLOAD_PATH+directory, (err, files) => {
-    files.forEach(file => {
-      fs.unlink(UPLOAD_PATH+directory+"/"+file, (err) => {
-        if (err) {
-            console.log("Failed to delete local file from "+UPLOAD_PATH+" "+directory+": "+err);
-        } else {
-            // console.log("successfully deleted local file from ./uploads/"+directory);                                
-        }
-      });
-    });
-  });
-}
 console.log(process.env.PORT);
 
 // app.set('port', process.env.PORT);  // for track uploading

@@ -48,6 +48,11 @@ $(document).ready(function()
     	socket.room = roomid;
     });
 
+    socket.on('room endpoint', function(roomend){
+    	console.log('room endpoint is ' + roomend);
+    	socket.roomendpoint = roomend;
+    });
+
     socket.on('user joined', function(user){
 		$('#messages').append($(`<li style="font-style:italic;font-size:32px;\">`).text(user +" has joined the room"));
     });
@@ -101,7 +106,7 @@ $(document).ready(function()
 				var hls = new Hls();
 				hls.attachMedia(video);
 				// explain this
-				hls.loadSource('http://localhost:3002/streams/track'+currTrack+'/'+currPlaylist[currTrack].uri+'.m3u8');
+				hls.loadSource('http://localhost:3002/streams/'+socket.roomendpoint+'/'+currTrack+'/'+currPlaylist[currTrack].uri+'.m3u8');
 		        hls.on(Hls.Events.MANIFEST_PARSED, function (event, data) {
 		          console.log("manifest loaded, found " + data.levels.length + " quality level");
 		        });
