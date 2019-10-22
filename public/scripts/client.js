@@ -54,7 +54,7 @@ $(document).ready(function()
     });
 
     socket.on('user joined', function(user){
-		$('#messages').append($(`<li style="font-style:italic;font-size:32px;\">`).text(user +" has joined the room"));
+		$('#messages').append($(`<li style="font-style:italic;font-size:20px;\">`).text(user +" has joined the room"));
     });
   
 
