@@ -9,7 +9,6 @@ const FR_ROOM_URL = 'mongodb://localhost:27017/fr_test'
  * 
  *  return : user if found, else null
  */
-
 export async function getUserMongoByName(data) {
   try{
 

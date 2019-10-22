@@ -19,13 +19,19 @@ export async function updatePlaylist(o_id, newplaylist)
     var query = { _id: o_id };
     var newvals = { $set: { playlist: newplaylist }};
     const result = await collection.updateOne(query, newvals);
-    // console.log('updatePlaylist(): updating playlist of room id ' + o_id);
+    // console.log('updatePla ylist(): updating playlist of room id ' + o_id);
     return newplaylist;
   }catch(e){
     console.log(e);
   }
 }
 
+/* Mongo update the uploadcount of specified room
+ *  @o_id         - room id
+ *  @uc           - new upload count
+ * 
+ *  return : room
+ */
 export async function updateUploadCount(o_id, uc)
 {
   try{

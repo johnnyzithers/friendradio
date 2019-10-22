@@ -1,5 +1,6 @@
 import '@babel/register'
 import '@babel/polyfill'
 
-import {start} from './start'
+import {init, start} from './start'
+init()
 start()

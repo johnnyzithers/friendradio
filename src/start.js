@@ -70,29 +70,32 @@ const UPLOAD_PATH = process.env.PWD + '/uploads/';
 const upload = multer({ dest: `${UPLOAD_PATH}` }); // multer configuration
 
 // FIXME these are dumb globals for dev
-let db 
 
 export const init = async () => {
-
+  try{
+    let db = await MongoClient.connect(MONGO_URL);
+    db.dropDatabase();
+    // ensure upload dir structure 
+    utils.createDirIfDoesntExist(process.env.PWD+'/uploads/mp3/');
+    utils.createDirIfDoesntExist(process.env.PWD+'/uploads/hls/');
+    utils.createDirIfDoesntExist(process.env.PWD+'/tmp/');
+    // ensure ffmpeg installed
+    commandExists('ffmpeg').then(function (command) {
+      console.log("FFmpeg installed!");
+    }).catch(function () {
+      console.log("Error: FFmpeg is not installed. Please install FFmpeg!");
+    });
+  }catch(e){
+    console.log(e);
+  }
 }
 
 
 export const start = async () => {
-  // ensure upload dir structure 
-  utils.createDirIfDoesntExist(process.env.PWD+'/uploads/mp3/');
-  utils.createDirIfDoesntExist(process.env.PWD+'/uploads/hls/');
-  utils.createDirIfDoesntExist(process.env.PWD+'/tmp/');
-  // ensure ffmpeg installed
-  commandExists('ffmpeg').then(function (command) {
-    console.log("FFmpeg installed!");
-  }).catch(function () {
-    console.log("Error: FFmpeg is not installed. Please install FFmpeg!");
-  });
-
   try 
   {
     // reference to the mongo database
-    db = await MongoClient.connect(MONGO_URL);
+    let db = await MongoClient.connect(MONGO_URL);
 
 
     /* Stream request route
@@ -100,7 +103,6 @@ export const start = async () => {
      *  @trackNum - track number to stream
      */
     trackRoute.get('/:roomID/:trackNum', (req, res) => {
-      //FIXME
       try {
         var trackNum = req.params.trackNum;
         var roomID = new ObjectID(req.params.roomID);
